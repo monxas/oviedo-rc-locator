@@ -179,20 +179,49 @@ bin/distributed_dnprc.sh fetch          # rsync de outputs locales
 ## Modelo geométrico
 
 Cells **rectangulares** ~1036 m × 695 m con cinta marginal. Sub-cuadrantes
-500 m × 350 m. Convención (verificada con 4 RCs):
+500 m × 350 m. Convención del PGOU de Oviedo (verificada con 4 RCs):
 
 ```
 NW = I    NE = II
 SW = III  SE = IV
 ```
 
-Ajustado por LSQ con 71 RCs reales:
-
-- mediana 4.5 m, p90 7.75 m de residual sobre `body_relative`
-- 100 % de hojas correctas en 107 RCs validadas
-- snap de polígono cubre el residual restante (~< 5 m)
-
+Ajustado por LSQ con 71 RCs reales: mediana 4.5 m residual antes de snap.
 Constantes en `src/oviedo_rc/config.py` (`MALLA_*`).
+
+### Calibración por (cell, sub_quadrant)
+
+El modelo geométrico tiene biases sistemáticos distintos por zona. Sobre él se
+aplica un **offset corrector por (cell, sub_quadrant)** computado de labels
+manuales etiquetados via la web de validación (`scripts/validate_snap.py`).
+
+Almacenamiento: `data/calibration_offsets.json`. Pipeline (`process_rc`) lo
+aplica automáticamente; `calibration.quality_for(cell, sub)` devuelve la
+fiabilidad esperada del bucket.
+
+Tras 121 labels (22 buckets directos + interpolados):
+- median residual ~10 px (~85 cm)
+- p90 ~50 px (~4 m)
+
+### Snap de polígono
+
+`oviedo_rc.snap.snap()` aplica cross-correlation entre el polígono renderizado
+y las líneas del PGOU. Activo por defecto en pipeline (`snap_polygon=True`).
+Score < 0.25 cerca del borde de cell → intenta también plano vecino (edge override).
+
+### Web de validación / etiquetado
+
+```bash
+python3 scripts/validate_snap.py        # http://127.0.0.1:8765
+```
+
+UI con drag-drop del polígono real para refinar manualmente. Smart-random
+ponderado por escasez de calibración (cells con menos labels salen más
+frecuentemente). Soporta listas de RCs y filtro por cell. WMS catastral
+side-by-side como referencia visual.
+
+Output → `data/snap_labels.json`. Recalibrar: el script de recalibración
+(en `tmp/recalibrate.py` ad-hoc) lee labels y regenera offsets.
 
 ---
 
