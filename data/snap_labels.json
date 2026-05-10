@@ -1,0 +1,7266 @@
+[
+  {
+    "rc": "7938810TP6073N",
+    "address": "CL LANGREO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      6273,
+      1643
+    ],
+    "snap_dxdy": [
+      -17,
+      14
+    ],
+    "snap_score": 0.15267324447631836,
+    "action": "manual",
+    "truth_dxdy": [
+      88,
+      -127
+    ],
+    "ts": "2026-05-10T17:12:01"
+  },
+  {
+    "rc": "9750110TP6095S",
+    "address": "CL CIMADEVILLA 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      2133,
+      2398
+    ],
+    "snap_dxdy": [
+      2,
+      -34
+    ],
+    "snap_score": 0.3354417681694031,
+    "action": "manual",
+    "truth_dxdy": [
+      0,
+      -32
+    ],
+    "ts": "2026-05-10T17:12:26"
+  },
+  {
+    "rc": "7954808TP6075S",
+    "address": "CL JACINTO BENAVENTE 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      5322,
+      1915
+    ],
+    "snap_dxdy": [
+      13,
+      -9
+    ],
+    "snap_score": 0.1835821270942688,
+    "action": "manual",
+    "truth_dxdy": [
+      69,
+      2
+    ],
+    "ts": "2026-05-10T17:12:39"
+  },
+  {
+    "rc": "7348040TP6074N",
+    "address": "AL BUENAVISTA LAS CORTINAS 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      3974,
+      1442
+    ],
+    "snap_dxdy": [
+      11,
+      -19
+    ],
+    "snap_score": 0.24566225707530975,
+    "action": "manual",
+    "truth_dxdy": [
+      16,
+      -91
+    ],
+    "ts": "2026-05-10T17:12:51"
+  },
+  {
+    "rc": "8360034TP6085N",
+    "address": "CL LUIS RIERA POSADA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_I.pdf",
+    "model_center_px": [
+      3906,
+      3263
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:12:57"
+  },
+  {
+    "rc": "7259603TP6075N",
+    "address": "CL CORVERA 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_I.pdf",
+    "model_center_px": [
+      4781,
+      4161
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:13:05"
+  },
+  {
+    "rc": "6550003TP6065S",
+    "address": "CL EL MONTICU DE OLIVARES 32 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      868,
+      3190
+    ],
+    "snap_dxdy": [
+      5,
+      2
+    ],
+    "snap_score": 0.10737034678459167,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:13:08"
+  },
+  {
+    "rc": "7447007TP6074N",
+    "address": "CL FUERTES ACEVEDO 101 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      5108,
+      2654
+    ],
+    "snap_dxdy": [
+      23,
+      -30
+    ],
+    "snap_score": 0.3966048061847687,
+    "action": "manual",
+    "truth_dxdy": [
+      -43,
+      2
+    ],
+    "ts": "2026-05-10T17:13:21"
+  },
+  {
+    "rc": "9742617TP6094S",
+    "address": "CL GIL BLAS 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_II.pdf",
+    "model_center_px": [
+      2336,
+      390
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      4,
+      -110
+    ],
+    "ts": "2026-05-10T17:13:34"
+  },
+  {
+    "rc": "9658008TP6095N",
+    "address": "AV PUMARIN 23 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      1454,
+      1589
+    ],
+    "snap_dxdy": [
+      8,
+      22
+    ],
+    "snap_score": 0.3504087030887604,
+    "action": "manual",
+    "truth_dxdy": [
+      10,
+      18
+    ],
+    "ts": "2026-05-10T17:13:40"
+  },
+  {
+    "rc": "9946029TP6094N",
+    "address": "CL SAN MELCHOR G. SAMPEDRO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      5190,
+      3400
+    ],
+    "snap_dxdy": [
+      25,
+      -20
+    ],
+    "snap_score": 0.2915637791156769,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:14:06"
+  },
+  {
+    "rc": "9762009TP6096S",
+    "address": "CL MAESTROS NACIONALES 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      1863,
+      624
+    ],
+    "snap_dxdy": [
+      2,
+      -7
+    ],
+    "snap_score": 0.16660386323928833,
+    "action": "manual",
+    "truth_dxdy": [
+      6,
+      51
+    ],
+    "ts": "2026-05-10T17:14:15"
+  },
+  {
+    "rc": "8763027TP6086S",
+    "address": "CL VITAL AZA 25 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      2534,
+      4330
+    ],
+    "snap_dxdy": [
+      23,
+      -36
+    ],
+    "snap_score": 0.15818887948989868,
+    "action": "manual",
+    "truth_dxdy": [
+      43,
+      74
+    ],
+    "ts": "2026-05-10T17:14:26"
+  },
+  {
+    "rc": "9451010TP6095S",
+    "address": "CL FRUELA 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5848,
+      2329
+    ],
+    "snap_dxdy": [
+      -1,
+      -33
+    ],
+    "snap_score": 0.4438806474208832,
+    "action": "manual",
+    "truth_dxdy": [
+      -1,
+      -30
+    ],
+    "ts": "2026-05-10T17:14:32"
+  },
+  {
+    "rc": "9045204TP6094N",
+    "address": "CL FERMIN CANELLA 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "model_center_px": [
+      1039,
+      4027
+    ],
+    "snap_dxdy": [
+      -7,
+      -2
+    ],
+    "snap_score": 0.133273646235466,
+    "action": "manual",
+    "truth_dxdy": [
+      42,
+      -59
+    ],
+    "ts": "2026-05-10T17:14:48"
+  },
+  {
+    "rc": "9849050TP6094N",
+    "address": "CL PADRE SUAREZ 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      3774,
+      970
+    ],
+    "snap_dxdy": [
+      7,
+      -35
+    ],
+    "snap_score": 0.1802707314491272,
+    "action": "manual",
+    "truth_dxdy": [
+      -4,
+      -53
+    ],
+    "ts": "2026-05-10T17:15:00"
+  },
+  {
+    "rc": "8647003TP6084N",
+    "address": "CL HNOS MENENDEZ PIDAL 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_II.pdf",
+    "model_center_px": [
+      1726,
+      2045
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      47,
+      -53
+    ],
+    "ts": "2026-05-10T17:15:06"
+  },
+  {
+    "rc": "9550004TP6095S",
+    "address": "CL PESO 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      820,
+      2637
+    ],
+    "snap_dxdy": [
+      18,
+      -18
+    ],
+    "snap_score": 0.35106685757637024,
+    "action": "manual",
+    "truth_dxdy": [
+      10,
+      -32
+    ],
+    "ts": "2026-05-10T17:15:14"
+  },
+  {
+    "rc": "9061010TP6096S",
+    "address": "CL CORONEL BOBES 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      868,
+      2062
+    ],
+    "snap_dxdy": [
+      -14,
+      19
+    ],
+    "snap_score": 0.29256898164749146,
+    "action": "manual",
+    "truth_dxdy": [
+      36,
+      45
+    ],
+    "ts": "2026-05-10T17:15:25"
+  },
+  {
+    "rc": "9649019TP6094N",
+    "address": "CL MAGDALENA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      1497,
+      3836
+    ],
+    "snap_dxdy": [
+      6,
+      -36
+    ],
+    "snap_score": 0.3848037123680115,
+    "action": "manual",
+    "truth_dxdy": [
+      4,
+      -33
+    ],
+    "ts": "2026-05-10T17:15:33"
+  },
+  {
+    "rc": "9658009TP6095N",
+    "address": "AV PUMARIN 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      1329,
+      1845
+    ],
+    "snap_dxdy": [
+      8,
+      22
+    ],
+    "snap_score": 0.46250003576278687,
+    "action": "manual",
+    "truth_dxdy": [
+      4,
+      23
+    ],
+    "ts": "2026-05-10T17:15:40"
+  },
+  {
+    "rc": "9451023TP6095S",
+    "address": "CL SAN FRANCISCO 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5553,
+      1464
+    ],
+    "snap_dxdy": [
+      -1,
+      10
+    ],
+    "snap_score": 0.4715036451816559,
+    "action": "manual",
+    "truth_dxdy": [
+      -3,
+      -37
+    ],
+    "ts": "2026-05-10T17:16:56"
+  },
+  {
+    "rc": "9960104TP6096S",
+    "address": "AV AURELIANO S. ROMAN 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      4682,
+      3417
+    ],
+    "snap_dxdy": [
+      9,
+      18
+    ],
+    "snap_score": 0.11218302696943283,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:17:10"
+  },
+  {
+    "rc": "9061008TP6086S",
+    "address": "CL MENENDEZ PELAYO 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      551,
+      1817
+    ],
+    "snap_dxdy": [
+      17,
+      36
+    ],
+    "snap_score": 0.48184117674827576,
+    "action": "manual",
+    "truth_dxdy": [
+      34,
+      50
+    ],
+    "ts": "2026-05-10T17:17:15"
+  },
+  {
+    "rc": "8765901TP6086N",
+    "address": "CL SANTIAGO DE COMPOSTELA 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      3183,
+      724
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      44,
+      84
+    ],
+    "ts": "2026-05-10T17:17:21"
+  },
+  {
+    "rc": "6741024TP6064S",
+    "address": "UR PINOS LOS 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_M_II.pdf",
+    "model_center_px": [
+      4395,
+      914
+    ],
+    "snap_dxdy": [
+      30,
+      -14
+    ],
+    "snap_score": 0.10842347145080566,
+    "action": "manual",
+    "truth_dxdy": [
+      129,
+      -103
+    ],
+    "ts": "2026-05-10T17:17:26"
+  },
+  {
+    "rc": "9562621TP6096S",
+    "address": "CL EVARISTO VALLE 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      949,
+      2197
+    ],
+    "snap_dxdy": [
+      30,
+      36
+    ],
+    "snap_score": 0.11320411413908005,
+    "action": "manual",
+    "truth_dxdy": [
+      -14,
+      32
+    ],
+    "ts": "2026-05-10T17:17:34"
+  },
+  {
+    "rc": "7749015TP6074N",
+    "address": "BO ERIA-BUENAVISTA 39 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_IV.pdf",
+    "model_center_px": [
+      3689,
+      4186
+    ],
+    "snap_dxdy": [
+      -12,
+      -16
+    ],
+    "snap_score": 0.22472356259822845,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:21:17"
+  },
+  {
+    "rc": "6854043TP6065S",
+    "address": "AV OLIVARES 51 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      5154,
+      3311
+    ],
+    "snap_dxdy": [
+      1,
+      22
+    ],
+    "snap_score": 0.16354383528232574,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:23:28"
+  },
+  {
+    "rc": "8842002TP6084S",
+    "address": "AV PEDRO MASAVEU 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_IV.pdf",
+    "model_center_px": [
+      4397,
+      3938
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:24:03"
+  },
+  {
+    "rc": "9455026TP6095N",
+    "address": "CL LILA 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      5312,
+      268
+    ],
+    "snap_dxdy": [
+      1,
+      2
+    ],
+    "snap_score": 0.3351888060569763,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      1,
+      2
+    ],
+    "ts": "2026-05-10T17:24:43"
+  },
+  {
+    "rc": "3546019TP6034N",
+    "address": "CL JOAQUIN DE XUNO 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_L_II.pdf",
+    "model_center_px": [
+      3496,
+      3042
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:24:48"
+  },
+  {
+    "rc": "9650015TP6095S",
+    "address": "CL CIMADEVILLA 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      1396,
+      2546
+    ],
+    "snap_dxdy": [
+      10,
+      -3
+    ],
+    "snap_score": 0.4980495870113373,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      10,
+      -3
+    ],
+    "ts": "2026-05-10T17:40:59"
+  },
+  {
+    "rc": "6854044TP6065S",
+    "address": "AV OLIVARES 53 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      5586,
+      3155
+    ],
+    "snap_dxdy": [
+      25,
+      31
+    ],
+    "snap_score": 0.15422695875167847,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      25,
+      31
+    ],
+    "ts": "2026-05-10T17:41:11"
+  },
+  {
+    "rc": "6849035TP6064N",
+    "address": "CL CUESTA DE OLIVARES LA 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      6556,
+      3759
+    ],
+    "snap_dxdy": [
+      -7,
+      -12
+    ],
+    "snap_score": 0.10495396703481674,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:41:15"
+  },
+  {
+    "rc": "9350005TP6095S",
+    "address": "CL CABO NOVAL 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      3927,
+      2807
+    ],
+    "snap_dxdy": [
+      17,
+      1
+    ],
+    "snap_score": 0.5151832699775696,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      17,
+      1
+    ],
+    "ts": "2026-05-10T17:41:18"
+  },
+  {
+    "rc": "8153006TP6085S",
+    "address": "CL MIGUEL ANGEL BLANCO 39 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      2937,
+      3671
+    ],
+    "snap_dxdy": [
+      35,
+      -6
+    ],
+    "snap_score": 0.43080559372901917,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      35,
+      -6
+    ],
+    "ts": "2026-05-10T17:42:02"
+  },
+  {
+    "rc": "9244007TP6094S",
+    "address": "CL MUÑOZ DEGRAIN 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_III.pdf",
+    "model_center_px": [
+      2152,
+      1236
+    ],
+    "snap_dxdy": [
+      24,
+      -34
+    ],
+    "snap_score": 0.4575624465942383,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      24,
+      -34
+    ],
+    "ts": "2026-05-10T17:42:05"
+  },
+  {
+    "rc": "9339012TP6093N",
+    "address": "",
+    "sheet_name": "PLANO_15_M_III.pdf",
+    "model_center_px": [
+      3712,
+      212
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:42:17"
+  },
+  {
+    "rc": "3748063TP6034N",
+    "address": "PL SAN CLAUDIO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      1882,
+      1252
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:42:43"
+  },
+  {
+    "rc": "9658622TP6095N",
+    "address": "AV PUMARIN 44 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      3155,
+      4295
+    ],
+    "snap_dxdy": [
+      -15,
+      9
+    ],
+    "snap_score": 0.5450819134712219,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -15,
+      9
+    ],
+    "ts": "2026-05-10T17:42:47"
+  },
+  {
+    "rc": "0048014TP6094N",
+    "address": "CL ADOLFO GARCIA POSADA 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      6094,
+      1236
+    ],
+    "snap_dxdy": [
+      -28,
+      5
+    ],
+    "snap_score": 0.3204684555530548,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -28,
+      5
+    ],
+    "ts": "2026-05-10T17:42:52"
+  },
+  {
+    "rc": "8457023TP6085N",
+    "address": "CL HERMANOS VILLANUEVA 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      6239,
+      3185
+    ],
+    "snap_dxdy": [
+      -14,
+      -1
+    ],
+    "snap_score": 0.18865379691123962,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:44:03"
+  },
+  {
+    "rc": "7051046TP6065S",
+    "address": "CL LA TORRE DE OLIVARES 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      1341,
+      1669
+    ],
+    "snap_dxdy": [
+      34,
+      -28
+    ],
+    "snap_score": 0.3237561583518982,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      34,
+      -28
+    ],
+    "ts": "2026-05-10T17:44:23"
+  },
+  {
+    "rc": "9259029TP6095N",
+    "address": "CL RAFAEL SARANDESES 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      3676,
+      3740
+    ],
+    "snap_dxdy": [
+      9,
+      9
+    ],
+    "snap_score": 0.21584995090961456,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      9,
+      9
+    ],
+    "ts": "2026-05-10T17:50:51"
+  },
+  {
+    "rc": "8752012TP6085S",
+    "address": "CL MARQUES DE TEVERGA 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      2855,
+      874
+    ],
+    "snap_dxdy": [
+      14,
+      -29
+    ],
+    "snap_score": 0.3169580101966858,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      14,
+      -29
+    ],
+    "ts": "2026-05-10T17:51:17"
+  },
+  {
+    "rc": "8549001TP6084N",
+    "address": "CL CARLOS LOPEZ OTIN 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      1137,
+      3900
+    ],
+    "snap_dxdy": [
+      27,
+      -29
+    ],
+    "snap_score": 0.4555554687976837,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      27,
+      -29
+    ],
+    "ts": "2026-05-10T17:51:20"
+  },
+  {
+    "rc": "9844303TP6094S",
+    "address": "CL VICENTE ALEIXANDRE 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      4402,
+      1231
+    ],
+    "snap_dxdy": [
+      -11,
+      -28
+    ],
+    "snap_score": 0.35487502813339233,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -11,
+      -28
+    ],
+    "ts": "2026-05-10T17:51:22"
+  },
+  {
+    "rc": "0048011TP6094N",
+    "address": "CL ADOLFO GARCIA POSADA 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      6228,
+      817
+    ],
+    "snap_dxdy": [
+      -28,
+      7
+    ],
+    "snap_score": 0.38300955295562744,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -28,
+      7
+    ],
+    "ts": "2026-05-10T17:51:28"
+  },
+  {
+    "rc": "9844308TP6094S",
+    "address": "CL VICENTE ALEIXANDRE 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      4943,
+      1744
+    ],
+    "snap_dxdy": [
+      -20,
+      -30
+    ],
+    "snap_score": 0.4058556854724884,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -20,
+      -30
+    ],
+    "ts": "2026-05-10T17:51:38"
+  },
+  {
+    "rc": "3748030TP6034N",
+    "address": "PL SAN CLAUDIO 130 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_L_II.pdf",
+    "model_center_px": [
+      4441,
+      1920
+    ],
+    "snap_dxdy": [
+      -35,
+      32
+    ],
+    "snap_score": 0.10368373245000839,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:51:44"
+  },
+  {
+    "rc": "9654014TP6095S",
+    "address": "CL LUNA,LA 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      658,
+      3483
+    ],
+    "snap_dxdy": [
+      13,
+      17
+    ],
+    "snap_score": 0.39033785462379456,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      13,
+      17
+    ],
+    "ts": "2026-05-10T17:51:47"
+  },
+  {
+    "rc": "7956023TP6075N",
+    "address": "CL ARGAÑOSA 66 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      698,
+      929
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:51:51"
+  },
+  {
+    "rc": "8763006TP6086S",
+    "address": "CL VITAL AZA 29 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      3179,
+      4097
+    ],
+    "snap_dxdy": [
+      -5,
+      -4
+    ],
+    "snap_score": 0.27151885628700256,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -5,
+      -4
+    ],
+    "ts": "2026-05-10T17:51:55"
+  },
+  {
+    "rc": "9854039TP6095S",
+    "address": "CL FEDERICO GARCIA LORCA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      1935,
+      2233
+    ],
+    "snap_dxdy": [
+      6,
+      24
+    ],
+    "snap_score": 0.44302991032600403,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      6,
+      24
+    ],
+    "ts": "2026-05-10T17:54:48"
+  },
+  {
+    "rc": "9241002TP6094S",
+    "address": "AV PEDRO MASAVEU 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_I.pdf",
+    "model_center_px": [
+      2361,
+      1480
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:54:52"
+  },
+  {
+    "rc": "8555005TP6085S",
+    "address": "CL PILARES 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      494,
+      1626
+    ],
+    "snap_dxdy": [
+      33,
+      -1
+    ],
+    "snap_score": 0.404583603143692,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      33,
+      -1
+    ],
+    "ts": "2026-05-10T17:54:55"
+  },
+  {
+    "rc": "8763032TP6086S",
+    "address": "CL LORENZO ABRUÑEDO 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      2863,
+      2101
+    ],
+    "snap_dxdy": [
+      -10,
+      22
+    ],
+    "snap_score": 0.17078863084316254,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -10,
+      22
+    ],
+    "ts": "2026-05-10T17:54:58"
+  },
+  {
+    "rc": "8256016TP6085N",
+    "address": "CL VAZQUEZ DE MELLA 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      3807,
+      636
+    ],
+    "snap_dxdy": [
+      18,
+      -17
+    ],
+    "snap_score": 0.22804266214370728,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      18,
+      -17
+    ],
+    "ts": "2026-05-10T17:55:00"
+  },
+  {
+    "rc": "8064031TP6086N",
+    "address": "CL ENRIQUE DE OSSO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "model_center_px": [
+      1954,
+      1696
+    ],
+    "snap_dxdy": [
+      16,
+      12
+    ],
+    "snap_score": 0.26886531710624695,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      16,
+      12
+    ],
+    "ts": "2026-05-10T17:55:12"
+  },
+  {
+    "rc": "8462058TP6086S",
+    "address": "AV MONUMENTOS,LOS 43 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "model_center_px": [
+      4756,
+      3771
+    ],
+    "snap_dxdy": [
+      6,
+      8
+    ],
+    "snap_score": 0.3061576783657074,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      6,
+      8
+    ],
+    "ts": "2026-05-10T17:55:14"
+  },
+  {
+    "rc": "8339617TP6083N",
+    "address": "CL BIMENES OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      4618,
+      3252
+    ],
+    "snap_dxdy": [
+      25,
+      33
+    ],
+    "snap_score": 0.2010192722082138,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:55:18"
+  },
+  {
+    "rc": "9546015TP6094N",
+    "address": "CL LEOPOLDO ALAS 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      1553,
+      2012
+    ],
+    "snap_dxdy": [
+      6,
+      -9
+    ],
+    "snap_score": 0.3704187273979187,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      6,
+      -9
+    ],
+    "ts": "2026-05-10T17:55:25"
+  },
+  {
+    "rc": "7558416TP6075N",
+    "address": "CL BERMUDO I EL DIACONO 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      2097,
+      2724
+    ],
+    "snap_dxdy": [
+      -22,
+      1
+    ],
+    "snap_score": 0.4443034529685974,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -22,
+      1
+    ],
+    "ts": "2026-05-10T17:55:28"
+  },
+  {
+    "rc": "9454505TP6095S",
+    "address": "CL COVADONGA 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      5320,
+      2496
+    ],
+    "snap_dxdy": [
+      5,
+      13
+    ],
+    "snap_score": 0.23598921298980713,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:55:34"
+  },
+  {
+    "rc": "6855303TP6065N",
+    "address": "CL FLORIDA LA G 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      6153,
+      414
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:56:19"
+  },
+  {
+    "rc": "7838413TP6073N",
+    "address": "CL LLANERA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_II.pdf",
+    "model_center_px": [
+      4962,
+      3364
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:56:26"
+  },
+  {
+    "rc": "9356029TP6095N",
+    "address": "CL LILA 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      4574,
+      809
+    ],
+    "snap_dxdy": [
+      8,
+      31
+    ],
+    "snap_score": 0.20886163413524628,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      8,
+      31
+    ],
+    "ts": "2026-05-10T17:59:39"
+  },
+  {
+    "rc": "3748046TP6034N",
+    "address": "CS CANTULLOSO 206 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_K_IV.pdf",
+    "model_center_px": [
+      6406,
+      4181
+    ],
+    "snap_dxdy": [
+      -1,
+      -4
+    ],
+    "snap_score": 0.13600373268127441,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T17:59:47"
+  },
+  {
+    "rc": "9146004TP6094N",
+    "address": "CL GONZALEZ BESADA 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "model_center_px": [
+      2163,
+      3977
+    ],
+    "snap_dxdy": [
+      31,
+      -12
+    ],
+    "snap_score": 0.4336676299571991,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      31,
+      -12
+    ],
+    "ts": "2026-05-10T17:59:54"
+  },
+  {
+    "rc": "8653015TP6085S",
+    "address": "CL MATEMATICO PEDRAYES 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      2591,
+      3748
+    ],
+    "snap_dxdy": [
+      12,
+      -3
+    ],
+    "snap_score": 0.39132073521614075,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      12,
+      -3
+    ],
+    "ts": "2026-05-10T17:59:56"
+  },
+  {
+    "rc": "9157012TP6095N",
+    "address": "CL FRAY CEFERINO 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      2161,
+      2564
+    ],
+    "snap_dxdy": [
+      24,
+      -13
+    ],
+    "snap_score": 0.4336244761943817,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      24,
+      -13
+    ],
+    "ts": "2026-05-10T17:59:59"
+  },
+  {
+    "rc": "9549004TP6094N",
+    "address": "CL FONTAN 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      472,
+      4025
+    ],
+    "snap_dxdy": [
+      14,
+      -8
+    ],
+    "snap_score": 0.452376127243042,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      14,
+      -8
+    ],
+    "ts": "2026-05-10T18:00:10"
+  },
+  {
+    "rc": "7355101TP6075N",
+    "address": "CL FUENTE DE LA PLATA 59 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_I.pdf",
+    "model_center_px": [
+      4712,
+      1173
+    ],
+    "snap_dxdy": [
+      2,
+      3
+    ],
+    "snap_score": 0.16589705646038055,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:00:28"
+  },
+  {
+    "rc": "7938809TP6073N",
+    "address": "CL SAN MARTIN REY AURELIO 48 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      6636,
+      1545
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:02:45"
+  },
+  {
+    "rc": "9567017TP6096N",
+    "address": "CL MONSEÑOR OSCAR A ROMERO 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_I.pdf",
+    "model_center_px": [
+      5994,
+      3638
+    ],
+    "snap_dxdy": [
+      -1,
+      22
+    ],
+    "snap_score": 0.4271951913833618,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -1,
+      22
+    ],
+    "ts": "2026-05-10T18:02:50"
+  },
+  {
+    "rc": "8763002TP6086S",
+    "address": "CL MENENDEZ PELAYO 43 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      2455,
+      3726
+    ],
+    "snap_dxdy": [
+      -1,
+      -6
+    ],
+    "snap_score": 0.45246422290802,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -1,
+      -6
+    ],
+    "ts": "2026-05-10T18:02:53"
+  },
+  {
+    "rc": "8345601TP6084S",
+    "address": "AV CRISTO CADENAS 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      4623,
+      815
+    ],
+    "snap_dxdy": [
+      23,
+      -19
+    ],
+    "snap_score": 0.42775821685791016,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      23,
+      -19
+    ],
+    "ts": "2026-05-10T18:02:56"
+  },
+  {
+    "rc": "8462041TP6086S",
+    "address": "AV MONUMENTOS,LOS 39 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "model_center_px": [
+      5048,
+      3979
+    ],
+    "snap_dxdy": [
+      3,
+      7
+    ],
+    "snap_score": 0.30071064829826355,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      3,
+      7
+    ],
+    "ts": "2026-05-10T18:03:02"
+  },
+  {
+    "rc": "9950024TP6095S",
+    "address": "CL POSTIGO BAJO 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      4782,
+      2839
+    ],
+    "snap_dxdy": [
+      -15,
+      -2
+    ],
+    "snap_score": 0.5292513966560364,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -15,
+      -2
+    ],
+    "ts": "2026-05-10T18:04:57"
+  },
+  {
+    "rc": "8653022TP6085S",
+    "address": "CL GENERAL ZUBILLAGA 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      1519,
+      296
+    ],
+    "snap_dxdy": [
+      22,
+      -29
+    ],
+    "snap_score": 0.3731611967086792,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      22,
+      -29
+    ],
+    "ts": "2026-05-10T18:05:06"
+  },
+  {
+    "rc": "9655315TP6095S",
+    "address": "CL ALFONSO III MAGNO 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      1249,
+      4071
+    ],
+    "snap_dxdy": [
+      2,
+      -20
+    ],
+    "snap_score": 0.18380393087863922,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:06:41"
+  },
+  {
+    "rc": "7658401TP6075N",
+    "address": "PS LA FLORIDA 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      3411,
+      707
+    ],
+    "snap_dxdy": [
+      -13,
+      -5
+    ],
+    "snap_score": 0.1958981156349182,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -13,
+      -5
+    ],
+    "ts": "2026-05-10T18:07:12"
+  },
+  {
+    "rc": "7954806TP6075S",
+    "address": "CL JACINTO BENAVENTE 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      5593,
+      2039
+    ],
+    "snap_dxdy": [
+      0,
+      4
+    ],
+    "snap_score": 0.4949168562889099,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      0,
+      4
+    ],
+    "ts": "2026-05-10T18:07:15"
+  },
+  {
+    "rc": "9060001TP6096S",
+    "address": "CL RECONQUISTA 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      1437,
+      2793
+    ],
+    "snap_dxdy": [
+      16,
+      0
+    ],
+    "snap_score": 0.13105404376983643,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:07:23"
+  },
+  {
+    "rc": "7956034TP6075N",
+    "address": "CL ARGAÑOSA 84 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      6146,
+      332
+    ],
+    "snap_dxdy": [
+      -5,
+      7
+    ],
+    "snap_score": 0.46489012241363525,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -5,
+      7
+    ],
+    "ts": "2026-05-10T18:07:55"
+  },
+  {
+    "rc": "7837910TP6073N",
+    "address": "CL LLANERA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      5193,
+      917
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:07:59"
+  },
+  {
+    "rc": "9849021TP6094N",
+    "address": "CL REGLA,LA 28 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      5035,
+      3997
+    ],
+    "snap_dxdy": [
+      -20,
+      1
+    ],
+    "snap_score": 0.346614807844162,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:08:10"
+  },
+  {
+    "rc": "7348017TP6074N",
+    "address": "CL CAT ADOLFO ALVAREZ BUYLLA 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      5461,
+      720
+    ],
+    "snap_dxdy": [
+      -18,
+      13
+    ],
+    "snap_score": 0.30147117376327515,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -18,
+      13
+    ],
+    "ts": "2026-05-10T18:08:13"
+  },
+  {
+    "rc": "8758009TP6085N",
+    "address": "CL MONTE GAMONAL 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      3715,
+      1217
+    ],
+    "snap_dxdy": [
+      -14,
+      -8
+    ],
+    "snap_score": 0.407198429107666,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -14,
+      -8
+    ],
+    "ts": "2026-05-10T18:08:16"
+  },
+  {
+    "rc": "9247027TP6094N",
+    "address": "CL PEREZ DE LA SALA 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "model_center_px": [
+      3065,
+      2265
+    ],
+    "snap_dxdy": [
+      21,
+      -6
+    ],
+    "snap_score": 0.28168153762817383,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      21,
+      -6
+    ],
+    "ts": "2026-05-10T18:08:19"
+  },
+  {
+    "rc": "8745804TP6084N",
+    "address": "AV PADRE VINJOY 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_II.pdf",
+    "model_center_px": [
+      3445,
+      3879
+    ],
+    "snap_dxdy": [
+      7,
+      4
+    ],
+    "snap_score": 0.3819386065006256,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      7,
+      4
+    ],
+    "ts": "2026-05-10T18:08:33"
+  },
+  {
+    "rc": "9356030TP6095N",
+    "address": "CL LILA 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      4672,
+      544
+    ],
+    "snap_dxdy": [
+      9,
+      32
+    ],
+    "snap_score": 0.41296708583831787,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      9,
+      32
+    ],
+    "ts": "2026-05-10T18:08:35"
+  },
+  {
+    "rc": "9456212TP6095N",
+    "address": "CL LILA 24 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      5705,
+      3679
+    ],
+    "snap_dxdy": [
+      -5,
+      -15
+    ],
+    "snap_score": 0.5424931645393372,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -5,
+      -15
+    ],
+    "ts": "2026-05-10T18:08:45"
+  },
+  {
+    "rc": "7555214TP6075N",
+    "address": "",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      2177,
+      269
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T18:08:52"
+  },
+  {
+    "rc": "9556625TP6095N",
+    "address": "CL FERNANDO VELA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      2154,
+      3077
+    ],
+    "snap_dxdy": [
+      1,
+      -9
+    ],
+    "snap_score": 0.1518860161304474,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      1,
+      -9
+    ],
+    "ts": "2026-05-10T18:08:55"
+  },
+  {
+    "rc": "9659003TP6095N",
+    "address": "CL JOAQUINA BOBELA 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      1892,
+      1121
+    ],
+    "snap_dxdy": [
+      -2,
+      -14
+    ],
+    "snap_score": 0.4936977028846741,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -2,
+      -14
+    ],
+    "ts": "2026-05-10T18:09:00"
+  },
+  {
+    "rc": "8762020TP6086S",
+    "address": "CL VITAL AZA 20 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3118,
+      660
+    ],
+    "snap_dxdy": [
+      -10,
+      34
+    ],
+    "snap_score": 0.5208773612976074,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -10,
+      34
+    ],
+    "ts": "2026-05-10T18:09:03"
+  },
+  {
+    "rc": "8058016TP6075N",
+    "address": "CL ESCULTOR LAVIADA 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      753,
+      1698
+    ],
+    "snap_dxdy": [
+      29,
+      -3
+    ],
+    "snap_score": 0.5412926077842712,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      29,
+      -3
+    ],
+    "ts": "2026-05-10T18:09:05"
+  },
+  {
+    "rc": "9253015TP6095S",
+    "address": "CL URIA 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      2922,
+      3500
+    ],
+    "snap_dxdy": [
+      19,
+      27
+    ],
+    "snap_score": 0.3850567042827606,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      19,
+      27
+    ],
+    "ts": "2026-05-10T18:09:07"
+  },
+  {
+    "rc": "9649023TP6094N",
+    "address": "CL MAGDALENA 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      1426,
+      4160
+    ],
+    "snap_dxdy": [
+      8,
+      -6
+    ],
+    "snap_score": 0.3403302729129791,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      8,
+      -6
+    ],
+    "ts": "2026-05-10T18:09:09"
+  },
+  {
+    "rc": "9654012TP6095S",
+    "address": "CL JOVELLANOS 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      916,
+      3396
+    ],
+    "snap_dxdy": [
+      12,
+      19
+    ],
+    "snap_score": 0.421344518661499,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      12,
+      19
+    ],
+    "ts": "2026-05-10T18:09:26"
+  },
+  {
+    "rc": "8058213TP6085N",
+    "address": "CL VICTOR HEVIA 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      1569,
+      1790
+    ],
+    "snap_dxdy": [
+      23,
+      -2
+    ],
+    "snap_score": 0.4880208671092987,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      23,
+      -2
+    ],
+    "ts": "2026-05-10T18:09:31"
+  },
+  {
+    "rc": "9061034TP6086S",
+    "address": "CL AUGUSTO JUNQUERA 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      5816,
+      1707
+    ],
+    "snap_dxdy": [
+      -32,
+      34
+    ],
+    "snap_score": 0.48285919427871704,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -32,
+      34
+    ],
+    "ts": "2026-05-10T18:09:33"
+  },
+  {
+    "rc": "8758003TP6085N",
+    "address": "CL MONTE GAMONAL 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      2847,
+      801
+    ],
+    "snap_dxdy": [
+      -8,
+      -8
+    ],
+    "snap_score": 0.5927457809448242,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -8,
+      -8
+    ],
+    "ts": "2026-05-10T18:09:34"
+  },
+  {
+    "rc": "9253025TP6095S",
+    "address": "CL PALACIO VALDES 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      3005,
+      2898
+    ],
+    "snap_dxdy": [
+      20,
+      28
+    ],
+    "snap_score": 0.2619507908821106,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:09:38"
+  },
+  {
+    "rc": "0048009TP6094N",
+    "address": "CL ADOLFO GARCIA POSADA 13 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      6004,
+      563
+    ],
+    "snap_dxdy": [
+      -18,
+      2
+    ],
+    "snap_score": 0.2770472466945648,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -18,
+      2
+    ],
+    "ts": "2026-05-10T18:09:43"
+  },
+  {
+    "rc": "9154820TP6095S",
+    "address": "CL DOCTOR CASAL OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      1550,
+      1822
+    ],
+    "snap_dxdy": [
+      7,
+      5
+    ],
+    "snap_score": 0.2512548863887787,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:09:56"
+  },
+  {
+    "rc": "9560311TP6095N",
+    "address": "CL BENJAMIN ORTIZ 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      5738,
+      3855
+    ],
+    "snap_dxdy": [
+      -11,
+      14
+    ],
+    "snap_score": 0.376345694065094,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -11,
+      14
+    ],
+    "ts": "2026-05-10T18:10:02"
+  },
+  {
+    "rc": "9061002TP6086S",
+    "address": "CL MENENDEZ PELAYO 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      5713,
+      1376
+    ],
+    "snap_dxdy": [
+      -31,
+      35
+    ],
+    "snap_score": 0.41905444860458374,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -31,
+      35
+    ],
+    "ts": "2026-05-10T18:10:05"
+  },
+  {
+    "rc": "8462028TP6086S",
+    "address": "AV MONUMENTOS,LOS 39 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "model_center_px": [
+      4914,
+      3875
+    ],
+    "snap_dxdy": [
+      4,
+      8
+    ],
+    "snap_score": 0.2980976998806,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      4,
+      8
+    ],
+    "ts": "2026-05-10T18:10:07"
+  },
+  {
+    "rc": "8360024TP6086S",
+    "address": "CL MADRE TERESA JORNET 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      1018,
+      1775
+    ],
+    "snap_dxdy": [
+      4,
+      25
+    ],
+    "snap_score": 0.473233699798584,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      4,
+      25
+    ],
+    "ts": "2026-05-10T18:10:17"
+  },
+  {
+    "rc": "6854012TP6065S",
+    "address": "CL FUENTE DE LA PLATA 121 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      5959,
+      1985
+    ],
+    "snap_dxdy": [
+      -5,
+      6
+    ],
+    "snap_score": 0.30961981415748596,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:10:25"
+  },
+  {
+    "rc": "8354015TP6085S",
+    "address": "CL VAZQUEZ DE MELLA 13 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      3990,
+      1633
+    ],
+    "snap_dxdy": [
+      30,
+      0
+    ],
+    "snap_score": 0.4976485073566437,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      30,
+      0
+    ],
+    "ts": "2026-05-10T18:10:29"
+  },
+  {
+    "rc": "8944003TP6084S",
+    "address": "AV PEDRO MASAVEU 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_IV.pdf",
+    "model_center_px": [
+      4531,
+      956
+    ],
+    "snap_dxdy": [
+      0,
+      -22
+    ],
+    "snap_score": 0.3250483572483063,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      0,
+      -22
+    ],
+    "ts": "2026-05-10T18:10:33"
+  },
+  {
+    "rc": "8456021TP6085N",
+    "address": "CL PEÑA SANTA DE ENOL 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      5794,
+      4050
+    ],
+    "snap_dxdy": [
+      -12,
+      -7
+    ],
+    "snap_score": 0.4109906554222107,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -12,
+      -7
+    ],
+    "ts": "2026-05-10T18:10:34"
+  },
+  {
+    "rc": "9762019TP6096S",
+    "address": "CL MAESTROS NACIONALES 28 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      2771,
+      1124
+    ],
+    "snap_dxdy": [
+      -7,
+      13
+    ],
+    "snap_score": 0.42007383704185486,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -7,
+      13
+    ],
+    "ts": "2026-05-10T18:10:41"
+  },
+  {
+    "rc": "9740203TP6094S",
+    "address": "CL MONTICU, EL 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_II.pdf",
+    "model_center_px": [
+      3193,
+      1918
+    ],
+    "snap_dxdy": [
+      3,
+      -6
+    ],
+    "snap_score": 0.353272944688797,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      3,
+      -6
+    ],
+    "ts": "2026-05-10T18:10:44"
+  },
+  {
+    "rc": "9658619TP6095N",
+    "address": "AV PUMARIN 38 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      2979,
+      609
+    ],
+    "snap_dxdy": [
+      -9,
+      -11
+    ],
+    "snap_score": 0.3419300615787506,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -9,
+      -11
+    ],
+    "ts": "2026-05-10T18:10:49"
+  },
+  {
+    "rc": "8059008TP6085N",
+    "address": "CL GREGORIO MARAÑON 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      2430,
+      1306
+    ],
+    "snap_dxdy": [
+      8,
+      6
+    ],
+    "snap_score": 0.3271303176879883,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      8,
+      6
+    ],
+    "ts": "2026-05-10T18:10:50"
+  },
+  {
+    "rc": "7954224TP6075S",
+    "address": "CL FACETOS 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      6519,
+      1213
+    ],
+    "snap_dxdy": [
+      -7,
+      1
+    ],
+    "snap_score": 0.3360937833786011,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -7,
+      1
+    ],
+    "ts": "2026-05-10T18:16:45"
+  },
+  {
+    "rc": "9952009TP6095S",
+    "address": "CL AZCARRAGA 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      5292,
+      3560
+    ],
+    "snap_dxdy": [
+      -24,
+      27
+    ],
+    "snap_score": 0.4242888391017914,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -24,
+      27
+    ],
+    "ts": "2026-05-10T18:16:47"
+  },
+  {
+    "rc": "7737507TP6073N",
+    "address": "CL ALLER OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      4442,
+      944
+    ],
+    "snap_dxdy": [
+      15,
+      9
+    ],
+    "snap_score": 0.183340385556221,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:17:08"
+  },
+  {
+    "rc": "7540402TP6074S",
+    "address": "CL JOSE MARIA MARCILLA 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_II.pdf",
+    "model_center_px": [
+      1370,
+      2244
+    ],
+    "snap_dxdy": [
+      32,
+      23
+    ],
+    "snap_score": 0.20540626347064972,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      32,
+      23
+    ],
+    "ts": "2026-05-10T18:17:17"
+  },
+  {
+    "rc": "9135403TP6093S",
+    "address": "LG BOLGACHINA,LA 43 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_N_I.pdf",
+    "model_center_px": [
+      1448,
+      709
+    ],
+    "snap_dxdy": [
+      32,
+      -19
+    ],
+    "snap_score": 0.2082606852054596,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      32,
+      -19
+    ],
+    "ts": "2026-05-10T18:17:58"
+  },
+  {
+    "rc": "8151026TP6085S",
+    "address": "CL M PURIFICACION NEIRA GZLE 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      2056,
+      901
+    ],
+    "snap_dxdy": [
+      34,
+      -13
+    ],
+    "snap_score": 0.4736312925815582,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      34,
+      -13
+    ],
+    "ts": "2026-05-10T18:22:58"
+  },
+  {
+    "rc": "8946406TP6084N",
+    "address": "CL GONZALEZ BESADA 42 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_II.pdf",
+    "model_center_px": [
+      5553,
+      4144
+    ],
+    "snap_dxdy": [
+      -24,
+      -4
+    ],
+    "snap_score": 0.44257694482803345,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -24,
+      -4
+    ],
+    "ts": "2026-05-10T18:23:00"
+  },
+  {
+    "rc": "9849003TP6094N",
+    "address": "CL POSTIGO ALTO 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      3964,
+      3292
+    ],
+    "snap_dxdy": [
+      -11,
+      0
+    ],
+    "snap_score": 0.3082558810710907,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -11,
+      0
+    ],
+    "ts": "2026-05-10T18:23:05"
+  },
+  {
+    "rc": "8563030TP6086S",
+    "address": "CL ROBERTO FRASINELLI OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      1759,
+      3837
+    ],
+    "snap_dxdy": [
+      5,
+      -6
+    ],
+    "snap_score": 0.3665998876094818,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      5,
+      -6
+    ],
+    "ts": "2026-05-10T18:23:09"
+  },
+  {
+    "rc": "7756104TP6075N",
+    "address": "CL ARGAÑOSA 134 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      3656,
+      3603
+    ],
+    "snap_dxdy": [
+      -35,
+      0
+    ],
+    "snap_score": 0.4112998843193054,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -35,
+      0
+    ],
+    "ts": "2026-05-10T18:23:27"
+  },
+  {
+    "rc": "9364011TP6096S",
+    "address": "CL ERNESTO WINTER BLANCO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "model_center_px": [
+      3548,
+      2672
+    ],
+    "snap_dxdy": [
+      15,
+      -6
+    ],
+    "snap_score": 0.42236608266830444,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      15,
+      -6
+    ],
+    "ts": "2026-05-10T18:23:29"
+  },
+  {
+    "rc": "9861006TP6096S",
+    "address": "AV AURELIANO S. ROMAN 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      4371,
+      2911
+    ],
+    "snap_dxdy": [
+      -21,
+      14
+    ],
+    "snap_score": 0.49787992238998413,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -21,
+      14
+    ],
+    "ts": "2026-05-10T18:23:31"
+  },
+  {
+    "rc": "9950055TP6095S",
+    "address": "CL REGLA,LA 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      5524,
+      3635
+    ],
+    "snap_dxdy": [
+      -15,
+      -13
+    ],
+    "snap_score": 0.18454283475875854,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:24:41"
+  },
+  {
+    "rc": "5450009TP6054N",
+    "address": "LG LES MACES 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "model_center_px": [
+      994,
+      2979
+    ],
+    "snap_dxdy": [
+      10,
+      -26
+    ],
+    "snap_score": 0.1716824173927307,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:25:11"
+  },
+  {
+    "rc": "7051059TP6064N",
+    "address": "CL LA TORRE DE OLIVARES 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      749,
+      2630
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:25:31"
+  },
+  {
+    "rc": "7938808TP6073N",
+    "address": "CL SAN MARTIN REY AURELIO 40 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      6449,
+      295
+    ],
+    "snap_dxdy": [
+      3,
+      16
+    ],
+    "snap_score": 0.20214173197746277,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:25:36"
+  },
+  {
+    "rc": "8837005TP6083N",
+    "address": "",
+    "sheet_name": "PLANO_14_M_IV.pdf",
+    "model_center_px": [
+      4747,
+      1986
+    ],
+    "snap_dxdy": [
+      4,
+      -8
+    ],
+    "snap_score": 0.1003049910068512,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:25:38"
+  },
+  {
+    "rc": "7938807TP6073N",
+    "address": "CL LANGREO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      6095,
+      350
+    ],
+    "snap_dxdy": [
+      5,
+      -4
+    ],
+    "snap_score": 0.22019484639167786,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:26:34"
+  },
+  {
+    "rc": "9167210TP6096N",
+    "address": "LG PRADOS DE LA FUENTE OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_I.pdf",
+    "model_center_px": [
+      2779,
+      3304
+    ],
+    "snap_dxdy": [
+      -2,
+      -19
+    ],
+    "snap_score": 0.19934023916721344,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:26:37"
+  },
+  {
+    "rc": "7464035TP6076S",
+    "address": "AV DOCTORES FERNANDEZ VEGA 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_II.pdf",
+    "model_center_px": [
+      3572,
+      2818
+    ],
+    "snap_dxdy": [
+      15,
+      -11
+    ],
+    "snap_score": 0.1858586072921753,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:26:42"
+  },
+  {
+    "rc": "0136016TP6003N",
+    "address": "CS PIEDRALLOSA 92 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_6_M_III.pdf",
+    "model_center_px": [
+      6173,
+      2350
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:27:07"
+  },
+  {
+    "rc": "7154120TP6075S",
+    "address": "CL JOSE MA MARTINEZ CACHERO 32 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_I.pdf",
+    "model_center_px": [
+      3087,
+      1867
+    ],
+    "snap_dxdy": [
+      -1,
+      8
+    ],
+    "snap_score": 0.15984228253364563,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:27:31"
+  },
+  {
+    "rc": "9054015TP6085S",
+    "address": "CL MARQUES DE PIDAL 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      6249,
+      2238
+    ],
+    "snap_dxdy": [
+      -18,
+      9
+    ],
+    "snap_score": 0.378628671169281,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -18,
+      9
+    ],
+    "ts": "2026-05-10T18:27:37"
+  },
+  {
+    "rc": "8356021TP6085N",
+    "address": "CL ANTONIO MAURA 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      3452,
+      3567
+    ],
+    "snap_dxdy": [
+      8,
+      -7
+    ],
+    "snap_score": 0.3314165472984314,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      8,
+      -7
+    ],
+    "ts": "2026-05-10T18:27:46"
+  },
+  {
+    "rc": "9854005TP6095S",
+    "address": "CL MARTINEZ VIGIL 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      4498,
+      2098
+    ],
+    "snap_dxdy": [
+      8,
+      1
+    ],
+    "snap_score": 0.1929854154586792,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:27:56"
+  },
+  {
+    "rc": "9350004TP6094N",
+    "address": "CL PRINCIPADO 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      4032,
+      3022
+    ],
+    "snap_dxdy": [
+      15,
+      -1
+    ],
+    "snap_score": 0.5225445032119751,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      15,
+      -1
+    ],
+    "ts": "2026-05-10T18:28:00"
+  },
+  {
+    "rc": "9556301TP6095N",
+    "address": "CL GENERAL ELORZA 47 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      524,
+      3742
+    ],
+    "snap_dxdy": [
+      7,
+      -20
+    ],
+    "snap_score": 0.43761205673217773,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      7,
+      -20
+    ],
+    "ts": "2026-05-10T18:28:02"
+  },
+  {
+    "rc": "9156409TP6095N",
+    "address": "CL CAMPOAMOR 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      2031,
+      580
+    ],
+    "snap_dxdy": [
+      27,
+      27
+    ],
+    "snap_score": 0.31391656398773193,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      27,
+      27
+    ],
+    "ts": "2026-05-10T18:28:04"
+  },
+  {
+    "rc": "7838407TP6073N",
+    "address": "CL LANGREO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_IV.pdf",
+    "model_center_px": [
+      5618,
+      420
+    ],
+    "snap_dxdy": [
+      7,
+      1
+    ],
+    "snap_score": 0.3588731586933136,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      7,
+      1
+    ],
+    "ts": "2026-05-10T18:28:06"
+  },
+  {
+    "rc": "8252511TP6085S",
+    "address": "CL SILLA REY 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      3023,
+      1230
+    ],
+    "snap_dxdy": [
+      27,
+      -14
+    ],
+    "snap_score": 0.2466280609369278,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      27,
+      -14
+    ],
+    "ts": "2026-05-10T18:28:15"
+  },
+  {
+    "rc": "9550502TP6094N",
+    "address": "CL JESUS 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      6406,
+      3133
+    ],
+    "snap_dxdy": [
+      -4,
+      -3
+    ],
+    "snap_score": 0.3873894214630127,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -4,
+      -3
+    ],
+    "ts": "2026-05-10T18:28:22"
+  },
+  {
+    "rc": "8039717TP6083N",
+    "address": "CL BIMENES OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      3263,
+      3029
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:28:26"
+  },
+  {
+    "rc": "9952068TP6095S",
+    "address": "CL PARAISO 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      4856,
+      2006
+    ],
+    "snap_dxdy": [
+      -16,
+      2
+    ],
+    "snap_score": 0.40196362137794495,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -16,
+      2
+    ],
+    "ts": "2026-05-10T18:28:30"
+  },
+  {
+    "rc": "8438302TP6083N",
+    "address": "CL BIMENES OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      6302,
+      3651
+    ],
+    "snap_dxdy": [
+      23,
+      -30
+    ],
+    "snap_score": 0.3967946171760559,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      23,
+      -30
+    ],
+    "ts": "2026-05-10T18:28:35"
+  },
+  {
+    "rc": "7556016TP6075N",
+    "address": "CL FAVILA 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      1957,
+      4005
+    ],
+    "snap_dxdy": [
+      -28,
+      -12
+    ],
+    "snap_score": 0.3886755704879761,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -28,
+      -12
+    ],
+    "ts": "2026-05-10T18:28:37"
+  },
+  {
+    "rc": "8462038TP6086S",
+    "address": "AV MONUMENTOS,LOS 57 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "model_center_px": [
+      4089,
+      3264
+    ],
+    "snap_dxdy": [
+      9,
+      9
+    ],
+    "snap_score": 0.27277183532714844,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      9,
+      9
+    ],
+    "ts": "2026-05-10T18:37:14"
+  },
+  {
+    "rc": "8761309TP6086S",
+    "address": "CL LORENZO ABRUÑEDO 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3928,
+      2692
+    ],
+    "snap_dxdy": [
+      31,
+      10
+    ],
+    "snap_score": 0.3549719750881195,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      31,
+      10
+    ],
+    "ts": "2026-05-10T18:37:16"
+  },
+  {
+    "rc": "7859026TP6075N",
+    "address": "PZ ARZ. GABINO DIAZ MERCHAN 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      4617,
+      353
+    ],
+    "snap_dxdy": [
+      9,
+      4
+    ],
+    "snap_score": 0.16345861554145813,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:37:50"
+  },
+  {
+    "rc": "8237515TP6083N",
+    "address": "CL SOBRESCOBIO 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_III.pdf",
+    "model_center_px": [
+      3648,
+      404
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:38:17"
+  },
+  {
+    "rc": "9962611TP6096S",
+    "address": "CL TURINA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      4941,
+      2120
+    ],
+    "snap_dxdy": [
+      -16,
+      11
+    ],
+    "snap_score": 0.3848889172077179,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -16,
+      11
+    ],
+    "ts": "2026-05-10T18:38:32"
+  },
+  {
+    "rc": "9762018TP6096S",
+    "address": "CL MAESTROS NACIONALES 32 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      3084,
+      932
+    ],
+    "snap_dxdy": [
+      -2,
+      9
+    ],
+    "snap_score": 0.3827069401741028,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -2,
+      9
+    ],
+    "ts": "2026-05-10T18:38:34"
+  },
+  {
+    "rc": "9066301TP6096S",
+    "address": "CL SANTIAGO DE COMPOSTELA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "model_center_px": [
+      905,
+      2954
+    ],
+    "snap_dxdy": [
+      35,
+      2
+    ],
+    "snap_score": 0.22256702184677124,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      35,
+      2
+    ],
+    "ts": "2026-05-10T18:38:37"
+  },
+  {
+    "rc": "9356048TP6095N",
+    "address": "",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      3957,
+      2934
+    ],
+    "snap_dxdy": [
+      -5,
+      1
+    ],
+    "snap_score": 0.38223713636398315,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:38:43"
+  },
+  {
+    "rc": "8453201TP6085S",
+    "address": "CL SAMUEL SANCHEZ 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      6212,
+      3015
+    ],
+    "snap_dxdy": [
+      4,
+      -1
+    ],
+    "snap_score": 0.2695522606372833,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      4,
+      -1
+    ],
+    "ts": "2026-05-10T18:38:46"
+  },
+  {
+    "rc": "9356036TP6095N",
+    "address": "TR LILA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      4362,
+      871
+    ],
+    "snap_dxdy": [
+      -19,
+      -26
+    ],
+    "snap_score": 0.5394723415374756,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -19,
+      -26
+    ],
+    "ts": "2026-05-10T18:38:49"
+  },
+  {
+    "rc": "9356035TP6095N",
+    "address": "TR LILA 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      4406,
+      801
+    ],
+    "snap_dxdy": [
+      -20,
+      -26
+    ],
+    "snap_score": 0.45937401056289673,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -20,
+      -26
+    ],
+    "ts": "2026-05-10T18:38:51"
+  },
+  {
+    "rc": "6848039TP6074N",
+    "address": "CL CORUÑA LA 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      3508,
+      2125
+    ],
+    "snap_dxdy": [
+      1,
+      -33
+    ],
+    "snap_score": 0.2670336663722992,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:39:40"
+  },
+  {
+    "rc": "9567020TP6096N",
+    "address": "LG VILLAMEJIL 71 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_II.pdf",
+    "model_center_px": [
+      459,
+      3447
+    ],
+    "snap_dxdy": [
+      11,
+      16
+    ],
+    "snap_score": 0.36187225580215454,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      11,
+      16
+    ],
+    "ts": "2026-05-10T18:39:48"
+  },
+  {
+    "rc": "7648403TP6074N",
+    "address": "CL CAT FRANCISCO BECEÑA 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_II.pdf",
+    "model_center_px": [
+      1310,
+      2142
+    ],
+    "snap_dxdy": [
+      13,
+      -10
+    ],
+    "snap_score": 0.5078732371330261,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      13,
+      -10
+    ],
+    "ts": "2026-05-10T18:39:50"
+  },
+  {
+    "rc": "9950027TP6095S",
+    "address": "CL POSTIGO BAJO 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      5128,
+      2722
+    ],
+    "snap_dxdy": [
+      -19,
+      4
+    ],
+    "snap_score": 0.3613603711128235,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -19,
+      4
+    ],
+    "ts": "2026-05-10T18:39:52"
+  },
+  {
+    "rc": "8760005TP6085N",
+    "address": "CL TEODORO CUESTA 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3571,
+      3656
+    ],
+    "snap_dxdy": [
+      31,
+      4
+    ],
+    "snap_score": 0.461607962846756,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      31,
+      4
+    ],
+    "ts": "2026-05-10T18:39:53"
+  },
+  {
+    "rc": "9339026TP6093N",
+    "address": "",
+    "sheet_name": "PLANO_15_M_I.pdf",
+    "model_center_px": [
+      5655,
+      3738
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:39:56"
+  },
+  {
+    "rc": "8753001TP6085S",
+    "address": "CL INDEPENDENCIA 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      2470,
+      2239
+    ],
+    "snap_dxdy": [
+      29,
+      -2
+    ],
+    "snap_score": 0.4161849617958069,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      29,
+      -2
+    ],
+    "ts": "2026-05-10T18:40:00"
+  },
+  {
+    "rc": "9451024TP6095S",
+    "address": "CL SAN FRANCISCO 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5624,
+      1426
+    ],
+    "snap_dxdy": [
+      -1,
+      -2
+    ],
+    "snap_score": 0.5683804750442505,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -1,
+      -2
+    ],
+    "ts": "2026-05-10T18:40:03"
+  },
+  {
+    "rc": "9363006TP6096S",
+    "address": "CL CALDERON DE LA BARCA 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_I.pdf",
+    "model_center_px": [
+      3895,
+      812
+    ],
+    "snap_dxdy": [
+      -23,
+      6
+    ],
+    "snap_score": 0.49703097343444824,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -23,
+      6
+    ],
+    "ts": "2026-05-10T18:40:05"
+  },
+  {
+    "rc": "6854002TP6065S",
+    "address": "CL FUENTE DE LA PLATA 137 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      4663,
+      1963
+    ],
+    "snap_dxdy": [
+      28,
+      -13
+    ],
+    "snap_score": 0.5010818243026733,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      28,
+      -13
+    ],
+    "ts": "2026-05-10T18:40:07"
+  },
+  {
+    "rc": "8760010TP6085N",
+    "address": "CL MONTE SUEVE 24 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3662,
+      3961
+    ],
+    "snap_dxdy": [
+      30,
+      3
+    ],
+    "snap_score": 0.4074280261993408,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      30,
+      3
+    ],
+    "ts": "2026-05-10T18:40:08"
+  },
+  {
+    "rc": "9655707TP6095S",
+    "address": "CL GASCONA 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      1008,
+      1312
+    ],
+    "snap_dxdy": [
+      26,
+      -32
+    ],
+    "snap_score": 0.37016037106513977,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      26,
+      -32
+    ],
+    "ts": "2026-05-10T18:40:10"
+  },
+  {
+    "rc": "8137516TP6083N",
+    "address": "CL SOBRESCOBIO 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_III.pdf",
+    "model_center_px": [
+      3746,
+      1378
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:40:21"
+  },
+  {
+    "rc": "8765002TP6086S",
+    "address": "CL MENENDEZ PELAYO 80 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      1768,
+      2968
+    ],
+    "snap_dxdy": [
+      6,
+      -4
+    ],
+    "snap_score": 0.5098568797111511,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      6,
+      -4
+    ],
+    "ts": "2026-05-10T18:40:25"
+  },
+  {
+    "rc": "8149025TP6084N",
+    "address": "CL FUERTES ACEVEDO 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      2270,
+      3269
+    ],
+    "snap_dxdy": [
+      19,
+      0
+    ],
+    "snap_score": 0.34280118346214294,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      19,
+      0
+    ],
+    "ts": "2026-05-10T18:40:28"
+  },
+  {
+    "rc": "8237518TP6083N",
+    "address": "CL SAN MARTIN REY AURELIO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_III.pdf",
+    "model_center_px": [
+      4655,
+      690
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:40:43"
+  },
+  {
+    "rc": "8059015TP6085N",
+    "address": "CL MAXIMILIANO ARBOLEYA 20 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      2296,
+      1532
+    ],
+    "snap_dxdy": [
+      -1,
+      4
+    ],
+    "snap_score": 0.5006435513496399,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -1,
+      4
+    ],
+    "ts": "2026-05-10T18:40:46"
+  },
+  {
+    "rc": "9862603TP6096S",
+    "address": "CL SATURNINO FRESNO 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      3798,
+      1581
+    ],
+    "snap_dxdy": [
+      -8,
+      10
+    ],
+    "snap_score": 0.43517419695854187,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -8,
+      10
+    ],
+    "ts": "2026-05-10T18:40:48"
+  },
+  {
+    "rc": "7144027TP6074S",
+    "address": "LG CANTERAS DEL PICAYON 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_III.pdf",
+    "model_center_px": [
+      3262,
+      1947
+    ],
+    "snap_dxdy": [
+      1,
+      -32
+    ],
+    "snap_score": 0.3540458679199219,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:41:10"
+  },
+  {
+    "rc": "6849061TP6064N",
+    "address": "UR RESIDENCIAL OLIVARES 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      4467,
+      3532
+    ],
+    "snap_dxdy": [
+      16,
+      -32
+    ],
+    "snap_score": 0.17330341041088104,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:41:12"
+  },
+  {
+    "rc": "8963606TP6086S",
+    "address": "CL FERNANDEZ OVIEDO 56 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      5066,
+      3509
+    ],
+    "snap_dxdy": [
+      -9,
+      8
+    ],
+    "snap_score": 0.29058846831321716,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -9,
+      8
+    ],
+    "ts": "2026-05-10T18:41:16"
+  },
+  {
+    "rc": "9155018TP6095N",
+    "address": "CL MELQUIADES ALVAREZ 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      1360,
+      1105
+    ],
+    "snap_dxdy": [
+      2,
+      -30
+    ],
+    "snap_score": 0.38053715229034424,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      2,
+      -30
+    ],
+    "ts": "2026-05-10T18:45:50"
+  },
+  {
+    "rc": "7956011TP6075N",
+    "address": "CL ARGAÑOSA 92 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      5656,
+      4270
+    ],
+    "snap_dxdy": [
+      28,
+      13
+    ],
+    "snap_score": 0.3409932255744934,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      28,
+      13
+    ],
+    "ts": "2026-05-10T18:46:57"
+  },
+  {
+    "rc": "3748057TP6034N",
+    "address": "PL SAN CLAUDIO 357 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      2732,
+      1213
+    ],
+    "snap_dxdy": [
+      -16,
+      -7
+    ],
+    "snap_score": 0.11663833260536194,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:47:36"
+  },
+  {
+    "rc": "8563016TP6086S",
+    "address": "CL ROBERTO FRASINELLI 35 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_I_IV.pdf",
+    "model_center_px": [
+      2016,
+      3562
+    ],
+    "snap_dxdy": [
+      3,
+      -5
+    ],
+    "snap_score": 0.38607192039489746,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      3,
+      -5
+    ],
+    "ts": "2026-05-10T18:47:42"
+  },
+  {
+    "rc": "9649016TP6094N",
+    "address": "PZ CONSTITUCION 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      1871,
+      3624
+    ],
+    "snap_dxdy": [
+      2,
+      -4
+    ],
+    "snap_score": 0.3968651592731476,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      2,
+      -4
+    ],
+    "ts": "2026-05-10T18:47:56"
+  },
+  {
+    "rc": "3847006TP6044N",
+    "address": "",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      3655,
+      1694
+    ],
+    "snap_dxdy": [
+      -12,
+      -10
+    ],
+    "snap_score": 0.14569298923015594,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:49:06"
+  },
+  {
+    "rc": "9950036TP6095S",
+    "address": "CL POSTIGO BAJO 24 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      5731,
+      2207
+    ],
+    "snap_dxdy": [
+      -24,
+      6
+    ],
+    "snap_score": 0.511372983455658,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -24,
+      6
+    ],
+    "ts": "2026-05-10T18:49:13"
+  },
+  {
+    "rc": "9651002TP6095S",
+    "address": "CL PORLIER 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      762,
+      1282
+    ],
+    "snap_dxdy": [
+      13,
+      -2
+    ],
+    "snap_score": 0.2771257162094116,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      13,
+      -2
+    ],
+    "ts": "2026-05-10T18:49:20"
+  },
+  {
+    "rc": "9655721TP6095N",
+    "address": "CL ALFONSO III MAGNO 13 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      1242,
+      1041
+    ],
+    "snap_dxdy": [
+      23,
+      -31
+    ],
+    "snap_score": 0.407789409160614,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      23,
+      -31
+    ],
+    "ts": "2026-05-10T18:49:22"
+  },
+  {
+    "rc": "6552003TP6065S",
+    "address": "LG OLIVARES 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      1936,
+      1091
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:49:46"
+  },
+  {
+    "rc": "3846006TP6044N",
+    "address": "",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      3300,
+      2803
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:50:25"
+  },
+  {
+    "rc": "9962606TP6096S",
+    "address": "CL TURINA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      5432,
+      2532
+    ],
+    "snap_dxdy": [
+      -18,
+      11
+    ],
+    "snap_score": 0.3400159478187561,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -18,
+      11
+    ],
+    "ts": "2026-05-10T18:51:53"
+  },
+  {
+    "rc": "0136019TP6003N",
+    "address": "CS PIEDRALLOSA 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_6_M_III.pdf",
+    "model_center_px": [
+      6083,
+      2655
+    ],
+    "snap_dxdy": [
+      25,
+      16
+    ],
+    "snap_score": 0.14893998205661774,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:54:19"
+  },
+  {
+    "rc": "9034113TP6083S",
+    "address": "CL JOSE GARCIA NIETO 68 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_N_II.pdf",
+    "model_center_px": [
+      6312,
+      1201
+    ],
+    "snap_dxdy": [
+      -1,
+      1
+    ],
+    "snap_score": 0.19801640510559082,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:54:31"
+  },
+  {
+    "rc": "6741009TP6064S",
+    "address": "UR PINOS LOS 23 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_M_II.pdf",
+    "model_center_px": [
+      4112,
+      819
+    ],
+    "snap_dxdy": [
+      -2,
+      -8
+    ],
+    "snap_score": 0.24993737041950226,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -2,
+      -8
+    ],
+    "ts": "2026-05-10T18:55:39"
+  },
+  {
+    "rc": "3846005TP6034N",
+    "address": "LG SAN CLAUDIO 105 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      1555,
+      2804
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:55:47"
+  },
+  {
+    "rc": "7450011TP6075S",
+    "address": "CL LA CAMPA DE OLIVARES 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      2198,
+      2141
+    ],
+    "snap_dxdy": [
+      1,
+      5
+    ],
+    "snap_score": 0.11257192492485046,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:56:11"
+  },
+  {
+    "rc": "8149012TP6074N",
+    "address": "AV BUENAVISTA 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      819,
+      3733
+    ],
+    "snap_dxdy": [
+      29,
+      -4
+    ],
+    "snap_score": 0.5704364776611328,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      29,
+      -4
+    ],
+    "ts": "2026-05-10T18:56:16"
+  },
+  {
+    "rc": "7045321TP6074S",
+    "address": "CL JOSE MIGUEL CASO GONZALEZ 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_III.pdf",
+    "model_center_px": [
+      1848,
+      976
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:57:03"
+  },
+  {
+    "rc": "7249011TP6074N",
+    "address": "CL MARIO NUEVO 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      4605,
+      4077
+    ],
+    "snap_dxdy": [
+      11,
+      0
+    ],
+    "snap_score": 0.49830999970436096,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:57:59"
+  },
+  {
+    "rc": "9936503TP6093N",
+    "address": "LG MONTICU,EL OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_M_I.pdf",
+    "model_center_px": [
+      1162,
+      3830
+    ],
+    "snap_dxdy": [
+      -8,
+      -36
+    ],
+    "snap_score": 0.11888659745454788,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:59:09"
+  },
+  {
+    "rc": "8539301TP6083N",
+    "address": "PJ PASAJE LA VIESCA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_II.pdf",
+    "model_center_px": [
+      858,
+      3626
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T18:59:34"
+  },
+  {
+    "rc": "0163033TP6096S",
+    "address": "CL MANUEL FERNANDEZ AVELLO 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_J_I.pdf",
+    "model_center_px": [
+      499,
+      669
+    ],
+    "snap_dxdy": [
+      -30,
+      13
+    ],
+    "snap_score": 0.161311537027359,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:00:51"
+  },
+  {
+    "rc": "0136017TP6003N",
+    "address": "CS PIEDRALLOSA 94 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_6_M_III.pdf",
+    "model_center_px": [
+      6117,
+      2479
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:00:55"
+  },
+  {
+    "rc": "8658006TP6085N",
+    "address": "CL NARANJO DE BULNES 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      2539,
+      1581
+    ],
+    "snap_dxdy": [
+      8,
+      -6
+    ],
+    "snap_score": 0.11821281164884567,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:01:31"
+  },
+  {
+    "rc": "3855603TP6035N",
+    "address": "LG SAN ROQUE OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_K_I.pdf",
+    "model_center_px": [
+      1672,
+      1911
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:01:59"
+  },
+  {
+    "rc": "7936601TP6073N",
+    "address": "CL LANGREO 39 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_III.pdf",
+    "model_center_px": [
+      687,
+      3369
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:02:23"
+  },
+  {
+    "rc": "4353401TP6045S",
+    "address": "CR GENERAL-LA CRUZ 38 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_K_I.pdf",
+    "model_center_px": [
+      6355,
+      4110
+    ],
+    "snap_dxdy": [
+      11,
+      -25
+    ],
+    "snap_score": 0.16393354535102844,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:02:35"
+  },
+  {
+    "rc": "7045319TP6074S",
+    "address": "CL JOSE MIGUEL CASO GONZALEZ 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_III.pdf",
+    "model_center_px": [
+      1781,
+      798
+    ],
+    "snap_dxdy": [
+      9,
+      8
+    ],
+    "snap_score": 0.1331196129322052,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:02:40"
+  },
+  {
+    "rc": "8154010TP6085S",
+    "address": "CL ARGAÑOSA 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      2226,
+      2338
+    ],
+    "snap_dxdy": [
+      35,
+      -3
+    ],
+    "snap_score": 0.4718649387359619,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      35,
+      -3
+    ],
+    "ts": "2026-05-10T19:06:45"
+  },
+  {
+    "rc": "9352803TP6095S",
+    "address": "CL PELAYO 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      3920,
+      3998
+    ],
+    "snap_dxdy": [
+      12,
+      17
+    ],
+    "snap_score": 0.31006091833114624,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:09:27"
+  },
+  {
+    "rc": "0136018TP6003N",
+    "address": "CS PIEDRALLOSA 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_6_M_III.pdf",
+    "model_center_px": [
+      6086,
+      2595
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:09:29"
+  },
+  {
+    "rc": "6854015TP6065S",
+    "address": "CL FUENTE DE LA PLATA 115 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      6306,
+      2020
+    ],
+    "snap_dxdy": [
+      15,
+      4
+    ],
+    "snap_score": 0.4214436709880829,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      15,
+      4
+    ],
+    "ts": "2026-05-10T19:09:57"
+  },
+  {
+    "rc": "9548005TP6094N",
+    "address": "CL MAGDALENA 28 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      790,
+      809
+    ],
+    "snap_dxdy": [
+      16,
+      -11
+    ],
+    "snap_score": 0.27872294187545776,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      16,
+      -11
+    ],
+    "ts": "2026-05-10T19:10:06"
+  },
+  {
+    "rc": "9546016TP6094N",
+    "address": "CL LEOPOLDO ALAS 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      1722,
+      2274
+    ],
+    "snap_dxdy": [
+      8,
+      -11
+    ],
+    "snap_score": 0.36149895191192627,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      8,
+      -11
+    ],
+    "ts": "2026-05-10T19:10:09"
+  },
+  {
+    "rc": "6849032TP6064N",
+    "address": "CL CUESTA DE OLIVARES LA 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      700,
+      3838
+    ],
+    "snap_dxdy": [
+      -20,
+      12
+    ],
+    "snap_score": 0.17202216386795044,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:48:16"
+  },
+  {
+    "rc": "8737004TP6083N",
+    "address": "",
+    "sheet_name": "PLANO_14_M_IV.pdf",
+    "model_center_px": [
+      4120,
+      1693
+    ],
+    "snap_dxdy": [
+      1,
+      6
+    ],
+    "snap_score": 0.13250620663166046,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:48:25"
+  },
+  {
+    "rc": "7960006TP6075N",
+    "address": "CL VAZQUEZ DE MELLA 68 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      6139,
+      280
+    ],
+    "snap_dxdy": [
+      12,
+      21
+    ],
+    "snap_score": 0.4039982557296753,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:48:40"
+  },
+  {
+    "rc": "8059002TP6085N",
+    "address": "CL GREGORIO MARAÑON 33 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_I.pdf",
+    "model_center_px": [
+      2075,
+      4220
+    ],
+    "snap_dxdy": [
+      21,
+      21
+    ],
+    "snap_score": 0.4003954827785492,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:48:54"
+  },
+  {
+    "rc": "7938806TP6073N",
+    "address": "CL SAN MARTIN REY AURELIO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_M_II.pdf",
+    "model_center_px": [
+      6389,
+      4114
+    ],
+    "snap_dxdy": [
+      -6,
+      21
+    ],
+    "snap_score": 0.3454079031944275,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:01"
+  },
+  {
+    "rc": "9155007TP6095N",
+    "address": "CL CAMPOAMOR 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      740,
+      351
+    ],
+    "snap_dxdy": [
+      -9,
+      4
+    ],
+    "snap_score": 0.11899664252996445,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:07"
+  },
+  {
+    "rc": "8951001TP6085S",
+    "address": "AV GALICIA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      4906,
+      1824
+    ],
+    "snap_dxdy": [
+      -15,
+      -25
+    ],
+    "snap_score": 0.3765876889228821,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:16"
+  },
+  {
+    "rc": "8539311TP6083N",
+    "address": "CL BIMENES 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      6681,
+      3529
+    ],
+    "snap_dxdy": [
+      -13,
+      16
+    ],
+    "snap_score": 0.21174508333206177,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:19"
+  },
+  {
+    "rc": "7051018TP6075S",
+    "address": "CL LA TORRE DE OLIVARES 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      1589,
+      2370
+    ],
+    "snap_dxdy": [
+      7,
+      1
+    ],
+    "snap_score": 0.2347106635570526,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:22"
+  },
+  {
+    "rc": "8649002TP6084N",
+    "address": "CL DOCTOR ALFREDO MNEZ 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_II.pdf",
+    "model_center_px": [
+      1745,
+      166
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:32"
+  },
+  {
+    "rc": "5451023TP6055S",
+    "address": "LG LES MACES 423 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "model_center_px": [
+      2092,
+      825
+    ],
+    "snap_dxdy": [
+      6,
+      5
+    ],
+    "snap_score": 0.14937922358512878,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:40"
+  },
+  {
+    "rc": "8059018TP6085N",
+    "address": "CL MAXIMILIANO ARBOLEYA 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      1989,
+      1021
+    ],
+    "snap_dxdy": [
+      0,
+      7
+    ],
+    "snap_score": 0.36206257343292236,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:43"
+  },
+  {
+    "rc": "7648216TP6074N",
+    "address": "CL RECTOR LEOPOLDO ALAS HIJO 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_II.pdf",
+    "model_center_px": [
+      3173,
+      172
+    ],
+    "snap_dxdy": [
+      1,
+      1
+    ],
+    "snap_score": 0.3984598219394684,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      1,
+      1
+    ],
+    "ts": "2026-05-10T19:49:45"
+  },
+  {
+    "rc": "7054824TP6065S",
+    "address": "AV OLIVARES 59 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      6265,
+      3164
+    ],
+    "snap_dxdy": [
+      13,
+      -9
+    ],
+    "snap_score": 0.4290609359741211,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      13,
+      -9
+    ],
+    "ts": "2026-05-10T19:49:47"
+  },
+  {
+    "rc": "8039702TP6083N",
+    "address": "CL LANGREO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      1219,
+      3457
+    ],
+    "snap_dxdy": [
+      20,
+      30
+    ],
+    "snap_score": 0.14301791787147522,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:49"
+  },
+  {
+    "rc": "8249002TP6084N",
+    "address": "CL CIRIACO MIGUEL VIGIL 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_I.pdf",
+    "model_center_px": [
+      3376,
+      200
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T19:49:51"
+  },
+  {
+    "rc": "9751704TP6095S",
+    "address": "PZ ALFONSO II EL CASTO 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      2319,
+      1176
+    ],
+    "snap_dxdy": [
+      2,
+      1
+    ],
+    "snap_score": 0.4033164978027344,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:49:59"
+  },
+  {
+    "rc": "9952077TP6095S",
+    "address": "CL PARAISO 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      5018,
+      1172
+    ],
+    "snap_dxdy": [
+      -18,
+      6
+    ],
+    "snap_score": 0.36805230379104614,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:50:11"
+  },
+  {
+    "rc": "5350012TP6054N",
+    "address": "LG LES MACES 35 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_11_K_III.pdf",
+    "model_center_px": [
+      6038,
+      3198
+    ],
+    "snap_dxdy": [
+      32,
+      7
+    ],
+    "snap_score": 0.10635598748922348,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:50:14"
+  },
+  {
+    "rc": "8352413TP6085S",
+    "address": "AV VALENTIN MASIP 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      4643,
+      808
+    ],
+    "snap_dxdy": [
+      2,
+      16
+    ],
+    "snap_score": 0.46487581729888916,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:50:17"
+  },
+  {
+    "rc": "9356027TP6095N",
+    "address": "CL LILA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      4483,
+      1121
+    ],
+    "snap_dxdy": [
+      12,
+      0
+    ],
+    "snap_score": 0.4831787347793579,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:50:20"
+  },
+  {
+    "rc": "9842702TP6094S",
+    "address": "CL NICOLAS Y PEPIN RIVERO 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      3640,
+      4191
+    ],
+    "snap_dxdy": [
+      -19,
+      -16
+    ],
+    "snap_score": 0.40172430872917175,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:00"
+  },
+  {
+    "rc": "3855601TP6035N",
+    "address": "LG SAN ROQUE OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_K_I.pdf",
+    "model_center_px": [
+      547,
+      1455
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:10"
+  },
+  {
+    "rc": "6650016TP6065S",
+    "address": "CL FRIALDA DE OLIVARES 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      1572,
+      2613
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:35"
+  },
+  {
+    "rc": "3748056TP6034N",
+    "address": "PL SAN CLAUDIO 356 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      1639,
+      337
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:38"
+  },
+  {
+    "rc": "9451011TP6095S",
+    "address": "CL FRUELA 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5826,
+      2194
+    ],
+    "snap_dxdy": [
+      -2,
+      -33
+    ],
+    "snap_score": 0.357946515083313,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:49"
+  },
+  {
+    "rc": "9639321TP6093N",
+    "address": "LG BOLGACHINA,LA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_II.pdf",
+    "model_center_px": [
+      2113,
+      2881
+    ],
+    "snap_dxdy": [
+      -4,
+      -10
+    ],
+    "snap_score": 0.12958461046218872,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:54:54"
+  },
+  {
+    "rc": "7959502TP6075N",
+    "address": "CL VAZQUEZ DE MELLA 63 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      5901,
+      1149
+    ],
+    "snap_dxdy": [
+      17,
+      -6
+    ],
+    "snap_score": 0.19754724204540253,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:59:22"
+  },
+  {
+    "rc": "9465014TP6096N",
+    "address": "CL MONSEÑOR OSCAR A ROMERO 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_I.pdf",
+    "model_center_px": [
+      4622,
+      2747
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:59:45"
+  },
+  {
+    "rc": "8653002TP6085S",
+    "address": "CL INDEPENDENCIA 41 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      1338,
+      3432
+    ],
+    "snap_dxdy": [
+      18,
+      -35
+    ],
+    "snap_score": 0.2961204946041107,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:59:52"
+  },
+  {
+    "rc": "9861017TP6096S",
+    "address": "CL MANUEL FALLA 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      3654,
+      2437
+    ],
+    "snap_dxdy": [
+      -26,
+      27
+    ],
+    "snap_score": 0.3033148944377899,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T19:59:54"
+  },
+  {
+    "rc": "3847009TP6044N",
+    "address": "LG CRUZ,LA 206 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_10_L_I.pdf",
+    "model_center_px": [
+      2265,
+      1832
+    ],
+    "snap_dxdy": [
+      31,
+      -4
+    ],
+    "snap_score": 0.10306041687726974,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:00:51"
+  },
+  {
+    "rc": "9034115TP6083S",
+    "address": "CL JOSE GARCIA NIETO 68 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_N_II.pdf",
+    "model_center_px": [
+      6406,
+      1243
+    ],
+    "snap_dxdy": [
+      -7,
+      3
+    ],
+    "snap_score": 0.14377419650554657,
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -7,
+      3
+    ],
+    "ts": "2026-05-10T20:00:55"
+  },
+  {
+    "rc": "6651014TP6065S",
+    "address": "LG OLIVARES 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      3185,
+      1496
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:01:01"
+  },
+  {
+    "rc": "7954603TP6075S",
+    "address": "CL JUAN RAMON JIMENEZ 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      5721,
+      2717
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      135,
+      7
+    ],
+    "ts": "2026-05-10T17:21:45",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7558436TP6075N",
+    "address": "CL BERMUDO I EL DIACONO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      1284,
+      2550
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      144,
+      33
+    ],
+    "ts": "2026-05-10T17:22:00",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8859005TP6085N",
+    "address": "CL MONTE AUSEVA 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      4799,
+      473
+    ],
+    "snap_dxdy": [
+      31,
+      30
+    ],
+    "snap_score": 0.3886183500289917,
+    "action": "manual",
+    "truth_dxdy": [
+      63,
+      45
+    ],
+    "ts": "2026-05-10T17:22:17",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "6958504TP6065N",
+    "address": "CL NAVIA 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_III.pdf",
+    "model_center_px": [
+      570,
+      843
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      171,
+      40
+    ],
+    "ts": "2026-05-10T17:22:26",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8058009TP6085N",
+    "address": "CL MARISCAL SOLIS 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      1066,
+      2601
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      102,
+      34
+    ],
+    "ts": "2026-05-10T17:22:32",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9760032TP6096S",
+    "address": "CL SAUCES 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      2703,
+      3054
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      -7,
+      85
+    ],
+    "ts": "2026-05-10T17:22:42",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9558102TP6095N",
+    "address": "CL P.BUENAVENTURA PAREDES 30 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      5966,
+      756
+    ],
+    "snap_dxdy": [
+      -6,
+      24
+    ],
+    "snap_score": 0.43115222454071045,
+    "action": "manual",
+    "truth_dxdy": [
+      2,
+      62
+    ],
+    "ts": "2026-05-10T17:22:49",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9034111TP6083S",
+    "address": "CL JOSE GARCIA NIETO 68 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_N_II.pdf",
+    "model_center_px": [
+      6176,
+      1588
+    ],
+    "snap_dxdy": [
+      0,
+      3
+    ],
+    "snap_score": 0.14097383618354797,
+    "action": "manual",
+    "truth_dxdy": [
+      66,
+      -266
+    ],
+    "ts": "2026-05-10T17:22:57",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "0048018TP6094N",
+    "address": "CL ADOLFO GARCIA POSADA 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      5775,
+      1671
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      -33,
+      -101
+    ],
+    "ts": "2026-05-10T17:23:03",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9649716TP6094N",
+    "address": "CL JUAN BOTAS 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      977,
+      228
+    ],
+    "snap_dxdy": [
+      13,
+      -9
+    ],
+    "snap_score": 0.4731779098510742,
+    "action": "manual",
+    "truth_dxdy": [
+      9,
+      -110
+    ],
+    "ts": "2026-05-10T17:23:10",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7752109TP6075S",
+    "address": "CL JOSE MALDONADO 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      3535,
+      4032
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      153,
+      -1
+    ],
+    "ts": "2026-05-10T17:23:16",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8761301TP6086S",
+    "address": "CL RICARDO MONTES 35 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3773,
+      2208
+    ],
+    "snap_dxdy": [
+      -7,
+      4
+    ],
+    "snap_score": 0.1326839029788971,
+    "action": "manual",
+    "truth_dxdy": [
+      60,
+      70
+    ],
+    "ts": "2026-05-10T17:23:53",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9851206TP6095S",
+    "address": "CL SAN VICENTE 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      4235,
+      3730
+    ],
+    "snap_dxdy": [
+      -8,
+      -7
+    ],
+    "snap_score": 0.19905832409858704,
+    "action": "manual",
+    "truth_dxdy": [
+      -13,
+      -36
+    ],
+    "ts": "2026-05-10T17:24:09",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7450049TP6074N",
+    "address": "CL CAT NOEL LLOPIS 11 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      5946,
+      4294
+    ],
+    "snap_dxdy": [
+      -10,
+      8
+    ],
+    "snap_score": 0.1493399739265442,
+    "action": "manual",
+    "truth_dxdy": [
+      158,
+      -26
+    ],
+    "ts": "2026-05-10T17:24:29",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8953307TP6085S",
+    "address": "CL GONZALEZ VALLE 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      6256,
+      3634
+    ],
+    "snap_dxdy": [
+      6,
+      7
+    ],
+    "snap_score": 0.2860373556613922,
+    "action": "manual",
+    "truth_dxdy": [
+      46,
+      -30
+    ],
+    "ts": "2026-05-10T17:24:55",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "6955401TP6065S",
+    "address": "CL FUENTE DE LA PLATA 72 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_I.pdf",
+    "model_center_px": [
+      455,
+      1664
+    ],
+    "snap_dxdy": [
+      -1,
+      -1
+    ],
+    "snap_score": 0.2616131603717804,
+    "action": "manual",
+    "truth_dxdy": [
+      196,
+      0
+    ],
+    "ts": "2026-05-10T17:25:03",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9952073TP6095S",
+    "address": "CL PARAISO 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      4992,
+      1542
+    ],
+    "snap_dxdy": [
+      -17,
+      -26
+    ],
+    "snap_score": 0.4020998179912567,
+    "action": "manual",
+    "truth_dxdy": [
+      -18,
+      -55
+    ],
+    "ts": "2026-05-10T17:25:12",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7648421TP6074N",
+    "address": "CL FUERTES ACEVEDO 37 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_II.pdf",
+    "model_center_px": [
+      2998,
+      1307
+    ],
+    "snap_dxdy": [
+      7,
+      -29
+    ],
+    "snap_score": 0.13358111679553986,
+    "action": "manual",
+    "truth_dxdy": [
+      74,
+      -98
+    ],
+    "ts": "2026-05-10T17:25:20",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8453006TP6085S",
+    "address": "CL MIGUEL ANGEL BLANCO 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      5887,
+      3631
+    ],
+    "snap_dxdy": [
+      33,
+      24
+    ],
+    "snap_score": 0.4853295087814331,
+    "action": "manual",
+    "truth_dxdy": [
+      65,
+      -34
+    ],
+    "ts": "2026-05-10T17:26:00",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8058208TP6085N",
+    "address": "CL MARISCAL SOLIS 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      1962,
+      2047
+    ],
+    "snap_dxdy": [
+      -35,
+      -30
+    ],
+    "snap_score": 0.21896278858184814,
+    "action": "manual",
+    "truth_dxdy": [
+      99,
+      41
+    ],
+    "ts": "2026-05-10T17:26:10",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9940014TP6094S",
+    "address": "CL CARDENAL ARCE OCHOTORENA 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_II.pdf",
+    "model_center_px": [
+      4851,
+      1864
+    ],
+    "snap_dxdy": [
+      16,
+      -18
+    ],
+    "snap_score": 0.1493941694498062,
+    "action": "manual",
+    "truth_dxdy": [
+      -11,
+      -212
+    ],
+    "ts": "2026-05-10T17:26:22",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9649005TP6094N",
+    "address": "CL MARQUES DE GASTAÑAGA 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      2557,
+      644
+    ],
+    "snap_dxdy": [
+      -11,
+      -16
+    ],
+    "snap_score": 0.285163551568985,
+    "action": "manual",
+    "truth_dxdy": [
+      -2,
+      -104
+    ],
+    "ts": "2026-05-10T17:26:29",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9849017TP6094N",
+    "address": "CL REGLA,LA 20 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      4503,
+      3824
+    ],
+    "snap_dxdy": [
+      -17,
+      -31
+    ],
+    "snap_score": 0.2974039316177368,
+    "action": "manual",
+    "truth_dxdy": [
+      -1,
+      -75
+    ],
+    "ts": "2026-05-10T17:26:36",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7953804TP6075S",
+    "address": "CL M PURIFICACION NEIRA GZLE 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      5896,
+      3231
+    ],
+    "snap_dxdy": [
+      -16,
+      3
+    ],
+    "snap_score": 0.4822975695133209,
+    "action": "manual",
+    "truth_dxdy": [
+      57,
+      10
+    ],
+    "ts": "2026-05-10T17:40:50",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9164001TP6096S",
+    "address": "CL QUEVEDO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "model_center_px": [
+      2809,
+      2540
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      30,
+      129
+    ],
+    "ts": "2026-05-10T17:41:26",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "6852007TP6065S",
+    "address": "LG OLIVARES 112 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      5352,
+      3999
+    ],
+    "snap_dxdy": [
+      -26,
+      25
+    ],
+    "snap_score": 0.288629412651062,
+    "action": "manual",
+    "truth_dxdy": [
+      138,
+      -23
+    ],
+    "ts": "2026-05-10T17:41:46",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "6741033TP6064S",
+    "address": "LG BUENAVISTA OLIVARES 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_L_IV.pdf",
+    "model_center_px": [
+      5479,
+      3782
+    ],
+    "snap_dxdy": [
+      25,
+      -33
+    ],
+    "snap_score": 0.15096475183963776,
+    "action": "manual",
+    "truth_dxdy": [
+      167,
+      -146
+    ],
+    "ts": "2026-05-10T17:41:54",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8545010TP6084S",
+    "address": "CL EDUARDO M TORNER 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      6617,
+      961
+    ],
+    "snap_dxdy": [
+      28,
+      21
+    ],
+    "snap_score": 0.3130742013454437,
+    "action": "manual",
+    "truth_dxdy": [
+      62,
+      -122
+    ],
+    "ts": "2026-05-10T17:42:33",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9363801TP6096S",
+    "address": "CL HMNAS S TAMARGO 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "model_center_px": [
+      3752,
+      3576
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      21,
+      132
+    ],
+    "ts": "2026-05-10T17:42:39",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "6848046TP6074N",
+    "address": "CL CAT ADOLFO ALVAREZ BUYLLA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "model_center_px": [
+      2386,
+      4283
+    ],
+    "snap_dxdy": [
+      -12,
+      -18
+    ],
+    "snap_score": 0.15911510586738586,
+    "action": "manual",
+    "truth_dxdy": [
+      102,
+      -21
+    ],
+    "ts": "2026-05-10T17:44:20",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "7945019TP6074N",
+    "address": "AV CRISTO CADENAS OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      2009,
+      873
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      69,
+      -179
+    ],
+    "ts": "2026-05-10T17:51:13",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8354001TP6085S",
+    "address": "CL RAMIRO I 9 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      4700,
+      1685
+    ],
+    "snap_dxdy": [
+      -14,
+      -5
+    ],
+    "snap_score": 0.3947525918483734,
+    "action": "manual",
+    "truth_dxdy": [
+      48,
+      -27
+    ],
+    "ts": "2026-05-10T17:55:07",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "9946027TP6094N",
+    "address": "CL FUENTE PRADO OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      5120,
+      757
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      -25,
+      -89
+    ],
+    "ts": "2026-05-10T18:03:21",
+    "_reconstructed": "post_cal_era1"
+  },
+  {
+    "rc": "8149011TP6074N",
+    "address": "AV BUENAVISTA 20 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "model_center_px": [
+      932,
+      3802
+    ],
+    "snap_dxdy": [
+      34,
+      -35
+    ],
+    "snap_score": 0.3405245542526245,
+    "action": "manual",
+    "truth_dxdy": [
+      78,
+      -59
+    ],
+    "ts": "2026-05-10T18:06:58",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6847014TP6064N",
+    "address": "CL CUESTA DE OLIVARES LA 54 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_L_II.pdf",
+    "model_center_px": [
+      5745,
+      2097
+    ],
+    "snap_dxdy": [
+      7,
+      10
+    ],
+    "snap_score": 0.1354082226753235,
+    "action": "manual",
+    "truth_dxdy": [
+      165,
+      -115
+    ],
+    "ts": "2026-05-10T18:07:49",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "3752005TP6035S",
+    "address": "CR PONTEO-SAN ROQUE(S.CLAUDI 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_K_II.pdf",
+    "model_center_px": [
+      5065,
+      3683
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      253,
+      -30
+    ],
+    "ts": "2026-05-10T18:08:42",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9654017TP6095S",
+    "address": "CL CARLOS BOUSOÑO 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      797,
+      2958
+    ],
+    "snap_dxdy": [
+      3,
+      -4
+    ],
+    "snap_score": 0.13519003987312317,
+    "action": "manual",
+    "truth_dxdy": [
+      16,
+      -6
+    ],
+    "ts": "2026-05-10T18:09:17",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6854008TP6065S",
+    "address": "CL FUENTE DE LA PLATA 127 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      5210,
+      2026
+    ],
+    "snap_dxdy": [
+      -1,
+      1
+    ],
+    "snap_score": 0.15570196509361267,
+    "action": "manual",
+    "truth_dxdy": [
+      138,
+      -16
+    ],
+    "ts": "2026-05-10T18:09:51",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9451015TP6095S",
+    "address": "CL FRUELA 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5324,
+      1756
+    ],
+    "snap_dxdy": [
+      3,
+      0
+    ],
+    "snap_score": 0.4310550391674042,
+    "action": "manual",
+    "truth_dxdy": [
+      -2,
+      -34
+    ],
+    "ts": "2026-05-10T18:09:59",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9954065TP6095S",
+    "address": "CL MARTINEZ VIGIL 32 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      5491,
+      1522
+    ],
+    "snap_dxdy": [
+      3,
+      9
+    ],
+    "snap_score": 0.170651376247406,
+    "action": "manual",
+    "truth_dxdy": [
+      -20,
+      7
+    ],
+    "ts": "2026-05-10T18:10:14",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7944006TP6074S",
+    "address": "AV CRISTO CADENAS 63 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_IV.pdf",
+    "model_center_px": [
+      6551,
+      2354
+    ],
+    "snap_dxdy": [
+      0,
+      4
+    ],
+    "snap_score": 0.1816999614238739,
+    "action": "manual",
+    "truth_dxdy": [
+      37,
+      -72
+    ],
+    "ts": "2026-05-10T18:17:01",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8066001TP6076N",
+    "address": "AV MONUMENTOS,LOS 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_I_II.pdf",
+    "model_center_px": [
+      5754,
+      2639
+    ],
+    "snap_dxdy": [
+      31,
+      31
+    ],
+    "snap_score": 0.11423750966787338,
+    "action": "manual",
+    "truth_dxdy": [
+      48,
+      117
+    ],
+    "ts": "2026-05-10T18:17:34",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9245019TP6094N",
+    "address": "CL GONZALEZ BESADA 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_III.pdf",
+    "model_center_px": [
+      3010,
+      556
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      41,
+      -85
+    ],
+    "ts": "2026-05-10T18:17:53",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9634002TP6093S",
+    "address": "LG BOLGACHINA,LA 37 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_N_II.pdf",
+    "model_center_px": [
+      672,
+      493
+    ],
+    "snap_dxdy": [
+      -6,
+      -3
+    ],
+    "snap_score": 0.1777711808681488,
+    "action": "manual",
+    "truth_dxdy": [
+      18,
+      -140
+    ],
+    "ts": "2026-05-10T18:22:55",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7154116TP6075S",
+    "address": "BO FUENTE LA PLATA 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_I.pdf",
+    "model_center_px": [
+      2759,
+      1694
+    ],
+    "snap_dxdy": [
+      8,
+      10
+    ],
+    "snap_score": 0.16191184520721436,
+    "action": "manual",
+    "truth_dxdy": [
+      115,
+      0
+    ],
+    "ts": "2026-05-10T18:23:21",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8154005TP6085S",
+    "address": "CL ARGAÑOSA 41 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      1567,
+      1979
+    ],
+    "snap_dxdy": [
+      17,
+      -18
+    ],
+    "snap_score": 0.2221812605857849,
+    "action": "manual",
+    "truth_dxdy": [
+      65,
+      -34
+    ],
+    "ts": "2026-05-10T18:23:37",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "5451020TP6055S",
+    "address": "LG LES MACES 62 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "model_center_px": [
+      2985,
+      1447
+    ],
+    "snap_dxdy": [
+      -4,
+      -1
+    ],
+    "snap_score": 0.11387211829423904,
+    "action": "manual",
+    "truth_dxdy": [
+      142,
+      -66
+    ],
+    "ts": "2026-05-10T18:23:46",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7348038TP6074N",
+    "address": "AL BUENAVISTA LAS CORTINAS 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      3791,
+      1323
+    ],
+    "snap_dxdy": [
+      5,
+      -5
+    ],
+    "snap_score": 0.33299753069877625,
+    "action": "manual",
+    "truth_dxdy": [
+      70,
+      -50
+    ],
+    "ts": "2026-05-10T18:23:53",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9334809TP6093S",
+    "address": "CL DERECHOS HUMANOS OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_N_I.pdf",
+    "model_center_px": [
+      3757,
+      1050
+    ],
+    "snap_dxdy": [
+      9,
+      9
+    ],
+    "snap_score": 0.10327447950839996,
+    "action": "manual",
+    "truth_dxdy": [
+      -61,
+      -138
+    ],
+    "ts": "2026-05-10T18:24:19",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7940220TP6074S",
+    "address": "CL NAVA 63 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "model_center_px": [
+      624,
+      2120
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      112,
+      -105
+    ],
+    "ts": "2026-05-10T18:24:56",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9543017TP6094S",
+    "address": "CL VIRREY ABASCAL 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      702,
+      3476
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      25,
+      -95
+    ],
+    "ts": "2026-05-10T18:25:25",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8862008TP6086S",
+    "address": "CL TORRECERREDO 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      4922,
+      1400
+    ],
+    "snap_dxdy": [
+      -24,
+      34
+    ],
+    "snap_score": 0.4462110996246338,
+    "action": "manual",
+    "truth_dxdy": [
+      4,
+      47
+    ],
+    "ts": "2026-05-10T18:25:47",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7657003TP6075N",
+    "address": "CL CARLOS CASANUEVA VARAS 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      3155,
+      2865
+    ],
+    "snap_dxdy": [
+      4,
+      -3
+    ],
+    "snap_score": 0.39355751872062683,
+    "action": "manual",
+    "truth_dxdy": [
+      11,
+      19
+    ],
+    "ts": "2026-05-10T18:25:53",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7861901TP6076S",
+    "address": "BO MONTE DEL-CONCINOS OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_II.pdf",
+    "model_center_px": [
+      5327,
+      3310
+    ],
+    "snap_dxdy": [
+      -1,
+      28
+    ],
+    "snap_score": 0.1171623170375824,
+    "action": "manual",
+    "truth_dxdy": [
+      -4,
+      40
+    ],
+    "ts": "2026-05-10T18:26:20",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8066002TP6076N",
+    "address": "CL ENRIQUE DE OSSO 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_I_II.pdf",
+    "model_center_px": [
+      4916,
+      3319
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      50,
+      116
+    ],
+    "ts": "2026-05-10T18:26:26",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8254020TP6085S",
+    "address": "CL ARGAÑOSA 34 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      2548,
+      2084
+    ],
+    "snap_dxdy": [
+      32,
+      -2
+    ],
+    "snap_score": 0.5752882361412048,
+    "action": "manual",
+    "truth_dxdy": [
+      54,
+      -31
+    ],
+    "ts": "2026-05-10T18:26:51",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9155013TP6095N",
+    "address": "CL CAMPOAMOR 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      1489,
+      790
+    ],
+    "snap_dxdy": [
+      30,
+      26
+    ],
+    "snap_score": 0.4311051368713379,
+    "action": "manual",
+    "truth_dxdy": [
+      28,
+      -6
+    ],
+    "ts": "2026-05-10T18:27:04",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8750003TP6085S",
+    "address": "AV GALICIA 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      2538,
+      2249
+    ],
+    "snap_dxdy": [
+      14,
+      11
+    ],
+    "snap_score": 0.4841700792312622,
+    "action": "manual",
+    "truth_dxdy": [
+      35,
+      -55
+    ],
+    "ts": "2026-05-10T18:27:13",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8444033TP6084S",
+    "address": "CL MONTE CERRAU 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_IV.pdf",
+    "model_center_px": [
+      761,
+      2157
+    ],
+    "snap_dxdy": [
+      5,
+      -9
+    ],
+    "snap_score": 0.25617465376853943,
+    "action": "manual",
+    "truth_dxdy": [
+      58,
+      -87
+    ],
+    "ts": "2026-05-10T18:27:43",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7558414TP6075N",
+    "address": "CL BERMUDO I EL DIACONO 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      2255,
+      2612
+    ],
+    "snap_dxdy": [
+      -18,
+      2
+    ],
+    "snap_score": 0.19153769314289093,
+    "action": "manual",
+    "truth_dxdy": [
+      94,
+      25
+    ],
+    "ts": "2026-05-10T18:37:59",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8066004TP6076N",
+    "address": "CL ENRIQUE DE OSSO 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_I_II.pdf",
+    "model_center_px": [
+      5851,
+      3866
+    ],
+    "snap_dxdy": [
+      1,
+      9
+    ],
+    "snap_score": 0.18774940073490143,
+    "action": "manual",
+    "truth_dxdy": [
+      87,
+      83
+    ],
+    "ts": "2026-05-10T18:38:09",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8859001TP6085N",
+    "address": "CL TORRECERREDO 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      4158,
+      264
+    ],
+    "snap_dxdy": [
+      30,
+      32
+    ],
+    "snap_score": 0.24735453724861145,
+    "action": "manual",
+    "truth_dxdy": [
+      86,
+      39
+    ],
+    "ts": "2026-05-10T18:38:58",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9548004TP6094N",
+    "address": "PZ DAOIZ Y VELARDE 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "model_center_px": [
+      529,
+      640
+    ],
+    "snap_dxdy": [
+      21,
+      -9
+    ],
+    "snap_score": 0.36237671971321106,
+    "action": "manual",
+    "truth_dxdy": [
+      23,
+      -61
+    ],
+    "ts": "2026-05-10T18:39:08",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9554012TP6095S",
+    "address": "CL ALCALDE G.CONDE 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "model_center_px": [
+      6256,
+      2483
+    ],
+    "snap_dxdy": [
+      -33,
+      -25
+    ],
+    "snap_score": 0.47153761982917786,
+    "action": "manual",
+    "truth_dxdy": [
+      -35,
+      -57
+    ],
+    "ts": "2026-05-10T18:39:24",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6650003TP6065S",
+    "address": "LG OLIVARES 126 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      2640,
+      2440
+    ],
+    "snap_dxdy": [
+      7,
+      -17
+    ],
+    "snap_score": 0.18418459594249725,
+    "action": "manual",
+    "truth_dxdy": [
+      92,
+      -73
+    ],
+    "ts": "2026-05-10T18:40:17",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7655906TP6075N",
+    "address": "CL ARGAÑOSA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      3241,
+      446
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      92,
+      52
+    ],
+    "ts": "2026-05-10T18:40:39",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "3852004TP6035S",
+    "address": "CR PONTEO-SAN ROQUE(S.CLAUDI 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_K_IV.pdf",
+    "model_center_px": [
+      6550,
+      562
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      21,
+      -55
+    ],
+    "ts": "2026-05-10T18:45:30",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8659007TP6085N",
+    "address": "CL MONTE GAMONAL 45 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "model_center_px": [
+      1600,
+      480
+    ],
+    "snap_dxdy": [
+      -14,
+      2
+    ],
+    "snap_score": 0.18288250267505646,
+    "action": "manual",
+    "truth_dxdy": [
+      102,
+      36
+    ],
+    "ts": "2026-05-10T18:45:45",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7154103TP6075S",
+    "address": "BO FUENTE LA PLATA 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_I.pdf",
+    "model_center_px": [
+      1627,
+      2147
+    ],
+    "snap_dxdy": [
+      11,
+      -9
+    ],
+    "snap_score": 0.12126474827528,
+    "action": "manual",
+    "truth_dxdy": [
+      108,
+      19
+    ],
+    "ts": "2026-05-10T18:46:03",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7348042TP6074N",
+    "address": "AL BUENAVISTA LAS CORTINAS 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      3777,
+      1546
+    ],
+    "snap_dxdy": [
+      29,
+      14
+    ],
+    "snap_score": 0.1443118453025818,
+    "action": "manual",
+    "truth_dxdy": [
+      72,
+      -92
+    ],
+    "ts": "2026-05-10T18:46:16",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9837605TP6093N",
+    "address": "LG MONTICU,EL OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_M_I.pdf",
+    "model_center_px": [
+      896,
+      2985
+    ],
+    "snap_dxdy": [
+      -2,
+      -5
+    ],
+    "snap_score": 0.10973470658063889,
+    "action": "manual",
+    "truth_dxdy": [
+      3,
+      -123
+    ],
+    "ts": "2026-05-10T18:46:41",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8444015TP6084S",
+    "address": "CL ALVAREZ LORENZANA 19 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      5832,
+      1523
+    ],
+    "snap_dxdy": [
+      18,
+      -36
+    ],
+    "snap_score": 0.41660991311073303,
+    "action": "manual",
+    "truth_dxdy": [
+      63,
+      -85
+    ],
+    "ts": "2026-05-10T18:46:48",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9449015TP6094N",
+    "address": "CL ARCO ZAPATOS 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      5944,
+      3978
+    ],
+    "snap_dxdy": [
+      0,
+      -4
+    ],
+    "snap_score": 0.47925761342048645,
+    "action": "manual",
+    "truth_dxdy": [
+      -2,
+      -34
+    ],
+    "ts": "2026-05-10T18:47:03",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7459903TP6075N",
+    "address": "",
+    "sheet_name": "PLANO_13_J_II.pdf",
+    "model_center_px": [
+      1135,
+      4065
+    ],
+    "snap_dxdy": [
+      0,
+      36
+    ],
+    "snap_score": 0.3062041401863098,
+    "action": "manual",
+    "truth_dxdy": [
+      177,
+      27
+    ],
+    "ts": "2026-05-10T18:47:51",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8650704TP6084N",
+    "address": "CL CARLOS LOPEZ OTIN 14 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      1429,
+      3084
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      79,
+      -32
+    ],
+    "ts": "2026-05-10T18:48:14",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7954807TP6075S",
+    "address": "CL JACINTO BENAVENTE 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      5481,
+      1985
+    ],
+    "snap_dxdy": [
+      2,
+      -2
+    ],
+    "snap_score": 0.4350699186325073,
+    "action": "manual",
+    "truth_dxdy": [
+      69,
+      2
+    ],
+    "ts": "2026-05-10T18:50:30",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8344002TP6084S",
+    "address": "CL ALVAREZ LORENZANA 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      4645,
+      1694
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      68,
+      -92
+    ],
+    "ts": "2026-05-10T18:54:10",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7741304TP6074S",
+    "address": "CL LENA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_IV.pdf",
+    "model_center_px": [
+      4488,
+      4030
+    ],
+    "snap_dxdy": [
+      2,
+      -1
+    ],
+    "snap_score": 0.18036913871765137,
+    "action": "manual",
+    "truth_dxdy": [
+      26,
+      -90
+    ],
+    "ts": "2026-05-10T18:54:27",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9658015TP6095N",
+    "address": "CL P.BUENAVENTURA PAREDES 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      749,
+      1783
+    ],
+    "snap_dxdy": [
+      5,
+      1
+    ],
+    "snap_score": 0.4564291834831238,
+    "action": "manual",
+    "truth_dxdy": [
+      16,
+      24
+    ],
+    "ts": "2026-05-10T18:54:46",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8653025TP6085S",
+    "address": "CL GENERAL ZUBILLAGA 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "model_center_px": [
+      1253,
+      3881
+    ],
+    "snap_dxdy": [
+      8,
+      1
+    ],
+    "snap_score": 0.26413583755493164,
+    "action": "manual",
+    "truth_dxdy": [
+      61,
+      -38
+    ],
+    "ts": "2026-05-10T18:55:34",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8944017TP6094S",
+    "address": "CL GONZALEZ BESADA 37 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_III.pdf",
+    "model_center_px": [
+      602,
+      797
+    ],
+    "snap_dxdy": [
+      10,
+      -7
+    ],
+    "snap_score": 0.2722328305244446,
+    "action": "manual",
+    "truth_dxdy": [
+      22,
+      -63
+    ],
+    "ts": "2026-05-10T18:55:55",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8058014TP6075N",
+    "address": "CL ESCULTOR LAVIADA 2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      6610,
+      1892
+    ],
+    "snap_dxdy": [
+      24,
+      18
+    ],
+    "snap_score": 0.48999741673469543,
+    "action": "manual",
+    "truth_dxdy": [
+      61,
+      31
+    ],
+    "ts": "2026-05-10T18:56:00",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7558431TP6075N",
+    "address": "BO FLORIDA LA 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "model_center_px": [
+      1675,
+      2511
+    ],
+    "snap_dxdy": [
+      17,
+      -7
+    ],
+    "snap_score": 0.10926415026187897,
+    "action": "manual",
+    "truth_dxdy": [
+      104,
+      17
+    ],
+    "ts": "2026-05-10T18:56:23",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9956202TP6095N",
+    "address": "CL FRANCISCO RODRIGUEZ GARCI 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      5417,
+      3237
+    ],
+    "snap_dxdy": [
+      -31,
+      7
+    ],
+    "snap_score": 0.46385085582733154,
+    "action": "manual",
+    "truth_dxdy": [
+      -28,
+      28
+    ],
+    "ts": "2026-05-10T18:56:48",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9457013TP6095N",
+    "address": "CL GENERAL ELORZA 64 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      5113,
+      2785
+    ],
+    "snap_dxdy": [
+      10,
+      0
+    ],
+    "snap_score": 0.49700692296028137,
+    "action": "manual",
+    "truth_dxdy": [
+      21,
+      37
+    ],
+    "ts": "2026-05-10T18:57:00",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6852020TP6065S",
+    "address": "CL CASA MANIN DE OLIVARES 10 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      5311,
+      1115
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      66,
+      -66
+    ],
+    "ts": "2026-05-10T18:57:14",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9842201TP6094S",
+    "address": "CL SAN MATEO 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_IV.pdf",
+    "model_center_px": [
+      3916,
+      3377
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      -3,
+      -107
+    ],
+    "ts": "2026-05-10T18:59:22",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "3350201TP6035S",
+    "address": "CS BARROSA,LA 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_9_K_IV.pdf",
+    "model_center_px": [
+      985,
+      2519
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      52,
+      -60
+    ],
+    "ts": "2026-05-10T18:59:27",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6741025TP6064S",
+    "address": "UR PINOS LOS 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_M_II.pdf",
+    "model_center_px": [
+      4787,
+      984
+    ],
+    "snap_dxdy": [
+      -8,
+      -7
+    ],
+    "snap_score": 0.41082918643951416,
+    "action": "manual",
+    "truth_dxdy": [
+      118,
+      -106
+    ],
+    "ts": "2026-05-10T19:00:19",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6851001TP6065S",
+    "address": "LG OLIVARES 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      5361,
+      1508
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "action": "manual",
+    "truth_dxdy": [
+      69,
+      -72
+    ],
+    "ts": "2026-05-10T19:00:27",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9356044TP6095N",
+    "address": "CL GENERAL ELORZA 63 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      4824,
+      3333
+    ],
+    "snap_dxdy": [
+      12,
+      0
+    ],
+    "snap_score": 0.3933447301387787,
+    "action": "manual",
+    "truth_dxdy": [
+      8,
+      38
+    ],
+    "ts": "2026-05-10T19:00:30",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9554024TP6095S",
+    "address": "CL GASCONA 31 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "model_center_px": [
+      457,
+      1536
+    ],
+    "snap_dxdy": [
+      29,
+      -34
+    ],
+    "snap_score": 0.3791068196296692,
+    "action": "manual",
+    "truth_dxdy": [
+      28,
+      -62
+    ],
+    "ts": "2026-05-10T19:00:35",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9351401TP6095S",
+    "address": "CL FRUELA 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      4767,
+      1828
+    ],
+    "snap_dxdy": [
+      8,
+      -2
+    ],
+    "snap_score": 0.1609656810760498,
+    "action": "manual",
+    "truth_dxdy": [
+      -2,
+      -34
+    ],
+    "ts": "2026-05-10T19:00:48",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "9550016TP6095S",
+    "address": "CL JESUS 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      6477,
+      2704
+    ],
+    "snap_dxdy": [
+      -4,
+      -4
+    ],
+    "snap_score": 0.43325382471084595,
+    "action": "manual",
+    "truth_dxdy": [
+      -2,
+      -34
+    ],
+    "ts": "2026-05-10T19:01:16",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7053009TP6065S",
+    "address": "CL LA VALLINA DE OLIVARES 1 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      6421,
+      3413
+    ],
+    "snap_dxdy": [
+      14,
+      -11
+    ],
+    "snap_score": 0.3424881100654602,
+    "action": "manual",
+    "truth_dxdy": [
+      51,
+      -46
+    ],
+    "ts": "2026-05-10T19:01:24",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7954002TP6075S",
+    "address": "CL JOSE ECHEGARAY 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      6092,
+      2288
+    ],
+    "snap_dxdy": [
+      -2,
+      -2
+    ],
+    "snap_score": 0.4203207194805145,
+    "action": "manual",
+    "truth_dxdy": [
+      69,
+      2
+    ],
+    "ts": "2026-05-10T19:01:27",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8653021TP6085S",
+    "address": "CL MATEMATICO PEDRAYES 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "model_center_px": [
+      1485,
+      537
+    ],
+    "snap_dxdy": [
+      21,
+      11
+    ],
+    "snap_score": 0.2408977895975113,
+    "action": "manual",
+    "truth_dxdy": [
+      72,
+      -35
+    ],
+    "ts": "2026-05-10T19:01:37",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "8455003TP6085N",
+    "address": "AV SAN PEDRO ARCOS 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      6169,
+      371
+    ],
+    "snap_dxdy": [
+      7,
+      12
+    ],
+    "snap_score": 0.35823148488998413,
+    "action": "manual",
+    "truth_dxdy": [
+      28,
+      -30
+    ],
+    "ts": "2026-05-10T19:02:06",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "6852012TP6065S",
+    "address": "CL LA QUINTANA OLIVARES 16 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "model_center_px": [
+      5906,
+      1172
+    ],
+    "snap_dxdy": [
+      -2,
+      3
+    ],
+    "snap_score": 0.19653567671775818,
+    "action": "manual",
+    "truth_dxdy": [
+      61,
+      -67
+    ],
+    "ts": "2026-05-10T19:07:02",
+    "_reconstructed": "post_cal_era2"
+  },
+  {
+    "rc": "7348057TP6074N",
+    "address": "CL CAT ADOLFO ALVAREZ BUYLLA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "model_center_px": [
+      6078,
+      1731
+    ],
+    "snap_dxdy": [
+      -4,
+      -33
+    ],
+    "snap_score": 0.2414596527814865,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:12:00"
+  },
+  {
+    "rc": "9558001TP6095N",
+    "address": "CL P.BUENAVENTURA PAREDES 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      5885,
+      1266
+    ],
+    "snap_dxdy": [
+      -5,
+      23
+    ],
+    "snap_score": 0.5932859778404236,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:12:02"
+  },
+  {
+    "rc": "8445003TP6084S",
+    "address": "CL EDUARDO M TORNER 6 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "model_center_px": [
+      6158,
+      917
+    ],
+    "snap_dxdy": [
+      14,
+      -9
+    ],
+    "snap_score": 0.11631713807582855,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:12:05"
+  },
+  {
+    "rc": "7660303TP6076S",
+    "address": "AV DOCTORES FERNANDEZ VEGA 22 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_J_II.pdf",
+    "model_center_px": [
+      2603,
+      2877
+    ],
+    "snap_dxdy": [
+      -36,
+      27
+    ],
+    "snap_score": 0.235830619931221,
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:12:07"
+  },
+  {
+    "rc": "8946413TP6084N",
+    "address": "CL FELIX ARAMBURU 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_L_II.pdf",
+    "model_center_px": [
+      6570,
+      4124
+    ],
+    "snap_dxdy": [
+      -7,
+      -4
+    ],
+    "snap_score": 0.46414855122566223,
+    "cal_applied_dxdy": [
+      47,
+      -53
+    ],
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:44:32"
+  },
+  {
+    "rc": "8760109TP6086S",
+    "address": "CL TEODORO CUESTA 24 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      3542,
+      3274
+    ],
+    "snap_dxdy": [
+      4,
+      -4
+    ],
+    "snap_score": 0.3806478679180145,
+    "cal_applied_dxdy": [
+      32,
+      58
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T20:53:26"
+  },
+  {
+    "rc": "0136021TP6003N",
+    "address": "CS PIEDRALLOSA 102 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_6_M_III.pdf",
+    "model_center_px": [
+      6068,
+      2785
+    ],
+    "snap_dxdy": [
+      1,
+      28
+    ],
+    "snap_score": 0.3038197457790375,
+    "cal_applied_dxdy": [
+      47,
+      -32
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      1,
+      26
+    ],
+    "ts": "2026-05-10T20:53:32"
+  },
+  {
+    "rc": "6552011TP6065S",
+    "address": "LG OLIVARES 104 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "model_center_px": [
+      3488,
+      3864
+    ],
+    "snap_dxdy": [
+      -11,
+      18
+    ],
+    "snap_score": 0.10347162932157516,
+    "cal_applied_dxdy": [
+      138,
+      -23
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T20:53:36"
+  },
+  {
+    "rc": "9556607TP6095N",
+    "address": "CL GENERAL ELORZA 38 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      1345,
+      3385
+    ],
+    "snap_dxdy": [
+      -1,
+      -5
+    ],
+    "snap_score": 0.4215271770954132,
+    "cal_applied_dxdy": [
+      7,
+      24
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T20:53:38"
+  },
+  {
+    "rc": "8057402TP6085N",
+    "address": "CL MARISCAL SOLIS 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "model_center_px": [
+      1447,
+      2941
+    ],
+    "snap_dxdy": [
+      -23,
+      -12
+    ],
+    "snap_score": 0.590867817401886,
+    "cal_applied_dxdy": [
+      100,
+      38
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -23,
+      -12
+    ],
+    "ts": "2026-05-10T20:53:45"
+  },
+  {
+    "rc": "5451035TP6055S",
+    "address": "LG LES MACES 0 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "model_center_px": [
+      1315,
+      816
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "cal_applied_dxdy": [
+      142,
+      -66
+    ],
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:53:53"
+  },
+  {
+    "rc": "9358033TP6095N",
+    "address": "CL RODRIGUEZ CABEZA OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "model_center_px": [
+      4644,
+      853
+    ],
+    "snap_dxdy": [
+      8,
+      -7
+    ],
+    "snap_score": 0.19113953411579132,
+    "cal_applied_dxdy": [
+      8,
+      38
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      -12,
+      -27
+    ],
+    "ts": "2026-05-10T20:54:06"
+  },
+  {
+    "rc": "9556602TP6095N",
+    "address": "CL GENERAL ELORZA 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "model_center_px": [
+      2813,
+      3675
+    ],
+    "snap_dxdy": [
+      -12,
+      -3
+    ],
+    "snap_score": 0.3600095808506012,
+    "cal_applied_dxdy": [
+      7,
+      24
+    ],
+    "action": "manual",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T20:54:09"
+  },
+  {
+    "rc": "8253814TP6085S",
+    "address": "CL MIGUEL ANGEL BLANCO 52 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "model_center_px": [
+      2736,
+      3052
+    ],
+    "snap_dxdy": [
+      12,
+      24
+    ],
+    "snap_score": 0.36011478304862976,
+    "cal_applied_dxdy": [
+      54,
+      -31
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      12,
+      24
+    ],
+    "ts": "2026-05-10T20:54:12"
+  },
+  {
+    "rc": "9760013TP6095N",
+    "address": "CL ESCULTOR NAVASCUES 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "model_center_px": [
+      2772,
+      3894
+    ],
+    "snap_dxdy": [
+      1,
+      -4
+    ],
+    "snap_score": 0.3963456153869629,
+    "cal_applied_dxdy": [
+      -7,
+      51
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      1,
+      -4
+    ],
+    "ts": "2026-05-10T20:54:15"
+  },
+  {
+    "rc": "9050007TP6094N",
+    "address": "CL SANTA SUSANA 25 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "model_center_px": [
+      1475,
+      4288
+    ],
+    "snap_dxdy": [
+      36,
+      5
+    ],
+    "snap_score": 0.16476702690124512,
+    "cal_applied_dxdy": [
+      -2,
+      -34
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      36,
+      5
+    ],
+    "ts": "2026-05-10T20:54:18"
+  },
+  {
+    "rc": "7956047TP6075N",
+    "address": "CL MARCELINO SUAREZ 55 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_13_K_II.pdf",
+    "model_center_px": [
+      6009,
+      227
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "cal_applied_dxdy": [
+      69,
+      2
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      0,
+      0
+    ],
+    "ts": "2026-05-10T20:55:23"
+  }
+]

@@ -1,0 +1,81 @@
+[
+  {
+    "idx": 0,
+    "rc": "9655715TP6095S0001GT",
+    "address": "CL VICTOR CHAVARRI 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "cell": "15-K",
+    "sub_quadrant": "II",
+    "warnings": [],
+    "n_parcels_in_bbox": 56,
+    "n_units_in_bbox": 2373
+  },
+  {
+    "idx": 1,
+    "rc": "8760002TP6085N0001QH",
+    "address": "CL TEODORO CUESTA 27 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "cell": "14-J",
+    "sub_quadrant": "II",
+    "warnings": [],
+    "n_parcels_in_bbox": 58,
+    "n_units_in_bbox": 1392
+  },
+  {
+    "idx": 2,
+    "rc": "8354013TP6085S0001ZQ",
+    "address": "CL VAZQUEZ DE MELLA 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "cell": "14-K",
+    "sub_quadrant": "I",
+    "warnings": [],
+    "n_parcels_in_bbox": 52,
+    "n_units_in_bbox": 1296
+  },
+  {
+    "idx": 3,
+    "rc": "0353008TP7005S0001OR",
+    "address": "CL DARIO DE REGOYOS 21 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_K_III.pdf",
+    "cell": "16-K",
+    "sub_quadrant": "III",
+    "warnings": [],
+    "n_parcels_in_bbox": 42,
+    "n_units_in_bbox": 1309
+  },
+  {
+    "idx": 4,
+    "rc": "0353009TP7005S0031HW",
+    "address": "CL DARIO DE REGOYOS 15 OF2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_K_III.pdf",
+    "cell": "16-K",
+    "sub_quadrant": "III",
+    "warnings": [],
+    "n_parcels_in_bbox": 42,
+    "n_units_in_bbox": 1431
+  },
+  {
+    "idx": 5,
+    "rc": "9449009TP6094N0001UE",
+    "address": "CL ROSAL 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_III.pdf",
+    "cell": "15-K",
+    "sub_quadrant": "III",
+    "warnings": [
+      "RC a 35 m del borde EXTERNO de la cell 15-K. La cell vecina podría contener el plano correcto."
+    ],
+    "n_parcels_in_bbox": 64,
+    "n_units_in_bbox": 1199
+  },
+  {
+    "idx": 6,
+    "rc": "8853001TP6085S0001PQ",
+    "address": "CL ARQUITECTO REGUERA 3 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "cell": "14-K",
+    "sub_quadrant": "II",
+    "warnings": [],
+    "n_parcels_in_bbox": 32,
+    "n_units_in_bbox": 775
+  }
+]

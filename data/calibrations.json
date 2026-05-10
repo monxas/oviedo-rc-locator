@@ -1,0 +1,38 @@
+[
+  {
+    "rc": "8653019TP6085S0002QW",
+    "address_hint": "Mat. Pedrayes 22",
+    "cell": "14-K",
+    "sub_quadrant": "IV",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "body_rx": 0.220,
+    "body_ry": 0.044
+  },
+  {
+    "rc": "9254317TP6095S0001ZT",
+    "address_hint": "Palacio Valdés 10",
+    "cell": "15-K",
+    "sub_quadrant": "I",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "body_rx": 0.443,
+    "body_ry": 0.532
+  },
+  {
+    "rc": "9651017TP6095S0001IT",
+    "address_hint": "Altamirano 6",
+    "cell": "15-K",
+    "sub_quadrant": "IV",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "body_rx": 0.120,
+    "body_ry": 0.356
+  },
+  {
+    "rc": "8953305TP6085S0002TW",
+    "address_hint": "Marqués de Pidal 7",
+    "cell": "14-K",
+    "sub_quadrant": "II",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "body_rx": 0.927,
+    "body_ry": 0.744
+  }
+]

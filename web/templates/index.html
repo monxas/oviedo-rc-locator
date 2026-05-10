@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Validador RC → PGOU Oviedo</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #f4f4f4; }
+  header { background: #222; color: white; padding: 12px 20px; position: sticky; top: 0; z-index: 100;
+           display: flex; align-items: center; gap: 20px; }
+  header h1 { margin: 0; font-size: 16px; font-weight: 500; }
+  .stats { font-size: 13px; opacity: 0.9; }
+  .stats span { margin-right: 12px; }
+  .stats b { color: #4cd964; }
+  .stats .bad { color: #ff3b30; }
+  .stats .skip { color: #ffcc00; }
+  main { max-width: 1500px; margin: 0 auto; padding: 20px; }
+  .card { background: white; border-radius: 8px; padding: 16px; margin-bottom: 14px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .card.done.ok { border-left: 5px solid #4cd964; }
+  .card.done.bad { border-left: 5px solid #ff3b30; }
+  .card.done.skip { border-left: 5px solid #ffcc00; }
+  .meta { font-size: 13px; color: #555; margin-bottom: 8px; }
+  .meta b { color: #222; }
+  .imgs { display: flex; gap: 12px; align-items: flex-start; }
+  .img-wrap { flex: 1; position: relative; }
+  .img-wrap.plan { cursor: crosshair; }
+  .img-wrap img { width: 100%; display: block; border: 1px solid #ddd; border-radius: 4px; }
+  .img-label { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .actions { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  button { font-size: 14px; padding: 8px 16px; border: 1px solid #ccc; background: white;
+           border-radius: 4px; cursor: pointer; }
+  button.ok { background: #4cd964; color: white; border-color: #3aaa50; }
+  button.bad { background: #ff3b30; color: white; border-color: #cc2924; }
+  button.skip { background: #ffcc00; color: #333; border-color: #d4a900; }
+  button.reset { background: #888; color: white; border-color: #666; }
+  button:hover { opacity: 0.85; }
+  .hint { font-size: 12px; color: #666; }
+  .click-marker { position: absolute; width: 24px; height: 24px; border: 3px solid #2196f3;
+                  border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none;
+                  background: rgba(33, 150, 243, 0.3); }
+  .click-info { font-size: 12px; color: #2196f3; font-weight: bold; }
+  .filters { margin-bottom: 12px; }
+  .filters button { font-size: 12px; padding: 5px 10px; }
+  .filters button.active { background: #222; color: white; }
+  .warning { color: #ff8c00; font-size: 12px; }
+  .export-link { color: white; opacity: 0.8; margin-left: auto; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Validador RC → PGOU Oviedo · {{ page_title|default("Training") }}</h1>
+  <div class="stats">
+    <span>Total: <b style="color:white">{{ total }}</b></span>
+    <span>Hechos: <b style="color:white">{{ done }}</b>/{{ total }}</span>
+    <span>OK: <b>{{ ok }}</b></span>
+    <span>Mal: <b class="bad">{{ bad }}</b> ({{ bad_with_click }} con click)</span>
+    <span>Skip: <b class="skip">{{ skip }}</b></span>
+  </div>
+  {% if other_url %}<a class="export-link" href="{{ other_url }}">{{ other_label }}</a>{% endif %}
+  <a class="export-link" href="/api/export" target="_blank">📊 Exportar</a>
+</header>
+<main>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="pending">Pendientes</button>
+    <button class="filter-btn" data-filter="ok">OK</button>
+    <button class="filter-btn" data-filter="bad">Mal</button>
+    <button class="filter-btn" data-filter="skip">Skip</button>
+  </div>
+
+  {% for c in candidates %}
+    {% set r = results.get(c.idx|string) %}
+    <div class="card {% if r %}done {{ r.verdict }}{% endif %}"
+         data-idx="{{ c.idx }}"
+         data-status="{% if r %}{{ r.verdict }}{% else %}pending{% endif %}">
+      <div class="meta">
+        <b>#{{ c.idx }}</b> · RC <b>{{ c.rc }}</b> ·
+        {{ c.address }} ·
+        {{ c.sheet_name }} ({{ c.cell }} {{ c.sub_quadrant }}) ·
+        UTM {{ '%.0f'|format(c.utm[0]) }} / {{ '%.0f'|format(c.utm[1]) }}
+        {% if c.warnings %}<br><span class="warning">⚠ {{ c.warnings|join(' | ') }}</span>{% endif %}
+      </div>
+      <div class="imgs">
+        <div class="img-wrap plan" data-idx="{{ c.idx }}"
+             data-w="{{ c.plan_size[0] }}" data-h="{{ c.plan_size[1] }}">
+          <div class="img-label">PLANO PGOU (cruz roja = predicción del modelo)</div>
+          <img src="/static/{{ c.plan_img }}" alt="plan {{ c.idx }}">
+          {% if r and r.verdict == 'bad' and r.click_xy %}
+            <div class="click-marker" style="left: {{ r.click_xy[0] / c.plan_size[0] * 100 }}%;
+                                              top: {{ r.click_xy[1] / c.plan_size[1] * 100 }}%;"></div>
+          {% endif %}
+        </div>
+        <div class="img-wrap">
+          <div class="img-label">CATASTRO 200m (cruz roja = RC exacta)</div>
+          <img src="/static/{{ c.cat_img }}" alt="cat {{ c.idx }}">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="ok" data-action="ok">✓ OK</button>
+        <button class="bad" data-action="bad">✗ Mal</button>
+        <button class="skip" data-action="skip">— Skip</button>
+        <button class="reset" data-action="reset">↺ Reset</button>
+        <span class="hint">Si Mal y se ve el portal: <b>click sobre el plano</b> donde está, luego pulsa Mal.</span>
+        {% if r and r.click_xy %}
+          <span class="click-info">Click guardado: ({{ r.click_xy[0]|round(0) }}, {{ r.click_xy[1]|round(0) }})</span>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</main>
+
+<script>
+  const clickPositions = {};
+
+  document.querySelectorAll('.img-wrap.plan').forEach(wrap => {
+    wrap.addEventListener('click', e => {
+      const idx = wrap.dataset.idx;
+      const rect = wrap.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width  * parseFloat(wrap.dataset.w);
+      const py = (e.clientY - rect.top)  / rect.height * parseFloat(wrap.dataset.h);
+      clickPositions[idx] = [Math.round(px), Math.round(py)];
+      // Visual feedback
+      wrap.querySelectorAll('.click-marker').forEach(m => m.remove());
+      const marker = document.createElement('div');
+      marker.className = 'click-marker';
+      marker.style.left = (e.clientX - rect.left) + 'px';
+      marker.style.top = (e.clientY - rect.top) + 'px';
+      wrap.appendChild(marker);
+    });
+  });
+
+  const API_SAVE = "{{ api_save|default('/api/save') }}";
+  const API_RESET_PREFIX = "{{ api_reset_prefix|default('/api/reset') }}";
+  async function save(idx, verdict) {
+    const click_xy = clickPositions[idx] || null;
+    const r = await fetch(API_SAVE, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({idx: parseInt(idx), verdict, click_xy, ts: Date.now()})
+    });
+    const card = document.querySelector(`.card[data-idx="${idx}"]`);
+    card.className = 'card done ' + verdict;
+    card.dataset.status = verdict;
+    applyFilter();
+    // Auto-scroll al siguiente pendiente
+    const next = document.querySelector('.card[data-status="pending"]');
+    if (next) next.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  async function reset(idx) {
+    await fetch(API_RESET_PREFIX + '/' + idx, {method: 'POST'});
+    delete clickPositions[idx];
+    const card = document.querySelector(`.card[data-idx="${idx}"]`);
+    card.className = 'card';
+    card.dataset.status = 'pending';
+    card.querySelectorAll('.click-marker').forEach(m => m.remove());
+    const ci = card.querySelector('.click-info');
+    if (ci) ci.remove();
+  }
+
+  document.querySelectorAll('.actions button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const card = btn.closest('.card');
+      const idx = card.dataset.idx;
+      const action = btn.dataset.action;
+      if (action === 'reset') reset(idx);
+      else save(idx, action);
+    });
+  });
+
+  // Filtros
+  let currentFilter = 'all';
+  function applyFilter() {
+    document.querySelectorAll('.card').forEach(c => {
+      const status = c.dataset.status;
+      const show = currentFilter === 'all' ||
+                   (currentFilter === 'pending' && status === 'pending') ||
+                   currentFilter === status;
+      c.style.display = show ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      currentFilter = b.dataset.filter;
+      applyFilter();
+    });
+  });
+
+  // Atajos teclado: cuando el cursor está sobre una card, j/l = OK, k = MAL, s = SKIP
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const visible = [...document.querySelectorAll('.card')].filter(c => c.style.display !== 'none');
+    const focused = visible.find(c => {
+      const r = c.getBoundingClientRect();
+      return r.top < window.innerHeight/2 && r.bottom > window.innerHeight/2;
+    });
+    if (!focused) return;
+    const idx = focused.dataset.idx;
+    if (e.key === 'j') save(idx, 'ok');
+    else if (e.key === 'k') save(idx, 'bad');
+    else if (e.key === 's') save(idx, 'skip');
+    else if (e.key === 'r') reset(idx);
+  });
+</script>
+</body>
+</html>
