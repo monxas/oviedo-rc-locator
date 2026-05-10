@@ -7262,5 +7262,122 @@
       0
     ],
     "ts": "2026-05-10T20:55:23"
+  },
+  {
+    "rc": "9235109TP6093N",
+    "address": "CL JOSE GARCIA NIETO 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_M_III.pdf",
+    "model_center_px": [
+      2281,
+      3470
+    ],
+    "snap_dxdy": [
+      0,
+      0
+    ],
+    "snap_score": 0.0,
+    "cal_applied_dxdy": [
+      -4,
+      -161
+    ],
+    "action": "skip",
+    "truth_dxdy": null,
+    "ts": "2026-05-10T20:55:32"
+  },
+  {
+    "rc": "9952066TP6095S",
+    "address": "CL PARAISO 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "model_center_px": [
+      4794,
+      2163
+    ],
+    "snap_dxdy": [
+      -17,
+      5
+    ],
+    "snap_score": 0.386529803276062,
+    "cal_applied_dxdy": [
+      0,
+      -33
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -17,
+      5
+    ],
+    "ts": "2026-05-10T20:55:36"
+  },
+  {
+    "rc": "9061006TP6086S",
+    "address": "CL MENENDEZ PELAYO 7 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "model_center_px": [
+      6410,
+      1645
+    ],
+    "snap_dxdy": [
+      -15,
+      11
+    ],
+    "snap_score": 0.5259161591529846,
+    "cal_applied_dxdy": [
+      32,
+      58
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      -15,
+      11
+    ],
+    "ts": "2026-05-10T20:55:38"
+  },
+  {
+    "rc": "9034118TP6083S",
+    "address": "CL JOSE GARCIA NIETO 66 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_N_II.pdf",
+    "model_center_px": [
+      6653,
+      749
+    ],
+    "snap_dxdy": [
+      5,
+      -16
+    ],
+    "snap_score": 0.26080551743507385,
+    "cal_applied_dxdy": [
+      66,
+      -266
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      5,
+      -16
+    ],
+    "ts": "2026-05-10T20:55:43"
+  },
+  {
+    "rc": "9936501TP6093N",
+    "address": "LG MONTICU,EL OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_M_I.pdf",
+    "model_center_px": [
+      1089,
+      3573
+    ],
+    "snap_dxdy": [
+      1,
+      7
+    ],
+    "snap_score": 0.15686054527759552,
+    "cal_applied_dxdy": [
+      3,
+      -123
+    ],
+    "action": "snap_ok",
+    "truth_dxdy": [
+      1,
+      7
+    ],
+    "ts": "2026-05-10T20:56:05"
   }
 ]
