@@ -19,12 +19,37 @@ el pipeline corre **offline** para la zona urbana de Oviedo.
 
 ```bash
 pip install -e .            # paquete + CLI `oviedo-rc`
-pip install -e '.[web]'     # con app Flask de validación
+pip install -e '.[validate]' # con web de etiquetado (FastAPI + Shapely)
 pip install -e '.[dev]'     # con pytest + ruff
 ```
 
 Requiere **Python ≥ 3.10**. Dependencias core: `requests`, `PyMuPDF`,
 `opencv-python`, `numpy`.
+
+## Quickstart desde cero
+
+Tras `pip install -e .`:
+
+```bash
+# Resolver un RC a bundle. Funciona online sin más setup.
+# La primera vez descarga el PDF del Ayuntamiento (~2 MB) y consulta
+# Catastro (3 calls). Tarda 10-15s. Las siguientes son ~1.5s desde caché.
+python -m oviedo_rc 9651017TP6095S0001IT
+# → bundles/9651017TP6095S0001IT/
+```
+
+Para uso intensivo (decenas/cientos de RCs), prefetch las cosas finitas:
+
+```bash
+python scripts/prefetch.py plans      # 151 PDFs (~240 MB, una vez)
+python scripts/prefetch.py parcels    # polígonos WFS bbox urbano
+python scripts/prefetch.py dnprc      # contenidos catastrales (lento)
+python scripts/build_coords_cache.py  # cache local rc14→UTM (acelera lookups)
+python scripts/prefetch_wms.py fetch  # tiles WMS catastrales (~38 MB)
+```
+
+Cache total tras prefetch: ~480 MB en `~/.cache/oviedo_rc/`. Después, todo
+offline excepto WMS si tu RC no está en el mosaico.
 
 ---
 
