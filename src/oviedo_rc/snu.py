@@ -142,6 +142,63 @@ def fetch_snu_sheet_pdf(sheet_name: str) -> Path:
     return dest
 
 
+def cell_bbox_utm(col: int, letter: str) -> tuple[float, float, float, float]:
+    """Bbox UTM (xmin, ymin, xmax, ymax) de la celda (col, letter) del grid SNU."""
+    row = SNU_LETTERS.index(letter)
+    x0 = SNU_X0 + (col - 1) * SNU_CELL_W
+    y_top = SNU_YMAX - row * SNU_CELL_H
+    y_bot = y_top - SNU_CELL_H
+    x1 = x0 + SNU_CELL_W
+    return x0, y_bot, x1, y_top
+
+
+# Coeficientes del body cartográfico dentro del render del PDF SNU
+# (verificado visualmente en PLANO_G_6 a 120 dpi · 2840×1918)
+SNU_BODY_X0_FRAC = 0.005
+SNU_BODY_Y0_FRAC = 0.005
+SNU_BODY_X1_FRAC = 0.950   # cajetín derecho ocupa ~5%
+SNU_BODY_Y1_FRAC = 0.910   # banda inferior ocupa ~9%
+
+
+def overlay_polygon(sheet_name: str, polygon_utm: list[tuple[float, float]],
+                     dpi: int = 120):
+    """Renderiza la hoja SNU y superpone polígono UTM. Devuelve np.ndarray BGR.
+
+    Calidad: ~regular (bbox del grid asumido uniforme; cajetín fijo). Suficiente
+    para localización aproximada; no pixel-precise.
+    """
+    import cv2
+    import numpy as np
+    from . import render as render_mod
+    m = re.match(r"PLANO_([A-J])_(\d+)\.pdf$", sheet_name)
+    if not m:
+        return None
+    letter = m.group(1)
+    col = int(m.group(2))
+    x0, ymin, x1, y_top = cell_bbox_utm(col, letter)
+
+    pdf_path = fetch_snu_sheet_pdf(sheet_name)
+    img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=dpi)
+    H, W = img.shape[:2]
+    bx0 = int(W * SNU_BODY_X0_FRAC)
+    by0 = int(H * SNU_BODY_Y0_FRAC)
+    bx1 = int(W * SNU_BODY_X1_FRAC)
+    by1 = int(H * SNU_BODY_Y1_FRAC)
+
+    def utm_to_px(x, y):
+        # x_frac: 0 en x0, 1 en x1
+        x_frac = (x - x0) / (x1 - x0)
+        # y_frac: 0 en y_top (norte), 1 en ymin (sur)
+        y_frac = (y_top - y) / (y_top - ymin)
+        px = bx0 + x_frac * (bx1 - bx0)
+        py = by0 + y_frac * (by1 - by0)
+        return int(px), int(py)
+
+    poly_px = [utm_to_px(x, y) for x, y in polygon_utm]
+    return render_mod.draw_polygon(img.copy(), poly_px,
+                                    color=(0, 0, 255), thickness=4)
+
+
 def resolve_snu_sheet(utm_x: float, utm_y: float) -> str | None:
     """Devuelve hoja SNU **existente** más probable para (utm_x, utm_y).
 

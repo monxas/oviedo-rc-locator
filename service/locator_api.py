@@ -220,6 +220,7 @@ class InfoResp(BaseModel):
     # SNU (rurales)
     snu_sheet: Optional[str] = None
     snu_url: Optional[str] = None
+    snu_polygon_url: Optional[str] = None
     # Diagnóstico
     notes: list[str] = []
     took_ms: int = 0
@@ -242,6 +243,34 @@ async def info(rc: str, _=Depends(auth)):
         raise HTTPException(404, f"RC no resoluble: {e}")
     except Exception as e:
         raise HTTPException(500, f"catastro: {type(e).__name__}: {e}")
+
+    # Address rural: si vacía, intenta componer desde DNPRC (paraje + pol/parc)
+    if not addr:
+        try:
+            import urllib.request as _ur
+            from oviedo_rc.config import HTTP_HEADERS as _H
+            _url = ("https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/"
+                    f"COVCCallejero.svc/json/Consulta_DNPRC?RefCat={rc14}")
+            _req = _ur.Request(_url, headers=_H)
+            _d = json.loads(_ur.urlopen(_req, timeout=10).read())
+            _bi = _d.get("consulta_dnprcResult", {}).get("bico", {}).get("bi", {})
+            _dt = _bi.get("dt", {})
+            _lorus = _dt.get("locs", {}).get("lors", {}).get("lorus", {})
+            _npa = _lorus.get("npa", "").strip()
+            _cpo = _lorus.get("cpp", {}).get("cpo", "")
+            _cpa = _lorus.get("cpp", {}).get("cpa", "")
+            _nm = _dt.get("nm", "").strip()
+            parts = []
+            if _npa:
+                parts.append(_npa)
+            if _cpo or _cpa:
+                parts.append(f"Pol {_cpo} Parc {_cpa}")
+            if _nm:
+                parts.append(_nm)
+            if parts:
+                addr = " · ".join(parts)
+        except Exception:
+            pass
 
     locate_dict = None
     snu_sheet = None
@@ -307,6 +336,7 @@ async def info(rc: str, _=Depends(auth)):
             notes.append(f"snu fail: {type(e2).__name__}")
 
         # Polígono catastral sobre WMS (rural pipeline mínimo)
+        snu_polygon_url = None
         try:
             poly = catastro.get_parcel_polygon(rc14)
             if poly and poly.get("polygon_utm"):
@@ -347,6 +377,17 @@ async def info(rc: str, _=Depends(auth)):
                         "snap_score": None,
                         "reliability": "rural",
                     }
+
+                # Polígono sobre plano SNU (calidad ~aproximada, grid bbox)
+                if snu_sheet:
+                    try:
+                        annotated_snu = snu_mod.overlay_polygon(snu_sheet, pu)
+                        if annotated_snu is not None:
+                            out2 = CACHE_DIR / f"rural_snu_{rc14}.png"
+                            cv2.imwrite(str(out2), annotated_snu)
+                            snu_polygon_url = f"{PUBLIC_BASE}/img/{_cache_png(out2)}.png"
+                    except Exception as e4:
+                        notes.append(f"snu overlay fail: {type(e4).__name__}")
         except Exception as e3:
             notes.append(f"rural pipeline fail: {type(e3).__name__}: {str(e3)[:60]}")
 
@@ -364,6 +405,7 @@ async def info(rc: str, _=Depends(auth)):
         fichas_match=plan.get("fichas_match", []),
         patrimonio=plan.get("patrimonio", []),
         snu_sheet=snu_sheet, snu_url=snu_url,
+        snu_polygon_url=locals().get("snu_polygon_url"),
         notes=notes,
         took_ms=int((time.time() - t0) * 1000),
     )
