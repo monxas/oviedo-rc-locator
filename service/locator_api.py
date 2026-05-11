@@ -32,6 +32,7 @@ import sys
 sys.path.insert(0, str(ROOT / "src"))
 from oviedo_rc import process_rc, RCError  # noqa: E402
 from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod  # noqa: E402
+from oviedo_rc import fichas as fichas_mod  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -257,6 +258,31 @@ async def snu_endpoint(rc: str, _=Depends(auth)):
         note=note,
         took_ms=int((time.time() - t0) * 1000),
     )
+
+
+@app.get("/fichas")
+async def fichas_list(tipo: Optional[str] = Query(None), _=Depends(auth)):
+    """Lista de fichas de ámbitos. Filtra por tipo: UG, UG1, UG2, AU, AUS, AA, PE, PP."""
+    items = fichas_mod.list_fichas(tipo=tipo)
+    return {"total": len(items), "items": items}
+
+
+@app.get("/fichas/search")
+async def fichas_search(q: str = Query(..., min_length=1), _=Depends(auth)):
+    """Busca por código (AIN, ASM…), número de ficha (506) o substring del nombre."""
+    hits = fichas_mod.find_ficha(q)
+    return {"total": len(hits), "items": hits[:50]}
+
+
+@app.get("/fichas/{filename}")
+async def fichas_pdf(filename: str, _=Depends(auth)):
+    """Descarga el PDF de una ficha (debe acabar en .pdf)."""
+    if not re.fullmatch(r"[A-Za-z0-9_\-]+\.pdf", filename):
+        raise HTTPException(422, "filename inválido")
+    p = fichas_mod.get_ficha_path(filename)
+    if not p:
+        raise HTTPException(404, f"ficha no encontrada: {filename}")
+    return FileResponse(p, media_type="application/pdf", filename=filename)
 
 
 @app.get("/img/{sha}.png")
