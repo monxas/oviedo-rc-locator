@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oviedo_rc"
+version = "1.0.0"
+description = "Resolución de referencias catastrales (RC) de Oviedo a planos PGOU 1:1000 y datos catastrales, cache-first."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ramón Kamibayashi Carrera" }]
+keywords = ["catastro", "oviedo", "pgou", "wms", "wfs", "utm", "etrs89"]
+
+dependencies = [
+    "requests>=2.31",
+    "PyMuPDF>=1.23",
+    "opencv-python>=4.8",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+# Web de validación / etiquetado (scripts/validate_snap.py)
+validate = [
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "pydantic>=2.10",
+    "shapely>=2.0",   # diagnostico de polígonos (validez, simplicidad)
+]
+dev = ["pytest>=7.4", "ruff>=0.4"]
+
+[project.scripts]
+oviedo-rc = "oviedo_rc.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+oviedo_rc = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

@@ -1,0 +1,42 @@
+[
+  {
+    "idx": 0,
+    "rc": "0963801TP7006S2030RF",
+    "address": "AV LISBOA 5 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_I_IV.pdf",
+    "cell": "16-I",
+    "sub_quadrant": "IV",
+    "warnings": [
+      "RC a 45 m del borde EXTERNO de la cell 16-I. La cell vecina podría contener el plano correcto."
+    ]
+  },
+  {
+    "idx": 1,
+    "rc": "8653020TP6085S0014GA",
+    "address": "CL MATEMATICO PEDRAYES 24 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "cell": "14-K",
+    "sub_quadrant": "IV",
+    "warnings": []
+  },
+  {
+    "idx": 2,
+    "rc": "9557208TP6095N0016SO",
+    "address": "CL PICASSO 4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "cell": "15-J",
+    "sub_quadrant": "IV",
+    "warnings": []
+  },
+  {
+    "idx": 4,
+    "rc": "0158015TP7005N0006XQ",
+    "address": "CL ISLA CUBA 8 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_J_III.pdf",
+    "cell": "16-J",
+    "sub_quadrant": "III",
+    "warnings": [
+      "RC a 44 m del borde EXTERNO de la cell 16-J. La cell vecina podría contener el plano correcto."
+    ]
+  }
+]

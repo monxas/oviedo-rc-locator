@@ -1,0 +1,100 @@
+[
+  {
+    "idx": 0,
+    "rc": "0354609TP7005S0001QR",
+    "address": "AV TORRELAVEGA 19 OF2 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_K_I.pdf",
+    "cell": "16-K",
+    "sub_quadrant": "I",
+    "warnings": []
+  },
+  {
+    "idx": 1,
+    "rc": "9155021TP6095N0001IB",
+    "address": "CL MELQUIADES ALVAREZ 20 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "cell": "15-K",
+    "sub_quadrant": "I",
+    "warnings": [
+      "RC a 37 m del borde EXTERNO de la cell 15-K. La cell vecina podría contener el plano correcto."
+    ]
+  },
+  {
+    "idx": 2,
+    "rc": "9155024TP6085N0001SH",
+    "address": "CL MELQUIADES ALVAREZ 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "cell": "14-K",
+    "sub_quadrant": "II",
+    "warnings": [
+      "RC a 6 m del borde EXTERNO de la cell 14-K. La cell vecina podría contener el plano correcto."
+    ]
+  },
+  {
+    "idx": 3,
+    "rc": "9348012TP6094N0001PE",
+    "address": "CL MARTINEZ MARINA 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "cell": "15-L",
+    "sub_quadrant": "I",
+    "warnings": [
+      "RC a 25 m del borde EXTERNO de la cell 15-L. La cell vecina podría contener el plano correcto."
+    ]
+  },
+  {
+    "idx": 4,
+    "rc": "9155025TP6085N0002XJ",
+    "address": "CL MELQUIADES ALVAREZ 28 OF4 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "cell": "14-K",
+    "sub_quadrant": "II",
+    "warnings": [
+      "RC a 21 m del borde EXTERNO de la cell 14-K. La cell vecina podría contener el plano correcto."
+    ]
+  },
+  {
+    "idx": 5,
+    "rc": "9348015TP6094N0002GR",
+    "address": "CL QUINTANA 18 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "cell": "15-L",
+    "sub_quadrant": "I",
+    "warnings": []
+  },
+  {
+    "idx": 6,
+    "rc": "0354611TP7005S0001GR",
+    "address": "AV TORRELAVEGA 15 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_K_I.pdf",
+    "cell": "16-K",
+    "sub_quadrant": "I",
+    "warnings": []
+  },
+  {
+    "idx": 7,
+    "rc": "9348019TP6094N0001RE",
+    "address": "CL QUINTANA 26 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "cell": "15-L",
+    "sub_quadrant": "I",
+    "warnings": []
+  },
+  {
+    "idx": 8,
+    "rc": "9750107TP6095S0001TT",
+    "address": "CL CIMADEVILLA 12 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "cell": "15-K",
+    "sub_quadrant": "IV",
+    "warnings": []
+  },
+  {
+    "idx": 9,
+    "rc": "0354610TP7005S0001YR",
+    "address": "AV TORRELAVEGA 17 OVIEDO (ASTURIAS)",
+    "sheet_name": "PLANO_16_K_I.pdf",
+    "cell": "16-K",
+    "sub_quadrant": "I",
+    "warnings": []
+  }
+]

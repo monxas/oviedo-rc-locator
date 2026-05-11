@@ -1,0 +1,500 @@
+INFO:     Started server process [66308]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 232, in next_rc
+    data = _generate_for_rc(rc)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 140, in _generate_for_rc
+    info = geom.locate(rc)
+           ^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/src/oviedo_rc/geom.py", line 56, in locate
+    rc14 = validate_rc(rc)
+           ^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/src/oviedo_rc/geom.py", line 25, in validate_rc
+    raise RCError(f"Formato de RC inválido: {rc!r}")
+oviedo_rc.errors.RCError: Formato de RC inválido: '33900A126000660001AA'
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66308]
+INFO:     Started server process [66458]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 241, in next_rc
+    data = _generate_for_rc(rc)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 152, in _generate_for_rc
+    pdf_path = pgou.fetch_sheet(sheet)
+               ^^^^^^^^^^^^^^^^
+AttributeError: module 'oviedo_rc.pgou' has no attribute 'fetch_sheet'. Did you mean: 'fetch_sheet_pdf'?
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66458]
+INFO:     Started server process [66623]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9050006TP6094N0001AA/crop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9050006TP6094N0001AA/wms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9952034TP7005S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9952034TP7005S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 252, in next_rc
+    data = _generate_for_rc(rc)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 157, in _generate_for_rc
+    info = geom.locate(rc)
+           ^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/src/oviedo_rc/geom.py", line 92, in locate
+    raise RCError(
+oviedo_rc.errors.RCError: No se encontró hoja 'PLANO_17_T_I.pdf' en el listado del Ayuntamiento.
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9135404TP6093S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9135404TP6093S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 415, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 252, in next_rc
+    data = _generate_for_rc(rc)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/service/validator_ui.py", line 157, in _generate_for_rc
+    info = geom.locate(rc)
+           ^^^^^^^^^^^^^^^
+  File "/home/carmelo/oviedo-rc-locator/src/oviedo_rc/geom.py", line 92, in locate
+    raise RCError(
+oviedo_rc.errors.RCError: No se encontró hoja 'PLANO_20_G_II.pdf' en el listado del Ayuntamiento.
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9954005TP6095S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9954005TP6095S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66623]
+INFO:     Started server process [66952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1867501TP7016N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1867501TP7016N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66952]
+INFO:     Started server process [67019]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56928 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67019]
+INFO:     Started server process [67272]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67272]
+INFO:     Started server process [67373]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1461116TP7016S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1461116TP7016S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1258510TP7015N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1258510TP7015N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1059605TP7005N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1059605TP7005N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9356034TP6095N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9356034TP6095N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0664008TP7006S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0664008TP7006S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0755046TP7005S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0755046TP7005S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/6849064TP6064N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/6849064TP6064N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8961014TP6086S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8961014TP6086S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9157005TP6095N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9157005TP6095N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/4916002TP7041N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/4916002TP7041N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9750307TP6095S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9750307TP6095S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1056001TP7015N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1056001TP7015N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9650026TP6094N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9650026TP6094N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1473203TP7017S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/1473203TP7017S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8064021TP6086S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8064021TP6086S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9746002TP6094N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9746002TP6094N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8256024TP6085N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/8256024TP6085N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/6849026TP6064N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/6849026TP6064N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67373]
+INFO:     Started server process [68194]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68194]
+INFO:     Started server process [68484]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:0 - "HEAD /api/next HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:0 - "GET /api/next?rc=9651017TP6095S0001IT HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/2078901TP7027N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/2078901TP7027N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0250001TP7005S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0250001TP7005S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3268412TP7036N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3268412TP7036N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68484]
+INFO:     Started server process [68773]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53104 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:0 - "GET /?rc=3268412TP7036N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next?rc=3268412TP7036N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3268412TP7036N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3268412TP7036N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68773]
+INFO:     Started server process [69053]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?rc=0465007TP7006N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next?rc=0465007TP7006N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69053]
+INFO:     Started server process [69307]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9103 (Press CTRL+C to quit)
+INFO:     127.0.0.1:0 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /?rc=0465007TP7006N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next?rc=0465007TP7006N0001AA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/0465007TP7006N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/7855805TP6075N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/7855805TP6075N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9562601TP6096S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9562601TP6096S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3750004TP6035S0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/3750004TP6035S0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /api/label HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/next HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9557210TP6095N0001AA/crop?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /api/img/9557210TP6095N0001AA/wms?token=kosE_xcMa0aLx_latOlrfiKaV7PE0uy85JGsQx5pL40 HTTP/1.1" 200 OK

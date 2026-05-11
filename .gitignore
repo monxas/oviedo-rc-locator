@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+*.egg-info/
+build/
+dist/
+bundles/
+.legacy_backup/
+data/snap_labels.bak.*.json
+.venv/
