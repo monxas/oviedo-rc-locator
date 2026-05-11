@@ -246,10 +246,22 @@ async def info(rc: str, _=Depends(auth)):
     locate_dict = None
     snu_sheet = None
     snu_url = None
+    bundle = None
+    bundle_err: Optional[Exception] = None
 
-    # 1) Intenta pipeline SU completo
-    try:
-        bundle = process_rc(rc)
+    # Paraleliza pipeline SU + planeamiento WFS (ambos I/O bound)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        f_bundle = pool.submit(process_rc, rc)
+        f_plan = pool.submit(plan_mod.lookup, X, Y)
+        plan = f_plan.result()
+        try:
+            bundle = f_bundle.result()
+        except Exception as e:
+            bundle_err = e
+
+    # 1) Pipeline SU si funcionó
+    if bundle is not None:
         meta = json.loads(Path(bundle.metadata_json).read_text(encoding="utf-8"))
         snap = meta.get("snap", {}) or {}
         cal = meta.get("calibration_quality", {}) or {}
@@ -273,9 +285,9 @@ async def info(rc: str, _=Depends(auth)):
             "snap_score": snap.get("score"),
             "reliability": cal.get("reliability"),
         }
-    except RCError as e:
-        notes.append(f"sin SU: {e}")
-        # 2) Fallback SNU
+    else:
+        # 2) Sin SU: fallback SNU
+        notes.append(f"sin SU: {bundle_err}")
         try:
             sheet = snu_mod.resolve_snu_sheet(X, Y)
             if sheet:
@@ -289,11 +301,7 @@ async def info(rc: str, _=Depends(auth)):
                 snu_url = f"{PUBLIC_BASE}/img/{_cache_png(png_path)}.png"
         except Exception as e2:
             notes.append(f"snu fail: {type(e2).__name__}")
-    except Exception as e:
-        notes.append(f"locate error: {type(e).__name__}")
 
-    # 3) Planeamiento (siempre)
-    plan = plan_mod.lookup(X, Y)
     ug = plan.get("ug") or {}
 
     return InfoResp(

@@ -16,6 +16,7 @@ Filtrado por id_municipio=33044 (Oviedo según INE).
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlencode
 
 from .http_utils import http_get
@@ -88,12 +89,20 @@ def _normalize(s: str | None) -> str:
     return s.upper().replace("-", " ").replace("_", " ").replace("Ñ", "N")
 
 
-def _find_matching_ficha(ambito_name: str) -> list[dict]:
-    """Heurística: busca ficha cuyo nombre comparta tokens con el ámbito."""
+def _find_matching_ficha(ambito_name: str, etiqueta: str | None = None,
+                          codigo_tipo: str | None = None) -> list[dict]:
+    """Busca ficha cuyo nombre coincida con el ámbito.
+
+    1) Si la etiqueta WFS (ej. "UG-RC4", "PE-3") trae un código corto que
+       aparece en el filename de alguna ficha → match directo (alta confianza).
+    2) Si no, fallback a tokens del nombre + número exacto."""
     if not ambito_name:
         return []
     listing = fichas_mod.load_listing()
-    raw_tokens = [t for t in _normalize(ambito_name).split() if t]
+    # Combina nombre + etiqueta WFS para más tokens (la etiqueta a veces
+    # trae info adicional como "UG-RC4" → token "RC4" muy distintivo)
+    combined = ambito_name + " " + (etiqueta or "")
+    raw_tokens = [t for t in _normalize(combined).split() if t]
     if not raw_tokens:
         return []
     word_tokens = [t for t in raw_tokens if len(t) > 2]
@@ -126,11 +135,28 @@ def lookup(x: float, y: float) -> dict:
     }
     """
     out: dict = {"x": x, "y": y, "layers": {}}
+
+    # Paraleliza todas las queries WFS (8 capas en flight a la vez)
+    tasks: list[tuple[str, float]] = [(L, 0.0) for L, _ in LAYERS]
+    tasks += [(L, 50.0) for L in PATRIMONIO_LAYERS]
+    results: dict[str, list[dict]] = {}
+    with ThreadPoolExecutor(max_workers=len(tasks)) as pool:
+        future_map = {
+            pool.submit(_wfs_at_point, layer, x, y, [], tol): (layer, tol)
+            for layer, tol in tasks
+        }
+        for fut in future_map:
+            layer, tol = future_map[fut]
+            try:
+                feats = fut.result(timeout=20)
+            except Exception:
+                feats = []
+            results[layer] = feats
+
     ug_props = None
     nombre_ambito = None
-
-    for layer, props in LAYERS:
-        feats = _wfs_at_point(layer, x, y, props)
+    for layer, _ in LAYERS:
+        feats = results.get(layer) or []
         if feats:
             out["layers"][layer] = feats
             if layer == "n15_UNIDADES_GESTION" and not nombre_ambito:
@@ -139,12 +165,10 @@ def lookup(x: float, y: float) -> dict:
             elif layer == "n25_AREAS_MODIF_URBANISTICAS" and not nombre_ambito:
                 nombre_ambito = feats[0].get("Nombre_del_Area") or feats[0].get("Etiqueta")
 
-    # Patrimonio (BICs, elementos catalogados) — info separada, no ámbito
+    # Patrimonio
     patrimonio = []
     for layer in PATRIMONIO_LAYERS:
-        # 50m de tolerancia: afecciones cercanas también cuentan
-        feats = _wfs_at_point(layer, x, y, [], bbox_tolerance=50.0)
-        for f in feats:
+        for f in results.get(layer) or []:
             patrimonio.append({
                 "tipo": layer,
                 "nombre": (f.get("Nombre_del_BIC")
@@ -177,6 +201,15 @@ def lookup(x: float, y: float) -> dict:
         or out["layers"].get("n25_AREAS_MODIF_URBANISTICAS")
         or out["layers"].get("n22_INSTRUMENTOS_PLANEAMIENTO")
     )
-    out["fichas_match"] = (_find_matching_ficha(nombre_ambito)
+    # Etiqueta para matching de alta confianza
+    etiqueta = None
+    codigo_tipo = None
+    for src in (ug_props,
+                (out["layers"].get("n25_AREAS_MODIF_URBANISTICAS") or [{}])[0],
+                (out["layers"].get("n22_INSTRUMENTOS_PLANEAMIENTO") or [{}])[0]):
+        if isinstance(src, dict):
+            etiqueta = etiqueta or src.get("Etiqueta")
+            codigo_tipo = codigo_tipo or src.get("Cód._Tipo_Instrumento")
+    out["fichas_match"] = (_find_matching_ficha(nombre_ambito, etiqueta, codigo_tipo)
                             if (nombre_ambito and has_real_ambito) else [])
     return out
