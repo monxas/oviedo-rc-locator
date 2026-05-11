@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "calibration": "approx_bbox_optimized_2026_05_11",
+  "comment": "Bbox UTM ETRS89 30N optimizado contra coords_local.json (53804 RCs) y 61 hojas SNU disponibles. Hits=49988 (93%), miss=3816 (7%). Pendiente refinar con feature-matching del Mapa Guía SNU.",
+  "x0": 252290.93,
+  "ymax": 4811487.92,
+  "width": 29018.81,
+  "height": 16194.95,
+  "cols": 9,
+  "rows": 10,
+  "letters": "ABCDEFGHIJ"
+}

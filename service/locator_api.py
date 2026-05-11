@@ -31,6 +31,7 @@ README_PATH = ROOT / "API.md"
 import sys
 sys.path.insert(0, str(ROOT / "src"))
 from oviedo_rc import process_rc, RCError  # noqa: E402
+from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -194,6 +195,66 @@ async def locate(rc: str, _=Depends(auth)):
         expected_residual_m=cal.get("expected_residual_m"),
         n_labels=cal.get("n_labels"),
         warnings=meta.get("warnings") or [],
+        took_ms=int((time.time() - t0) * 1000),
+    )
+
+
+class SNUResp(BaseModel):
+    rc: str
+    address: Optional[str] = None
+    utm: Optional[list[float]] = None
+    snu_sheet: Optional[str] = None
+    snu_url: Optional[str] = None
+    note: str = ""
+    took_ms: int = 0
+
+
+@app.get("/snu/{rc}", response_model=SNUResp)
+async def snu_endpoint(rc: str, _=Depends(auth)):
+    """Fallback para RCs en Suelo No Urbanizable (sin hoja SU).
+
+    Devuelve la hoja SNU (PLANO_<letra>_<num>.pdf) más probable según el bbox
+    UTM del Mapa Guía SNU + el PNG renderizado de esa hoja. No georeferencia
+    el polígono sobre la hoja (calibración SNU pendiente).
+    """
+    rc = rc.upper().strip()
+    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
+        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
+    t0 = time.time()
+    try:
+        rc14 = rc[:14]
+        X, Y, addr = catastro.rc_to_utm(rc14)
+    except RCError as e:
+        raise HTTPException(404, f"RC no resoluble: {e}")
+    except Exception as e:
+        raise HTTPException(500, f"catastro error: {type(e).__name__}: {e}")
+
+    sheet_name = snu_mod.resolve_snu_sheet(X, Y)
+    if not sheet_name:
+        return SNUResp(
+            rc=rc, address=addr, utm=[X, Y],
+            note="UTM fuera del grid SNU calibrado",
+            took_ms=int((time.time() - t0) * 1000),
+        )
+
+    snu_url: Optional[str] = None
+    note = ""
+    try:
+        pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet_name)
+        png_path = CACHE_DIR / f"snu_{sheet_name}.png"
+        if not png_path.exists():
+            img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
+            import cv2
+            cv2.imwrite(str(png_path), img)
+        sha = _cache_png(png_path)
+        snu_url = f"{PUBLIC_BASE}/img/{sha}.png"
+    except Exception as e:
+        note = f"render falló: {type(e).__name__}: {str(e)[:80]}"
+
+    return SNUResp(
+        rc=rc, address=addr, utm=[X, Y],
+        snu_sheet=sheet_name, snu_url=snu_url,
+        note=note,
         took_ms=int((time.time() - t0) * 1000),
     )
 
