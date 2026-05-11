@@ -39,13 +39,28 @@ LAYERS = [
     ("n07_SIST_GENERALES_AREAS",     ["Etiqueta"]),
 ]
 
+# Capas de patrimonio/afecciones: nunca son "ámbito"; sólo info adicional
+PATRIMONIO_LAYERS = [
+    "n23_ELEM_CATALOGADOS_AREAS",
+    "n27_BICS",
+]
 
-def _wfs_at_point(layer: str, x: float, y: float, props: list[str]) -> list[dict]:
-    """WFS GetFeature INTERSECTS point (x,y) — devuelve lista de properties dicts."""
-    cql = (
-        f"id_municipio={ID_MUNICIPIO_OVIEDO} "
-        f"AND INTERSECTS(GEOMETRY,POINT({x} {y}))"
-    )
+
+def _wfs_at_point(layer: str, x: float, y: float, props: list[str],
+                   bbox_tolerance: float = 0.0) -> list[dict]:
+    """WFS GetFeature al rededor de (x,y).
+    bbox_tolerance=0 → INTERSECTS estricto. >0 → BBOX (afecciones cercanas)."""
+    if bbox_tolerance > 0:
+        t = bbox_tolerance
+        cql = (
+            f"id_municipio={ID_MUNICIPIO_OVIEDO} "
+            f"AND BBOX(GEOMETRY,{x-t},{y-t},{x+t},{y+t})"
+        )
+    else:
+        cql = (
+            f"id_municipio={ID_MUNICIPIO_OVIEDO} "
+            f"AND INTERSECTS(GEOMETRY,POINT({x} {y}))"
+        )
     params = {
         "service": "WFS",
         "version": "2.0.0",
@@ -124,6 +139,23 @@ def lookup(x: float, y: float) -> dict:
             elif layer == "n25_AREAS_MODIF_URBANISTICAS" and not nombre_ambito:
                 nombre_ambito = feats[0].get("Nombre_del_Area") or feats[0].get("Etiqueta")
 
+    # Patrimonio (BICs, elementos catalogados) — info separada, no ámbito
+    patrimonio = []
+    for layer in PATRIMONIO_LAYERS:
+        # 50m de tolerancia: afecciones cercanas también cuentan
+        feats = _wfs_at_point(layer, x, y, [], bbox_tolerance=50.0)
+        for f in feats:
+            patrimonio.append({
+                "tipo": layer,
+                "nombre": (f.get("Nombre_del_BIC")
+                            or f.get("Denominación_Elemento_Protegido")
+                            or f.get("Etiqueta")),
+                "nivel_proteccion": f.get("Nivel_de_Protección"),
+                "tipo_patrimonio": f.get("Tipo_de_Patrimonio"),
+                "etiqueta": f.get("Etiqueta"),
+            })
+    out["patrimonio"] = patrimonio
+
     out["ug"] = ug_props
     # Fallback: si no hay UG/Modif, intenta n22 (PE/PP), n06 (núcleo rural), n12 (ordenanza)
     if not nombre_ambito:
@@ -138,5 +170,13 @@ def lookup(x: float, y: float) -> dict:
                 if nombre_ambito:
                     break
     out["ambito"] = nombre_ambito
-    out["fichas_match"] = _find_matching_ficha(nombre_ambito) if nombre_ambito else []
+    # Sólo buscar ficha cuando el ámbito viene de UG/Modif/Instrumento (con código).
+    # Ordenanza n12 ("EDIFICACION RESIDENCIAL CERRADA") no tiene ficha asociada.
+    has_real_ambito = bool(
+        out["layers"].get("n15_UNIDADES_GESTION")
+        or out["layers"].get("n25_AREAS_MODIF_URBANISTICAS")
+        or out["layers"].get("n22_INSTRUMENTOS_PLANEAMIENTO")
+    )
+    out["fichas_match"] = (_find_matching_ficha(nombre_ambito)
+                            if (nombre_ambito and has_real_ambito) else [])
     return out

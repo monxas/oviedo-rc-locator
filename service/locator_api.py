@@ -201,6 +201,118 @@ async def locate(rc: str, _=Depends(auth)):
     )
 
 
+class InfoResp(BaseModel):
+    """Respuesta unificada: catastro + locate SU + planeamiento + patrimonio + SNU fallback."""
+    rc: str
+    address: Optional[str] = None
+    utm: Optional[list[float]] = None
+    # Suelo Urbano (si aplica)
+    locate: Optional[dict] = None
+    # Planeamiento
+    ambito: Optional[str] = None
+    uso_predominante: Optional[str] = None
+    edificabilidad: Optional[float] = None
+    densidad_viv_ha: Optional[float] = None
+    sistema_actuacion: Optional[str] = None
+    fichas_match: list = []
+    # Patrimonio
+    patrimonio: list = []
+    # SNU (rurales)
+    snu_sheet: Optional[str] = None
+    snu_url: Optional[str] = None
+    # Diagnóstico
+    notes: list[str] = []
+    took_ms: int = 0
+
+
+@app.get("/info/{rc}", response_model=InfoResp)
+async def info(rc: str, _=Depends(auth)):
+    """Endpoint unificado: SU + planeamiento + patrimonio + SNU fallback en una sola request."""
+    rc = rc.upper().strip()
+    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
+        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
+    t0 = time.time()
+    notes: list[str] = []
+
+    # Catastro (una sola vez)
+    try:
+        rc14 = rc[:14]
+        X, Y, addr = catastro.rc_to_utm(rc14)
+    except RCError as e:
+        raise HTTPException(404, f"RC no resoluble: {e}")
+    except Exception as e:
+        raise HTTPException(500, f"catastro: {type(e).__name__}: {e}")
+
+    locate_dict = None
+    snu_sheet = None
+    snu_url = None
+
+    # 1) Intenta pipeline SU completo
+    try:
+        bundle = process_rc(rc)
+        meta = json.loads(Path(bundle.metadata_json).read_text(encoding="utf-8"))
+        snap = meta.get("snap", {}) or {}
+        cal = meta.get("calibration_quality", {}) or {}
+
+        def _url(p):
+            if not p:
+                return None
+            path = Path(p)
+            if not path.exists():
+                return None
+            return f"{PUBLIC_BASE}/img/{_cache_png(path)}.png"
+
+        locate_dict = {
+            "sheet": meta.get("sheet_name"),
+            "cell": meta.get("cell"),
+            "sub_quadrant": meta.get("sub_quadrant"),
+            "polygon_area_m2": meta.get("polygon_area_m2"),
+            "plan_zoom_url": _url(bundle.plan_zoom_png),
+            "polygon_url": _url(bundle.polygon_png),
+            "wms_url": _url(bundle.wms_png),
+            "snap_score": snap.get("score"),
+            "reliability": cal.get("reliability"),
+        }
+    except RCError as e:
+        notes.append(f"sin SU: {e}")
+        # 2) Fallback SNU
+        try:
+            sheet = snu_mod.resolve_snu_sheet(X, Y)
+            if sheet:
+                pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet)
+                png_path = CACHE_DIR / f"snu_{sheet}.png"
+                if not png_path.exists():
+                    img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
+                    import cv2
+                    cv2.imwrite(str(png_path), img)
+                snu_sheet = sheet
+                snu_url = f"{PUBLIC_BASE}/img/{_cache_png(png_path)}.png"
+        except Exception as e2:
+            notes.append(f"snu fail: {type(e2).__name__}")
+    except Exception as e:
+        notes.append(f"locate error: {type(e).__name__}")
+
+    # 3) Planeamiento (siempre)
+    plan = plan_mod.lookup(X, Y)
+    ug = plan.get("ug") or {}
+
+    return InfoResp(
+        rc=rc, address=addr, utm=[X, Y],
+        locate=locate_dict,
+        ambito=plan.get("ambito"),
+        uso_predominante=(ug.get("Uso_predominante")
+                           or (plan.get("layers", {}).get("n12_USOS_PORMENORIZADOS") or [{}])[0].get("Uso_Predominante")),
+        edificabilidad=ug.get("Edificabilidad_(m.2/m.2)"),
+        densidad_viv_ha=ug.get("Densidad_(Viv./Ha.)"),
+        sistema_actuacion=ug.get("Sistema_de_Actuación"),
+        fichas_match=plan.get("fichas_match", []),
+        patrimonio=plan.get("patrimonio", []),
+        snu_sheet=snu_sheet, snu_url=snu_url,
+        notes=notes,
+        took_ms=int((time.time() - t0) * 1000),
+    )
+
+
 class SNUResp(BaseModel):
     rc: str
     address: Optional[str] = None
