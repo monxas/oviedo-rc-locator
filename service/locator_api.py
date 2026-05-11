@@ -17,7 +17,7 @@ from typing import Optional
 
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
-from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse
 from pydantic import BaseModel
 
 ROOT = Path.home() / "oviedo-rc-locator"
@@ -444,6 +444,130 @@ async def fichas_pdf(filename: str, _=Depends(auth)):
     if not p:
         raise HTTPException(404, f"ficha no encontrada: {filename}")
     return FileResponse(p, media_type="application/pdf", filename=filename)
+
+
+@app.get("/v/{rc}", response_class=HTMLResponse)
+async def view_rc(rc: str, token: Optional[str] = Query(None)):
+    """Dashboard HTML standalone de la info completa de un RC.
+
+    No requiere Bearer: el token se pasa como `?token=` para los fetch JS.
+    """
+    rc_safe = re.sub(r"[^0-9A-Z]", "", rc.upper())[:20]
+    if len(rc_safe) not in (14, 20):
+        raise HTTPException(422, "RC inválido")
+    tok = token or ""
+    html = _VIEW_HTML.replace("{{RC}}", rc_safe).replace("{{TOKEN}}", tok)
+    return HTMLResponse(content=html)
+
+
+_VIEW_HTML = """<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{RC}} · Info PGOU Oviedo</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:#f5f5f7;color:#1d1d1f}
+header{background:#1d1d1f;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:16px;font-weight:500}
+header .addr{font-size:13px;opacity:.7}
+main{max-width:1400px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{margin:0 0 12px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#6e6e73}
+.card.wide{grid-column:span 2}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:6px 12px;font-size:14px}
+.kv .k{color:#6e6e73}
+img.plan{width:100%;height:auto;border-radius:8px;background:#eee;display:block}
+.imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#eef;color:#226}
+.pill.warn{background:#fee;color:#a30}
+.pill.ok{background:#dfd;color:#070}
+ul{margin:0;padding-left:18px;font-size:14px}
+.muted{color:#6e6e73;font-size:13px}
+a{color:#0066cc;text-decoration:none}
+a:hover{text-decoration:underline}
+.loading{text-align:center;padding:60px;color:#6e6e73}
+.err{background:#fee;color:#a30;padding:10px;border-radius:8px;margin:10px 0}
+</style></head><body>
+<header><h1 id="title">Cargando {{RC}}…</h1><span class="addr" id="addr"></span></header>
+<main id="root"><div class="loading">Consultando catastro + planeamiento + patrimonio…</div></main>
+<script>
+const RC = "{{RC}}";
+const TOKEN = "{{TOKEN}}";
+const H = TOKEN ? {Authorization: "Bearer " + TOKEN} : {};
+
+function fmt(v){return v==null||v===""?"—":v}
+function card(title, body, wide){
+  return `<div class="card${wide?' wide':''}"><h2>${title}</h2>${body}</div>`;
+}
+function kv(rows){
+  return `<div class="kv">${rows.map(([k,v])=>`<span class="k">${k}</span><span>${fmt(v)}</span>`).join("")}</div>`;
+}
+
+fetch(`/info/${RC}`,{headers:H}).then(r=>{
+  if(!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}).then(d=>{
+  document.getElementById("title").textContent = d.rc;
+  document.getElementById("addr").textContent = d.address || "";
+
+  const root = document.getElementById("root");
+  const out = [];
+
+  // Resumen
+  const ambito = d.ambito ? `<span class="pill">${d.ambito}</span>` : '<span class="pill warn">sin ámbito</span>';
+  const patBadge = (d.patrimonio||[]).length>0 ? `<span class="pill warn">${d.patrimonio.length} afección/es</span>` : '<span class="pill ok">sin afecciones</span>';
+  out.push(card("Resumen", kv([
+    ["RC", d.rc],
+    ["Dirección", d.address],
+    ["UTM (ETRS89 30N)", d.utm?d.utm.map(x=>x.toFixed(1)).join(", "):""],
+    ["Ámbito", ambito],
+    ["Uso predominante", d.uso_predominante],
+    ["Edificabilidad", d.edificabilidad!=null?`${d.edificabilidad} m²/m²`:null],
+    ["Densidad", d.densidad_viv_ha!=null?`${d.densidad_viv_ha} viv/ha`:null],
+    ["Sistema de actuación", d.sistema_actuacion],
+    ["Patrimonio", patBadge],
+    ["Latencia", `${d.took_ms} ms`],
+  ])));
+
+  // Plano SU (si)
+  if(d.locate){
+    const imgs = [];
+    if(d.locate.plan_zoom_url) imgs.push(`<a href="${d.locate.plan_zoom_url}" target="_blank"><img class="plan" src="${d.locate.plan_zoom_url}" alt="plano"></a>`);
+    if(d.locate.polygon_url) imgs.push(`<a href="${d.locate.polygon_url}" target="_blank"><img class="plan" src="${d.locate.polygon_url}" alt="polígono"></a>`);
+    if(d.locate.wms_url) imgs.push(`<a href="${d.locate.wms_url}" target="_blank"><img class="plan" src="${d.locate.wms_url}" alt="wms"></a>`);
+    out.push(card(`Plano PGOU · ${d.locate.sheet||""} · cell ${d.locate.cell||""}-${d.locate.sub_quadrant||""}`,
+      `<div class="imgs">${imgs.join("")}</div><div class="muted" style="margin-top:8px">snap_score: ${fmt(d.locate.snap_score)} · reliability: ${fmt(d.locate.reliability)} · área: ${fmt(d.locate.polygon_area_m2)} m²</div>`, true));
+  } else if(d.snu_url){
+    out.push(card(`Hoja SNU · ${d.snu_sheet}`,
+      `<a href="${d.snu_url}" target="_blank"><img class="plan" src="${d.snu_url}" alt="snu"></a><div class="muted" style="margin-top:8px">RC en Suelo No Urbanizable — sin plano SU</div>`, true));
+  }
+
+  // Patrimonio
+  if((d.patrimonio||[]).length>0){
+    const items = d.patrimonio.map(p=>`<li><strong>${p.nombre||"?"}</strong> <span class="muted">${p.tipo_patrimonio||""} · ${p.nivel_proteccion||""}</span></li>`).join("");
+    out.push(card("Afecciones patrimonio / dominio público", `<ul>${items}</ul>`));
+  }
+
+  // Ficha sugerida
+  if((d.fichas_match||[]).length>0){
+    const top = d.fichas_match[0];
+    const link = `/fichas/${encodeURIComponent(top.filename)}${TOKEN?`?token=${TOKEN}`:""}`;
+    const otros = d.fichas_match.slice(1).map(f=>`<li><a href="/fichas/${encodeURIComponent(f.filename)}${TOKEN?`?token=${TOKEN}`:""}" target="_blank">${f.filename}</a> <span class="muted">(score ${f.score})</span></li>`).join("");
+    out.push(card("Ficha de Ámbito sugerida",
+      `<div><a href="${link}" target="_blank" style="font-size:15px;font-weight:500">${top.filename}</a> <span class="muted">score ${top.score}</span></div>`+
+      (otros?`<details style="margin-top:8px"><summary class="muted" style="cursor:pointer">Otros candidatos (${d.fichas_match.length-1})</summary><ul>${otros}</ul></details>`:"")));
+  }
+
+  // Notas
+  if((d.notes||[]).length>0){
+    out.push(card("Notas", `<ul>${d.notes.map(n=>`<li class="muted">${n}</li>`).join("")}</ul>`));
+  }
+
+  root.innerHTML = out.join("");
+}).catch(e=>{
+  document.getElementById("root").innerHTML = `<div class="err">Error: ${e.message}. Si el endpoint es privado, añade ?token=&lt;tu_token&gt; a la URL.</div>`;
+});
+</script></body></html>
+"""
 
 
 @app.get("/img/{sha}.png")
