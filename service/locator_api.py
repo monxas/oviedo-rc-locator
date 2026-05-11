@@ -33,6 +33,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from oviedo_rc import process_rc, RCError  # noqa: E402
 from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod  # noqa: E402
 from oviedo_rc import fichas as fichas_mod  # noqa: E402
+from oviedo_rc import planeamiento as plan_mod  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -256,6 +257,46 @@ async def snu_endpoint(rc: str, _=Depends(auth)):
         rc=rc, address=addr, utm=[X, Y],
         snu_sheet=sheet_name, snu_url=snu_url,
         note=note,
+        took_ms=int((time.time() - t0) * 1000),
+    )
+
+
+class PlanResp(BaseModel):
+    rc: str
+    address: Optional[str] = None
+    utm: Optional[list[float]] = None
+    ambito: Optional[str] = None
+    ug: Optional[dict] = None
+    layers: dict = {}
+    fichas_match: list = []
+    took_ms: int = 0
+
+
+@app.get("/planeamiento/{rc}", response_model=PlanResp)
+async def planeamiento_rc(rc: str, _=Depends(auth)):
+    """Info de planeamiento PGOU por RC: ámbito (UG/AU/PE), uso predominante, ficha sugerida.
+
+    Combina catastro (RC→UTM) + GeoServer Asturias (UTM→ámbito) + fichas locales.
+    """
+    rc = rc.upper().strip()
+    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
+        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
+    t0 = time.time()
+    try:
+        rc14 = rc[:14]
+        X, Y, addr = catastro.rc_to_utm(rc14)
+    except RCError as e:
+        raise HTTPException(404, f"RC no resoluble: {e}")
+    except Exception as e:
+        raise HTTPException(500, f"catastro error: {type(e).__name__}: {e}")
+
+    info = plan_mod.lookup(X, Y)
+    return PlanResp(
+        rc=rc, address=addr, utm=[X, Y],
+        ambito=info.get("ambito"),
+        ug=info.get("ug"),
+        layers={k: v for k, v in info.get("layers", {}).items() if v},
+        fichas_match=info.get("fichas_match", []),
         took_ms=int((time.time() - t0) * 1000),
     )
 
