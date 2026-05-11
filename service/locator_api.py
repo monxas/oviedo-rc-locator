@@ -31,7 +31,7 @@ README_PATH = ROOT / "API.md"
 import sys
 sys.path.insert(0, str(ROOT / "src"))
 from oviedo_rc import process_rc, RCError  # noqa: E402
-from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod  # noqa: E402
+from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod, wms as wms_mod  # noqa: E402
 from oviedo_rc import fichas as fichas_mod  # noqa: E402
 from oviedo_rc import planeamiento as plan_mod  # noqa: E402
 
@@ -286,8 +286,12 @@ async def info(rc: str, _=Depends(auth)):
             "reliability": cal.get("reliability"),
         }
     else:
-        # 2) Sin SU: fallback SNU
-        notes.append(f"sin SU: {bundle_err}")
+        # 2) Sin SU: fallback SNU + WMS catastral con polígono parcela
+        err_str = str(bundle_err)
+        # Errores típicos de RC rural ("Formato de RC inválido", "No se encontró hoja PLANO_...")
+        # son esperados — no los exponemos como aviso al usuario, sólo si son raros.
+        if "Formato de RC inválido" not in err_str and "No se encontró hoja" not in err_str:
+            notes.append(f"sin SU: {err_str}")
         try:
             sheet = snu_mod.resolve_snu_sheet(X, Y)
             if sheet:
@@ -301,6 +305,50 @@ async def info(rc: str, _=Depends(auth)):
                 snu_url = f"{PUBLIC_BASE}/img/{_cache_png(png_path)}.png"
         except Exception as e2:
             notes.append(f"snu fail: {type(e2).__name__}")
+
+        # Polígono catastral sobre WMS (rural pipeline mínimo)
+        try:
+            poly = catastro.get_parcel_polygon(rc14)
+            if poly and poly.get("polygon_utm"):
+                import cv2
+                pu = poly["polygon_utm"]
+                xs = [p[0] for p in pu]
+                ys = [p[1] for p in pu]
+                pad = max(50.0, 0.4 * max(max(xs) - min(xs), max(ys) - min(ys)))
+                xmin = min(xs) - pad; xmax = max(xs) + pad
+                ymin = min(ys) - pad; ymax = max(ys) + pad
+                img_bytes = wms_mod.get(xmin, ymin, xmax, ymax, w=900)
+                if img_bytes:
+                    import numpy as np
+                    arr = np.frombuffer(img_bytes, dtype=np.uint8)
+                    img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                else:
+                    img = None
+                if img is not None:
+                    h, w = img.shape[:2]
+                    poly_px = [
+                        (int((px - xmin) / (xmax - xmin) * w),
+                         int((ymax - py) / (ymax - ymin) * h))
+                        for px, py in pu
+                    ]
+                    annotated = render_mod.draw_polygon(img.copy(), poly_px,
+                                                         color=(0, 0, 255), thickness=3)
+                    out = CACHE_DIR / f"rural_{rc14}.png"
+                    cv2.imwrite(str(out), annotated)
+                    rural_url = f"{PUBLIC_BASE}/img/{_cache_png(out)}.png"
+                    locate_dict = {
+                        "sheet": None,
+                        "cell": None,
+                        "sub_quadrant": None,
+                        "polygon_area_m2": poly.get("area_m2"),
+                        "plan_zoom_url": None,
+                        "polygon_url": rural_url,
+                        "wms_url": rural_url,
+                        "snap_score": None,
+                        "reliability": "rural",
+                    }
+        except Exception as e3:
+            notes.append(f"rural pipeline fail: {type(e3).__name__}: {str(e3)[:60]}")
 
     ug = plan.get("ug") or {}
 
