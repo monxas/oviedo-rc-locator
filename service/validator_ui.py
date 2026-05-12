@@ -549,7 +549,7 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
   <label>Zoom (m/px)</label>
   <input type="range" id="zoom" min="0.05" max="1.0" step="0.01" value="0.5">
   <span class="scale-label" id="zoom-label">0.50 m/px</span>
-  <button type="button" onclick="setZoom(0.5)" style="padding:4px 10px;background:#333;border:none;color:#fff;border-radius:4px;cursor:pointer">fit</button>
+  <button type="button" onclick="setZoom(0.5); centerOnPolygon();" style="padding:4px 10px;background:#333;border:none;color:#fff;border-radius:4px;cursor:pointer">fit</button>
 </div>
 
 <main>
@@ -658,7 +658,38 @@ function applyZoom() {
   renderOverlay();
 }
 
+// Centra cada pane en el polígono verde (con drag aplicado).
+// Para WMS usa su centro (el WMS se renderiza alrededor del RC).
+function centerOnPolygon() {
+  if (!current) return;
+  const pts = current.poly_snap;
+  let cx = 0, cy = 0;
+  for (const [x, y] of pts) { cx += x; cy += y; }
+  cx = cx / pts.length + drag.dx;
+  cy = cy / pts.length + drag.dy;
+  const W = current.crop_size_px;
+  // Crop pane
+  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
+  const cropInner = cropWrap && cropWrap.querySelector('.canvas-inner');
+  if (cropWrap && cropInner) {
+    const w = cropInner.offsetWidth;
+    const h = cropInner.offsetHeight;
+    const targetX = (cx / W) * w;
+    const targetY = (cy / W) * h;
+    cropWrap.scrollLeft = Math.max(0, targetX - cropWrap.clientWidth / 2);
+    cropWrap.scrollTop = Math.max(0, targetY - cropWrap.clientHeight / 2);
+  }
+  // WMS pane: el WMS ya está centrado en el RC, así que centro del inner.
+  const wmsWrap = document.querySelector('.wms-pane .canvas-wrap');
+  const wmsInner = wmsWrap && wmsWrap.querySelector('.canvas-inner');
+  if (wmsWrap && wmsInner) {
+    wmsWrap.scrollLeft = Math.max(0, wmsInner.offsetWidth / 2 - wmsWrap.clientWidth / 2);
+    wmsWrap.scrollTop = Math.max(0, wmsInner.offsetHeight / 2 - wmsWrap.clientHeight / 2);
+  }
+}
+
 function setZoom(v) {
+  // Aplica zoom sin tocar scroll. Quien lo necesite centrar lo llama después.
   viewMpx = v;
   document.getElementById('zoom').value = v;
   applyZoom();
@@ -667,6 +698,7 @@ function setZoom(v) {
 document.getElementById('zoom').addEventListener('input', e => {
   viewMpx = parseFloat(e.target.value);
   applyZoom();
+  centerOnPolygon();  // slider del usuario → re-centra en polígono
 });
 
 function renderOverlay() {
@@ -830,7 +862,7 @@ document.addEventListener('pointerdown', e => {
   const tgt = e.target;
   if (tgt && tgt.id === 'poly-green') return;
   const now = Date.now();
-  if (now - lastTap < 300) { setZoom(0.5); }
+  if (now - lastTap < 300) { setZoom(0.5); centerOnPolygon(); }
   lastTap = now;
 }, { passive: true });
 
@@ -879,8 +911,8 @@ async function loadRC(rc) {
   }
   document.getElementById('crop').src = imgUrl(data.crop_url);
   document.getElementById('wms').src = imgUrl(data.wms_url);
-  document.getElementById('crop').onload = applyZoom;
-  document.getElementById('wms').onload = applyZoom;
+  document.getElementById('crop').onload = () => { applyZoom(); centerOnPolygon(); };
+  document.getElementById('wms').onload = () => { applyZoom(); centerOnPolygon(); };
   loadStats();
   prefetchNext();
 }
