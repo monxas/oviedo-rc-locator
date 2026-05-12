@@ -646,6 +646,7 @@ const H = TOKEN ? {Authorization: "Bearer " + TOKEN} : {};
 
 function fmt(v){return v==null||v===""?"—":v}
 function authUrl(u){if(!u||!TOKEN)return u;return u + (u.indexOf("?")>-1?"&":"?") + "token=" + encodeURIComponent(TOKEN);}
+function fmtN(v, u){return v==null ? "—" : (u ? `${v} ${u}` : v);}
 function card(title, body, wide){
   return `<div class="card${wide?' wide':''}"><h2>${title}</h2>${body}</div>`;
 }
@@ -681,7 +682,6 @@ function renderGijon(d){
   // Datos estructurados parseados del PDF (cuando existen)
   const fd = d.ficha_data;
   if(fd){
-    const fmtN = (v, u) => v==null ? "—" : (u ? `${v} ${u}` : v);
     out.push(card("Datos de la ficha (parseados del PDF)", kv([
       ["Uso predominante", fd.uso_predominante ? `<strong>${fd.uso_predominante}</strong>` : null],
       ["Clase de suelo", fd.clase_suelo],
@@ -790,7 +790,6 @@ fetch(`/gijon/${RC}`,{headers:H}).then(r=>r.ok?r.json():null).then(g=>{
   // Datos parseados de la ficha PDF (cuando existe JSON cacheado)
   const fd2 = d.ficha_data;
   if(fd2){
-    const fmtN = (v, u) => v==null ? "—" : (u ? `${v} ${u}` : v);
     const hojaLink = fd2.hoja_pgou
       ? `<a href="/info/?sheet=${encodeURIComponent(fd2.hoja_pgou)}${TOKEN?`&token=${TOKEN}`:""}">${fd2.hoja_pgou}</a>`
       : null;
