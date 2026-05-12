@@ -110,3 +110,31 @@ def get_ficha_path(filename: str, concejo: Concejo | None = None) -> Path | None
     base = _fichas_dir_for(concejo or OVIEDO)
     p = base / filename
     return p if p.exists() and p.stat().st_size > 1024 else None
+
+
+def get_ficha_data(filename: str, concejo: Concejo | None = None) -> dict | None:
+    """Lee el JSON cacheado por `scripts/parse_oviedo_fichas.py` para esta ficha.
+
+    Devuelve `None` si el JSON no existe (la ficha no se ha parseado todavía o
+    el filename no coincide). No procesa el PDF en caliente — exige que
+    parse_oviedo_fichas.py se haya ejecutado.
+
+    El parámetro `concejo` se ignora: por ahora sólo Oviedo tiene este parser
+    (Gijón usa `gijon.get_ficha_data`).
+    """
+    if concejo is not None and concejo.id_ine != OVIEDO.id_ine:
+        return None
+    if not filename:
+        return None
+    stem = filename
+    for ext in (".pdf", ".PDF"):
+        if stem.endswith(ext):
+            stem = stem[: -len(ext)]
+            break
+    json_path = CACHE_DIR / "fichas_data" / f"{stem}.json"
+    if not json_path.exists():
+        return None
+    try:
+        return json.loads(json_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None

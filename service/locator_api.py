@@ -261,6 +261,7 @@ class InfoResp(BaseModel):
     densidad_viv_ha: Optional[float] = None
     sistema_actuacion: Optional[str] = None
     fichas_match: list = []
+    ficha_data: Optional[dict] = None   # estructurado parseado del PDF de la ficha top-match
     # Patrimonio
     patrimonio: list = []
     # SNU (rurales)
@@ -440,6 +441,15 @@ def info(rc: str, _=Depends(auth)):
 
     ug = plan.get("ug") or {}
 
+    # Parseo enriquecido de la ficha top-match (si existe JSON cacheado)
+    fichas_match = plan.get("fichas_match", [])
+    ficha_data: Optional[dict] = None
+    if fichas_match:
+        try:
+            ficha_data = fichas_mod.get_ficha_data(fichas_match[0].get("filename", ""))
+        except Exception as e:
+            notes.append(f"ficha_data fail: {type(e).__name__}")
+
     return InfoResp(
         rc=rc, address=addr, utm=[X, Y],
         locate=locate_dict,
@@ -449,7 +459,8 @@ def info(rc: str, _=Depends(auth)):
         edificabilidad=ug.get("Edificabilidad_(m.2/m.2)"),
         densidad_viv_ha=ug.get("Densidad_(Viv./Ha.)"),
         sistema_actuacion=ug.get("Sistema_de_Actuación"),
-        fichas_match=plan.get("fichas_match", []),
+        fichas_match=fichas_match,
+        ficha_data=ficha_data,
         patrimonio=plan.get("patrimonio", []),
         snu_sheet=snu_sheet, snu_url=snu_url,
         snu_polygon_url=snu_polygon_url,
@@ -774,6 +785,73 @@ fetch(`/gijon/${RC}`,{headers:H}).then(r=>r.ok?r.json():null).then(g=>{
   if((d.patrimonio||[]).length>0){
     const items = d.patrimonio.map(p=>`<li><strong>${p.nombre||"?"}</strong> <span class="muted">${p.tipo_patrimonio||""} · ${p.nivel_proteccion||""}</span></li>`).join("");
     out.push(card("Afecciones patrimonio / dominio público", `<ul>${items}</ul>`));
+  }
+
+  // Datos parseados de la ficha PDF (cuando existe JSON cacheado)
+  const fd2 = d.ficha_data;
+  if(fd2){
+    const fmtN = (v, u) => v==null ? "—" : (u ? `${v} ${u}` : v);
+    const hojaLink = fd2.hoja_pgou
+      ? `<a href="/info/?sheet=${encodeURIComponent(fd2.hoja_pgou)}${TOKEN?`&token=${TOKEN}`:""}">${fd2.hoja_pgou}</a>`
+      : null;
+    const ipDef = fd2.instrumento_planeamiento_definitiva;
+    const ipIni = fd2.instrumento_planeamiento_inicial;
+    const ip = [ipIni, ipDef].filter(Boolean).join(" → ") || null;
+    const sa = [fd2.sistema_actuacion, fd2.iniciativa].filter(Boolean).join(" · ") || null;
+    const amCode = fd2.aprovechamiento_medio_codigo;
+    const amUah = fd2.aprovechamiento_medio_uah;
+    const am = (amCode || amUah!=null)
+      ? `${amCode||""} ${amUah!=null?amUah+" u.a.h.":""}`.trim() : null;
+    const vivs = (fd2.viviendas_construibles_total!=null || fd2.densidad_bruta_viv_ha!=null)
+      ? `${fmtN(fd2.viviendas_construibles_total)} viv · ${fmtN(fd2.densidad_bruta_viv_ha)} viv/ha`
+      : null;
+    const fichaRows = [
+      ["Clave", fd2.clave ? `<strong>${fd2.clave}</strong>` : null],
+      ["Tipo de ámbito", fd2.tipo_ambito],
+      ["Nombre", fd2.nombre],
+      ["Hoja PGOU", hojaLink],
+      ["Origen", fd2.origen_ambito],
+      ["Sistema/Iniciativa", sa],
+      ["Instrumento planeamiento", ip],
+      ["Expropiación", fd2.expropiacion],
+      ["Cesiones", fd2.cesiones],
+      ["Urbanización", fd2.urbanizacion],
+      ["Edificación", fd2.edificacion],
+      ["Superficie ámbito", fmtN(fd2.superficie_total_ambito_m2, "m²")],
+      ["Índice edif. bruta", fd2.indice_edif_bruta!=null ? `${fd2.indice_edif_bruta} m²c/m²` : null],
+      ["Aprovechamiento medio", am],
+      ["Uso global predominante", fd2.uso_global_predominante],
+      ["Altura máxima", fd2.altura_maxima_plantas!=null ? `${fd2.altura_maxima_plantas} plantas` : null],
+      ["Viviendas construibles", vivs],
+      ["% viv. protección", fd2.viviendas_proteccion_pct!=null ? `${fd2.viviendas_proteccion_pct}% (${fmtN(fd2.n_aprox_viv_proteccion)} viv)` : null],
+    ];
+    let body = kv(fichaRows);
+
+    // Tabla de calificaciones (público + privado)
+    const renderCalif = (rows, label, totalS, totalC) => {
+      if(!rows || rows.length===0) return "";
+      const trs = rows.map(r =>
+        `<tr><td style="padding:2px 8px"><code>${r.codigo||""}</code></td>`+
+        `<td style="padding:2px 8px">${r.calificacion||""}</td>`+
+        `<td style="padding:2px 8px;text-align:right">${fmt(r.m2_suelo)}</td>`+
+        `<td style="padding:2px 8px;text-align:right">${fmt(r.m2_construible)}</td></tr>`
+      ).join("");
+      const tot = (totalS!=null||totalC!=null)
+        ? `<tr style="border-top:1px solid #ddd;font-weight:600"><td colspan="2" style="padding:2px 8px">Total</td><td style="padding:2px 8px;text-align:right">${fmt(totalS)}</td><td style="padding:2px 8px;text-align:right">${fmt(totalC)}</td></tr>`
+        : "";
+      return `<div class="muted" style="margin:12px 0 4px">${label}</div>`+
+        `<table style="width:100%;font-size:13px;border-collapse:collapse">`+
+        `<thead><tr style="color:#6e6e73"><th style="text-align:left;padding:2px 8px">Cód.</th>`+
+        `<th style="text-align:left;padding:2px 8px">Calificación</th>`+
+        `<th style="text-align:right;padding:2px 8px">m² suelo</th>`+
+        `<th style="text-align:right;padding:2px 8px">m² constr.</th></tr></thead>`+
+        `<tbody>${trs}${tot}</tbody></table>`;
+    };
+    body += renderCalif(fd2.suelos_publicos, "Suelos públicos",
+                        fd2.total_suelo_publico_m2, fd2.total_suelo_publico_construible_m2);
+    body += renderCalif(fd2.suelos_privados, "Suelos privados",
+                        fd2.total_suelo_privado_m2, fd2.total_suelo_privado_construible_m2);
+    out.push(card("Datos de la ficha (parseados del PDF)", body, true));
   }
 
   // Ficha sugerida
