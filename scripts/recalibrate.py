@@ -114,7 +114,11 @@ def main():
     if not bk.exists():
         bk.write_text(CAL_FILE.read_text(encoding="utf-8"))
         print(f"\nbackup creado: {bk.name}")
-    CAL_FILE.write_text(json.dumps(out, indent=2, ensure_ascii=False))
+    # Write atómico: tmp + os.replace() para que un lector concurrente
+    # (locator / validator) nunca vea JSON parcial.
+    tmp = CAL_FILE.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(out, indent=2, ensure_ascii=False))
+    tmp.replace(CAL_FILE)
     print(f"escrito: {CAL_FILE.name}  v6  n_labels={out['n_labels']}")
 
 
