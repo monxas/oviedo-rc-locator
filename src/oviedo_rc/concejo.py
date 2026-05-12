@@ -165,13 +165,23 @@ def get_concejo(id_ine: int) -> Concejo:
     return REGISTRY[id_ine]
 
 
-def get_concejo_for_utm(x: float, y: float) -> Optional[Concejo]:
+def get_concejo_for_utm(
+    x: float, y: float, *, id_ine: Optional[int] = None
+) -> Optional[Concejo]:
     """Busca el `Concejo` cuyo `bbox_utm` contiene el punto (x, y).
 
-    Devuelve `None` si las coords caen fuera de todos los concejos
-    registrados. Para resoluciones más finas (concejos con bbox solapados)
-    convendría un point-in-polygon con la geometría municipal real.
+    Si se pasa `id_ine` (típicamente desde `catastro.consulta_dnprc().dt.loine`
+    = cp+cm), devuelve directamente ese concejo. Esto es CORRECTO incluso
+    cuando los bboxes de varios concejos solapan (Oviedo / Gijón se solapan
+    en ~13.9 km²). Sin `id_ine`, fallback a iteración por bbox en orden de
+    inserción del REGISTRY — ambiguo cuando solapan.
+
+    Devuelve `None` si:
+      - `id_ine` se pasó pero no está en el REGISTRY, o
+      - las coords caen fuera de todos los concejos registrados.
     """
+    if id_ine is not None:
+        return REGISTRY.get(id_ine)
     for c in REGISTRY.values():
         x0, y0, x1, y1 = c.bbox_utm
         if x0 <= x <= x1 and y0 <= y <= y1:
