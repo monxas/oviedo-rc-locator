@@ -9,3 +9,16 @@ bundles/
 .legacy_backup/
 data/snap_labels.bak.*.json
 .venv/
+
+# logs (runtime)
+*.log
+
+# backups locales de cal
+data/calibration_offsets.bak.*.json
+
+# sentinelas / runtime state
+data/.cal_reloaded
+data/.recal_pending
+
+# LG batch outputs (regenerable)
+data/lg_batch/

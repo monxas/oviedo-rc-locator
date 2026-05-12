@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "calibration": "wfs_n05_bbox_2026_05_11",
+  "comment": "Bbox UTM ETRS89 30N del Suelo No Urbanizable de Oviedo (id_municipio=33044) obtenido de WFS GeoServer Asturias capa n05_SUELOS_NO_URBANIZABLES. Reemplaza la v1 optimizada estadísticamente.",
+  "x0": 255342.0,
+  "ymax": 4812301.0,
+  "width": 22366.0,
+  "height": 16755.0,
+  "cols": 9,
+  "rows": 10,
+  "letters": "ABCDEFGHIJ",
+  "_v1_backup": {
+    "x0": 252290.93,
+    "ymax": 4811487.92,
+    "width": 29018.81,
+    "height": 16194.95
+  }
+}

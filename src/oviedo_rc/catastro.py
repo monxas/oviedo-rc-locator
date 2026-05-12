@@ -144,7 +144,8 @@ def wfs_parcels_bbox(xmin, ymin, xmax, ymax):
             "area_m2": float(am.group(1)) if am else None,
             "poly_utm": list(zip(coords[::2], coords[1::2])),
         })
-    cache.write_text(json.dumps(parcels, ensure_ascii=False))
+    if parcels:
+        cache.write_text(json.dumps(parcels, ensure_ascii=False))
     return parcels
 
 
@@ -246,5 +247,6 @@ def consulta_dnprc(refcat14):
             out.append(parse_record({**bi, "rc": bi.get("idbi", {}).get("rc", {})}))
 
     result = {"refcat14": refcat14, "units": out}
-    cache.write_text(json.dumps(result, ensure_ascii=False, indent=2))
+    if out:
+        cache.write_text(json.dumps(result, ensure_ascii=False, indent=2))
     return result

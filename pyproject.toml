@@ -44,3 +44,8 @@ oviedo_rc = ["py.typed"]
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests that hit the network or external services (deselect with '-m \"not integration\"')",
+]

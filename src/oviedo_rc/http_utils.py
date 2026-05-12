@@ -1,8 +1,14 @@
 """HTTP helpers: GET con retry, validación de Content-Type y magic bytes."""
 import time
 import requests
+from requests.adapters import HTTPAdapter
 
 from .config import HTTP_HEADERS, HTTP_TIMEOUT, HTTP_RETRIES
+
+_SESSION = requests.Session()
+_adapter = HTTPAdapter(pool_connections=20, pool_maxsize=20)
+_SESSION.mount("http://", _adapter)
+_SESSION.mount("https://", _adapter)
 
 MAGIC_BYTES = {
     "application/pdf": b"%PDF-",
@@ -26,7 +32,7 @@ def http_get(url, *, headers=None, timeout=HTTP_TIMEOUT, retries=HTTP_RETRIES,
     last = None
     for attempt in range(retries):
         try:
-            r = requests.get(url, headers=headers or HTTP_HEADERS, timeout=timeout)
+            r = _SESSION.get(url, headers=headers or HTTP_HEADERS, timeout=timeout)
             r.raise_for_status()
             if expected_type:
                 ct = r.headers.get("Content-Type", "")

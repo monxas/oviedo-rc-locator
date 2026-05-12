@@ -1,19 +1,35 @@
-"""Cliente del listado y descarga de hojas del PGOU 1:1000 (Ayuntamiento)."""
+"""Cliente del listado y descarga de hojas del PGOU 1:1000 (Ayuntamiento).
+
+Multi-concejo (PR3): las funciones aceptan un `Concejo` opcional; si no se
+pasa, usa OVIEDO (backwards-compat). El cache `sheets.json` está
+compartido para OVIEDO; cuando haya >1 concejo, se separará por slug.
+"""
 import json
 import re
 
-from .config import (CACHE_DIR, SHEETS_FILE, PGOU_LIST_URL, PGOU_PORTLET,
-                      PGOU_PORTLET_PAGES, PGOU_EXPECTED_SHEETS_MIN)
+from .config import CACHE_DIR, SHEETS_FILE, PGOU_EXPECTED_SHEETS_MIN
+from .concejo import OVIEDO, Concejo
 from .http_utils import http_get, fetch
 
 
-def get_sheet_listing():
-    """Devuelve dict {sheet_name: url}. Cacheado en sheets.json."""
-    if SHEETS_FILE.exists():
-        return json.loads(SHEETS_FILE.read_text())
+def _sheets_file_for(concejo: Concejo):
+    """Path del cache de listado por concejo. OVIEDO usa el path legacy."""
+    if concejo.id_ine == OVIEDO.id_ine:
+        return SHEETS_FILE
+    return CACHE_DIR / f"sheets_{concejo.slug}.json"
+
+
+def get_sheet_listing(concejo: Concejo | None = None):
+    """Devuelve dict {sheet_name: url} para el concejo dado. Cacheado en disco."""
+    c = concejo or OVIEDO
+    if c.pgou_su is None:
+        raise RuntimeError(f"Concejo {c.nombre} sin portlet SU configurado")
+    cache_file = _sheets_file_for(c)
+    if cache_file.exists():
+        return json.loads(cache_file.read_text())
     sheets, raw_seen = {}, {}
-    for cur in range(1, PGOU_PORTLET_PAGES + 1):
-        url = f"{PGOU_LIST_URL}?{PGOU_PORTLET}={cur}"
+    for cur in range(1, c.pgou_su.pages + 1):
+        url = f"{c.pgou_su.url}?{c.pgou_su.instance}={cur}"
         html = http_get(url, timeout=60).text
         for m in re.finditer(
             r'href="(/documents/35127/[a-f0-9-]+)\?[^"]*"\s+'
@@ -32,13 +48,13 @@ def get_sheet_listing():
             f"Listado del Ayuntamiento incompleto: {len(sheets)} < "
             f"{PGOU_EXPECTED_SHEETS_MIN}"
         )
-    SHEETS_FILE.write_text(json.dumps(sheets, indent=2))
+    cache_file.write_text(json.dumps(sheets, indent=2))
     return sheets
 
 
-def fetch_sheet_pdf(sheet_name):
+def fetch_sheet_pdf(sheet_name, concejo: Concejo | None = None):
     """Devuelve path local al PDF de una hoja, descargándolo si hace falta."""
-    sheets = get_sheet_listing()
+    sheets = get_sheet_listing(concejo)
     url = sheets.get(sheet_name)
     if not url:
         raise FileNotFoundError(f"sheet not in listing: {sheet_name}")

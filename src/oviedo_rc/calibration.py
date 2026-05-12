@@ -3,30 +3,73 @@
 El modelo geométrico tiene biases sistemáticos distintos por zona del PGOU.
 Estos offsets se calcularon de 45 puntos labeled manualmente vía la web
 validator. Se aplican en píxel-space tras `utm_polygon_to_pixel`.
+
+Multi-concejo (PR3): las funciones aceptan un `Concejo` opcional. Mientras
+sólo haya un concejo registrado (OVIEDO), se mantiene el path legacy
+`data/calibration_offsets.json` para no romper a `recalibrate.py`. Cuando
+se añada un segundo concejo, este módulo migrará al esquema
+`data/calibration/<ine>_<slug>.json` (ver TODO).
 """
 import json
+import threading
 from pathlib import Path
 
-_CACHE = None
+from .concejo import OVIEDO, Concejo
+
+_CACHE: dict[str, dict] = {}
+_CACHE_MTIME: dict[str, float] = {}
+_CACHE_LOCK = threading.Lock()
 
 
-def _path():
-    return Path(__file__).resolve().parents[2] / "data" / "calibration_offsets.json"
+def _path(concejo: Concejo | None = None) -> Path:
+    """Path del JSON de offsets para el concejo dado.
+
+    OVIEDO usa el path legacy (`data/calibration_offsets.json`) para no
+    romper a recalibrate.py. Otros concejos: `data/calibration/<ine>_<slug>.json`.
+    """
+    c = concejo or OVIEDO
+    repo_root = Path(__file__).resolve().parents[2]
+    if c.id_ine == OVIEDO.id_ine:
+        return repo_root / "data" / "calibration_offsets.json"
+    return repo_root / "data" / "calibration" / f"{c.id_ine}_{c.slug}.json"
 
 
-def _load():
-    global _CACHE
-    if _CACHE is not None:
-        return _CACHE
-    p = _path()
-    if not p.exists():
-        _CACHE = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
-    else:
-        _CACHE = json.loads(p.read_text())
-    return _CACHE
+def _load(concejo: Concejo | None = None):
+    """Carga (o re-carga) `calibration_offsets.json` para el concejo.
+
+    Se cachea el contenido en memoria, pero se re-lee si la mtime del fichero
+    cambia. Esto permite que `recalibrate.py` actualice las offsets en disco
+    y los servicios (locator/validator) las recojan en la próxima request,
+    sin necesidad de un restart explícito.
+    """
+    c = concejo or OVIEDO
+    key = c.slug
+    p = _path(c)
+    try:
+        mtime = p.stat().st_mtime
+    except FileNotFoundError:
+        mtime = -1.0
+    with _CACHE_LOCK:
+        cached = _CACHE.get(key)
+        if cached is not None and _CACHE_MTIME.get(key, -1.0) == mtime:
+            return cached
+        if mtime < 0:
+            data = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
+        else:
+            try:
+                data = json.loads(p.read_text())
+            except (OSError, json.JSONDecodeError):
+                # Don't blow up mid-write — keep previous cache if any.
+                if cached is not None:
+                    return cached
+                data = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
+        _CACHE[key] = data
+        _CACHE_MTIME[key] = mtime
+        return data
 
 
-def offset_for(cell: str, sub_quadrant: str | None = None) -> tuple[int, int]:
+def offset_for(cell: str, sub_quadrant: str | None = None,
+                concejo: Concejo | None = None) -> tuple[int, int]:
     """Devuelve (dx, dy) en píxeles a sumar a la predicción del modelo.
 
     Resolución preferida:
@@ -34,7 +77,7 @@ def offset_for(cell: str, sub_quadrant: str | None = None) -> tuple[int, int]:
       2) Offset por cell (incluye interpolados) — median ~18 px
       3) Bias global como último fallback
     """
-    cal = _load()
+    cal = _load(concejo)
     if sub_quadrant:
         key = f"{cell}-{sub_quadrant}"
         cs_off = cal.get("csub_offsets_px", {}).get(key)
@@ -48,12 +91,13 @@ def offset_for(cell: str, sub_quadrant: str | None = None) -> tuple[int, int]:
 
 
 # Backwards-compat alias
-def offset_for_cell(cell: str) -> tuple[int, int]:
-    return offset_for(cell, None)
+def offset_for_cell(cell: str, concejo: Concejo | None = None) -> tuple[int, int]:
+    return offset_for(cell, None, concejo)
 
 
-def has_offset_for(cell: str, sub_quadrant: str | None = None) -> bool:
-    cal = _load()
+def has_offset_for(cell: str, sub_quadrant: str | None = None,
+                    concejo: Concejo | None = None) -> bool:
+    cal = _load(concejo)
     if sub_quadrant and f"{cell}-{sub_quadrant}" in cal.get("csub_offsets_px", {}):
         return True
     return cell in cal.get("cell_offsets_px", {})
@@ -63,7 +107,8 @@ def has_offset_for(cell: str, sub_quadrant: str | None = None) -> bool:
 PX_PER_M = 11.81
 
 
-def quality_for(cell: str, sub_quadrant: str | None = None) -> dict:
+def quality_for(cell: str, sub_quadrant: str | None = None,
+                 concejo: Concejo | None = None) -> dict:
     """Devuelve un dict con la calidad esperada de la calibración para
     este (cell, sub). Útil para warnings en metadata del bundle.
 
@@ -73,7 +118,7 @@ def quality_for(cell: str, sub_quadrant: str | None = None) -> dict:
       expected_residual_px / _m: σ_total estimada del bucket (0 si insuficiente)
       reliability: 'high' | 'ok' | 'low' | 'unknown'
     """
-    cal = _load()
+    cal = _load(concejo)
     key = f"{cell}-{sub_quadrant}" if sub_quadrant else None
     stats = cal.get("csub_stats", {}).get(key) if key else None
 
@@ -95,7 +140,6 @@ def quality_for(cell: str, sub_quadrant: str | None = None) -> dict:
             "expected_residual_m": round(res_px / PX_PER_M, 2),
             "reliability": rel,
         }
-    # Fallback: per-cell offset (con o sin interpolar)
     if cell in cal.get("cells_with_direct_data", []):
         return {"source": "cell", "n_labels": 0,
                 "expected_residual_px": 30, "expected_residual_m": round(30 / PX_PER_M, 2),
@@ -109,49 +153,52 @@ def quality_for(cell: str, sub_quadrant: str | None = None) -> dict:
             "reliability": "unknown"}
 
 
-def edge_neighbors(X: float, Y: float, edge_threshold_m: float = 50) -> list[dict]:
+def edge_neighbors(X: float, Y: float, edge_threshold_m: float = 50,
+                    concejo: Concejo | None = None) -> list[dict]:
     """Si el RC en UTM (X, Y) está cerca del borde de su cell, devuelve cells
     vecinas candidatas con sus sheets PGOU si existen."""
-    from .config import (
-        MALLA_X0, MALLA_YMAX, MALLA_CELL_W, MALLA_CELL_H, SUB_CONVENTION,
-    )
     from . import pgou
+    c = concejo or OVIEDO
+    m = c.malla
+    if m is None:
+        return []
 
-    col = int((X - MALLA_X0) // MALLA_CELL_W)
-    row = int((MALLA_YMAX - Y) // MALLA_CELL_H)
-    x_in = (X - (MALLA_X0 + col * MALLA_CELL_W)) / MALLA_CELL_W
-    y_in = (MALLA_YMAX - row * MALLA_CELL_H - Y) / MALLA_CELL_H
+    col = int((X - m.x0) // m.cell_w)
+    row = int((m.ymax - Y) // m.cell_h)
+    x_in = (X - (m.x0 + col * m.cell_w)) / m.cell_w
+    y_in = (m.ymax - row * m.cell_h - Y) / m.cell_h
 
     candidates = set()
-    if x_in * MALLA_CELL_W < edge_threshold_m:
+    if x_in * m.cell_w < edge_threshold_m:
         candidates.add((col - 1, row))
-    if (1 - x_in) * MALLA_CELL_W < edge_threshold_m:
+    if (1 - x_in) * m.cell_w < edge_threshold_m:
         candidates.add((col + 1, row))
-    if y_in * MALLA_CELL_H < edge_threshold_m:
+    if y_in * m.cell_h < edge_threshold_m:
         candidates.add((col, row - 1))
-    if (1 - y_in) * MALLA_CELL_H < edge_threshold_m:
+    if (1 - y_in) * m.cell_h < edge_threshold_m:
         candidates.add((col, row + 1))
 
     try:
-        sheets = pgou.get_sheet_listing()
+        sheets = pgou.get_sheet_listing(c)
     except Exception:
         return []
     out = []
-    for c, r in candidates:
+    for cc, r in candidates:
         if not (0 <= r < 25):
             continue
         letter = "ABCDEFGHIJKLMNOPQRSTUVWXY"[r]
-        nx_in = x_in - (c - col)
+        nx_in = x_in - (cc - col)
         ny_in = y_in - (r - row)
-        compass = ("N" if ny_in < 0.5 else "S") + ("W" if nx_in < 0.5 else "E")
-        sub = SUB_CONVENTION[compass]
-        sheet = f"PLANO_{c}_{letter}_{sub}.pdf"
+        compass = ("N" if ny_in < m.ns_threshold else "S") + \
+                  ("W" if nx_in < m.ew_threshold else "E")
+        sub = m.sub_convention[compass]
+        sheet = f"PLANO_{cc}_{letter}_{sub}.pdf"
         if sheet in sheets:
             out.append({
-                "cell": f"{c}-{letter}",
+                "cell": f"{cc}-{letter}",
                 "sub_quadrant": sub,
                 "sub_compass": compass,
                 "sheet_name": sheet,
-                "col": c, "row": r,
+                "col": cc, "row": r,
             })
     return out
