@@ -38,7 +38,7 @@ from oviedo_rc import process_rc, RCError  # noqa: E402
 from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod, wms as wms_mod  # noqa: E402
 from oviedo_rc import fichas as fichas_mod  # noqa: E402
 from oviedo_rc import planeamiento as plan_mod  # noqa: E402
-from oviedo_rc import gijon as gijon_mod  # noqa: E402
+from oviedo_rc.concejo import get_concejo_for_utm, OVIEDO as _OVIEDO  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -196,7 +196,7 @@ def locate(rc: str, _=Depends(auth)):
 
     t0 = time.time()
     try:
-        bundle = process_rc(rc)
+        bundle = process_rc(rc)  # concejo auto-detect via UTM
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
     except Exception:
@@ -326,11 +326,17 @@ def info(rc: str, _=Depends(auth)):
     bundle = None
     bundle_err: Optional[Exception] = None
 
+    # Concejo: auto-detect por UTM (None si fuera de bbox; usaremos default
+    # OVIEDO en ese caso para mantener comportamiento legacy con rural SNU).
+    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
+    if concejo.slug != _OVIEDO.slug:
+        notes.append(f"concejo={concejo.slug}")
+
     # Paraleliza pipeline SU + planeamiento WFS (ambos I/O bound)
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=2) as pool:
-        f_bundle = pool.submit(process_rc, rc)
-        f_plan = pool.submit(plan_mod.lookup, X, Y)
+        f_bundle = pool.submit(process_rc, rc, concejo=concejo)
+        f_plan = pool.submit(plan_mod.lookup, X, Y, concejo)
         plan = f_plan.result()
         try:
             bundle = f_bundle.result()
@@ -370,9 +376,9 @@ def info(rc: str, _=Depends(auth)):
         if "Formato de RC inválido" not in err_str and "No se encontró hoja" not in err_str:
             notes.append(f"sin SU: {err_str}")
         try:
-            sheet = snu_mod.resolve_snu_sheet(X, Y)
+            sheet = snu_mod.resolve_snu_sheet(X, Y, concejo)
             if sheet:
-                pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet)
+                pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet, concejo)
                 png_path = CACHE_DIR / f"snu_{sheet}.png"
                 if not png_path.exists():
                     img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
@@ -428,7 +434,7 @@ def info(rc: str, _=Depends(auth)):
                 # Polígono sobre plano SNU (calidad ~aproximada, grid bbox)
                 if snu_sheet:
                     try:
-                        annotated_snu = snu_mod.overlay_polygon(snu_sheet, pu)
+                        annotated_snu = snu_mod.overlay_polygon(snu_sheet, pu, concejo=concejo)
                         if annotated_snu is not None:
                             out2 = CACHE_DIR / f"rural_snu_{rc14}.png"
                             cv2.imwrite(str(out2), annotated_snu)
@@ -489,7 +495,8 @@ def snu_endpoint(rc: str, _=Depends(auth)):
         log.exception("snu catastro rc_to_utm failed for rc=%s", rc)
         raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
-    sheet_name = snu_mod.resolve_snu_sheet(X, Y)
+    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
+    sheet_name = snu_mod.resolve_snu_sheet(X, Y, concejo)
     if not sheet_name:
         return SNUResp(
             rc=rc, address=addr, utm=[X, Y],
@@ -500,7 +507,7 @@ def snu_endpoint(rc: str, _=Depends(auth)):
     snu_url: Optional[str] = None
     note = ""
     try:
-        pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet_name)
+        pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet_name, concejo)
         png_path = CACHE_DIR / f"snu_{sheet_name}.png"
         if not png_path.exists():
             img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
@@ -549,7 +556,8 @@ def planeamiento_rc(rc: str, _=Depends(auth)):
         log.exception("planeamiento catastro rc_to_utm failed for rc=%s", rc)
         raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
-    info = plan_mod.lookup(X, Y)
+    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
+    info = plan_mod.lookup(X, Y, concejo)
     return PlanResp(
         rc=rc, address=addr, utm=[X, Y],
         ambito=info.get("ambito"),
@@ -708,53 +716,6 @@ fetch(`/info/${RC}`,{headers:H}).then(r=>{
 });
 </script></body></html>
 """
-
-
-class GijonResp(BaseModel):
-    rc: str
-    address: Optional[str] = None
-    utm: Optional[list[float]] = None
-    in_gijon: bool = False
-    ambito: Optional[dict] = None
-    ambitos_solapados: list[dict] = []
-    notes: list[str] = []
-    took_ms: int = 0
-
-
-@app.get("/gijon/{rc}", response_model=GijonResp)
-def gijon_info(rc: str, _=Depends(auth)):
-    """Lookup PGOU de Gijón por RC: ámbito vectorial + ficha (sin malla, sin calibración).
-
-    Datos vienen del KML de `documentos.gijon.es/PGO/pgo.kml` cacheado.
-    """
-    rc = rc.upper().strip()
-    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
-        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
-    t0 = time.time()
-    notes: list[str] = []
-    try:
-        rc14 = rc[:14]
-        X, Y, addr = catastro.rc_to_utm(rc14)
-    except RCError as e:
-        raise HTTPException(404, f"RC no resoluble: {e}")
-    except Exception as e:
-        log.exception("catastro fail rc=%s", rc)
-        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
-
-    in_gijon = gijon_mod.in_gijon(X, Y)
-    hits = gijon_mod.lookup_ambitos(X, Y) if in_gijon else []
-    main = gijon_mod.lookup(X, Y) if in_gijon else None
-    if in_gijon and not hits:
-        notes.append("RC dentro del bbox de Gijón pero no encaja en ningún ámbito vectorial")
-
-    return GijonResp(
-        rc=rc, address=addr, utm=[X, Y],
-        in_gijon=in_gijon,
-        ambito=main,
-        ambitos_solapados=[h for h in hits if h["id"] != (main or {}).get("id")],
-        notes=notes,
-        took_ms=int((time.time() - t0) * 1000),
-    )
 
 
 @app.get("/img/{sha}.png")
