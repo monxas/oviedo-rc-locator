@@ -262,6 +262,7 @@ class InfoResp(BaseModel):
     sistema_actuacion: Optional[str] = None
     fichas_match: list = []
     ficha_data: Optional[dict] = None   # estructurado parseado del PDF de la ficha top-match
+    ficha_plano_url: Optional[str] = None  # render del plano de la ficha con polígono RC
     # Patrimonio
     patrimonio: list = []
     # SNU (rurales)
@@ -444,11 +445,27 @@ def info(rc: str, _=Depends(auth)):
     # Parseo enriquecido de la ficha top-match (si existe JSON cacheado)
     fichas_match = plan.get("fichas_match", [])
     ficha_data: Optional[dict] = None
+    ficha_plano_url: Optional[str] = None
     if fichas_match:
+        top_filename = fichas_match[0].get("filename", "")
         try:
-            ficha_data = fichas_mod.get_ficha_data(fichas_match[0].get("filename", ""))
+            ficha_data = fichas_mod.get_ficha_data(top_filename)
         except Exception as e:
             notes.append(f"ficha_data fail: {type(e).__name__}")
+        # Render del plano de la ficha con overlay del polígono catastral
+        # (calidad aproximada sin cal; converge con drag manual posterior).
+        try:
+            from oviedo_rc import ficha_plano as ficha_plano_mod
+            from oviedo_rc import catastro as catastro_mod
+            poly = catastro_mod.get_parcel_polygon(rc14)
+            if poly and poly.get("polygon_utm"):
+                png_path = ficha_plano_mod.render_and_cache(
+                    top_filename, rc14, poly["polygon_utm"]
+                )
+                if png_path:
+                    ficha_plano_url = f"{PUBLIC_BASE}/img/{_cache_png(png_path)}.png"
+        except Exception as e:
+            notes.append(f"ficha_plano fail: {type(e).__name__}")
 
     return InfoResp(
         rc=rc, address=addr, utm=[X, Y],
@@ -461,6 +478,7 @@ def info(rc: str, _=Depends(auth)):
         sistema_actuacion=ug.get("Sistema_de_Actuación"),
         fichas_match=fichas_match,
         ficha_data=ficha_data,
+        ficha_plano_url=ficha_plano_url,
         patrimonio=plan.get("patrimonio", []),
         snu_sheet=snu_sheet, snu_url=snu_url,
         snu_polygon_url=snu_polygon_url,
@@ -779,6 +797,15 @@ fetch(`/gijon/${RC}`,{headers:H}).then(r=>r.ok?r.json():null).then(g=>{
   } else if(d.snu_url){
     out.push(card(`Hoja SNU · ${d.snu_sheet}`,
       `<a href="${authUrl(d.snu_url)}" target="_blank"><img class="plan" src="${authUrl(d.snu_url)}" alt="snu"></a><div class="muted" style="margin-top:8px">RC en Suelo No Urbanizable — sin plano SU</div>`, true));
+  }
+
+  // Plano del ámbito (ficha de ámbito con overlay del polígono catastral)
+  if(d.ficha_plano_url){
+    const u = authUrl(d.ficha_plano_url);
+    out.push(card(`Plano del ámbito (de la ficha)`,
+      `<a href="${u}" target="_blank"><img class="plan" src="${u}" alt="plano ficha"></a>`+
+      `<div class="muted" style="margin-top:8px">Posición aproximada — calibración por ficha pendiente. Si está desplazado, marcar con drag en validator.</div>`,
+      true));
   }
 
   // Patrimonio
