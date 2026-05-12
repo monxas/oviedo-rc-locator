@@ -842,8 +842,16 @@ function startPinch() {
   // world coords (native px) of the midpoint in that pane
   const worldX = (midX - r.left - pane.panX) / s;
   const worldY = (midY - r.top  - pane.panY) / s;
-  pinch = { startDist: dist || 1, startZoom: viewMpx, midPane: pane, worldX, worldY, midX, midY };
-  // Cancel any in-flight single-pointer kinds; they'd compete.
+  pinch = {
+    startDist: dist || 1,
+    startZoom: viewMpx,
+    midPane: pane,
+    worldX, worldY,
+    midX, midY,
+    // snapshot panX/Y de ambos panes para sync solidario
+    startCrop: { panX: VP.crop.panX, panY: VP.crop.panY },
+    startWms:  { panX: VP.wms.panX,  panY: VP.wms.panY  },
+  };
   for (const p of pointers.values()) {
     if (p.kind === 'drag-poly' || p.kind === 'pan-pane') p.kind = 'pinch';
   }
@@ -861,27 +869,24 @@ function updatePinch() {
   viewMpx = Math.max(0.05, Math.min(2.0, pinch.startZoom / ratio));
   const zr = document.getElementById('zoom');
   if (zr) zr.value = viewMpx;
-  // For each pane: pan so that the world point stays under the (current) midpoint.
-  for (const key of ['crop', 'wms']) {
-    const pane = VP[key];
-    if (!pane.wrap || !pane.mPerPxNative) continue;
-    const r = pane.wrap.getBoundingClientRect();
-    const s = pane.mPerPxNative / viewMpx;
-    // Use pinch.midPane's world point for the pane the pinch started on; for
-    // the OTHER pane, anchor on its own centre (its scale changes too but we
-    // keep its current "centre point" stable, which feels right).
-    if (pane === pinch.midPane) {
-      pane.panX = (midX - r.left) - pinch.worldX * s;
-      pane.panY = (midY - r.top)  - pinch.worldY * s;
-    } else {
-      // Anchor on current centre of viewport (in world coords pre-zoom).
-      const prevS = pane.scale || s;
-      const cxWorld = (r.width / 2 - pane.panX) / prevS;
-      const cyWorld = (r.height / 2 - pane.panY) / prevS;
-      pane.panX = r.width / 2 - cxWorld * s;
-      pane.panY = r.height / 2 - cyWorld * s;
-    }
-  }
+  // Pane activo: ancla world point bajo midpoint.
+  const active = pinch.midPane;
+  const r = active.wrap.getBoundingClientRect();
+  const sActive = active.mPerPxNative / viewMpx;
+  const newActivePanX = (midX - r.left) - pinch.worldX * sActive;
+  const newActivePanY = (midY - r.top)  - pinch.worldY * sActive;
+  // Delta del pane activo respecto al snapshot inicial del pinch (en pixels display).
+  const startActive = (active === VP.crop) ? pinch.startCrop : pinch.startWms;
+  const dPanX = newActivePanX - startActive.panX;
+  const dPanY = newActivePanY - startActive.panY;
+  active.panX = newActivePanX;
+  active.panY = newActivePanY;
+  // Pane "el otro": replicar exactamente el mismo delta de display px.
+  // Como ambos comparten viewMpx, el on-screen movement coincide → sincronización solidaria.
+  const other = (active === VP.crop) ? VP.wms : VP.crop;
+  const startOther = (other === VP.crop) ? pinch.startCrop : pinch.startWms;
+  other.panX = startOther.panX + dPanX;
+  other.panY = startOther.panY + dPanY;
   scheduleTransform();
 }
 
