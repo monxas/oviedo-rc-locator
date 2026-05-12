@@ -38,6 +38,7 @@ from oviedo_rc import process_rc, RCError  # noqa: E402
 from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod, wms as wms_mod  # noqa: E402
 from oviedo_rc import fichas as fichas_mod  # noqa: E402
 from oviedo_rc import planeamiento as plan_mod  # noqa: E402
+from oviedo_rc import gijon as gijon_mod  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -707,6 +708,53 @@ fetch(`/info/${RC}`,{headers:H}).then(r=>{
 });
 </script></body></html>
 """
+
+
+class GijonResp(BaseModel):
+    rc: str
+    address: Optional[str] = None
+    utm: Optional[list[float]] = None
+    in_gijon: bool = False
+    ambito: Optional[dict] = None
+    ambitos_solapados: list[dict] = []
+    notes: list[str] = []
+    took_ms: int = 0
+
+
+@app.get("/gijon/{rc}", response_model=GijonResp)
+def gijon_info(rc: str, _=Depends(auth)):
+    """Lookup PGOU de Gijón por RC: ámbito vectorial + ficha (sin malla, sin calibración).
+
+    Datos vienen del KML de `documentos.gijon.es/PGO/pgo.kml` cacheado.
+    """
+    rc = rc.upper().strip()
+    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
+        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
+    t0 = time.time()
+    notes: list[str] = []
+    try:
+        rc14 = rc[:14]
+        X, Y, addr = catastro.rc_to_utm(rc14)
+    except RCError as e:
+        raise HTTPException(404, f"RC no resoluble: {e}")
+    except Exception as e:
+        log.exception("catastro fail rc=%s", rc)
+        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
+
+    in_gijon = gijon_mod.in_gijon(X, Y)
+    hits = gijon_mod.lookup_ambitos(X, Y) if in_gijon else []
+    main = gijon_mod.lookup(X, Y) if in_gijon else None
+    if in_gijon and not hits:
+        notes.append("RC dentro del bbox de Gijón pero no encaja en ningún ámbito vectorial")
+
+    return GijonResp(
+        rc=rc, address=addr, utm=[X, Y],
+        in_gijon=in_gijon,
+        ambito=main,
+        ambitos_solapados=[h for h in hits if h["id"] != (main or {}).get("id")],
+        notes=notes,
+        took_ms=int((time.time() - t0) * 1000),
+    )
 
 
 @app.get("/img/{sha}.png")
