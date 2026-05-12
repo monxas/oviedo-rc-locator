@@ -38,7 +38,7 @@ from oviedo_rc import process_rc, RCError  # noqa: E402
 from oviedo_rc import catastro, geom, snu as snu_mod, render as render_mod, wms as wms_mod  # noqa: E402
 from oviedo_rc import fichas as fichas_mod  # noqa: E402
 from oviedo_rc import planeamiento as plan_mod  # noqa: E402
-from oviedo_rc.concejo import get_concejo_for_utm, OVIEDO as _OVIEDO  # noqa: E402
+from oviedo_rc import gijon as gijon_mod  # noqa: E402
 
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
@@ -196,7 +196,7 @@ def locate(rc: str, _=Depends(auth)):
 
     t0 = time.time()
     try:
-        bundle = process_rc(rc)  # concejo auto-detect via UTM
+        bundle = process_rc(rc)
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
     except Exception:
@@ -326,17 +326,11 @@ def info(rc: str, _=Depends(auth)):
     bundle = None
     bundle_err: Optional[Exception] = None
 
-    # Concejo: auto-detect por UTM (None si fuera de bbox; usaremos default
-    # OVIEDO en ese caso para mantener comportamiento legacy con rural SNU).
-    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
-    if concejo.slug != _OVIEDO.slug:
-        notes.append(f"concejo={concejo.slug}")
-
     # Paraleliza pipeline SU + planeamiento WFS (ambos I/O bound)
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=2) as pool:
-        f_bundle = pool.submit(process_rc, rc, concejo=concejo)
-        f_plan = pool.submit(plan_mod.lookup, X, Y, concejo)
+        f_bundle = pool.submit(process_rc, rc)
+        f_plan = pool.submit(plan_mod.lookup, X, Y)
         plan = f_plan.result()
         try:
             bundle = f_bundle.result()
@@ -376,9 +370,9 @@ def info(rc: str, _=Depends(auth)):
         if "Formato de RC inválido" not in err_str and "No se encontró hoja" not in err_str:
             notes.append(f"sin SU: {err_str}")
         try:
-            sheet = snu_mod.resolve_snu_sheet(X, Y, concejo)
+            sheet = snu_mod.resolve_snu_sheet(X, Y)
             if sheet:
-                pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet, concejo)
+                pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet)
                 png_path = CACHE_DIR / f"snu_{sheet}.png"
                 if not png_path.exists():
                     img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
@@ -434,7 +428,7 @@ def info(rc: str, _=Depends(auth)):
                 # Polígono sobre plano SNU (calidad ~aproximada, grid bbox)
                 if snu_sheet:
                     try:
-                        annotated_snu = snu_mod.overlay_polygon(snu_sheet, pu, concejo=concejo)
+                        annotated_snu = snu_mod.overlay_polygon(snu_sheet, pu)
                         if annotated_snu is not None:
                             out2 = CACHE_DIR / f"rural_snu_{rc14}.png"
                             cv2.imwrite(str(out2), annotated_snu)
@@ -495,8 +489,7 @@ def snu_endpoint(rc: str, _=Depends(auth)):
         log.exception("snu catastro rc_to_utm failed for rc=%s", rc)
         raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
-    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
-    sheet_name = snu_mod.resolve_snu_sheet(X, Y, concejo)
+    sheet_name = snu_mod.resolve_snu_sheet(X, Y)
     if not sheet_name:
         return SNUResp(
             rc=rc, address=addr, utm=[X, Y],
@@ -507,7 +500,7 @@ def snu_endpoint(rc: str, _=Depends(auth)):
     snu_url: Optional[str] = None
     note = ""
     try:
-        pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet_name, concejo)
+        pdf_path = snu_mod.fetch_snu_sheet_pdf(sheet_name)
         png_path = CACHE_DIR / f"snu_{sheet_name}.png"
         if not png_path.exists():
             img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=120)
@@ -556,8 +549,7 @@ def planeamiento_rc(rc: str, _=Depends(auth)):
         log.exception("planeamiento catastro rc_to_utm failed for rc=%s", rc)
         raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
-    concejo = get_concejo_for_utm(X, Y) or _OVIEDO
-    info = plan_mod.lookup(X, Y, concejo)
+    info = plan_mod.lookup(X, Y)
     return PlanResp(
         rc=rc, address=addr, utm=[X, Y],
         ambito=info.get("ambito"),
@@ -650,11 +642,100 @@ function kv(rows){
   return `<div class="kv">${rows.map(([k,v])=>`<span class="k">${k}</span><span>${fmt(v)}</span>`).join("")}</div>`;
 }
 
-fetch(`/info/${RC}`,{headers:H}).then(r=>{
-  if(!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
+function renderGijon(d){
+  document.getElementById("title").textContent = d.rc + " · Gijón";
+  document.getElementById("addr").textContent = d.address || "";
+  const root = document.getElementById("root");
+  const out = [];
+  const amb = d.ambito;
+  const meta = d.ambito_meta || {};
+  const ambitoBadge = amb ? `<span class="pill">${amb.id}</span>`
+                          : '<span class="pill warn">sin ámbito vectorial</span>';
+
+  // Resumen con la clasificación urbanística (lo importante)
+  out.push(card("Clasificación urbanística", kv([
+    ["RC", d.rc],
+    ["Dirección", d.address],
+    ["UTM (ETRS89 30N)", d.utm?d.utm.map(x=>x.toFixed(1)).join(", "):""],
+    ["Concejo", "Gijón (id_ine 33024)"],
+    ["Ámbito", ambitoBadge + (meta.nombre_largo?` <span class="muted">${meta.nombre_largo}</span>`:"")],
+    ["Clase de suelo", meta.clase ? `<strong>${meta.clase}</strong>` : null],
+    ["Categoría", meta.categoria ? `<strong>${meta.categoria}</strong>` : null],
+    ["Plan de desarrollo", meta.plan_desarrollo],
+    ["Iniciativa", meta.iniciativa],
+    ["Ámbitos solapados", (d.ambitos_solapados||[]).length],
+    ["Latencia", `${d.took_ms} ms`],
+  ])));
+
+  // Datos estructurados parseados del PDF (cuando existen)
+  const fd = d.ficha_data;
+  if(fd){
+    const fmtN = (v, u) => v==null ? "—" : (u ? `${v} ${u}` : v);
+    out.push(card("Datos de la ficha (parseados del PDF)", kv([
+      ["Uso predominante", fd.uso_predominante ? `<strong>${fd.uso_predominante}</strong>` : null],
+      ["Clase de suelo", fd.clase_suelo],
+      ["Categoría", fd.categoria_suelo],
+      ["Planeamiento desarrollo", fd.planeamiento_desarrollo],
+      ["Iniciativa", fd.iniciativa],
+      ["Sistema de actuación", fd.sistema_actuacion],
+      ["Instrumento de gestión", fd.instrumento_gestion],
+      ["Ordenanza", fd.ordenanza],
+      ["Edificabilidad", fd.edificabilidad_m2m2!=null ? `${fd.edificabilidad_m2m2} m²/m²` : null],
+      ["Densidad", fd.densidad_viv_ha!=null ? `${fd.densidad_viv_ha} viv/ha` : null],
+      ["Viviendas estimadas", fd.viviendas_estimadas],
+      ["Viviendas protegidas", fd.viviendas_protegidas_pct!=null ? `${fd.viviendas_protegidas_pct}%` : null],
+      ["Altura máxima", fd.altura_max_plantas!=null ? `${fd.altura_max_plantas} plantas` : null],
+      ["Sup. ámbito", fmtN(fd.superficie_ambito_m2, "m²")],
+      ["Sup. neta", fmtN(fd.superficie_neta_m2, "m²")],
+      ["Sup. residencial", fmtN(fd.sup_residencial_m2, "m²")],
+      ["Sup. viario", fmtN(fd.sup_viario_m2, "m²")],
+      ["Sup. espacios libres", fmtN(fd.sup_espacios_libres_m2, "m²")],
+      ["Sup. edificable máx.", fmtN(fd.sup_edificable_max_m2, "m²")],
+    ])));
+  }
+
+  // Ficha PDF específica (cuando existe)
+  if(meta.ficha_pdf_url){
+    out.push(card("Ficha PDF del ámbito",
+      `<div class="muted" style="margin-bottom:8px">Ficha específica con uso, edificabilidad y aprovechamiento.</div>`+
+      `<div style="margin-bottom:10px"><a href="${meta.ficha_pdf_url}" target="_blank">Abrir en pestaña nueva</a></div>`+
+      `<iframe src="${meta.ficha_pdf_url}" style="width:100%;height:600px;border:1px solid #ddd;border-radius:8px" loading="lazy"></iframe>`,
+      true));
+  } else if(amb){
+    out.push(card("Ficha", `<div class="muted">No hay ficha PDF específica para este ámbito.</div><div style="margin-top:8px"><a href="${amb.ficha_url}" target="_blank">Ver en web del Ayto.</a></div>`));
+  }
+
+  // Plano específico del PGOU (cuando existe)
+  if(meta.plano_pdf_url){
+    out.push(card("Plano PGOU del ámbito",
+      `<div style="margin-bottom:10px"><a href="${meta.plano_pdf_url}" target="_blank">Abrir en pestaña nueva</a></div>`+
+      `<iframe src="${meta.plano_pdf_url}" style="width:100%;height:600px;border:1px solid #ddd;border-radius:8px" loading="lazy"></iframe>`,
+      true));
+  }
+
+  // Otros ámbitos solapados
+  if((d.ambitos_solapados||[]).length>0){
+    out.push(card("Otros ámbitos en esta coord", `<ul>${
+      d.ambitos_solapados.map(a=>`<li><a href="${a.ficha_url}" target="_blank">${a.id}</a> <span class="muted">${a.categoria}</span></li>`).join("")
+    }</ul>`));
+  }
+  if((d.notes||[]).length>0){
+    out.push(card("Notas", `<ul>${d.notes.map(n=>`<li class="muted">${n}</li>`).join("")}</ul>`));
+  }
+  root.innerHTML = out.join("");
+}
+
+// 1) Llamar a /gijon/{rc} (siempre rápido, dice si está en Gijón o no).
+// 2) Si in_gijon → render Gijón. Si no → fetch /info y render Oviedo.
+fetch(`/gijon/${RC}`,{headers:H}).then(r=>r.ok?r.json():null).then(g=>{
+  if(g && g.in_gijon){ renderGijon(g); return; }
+  return fetch(`/info/${RC}`,{headers:H}).then(r=>{
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  });
 }).then(d=>{
-  document.getElementById("title").textContent = d.rc;
+  if(!d) return;  // ya rendered Gijón
+  document.getElementById("title").textContent = d.rc + " · Oviedo";
   document.getElementById("addr").textContent = d.address || "";
 
   const root = document.getElementById("root");
@@ -716,6 +797,69 @@ fetch(`/info/${RC}`,{headers:H}).then(r=>{
 });
 </script></body></html>
 """
+
+
+class GijonResp(BaseModel):
+    rc: str
+    address: Optional[str] = None
+    utm: Optional[list[float]] = None
+    in_gijon: bool = False
+    ambito: Optional[dict] = None
+    ambito_meta: Optional[dict] = None  # clase/categoria/plan_desarrollo/iniciativa/pdfs
+    ficha_data: Optional[dict] = None   # estructurado parseado del PDF (uso, edif, etc.)
+    ambitos_solapados: list[dict] = []
+    notes: list[str] = []
+    took_ms: int = 0
+
+
+@app.get("/gijon/{rc}", response_model=GijonResp)
+def gijon_info(rc: str, _=Depends(auth)):
+    """Lookup PGOU de Gijón por RC: ámbito vectorial + ficha (sin malla, sin calibración).
+
+    Datos vienen del KML de `documentos.gijon.es/PGO/pgo.kml` cacheado.
+    """
+    rc = rc.upper().strip()
+    if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
+        raise HTTPException(422, "RC inválido (14 o 20 chars alfanuméricos)")
+    t0 = time.time()
+    notes: list[str] = []
+    try:
+        rc14 = rc[:14]
+        X, Y, addr = catastro.rc_to_utm(rc14)
+    except RCError as e:
+        raise HTTPException(404, f"RC no resoluble: {e}")
+    except Exception as e:
+        log.exception("catastro fail rc=%s", rc)
+        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
+
+    in_gijon = gijon_mod.in_gijon(X, Y)
+    hits = gijon_mod.lookup_ambitos(X, Y) if in_gijon else []
+    main = gijon_mod.lookup(X, Y) if in_gijon else None
+    if in_gijon and not hits:
+        notes.append("RC dentro del bbox de Gijón pero no encaja en ningún ámbito vectorial")
+
+    ambito_meta = None
+    ficha_data = None
+    if main:
+        try:
+            ambito_meta = gijon_mod.fetch_ficha_meta(main["id"])
+        except Exception as e:
+            notes.append(f"ficha meta fail: {type(e).__name__}")
+        try:
+            ficha_data = gijon_mod.get_ficha_data(main["id"])
+        except Exception as e:
+            notes.append(f"ficha data fail: {type(e).__name__}")
+
+    return GijonResp(
+        rc=rc, address=addr, utm=[X, Y],
+        in_gijon=in_gijon,
+        ambito=main,
+        ambito_meta=ambito_meta,
+        ficha_data=ficha_data,
+        ambitos_solapados=[h for h in hits if h["id"] != (main or {}).get("id")],
+        notes=notes,
+        took_ms=int((time.time() - t0) * 1000),
+    )
 
 
 @app.get("/img/{sha}.png")

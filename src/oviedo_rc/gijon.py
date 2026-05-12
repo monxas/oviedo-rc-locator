@@ -9,11 +9,16 @@ georreferenciados directamente; no hay paginación de hojas ni calibración.
 from __future__ import annotations
 
 import json
+import re
+import urllib.request
 from functools import lru_cache
 from pathlib import Path
 
 CACHE = Path.home() / ".cache" / "oviedo_rc" / "gijon"
 AMBITOS_FILE = CACHE / "ambitos.json"
+FICHAS_META_DIR = CACHE / "fichas_meta"
+FICHAS_META_DIR.mkdir(parents=True, exist_ok=True)
+FICHA_BASE = "https://documentos.gijon.es/PGO/ficha.php?id="
 
 ID_MUNICIPIO_GIJON = 33024
 BBOX_UTM = (270921.0, 4813038.0, 292773.0, 4829451.0)  # min_x, min_y, max_x, max_y
@@ -97,6 +102,82 @@ def lookup(x: float, y: float) -> dict | None:
 
     hits.sort(key=area_of)
     return hits[0]
+
+
+FICHAS_DATA_DIR = CACHE / "fichas_data"
+
+
+def get_ficha_data(ambito_id: str) -> dict | None:
+    """Lee el JSON estructurado generado por scripts/parse_gijon_fichas.py.
+    Devuelve None si no hay ficha parseada para ese ámbito."""
+    safe_id = re.sub(r"[^A-Za-z0-9_-]", "_", ambito_id)
+    p = FICHAS_DATA_DIR / f"{safe_id}.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+_FICHA_HEAD_RE = re.compile(
+    r"<h3>\s*Clase:\s*([^<]+?)</h3>.*?"
+    r"<h4>\s*Categoría:\s*([^<]+?)</h4>.*?"
+    r"<h4>\s*Plan de Desarrollo:\s*([^<]+?)</h4>.*?"
+    r"<h4>\s*Iniciativa:\s*([^<]+?)</h4>",
+    re.S,
+)
+_FICHA_PDF_RE = re.compile(r"href=\"(https://documentos\.gijon\.es/doc/Urbanismo/PGO/Fichas/[^\"]+\.pdf)")
+_PLANO_PDF_RE = re.compile(r"href=\"(https://documentos\.gijon\.es/doc/Urbanismo/PGO/Planos/[^\"]+\.pdf)")
+_NOMBRE_RE = re.compile(r"<h2>\s*([^<]+?)\s*</h2>\s*<h3>\s*Clase:", re.S)
+
+
+def fetch_ficha_meta(ambito_id: str) -> dict:
+    """Descarga + parsea la ficha HTML de un ámbito. Cachea en disco.
+
+    Devuelve: {clase, categoria, plan_desarrollo, iniciativa, nombre_largo,
+               ficha_pdf_url, plano_pdf_url}
+    Campos vacíos si la ficha no los tiene.
+    """
+    safe_id = re.sub(r"[^A-Za-z0-9_-]", "_", ambito_id)
+    cache = FICHAS_META_DIR / f"{safe_id}.json"
+    if cache.exists():
+        try:
+            return json.loads(cache.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    out: dict = {"ambito_id": ambito_id, "ficha_web_url": FICHA_BASE + ambito_id}
+    try:
+        req = urllib.request.Request(
+            FICHA_BASE + ambito_id,
+            headers={"User-Agent": "iarq-locator/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8", errors="ignore")
+    except Exception as e:
+        out["error"] = f"fetch fail: {type(e).__name__}"
+        cache.write_text(json.dumps(out, ensure_ascii=False))
+        return out
+
+    m = _FICHA_HEAD_RE.search(html)
+    if m:
+        out["clase"] = m.group(1).strip()
+        out["categoria"] = m.group(2).strip()
+        out["plan_desarrollo"] = m.group(3).strip()
+        out["iniciativa"] = m.group(4).strip()
+    nm = _NOMBRE_RE.search(html)
+    if nm:
+        out["nombre_largo"] = nm.group(1).strip()
+    fm = _FICHA_PDF_RE.search(html)
+    if fm:
+        out["ficha_pdf_url"] = fm.group(1)
+    pm = _PLANO_PDF_RE.search(html)
+    if pm:
+        out["plano_pdf_url"] = pm.group(1)
+
+    cache.write_text(json.dumps(out, ensure_ascii=False, indent=2))
+    return out
 
 
 def stats() -> dict:
