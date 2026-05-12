@@ -42,6 +42,45 @@ from oviedo_rc import planeamiento as plan_mod  # noqa: E402
 RC_RE = re.compile(r"^[0-9A-Z]{20}$")
 
 
+_LAST_PRUNE = 0.0
+
+
+def _prune_img_cache_if_needed():
+    """Soft-cap on the /img cache: keep < 5000 files AND < 3 GB.
+
+    When either threshold is exceeded, evict the oldest 20% (by mtime).
+    Runs at most once per minute to avoid hammering the FS.
+    """
+    global _LAST_PRUNE
+    now = time.time()
+    if now - _LAST_PRUNE < 60:
+        return
+    _LAST_PRUNE = now
+    try:
+        files = list(IMG_CACHE.glob("*.png"))
+    except OSError:
+        return
+    if len(files) < 5000:
+        try:
+            total = sum(f.stat().st_size for f in files)
+        except OSError:
+            return
+        if total < 3 * 1024 * 1024 * 1024:
+            return
+    try:
+        files.sort(key=lambda f: f.stat().st_mtime)
+    except OSError:
+        return
+    to_remove = files[: max(1, len(files) // 5)]
+    for f in to_remove:
+        try:
+            f.unlink()
+        except FileNotFoundError:
+            pass
+        except OSError:
+            pass
+
+
 def load_env():
     env = {}
     if ENV_FILE.exists():
@@ -91,12 +130,12 @@ async def auth(request: Request, token: Optional[str] = Query(None)):
 
 
 @app.get("/health")
-async def health():
+def health():
     return {"ok": True, "service": "locator", "cache_imgs": len(list(IMG_CACHE.glob("*.png")))}
 
 
 @app.get("/docs", include_in_schema=False)
-async def docs():
+def docs():
     if not README_PATH.exists():
         return PlainTextResponse("docs unavailable", status_code=404)
     return PlainTextResponse(README_PATH.read_text(encoding="utf-8"),
@@ -110,6 +149,7 @@ def _cache_png(src: Path) -> str:
     dst = IMG_CACHE / f"{sha}.png"
     if not dst.exists():
         dst.write_bytes(data)
+        _prune_img_cache_if_needed()
     return sha
 
 
@@ -148,7 +188,7 @@ SNAP_SCORE_THRESHOLD = 0.30  # por debajo → snap_confident=False
 
 
 @app.get("/locate/{rc}", response_model=LocateResp)
-async def locate(rc: str, _=Depends(auth)):
+def locate(rc: str, _=Depends(auth)):
     rc = rc.upper().strip()
     if not RC_RE.match(rc):
         raise HTTPException(422, "RC inválido — formato esperado: 20 chars alfanuméricos")
@@ -232,7 +272,7 @@ class InfoResp(BaseModel):
 
 
 @app.get("/info/{rc}", response_model=InfoResp)
-async def info(rc: str, _=Depends(auth)):
+def info(rc: str, _=Depends(auth)):
     """Endpoint unificado: SU + planeamiento + patrimonio + SNU fallback en una sola request."""
     rc = rc.upper().strip()
     if not re.fullmatch(r"[0-9A-Z]{14}|[0-9A-Z]{20}", rc):
@@ -428,7 +468,7 @@ class SNUResp(BaseModel):
 
 
 @app.get("/snu/{rc}", response_model=SNUResp)
-async def snu_endpoint(rc: str, _=Depends(auth)):
+def snu_endpoint(rc: str, _=Depends(auth)):
     """Fallback para RCs en Suelo No Urbanizable (sin hoja SU).
 
     Devuelve la hoja SNU (PLANO_<letra>_<num>.pdf) más probable según el bbox
@@ -490,7 +530,7 @@ class PlanResp(BaseModel):
 
 
 @app.get("/planeamiento/{rc}", response_model=PlanResp)
-async def planeamiento_rc(rc: str, _=Depends(auth)):
+def planeamiento_rc(rc: str, _=Depends(auth)):
     """Info de planeamiento PGOU por RC: ámbito (UG/AU/PE), uso predominante, ficha sugerida.
 
     Combina catastro (RC→UTM) + GeoServer Asturias (UTM→ámbito) + fichas locales.
@@ -520,21 +560,21 @@ async def planeamiento_rc(rc: str, _=Depends(auth)):
 
 
 @app.get("/fichas")
-async def fichas_list(tipo: Optional[str] = Query(None), _=Depends(auth)):
+def fichas_list(tipo: Optional[str] = Query(None), _=Depends(auth)):
     """Lista de fichas de ámbitos. Filtra por tipo: UG, UG1, UG2, AU, AUS, AA, PE, PP."""
     items = fichas_mod.list_fichas(tipo=tipo)
     return {"total": len(items), "items": items}
 
 
 @app.get("/fichas/search")
-async def fichas_search(q: str = Query(..., min_length=1), _=Depends(auth)):
+def fichas_search(q: str = Query(..., min_length=1), _=Depends(auth)):
     """Busca por código (AIN, ASM…), número de ficha (506) o substring del nombre."""
     hits = fichas_mod.find_ficha(q)
     return {"total": len(hits), "items": hits[:50]}
 
 
 @app.get("/fichas/{filename}")
-async def fichas_pdf(filename: str, _=Depends(auth)):
+def fichas_pdf(filename: str, _=Depends(auth)):
     """Descarga el PDF de una ficha (debe acabar en .pdf)."""
     if not re.fullmatch(r"[A-Za-z0-9_\-]+\.pdf", filename):
         raise HTTPException(422, "filename inválido")
@@ -545,7 +585,7 @@ async def fichas_pdf(filename: str, _=Depends(auth)):
 
 
 @app.get("/v/{rc}", response_class=HTMLResponse)
-async def view_rc(rc: str, token: Optional[str] = Query(None)):
+def view_rc(rc: str, token: Optional[str] = Query(None)):
     """Dashboard HTML standalone de la info completa de un RC.
 
     No requiere Bearer: el token se pasa como `?token=` para los fetch JS.
@@ -593,6 +633,7 @@ const TOKEN = "{{TOKEN}}";
 const H = TOKEN ? {Authorization: "Bearer " + TOKEN} : {};
 
 function fmt(v){return v==null||v===""?"—":v}
+function authUrl(u){if(!u||!TOKEN)return u;return u + (u.indexOf("?")>-1?"&":"?") + "token=" + encodeURIComponent(TOKEN);}
 function card(title, body, wide){
   return `<div class="card${wide?' wide':''}"><h2>${title}</h2>${body}</div>`;
 }
@@ -629,14 +670,14 @@ fetch(`/info/${RC}`,{headers:H}).then(r=>{
   // Plano SU (si)
   if(d.locate){
     const imgs = [];
-    if(d.locate.plan_zoom_url) imgs.push(`<a href="${d.locate.plan_zoom_url}" target="_blank"><img class="plan" src="${d.locate.plan_zoom_url}" alt="plano"></a>`);
-    if(d.locate.polygon_url) imgs.push(`<a href="${d.locate.polygon_url}" target="_blank"><img class="plan" src="${d.locate.polygon_url}" alt="polígono"></a>`);
-    if(d.locate.wms_url) imgs.push(`<a href="${d.locate.wms_url}" target="_blank"><img class="plan" src="${d.locate.wms_url}" alt="wms"></a>`);
+    if(d.locate.plan_zoom_url){const u=authUrl(d.locate.plan_zoom_url); imgs.push(`<a href="${u}" target="_blank"><img class="plan" src="${u}" alt="plano"></a>`);}
+    if(d.locate.polygon_url){const u=authUrl(d.locate.polygon_url); imgs.push(`<a href="${u}" target="_blank"><img class="plan" src="${u}" alt="polígono"></a>`);}
+    if(d.locate.wms_url){const u=authUrl(d.locate.wms_url); imgs.push(`<a href="${u}" target="_blank"><img class="plan" src="${u}" alt="wms"></a>`);}
     out.push(card(`Plano PGOU · ${d.locate.sheet||""} · cell ${d.locate.cell||""}-${d.locate.sub_quadrant||""}`,
       `<div class="imgs">${imgs.join("")}</div><div class="muted" style="margin-top:8px">snap_score: ${fmt(d.locate.snap_score)} · reliability: ${fmt(d.locate.reliability)} · área: ${fmt(d.locate.polygon_area_m2)} m²</div>`, true));
   } else if(d.snu_url){
     out.push(card(`Hoja SNU · ${d.snu_sheet}`,
-      `<a href="${d.snu_url}" target="_blank"><img class="plan" src="${d.snu_url}" alt="snu"></a><div class="muted" style="margin-top:8px">RC en Suelo No Urbanizable — sin plano SU</div>`, true));
+      `<a href="${authUrl(d.snu_url)}" target="_blank"><img class="plan" src="${authUrl(d.snu_url)}" alt="snu"></a><div class="muted" style="margin-top:8px">RC en Suelo No Urbanizable — sin plano SU</div>`, true));
   }
 
   // Patrimonio
@@ -669,7 +710,7 @@ fetch(`/info/${RC}`,{headers:H}).then(r=>{
 
 
 @app.get("/img/{sha}.png")
-async def img(sha: str, _=Depends(auth)):
+def img(sha: str, _=Depends(auth)):
     if not re.fullmatch(r"[a-f0-9]{64}", sha):
         raise HTTPException(404)
     path = IMG_CACHE / f"{sha}.png"

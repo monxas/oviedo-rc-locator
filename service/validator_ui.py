@@ -25,6 +25,8 @@ import random
 import sys
 import threading
 import time
+from collections import OrderedDict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -65,6 +67,10 @@ DISPLAY_CROP = 1800  # tras downscale 2× → tamaño PNG transferido
 # auto-recalibración cada N aceptaciones (drag != 0 o exact)
 RECAL_THRESHOLD = 30
 _RECAL_COUNTER_FILE = ROOT / "data" / ".recal_counter"
+_RECAL_PENDING_FILE = ROOT / "data" / ".recal_pending"
+# Cap for the in-memory _CACHE of generated RC bundles. Each entry holds a few MB
+# of PNG bytes (crop + WMS), so without a cap the process keeps growing forever.
+_CACHE_MAX = 200
 
 SNAP_CONFIDENT_THRESHOLD = 0.30
 
@@ -301,17 +307,17 @@ def _generate_for_rc(rc: str) -> dict:
     }
 
 
-# in-memory cache de la última generación
-_CACHE: dict = {}
+# in-memory cache de las últimas generaciones (LRU). FIFO eviction cuando > _CACHE_MAX.
+_CACHE: "OrderedDict[str, dict]" = OrderedDict()
 
 
 @app.get("/health")
-async def health():
+def health():
     return {"ok": True, "service": "validator", "labels_count": len(load_labels())}
 
 
 @app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
+def favicon():
     # 1×1 PNG transparente (silencia el 404 del navegador)
     return Response(
         b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06"
@@ -322,20 +328,24 @@ async def favicon():
 
 
 @app.get("/", response_class=HTMLResponse)
-async def home():
+def home():
     """HTML público — el token sólo se requiere para /api/*. La UI gestiona el token via localStorage."""
     return INDEX_HTML
 
 
 @app.get("/api/next")
-async def next_rc(rc: Optional[str] = None, _=Depends(auth)):
+def next_rc(rc: Optional[str] = None, _=Depends(auth)):
     """Devuelve datos del siguiente RC (random o el indicado)."""
     if rc:
         rc = rc.strip().upper()
     if not rc:
         rc = _random_rc()
     data = _generate_for_rc(rc)
+    # FIFO-evict the oldest entries before adding a new one (cap at _CACHE_MAX).
     _CACHE[rc] = data
+    _CACHE.move_to_end(rc)
+    while len(_CACHE) > _CACHE_MAX:
+        _CACHE.popitem(last=False)
     return {
         "rc": data["rc"],
         "address": data["address"],
@@ -358,7 +368,7 @@ async def next_rc(rc: Optional[str] = None, _=Depends(auth)):
 
 
 @app.get("/api/img/{rc}/{kind}")
-async def img(rc: str, kind: str, _=Depends(auth)):
+def img(rc: str, kind: str, _=Depends(auth)):
     data = _CACHE.get(rc)
     if not data: raise HTTPException(404, "cache miss — call /api/next first")
     if kind == "crop":
@@ -396,19 +406,21 @@ def _reset_accept_counter():
 
 
 def _trigger_recalibration():
-    """Spawn recal + restart de servicios. No bloquea el request actual."""
-    import subprocess
-    cmd = (
-        f"sleep 1 && "
-        f"{ROOT}/.venv/bin/python {ROOT}/scripts/recalibrate.py > {ROOT}/recal.log 2>&1 && "
-        f"systemctl --user restart locator-api validator-ui"
-    )
-    subprocess.Popen(["bash", "-c", cmd], start_new_session=True,
-                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    """Deferred recalibration: write a sentinel file that an out-of-band watcher
+    picks up. Does NOT spawn `systemctl restart` on ourselves — that killed the
+    process and RST'd in-flight requests. The watcher runs `recalibrate.py`,
+    rewrites `data/calibration_offsets.json`, and removes the sentinel; the
+    locator/validator pick up the new file on next request via mtime-based
+    lazy reload (`oviedo_rc.calibration._load`).
+    """
+    try:
+        _RECAL_PENDING_FILE.write_text(datetime.now(timezone.utc).isoformat())
+    except OSError:
+        pass
 
 
 @app.post("/api/label")
-async def label(req: LabelReq, _=Depends(auth)):
+def label(req: LabelReq, _=Depends(auth)):
     with _LABELS_LOCK:
         labels = load_labels()
         labels = [l for l in labels if l.get("rc") != req.rc]
@@ -440,7 +452,7 @@ async def label(req: LabelReq, _=Depends(auth)):
 
 
 @app.get("/api/stats")
-async def stats(_=Depends(auth)):
+def stats(_=Depends(auth)):
     with _LABELS_LOCK:
         labels = load_labels()
         counter = _accept_counter()
@@ -1163,10 +1175,10 @@ async function submit(action) {
   if (!r.ok) { setBusy(false); alert('error guardando (' + r.status + ')'); return; }
   const resp = await r.json();
   if (resp.recalibrated) {
-    document.getElementById('rc').textContent = '♻ recalibrando…';
-    document.getElementById('addr').textContent = 'reiniciando servicio, ~10s';
-    setTimeout(() => { setBusy(false); loadRC(__queue.length ? __queue.shift() : null); }, 12000);
-    return;
+    // Recal corre out-of-band (sentinel data/.recal_pending). Las offsets nuevas
+    // se aplican vía mtime-reload sin reiniciar el servicio, así que sólo
+    // mostramos un toast breve y seguimos.
+    document.getElementById('rc').textContent = '♻ recal en curso (fondo)';
   }
   // siguiente RC. setBusy(false) lo gestiona loadRC al terminar.
   if (__queue.length) {

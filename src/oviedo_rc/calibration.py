@@ -5,9 +5,12 @@ Estos offsets se calcularon de 45 puntos labeled manualmente vía la web
 validator. Se aplican en píxel-space tras `utm_polygon_to_pixel`.
 """
 import json
+import threading
 from pathlib import Path
 
 _CACHE = None
+_CACHE_MTIME: float = -1.0
+_CACHE_LOCK = threading.Lock()
 
 
 def _path():
@@ -15,15 +18,34 @@ def _path():
 
 
 def _load():
-    global _CACHE
-    if _CACHE is not None:
-        return _CACHE
+    """Carga (o re-carga) `calibration_offsets.json`.
+
+    Se cachea el contenido en memoria, pero se re-lee si la mtime del fichero
+    cambia. Esto permite que `recalibrate.py` actualice las offsets en disco y
+    los servicios (locator/validator) las recojan en la próxima request, sin
+    necesidad de un restart explícito.
+    """
+    global _CACHE, _CACHE_MTIME
     p = _path()
-    if not p.exists():
-        _CACHE = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
-    else:
-        _CACHE = json.loads(p.read_text())
-    return _CACHE
+    try:
+        mtime = p.stat().st_mtime
+    except FileNotFoundError:
+        mtime = -1.0
+    with _CACHE_LOCK:
+        if _CACHE is not None and mtime == _CACHE_MTIME:
+            return _CACHE
+        if mtime < 0:
+            _CACHE = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
+        else:
+            try:
+                _CACHE = json.loads(p.read_text())
+            except (OSError, json.JSONDecodeError):
+                # Don't blow up if the file is mid-write — keep the previous cache.
+                if _CACHE is None:
+                    _CACHE = {"global_bias_px": [0, 0], "cell_offsets_px": {}}
+                return _CACHE
+        _CACHE_MTIME = mtime
+        return _CACHE
 
 
 def offset_for(cell: str, sub_quadrant: str | None = None) -> tuple[int, int]:
