@@ -131,11 +131,27 @@ OVIEDO = Concejo(
 )
 
 
-# TODO PR4: GIJON = Concejo(id_ine=33024, slug="gijon", nombre="Gijón", ...)
-# Calibrar malla + descargar portlets cuando se aborde Gijón.
+GIJON = Concejo(
+    id_ine=33024,
+    slug="gijon",
+    nombre="Gijón",
+    # Bbox UTM 30N tomado del KML PGOU (513 ámbitos). Sin malla 1:1000
+    # paginada — Gijón usa polígonos vectoriales directos en gijon.py.
+    bbox_utm=(270921.0, 4813038.0, 292773.0, 4829451.0),
+    urban_bbox=(273000.0, 4815000.0, 290000.0, 4828000.0),
+    malla=None,
+    pgou_su=None,
+    snu=None,
+    fichas=None,
+    wfs_workspace="E79_ENTIDADES_URBANISTICAS",
+    snu_grid=None,
+)
+
+# TODO PR4: añadir Avilés, Siero, etc.
 
 REGISTRY: dict[int, Concejo] = {
     33044: OVIEDO,
+    33024: GIJON,
 }
 
 
@@ -173,6 +189,7 @@ __all__ = [
     "PortletSource",
     "Concejo",
     "OVIEDO",
+    "GIJON",
     "REGISTRY",
     "get_concejo",
     "get_concejo_for_utm",
