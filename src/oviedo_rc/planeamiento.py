@@ -20,11 +20,20 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlencode
 
 from .http_utils import http_get
+from .concejo import OVIEDO, Concejo, get_concejo_for_utm
 from . import fichas as fichas_mod
 
-WFS_URL = "http://visorrpgur.asturias.es:8090/geoserver/E79_ENTIDADES_URBANISTICAS/wfs"
+# Base WFS GeoServer Asturias (multi-concejo: workspace por concejo)
+WFS_BASE = "http://visorrpgur.asturias.es:8090/geoserver"
 SRS = "EPSG:25830"
-ID_MUNICIPIO_OVIEDO = 33044
+
+# Backwards-compat (DEPRECATED — usar concejo.wfs_workspace / concejo.id_ine)
+WFS_URL = f"{WFS_BASE}/{OVIEDO.wfs_workspace}/wfs"
+ID_MUNICIPIO_OVIEDO = OVIEDO.id_ine
+
+
+def _wfs_url_for(concejo: Concejo) -> str:
+    return f"{WFS_BASE}/{concejo.wfs_workspace}/wfs"
 
 # Orden de consulta (capa, props_principales)
 LAYERS = [
@@ -48,18 +57,20 @@ PATRIMONIO_LAYERS = [
 
 
 def _wfs_at_point(layer: str, x: float, y: float, props: list[str],
-                   bbox_tolerance: float = 0.0) -> list[dict]:
+                   bbox_tolerance: float = 0.0,
+                   concejo: Concejo | None = None) -> list[dict]:
     """WFS GetFeature al rededor de (x,y).
     bbox_tolerance=0 → INTERSECTS estricto. >0 → BBOX (afecciones cercanas)."""
+    c = concejo or OVIEDO
     if bbox_tolerance > 0:
         t = bbox_tolerance
         cql = (
-            f"id_municipio={ID_MUNICIPIO_OVIEDO} "
+            f"id_municipio={c.id_ine} "
             f"AND BBOX(GEOMETRY,{x-t},{y-t},{x+t},{y+t})"
         )
     else:
         cql = (
-            f"id_municipio={ID_MUNICIPIO_OVIEDO} "
+            f"id_municipio={c.id_ine} "
             f"AND INTERSECTS(GEOMETRY,POINT({x} {y}))"
         )
     params = {
@@ -72,9 +83,7 @@ def _wfs_at_point(layer: str, x: float, y: float, props: list[str],
         "count": 10,
         "CQL_FILTER": cql,
     }
-    # Omitir propertyName: caracteres acentuados/paréntesis lo rompen y
-    # los payloads son pequeños sin la geometría (null cuando no se filtra).
-    url = f"{WFS_URL}?{urlencode(params)}"
+    url = f"{_wfs_url_for(c)}?{urlencode(params)}"
     try:
         r = http_get(url, timeout=15)
         data = json.loads(r.text)
@@ -124,8 +133,10 @@ def _find_matching_ficha(ambito_name: str, etiqueta: str | None = None,
     return hits[:5]
 
 
-def lookup(x: float, y: float) -> dict:
+def lookup(x: float, y: float, concejo: Concejo | None = None) -> dict:
     """Para coords UTM (EPSG:25830) devuelve dict con todas las capas y matches.
+
+    Si concejo es None, se infiere por bbox UTM (fallback OVIEDO).
 
     {
       "x": .., "y": ..,
@@ -134,6 +145,8 @@ def lookup(x: float, y: float) -> dict:
       "fichas_match": [...],          # fichas que podrían corresponder
     }
     """
+    if concejo is None:
+        concejo = get_concejo_for_utm(x, y) or OVIEDO
     out: dict = {"x": x, "y": y, "layers": {}}
 
     # Paraleliza todas las queries WFS (8 capas en flight a la vez)
@@ -142,7 +155,7 @@ def lookup(x: float, y: float) -> dict:
     results: dict[str, list[dict]] = {}
     with ThreadPoolExecutor(max_workers=len(tasks)) as pool:
         future_map = {
-            pool.submit(_wfs_at_point, layer, x, y, [], tol): (layer, tol)
+            pool.submit(_wfs_at_point, layer, x, y, [], tol, concejo): (layer, tol)
             for layer, tol in tasks
         }
         for fut in future_map:

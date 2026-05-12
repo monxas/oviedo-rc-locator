@@ -3,25 +3,26 @@
 Cubre las 41.967 RCs (78%) sin cobertura de SU. El grid SNU es 9 columnas
 (1-9) × 10 filas (A-J) sobre el bbox UTM aproximado del municipio.
 
-Calibración inicial: bbox optimizado para maximizar match con las 61 hojas
-reales disponibles, sobre 53.804 RCs de coords_local.json.
-  hits = 49.988 (93%)
-  miss = 3.816 (7%)
+Multi-concejo (PR3): el grid se obtiene de `concejo.snu_grid` (o
+`data/snu_grid.json` legacy si concejo es None). Funciones públicas
+aceptan `concejo` opcional; sin argumento → OVIEDO.
 
-Pendiente: refinar bbox vía feature-matching del Mapa Guía SNU contra WMS.
+Calibración inicial Oviedo: bbox optimizado para maximizar match con las
+61 hojas reales disponibles, sobre 53.804 RCs de coords_local.json.
+  hits = 49.988 (93%) / miss = 3.816 (7%)
 """
 import json
 import os
 import re
 from pathlib import Path
 
-from .config import CACHE_DIR, HTTP_HEADERS
+from .config import CACHE_DIR
+from .concejo import OVIEDO, Concejo
 from .http_utils import http_get, fetch
 
 
-# ---------- Calibración del grid SNU (cargada desde data/snu_grid.json) ----------
-def _load_grid():
-    # Busca data/snu_grid.json relativo al repo (..../oviedo_rc/snu.py → ../../data/)
+# ---------- Calibración legacy (fallback data/snu_grid.json) ----------
+def _load_grid_legacy():
     here = Path(__file__).resolve()
     candidates = [
         here.parent.parent.parent / "data" / "snu_grid.json",
@@ -30,14 +31,27 @@ def _load_grid():
     for p in candidates:
         if p.exists():
             return json.loads(p.read_text())
-    # Defaults conservadores
+    return None
+
+
+def _resolve_grid(concejo: Concejo | None):
+    """Grid SNU para el concejo. Prioridad: concejo.snu_grid > legacy JSON > defaults."""
+    c = concejo or OVIEDO
+    if c.snu_grid:
+        return c.snu_grid
+    legacy = _load_grid_legacy()
+    if legacy:
+        return legacy
     return {
         "x0": 252290.93, "ymax": 4811487.92,
         "width": 29018.81, "height": 16194.95,
         "cols": 9, "rows": 10, "letters": "ABCDEFGHIJ",
     }
 
-_GRID = _load_grid()
+
+# Constantes module-level para Oviedo (backwards-compat — scripts y tests
+# los importan directamente)
+_GRID = _resolve_grid(OVIEDO)
 SNU_X0 = _GRID["x0"]
 SNU_YMAX = _GRID["ymax"]
 SNU_W = _GRID["width"]
@@ -48,15 +62,10 @@ SNU_CELL_W = SNU_W / SNU_COLS
 SNU_CELL_H = SNU_H / SNU_ROWS
 SNU_LETTERS = _GRID["letters"]
 
-SNU_LIST_URL = (
-    "https://www.oviedo.es/vive/urbanismo-e-infraestructuras/pgou/"
-    "ficheros-pdf-suelo-no-urbanizable"
-)
-SNU_PORTLET = (
-    "_com_liferay_document_library_web_portlet_IGDisplayPortlet"
-    "_INSTANCE_J556oMSZtTY5_cur"
-)
-SNU_PORTLET_PAGES = 4
+# Portlet legacy de Oviedo (DEPRECATED — usar concejo.snu.*)
+SNU_LIST_URL = OVIEDO.snu.url if OVIEDO.snu else ""
+SNU_PORTLET = OVIEDO.snu.instance if OVIEDO.snu else ""
+SNU_PORTLET_PAGES = OVIEDO.snu.pages if OVIEDO.snu else 0
 SNU_SHEETS_FILE = CACHE_DIR / "sheets_snu.json"
 
 _BROWSER_UA = {
@@ -71,20 +80,31 @@ _LINK_RE = re.compile(
 )
 
 
-def infer_snu_cell(utm_x: float, utm_y: float) -> tuple[int, str] | None:
+def _grid_params(concejo: Concejo | None):
+    """Tupla precomputada (x0, ymax, cell_w, cell_h, cols, rows, letters)."""
+    g = _resolve_grid(concejo)
+    cell_w = g["width"] / g["cols"]
+    cell_h = g["height"] / g["rows"]
+    return g["x0"], g["ymax"], cell_w, cell_h, g["cols"], g["rows"], g["letters"]
+
+
+def infer_snu_cell(utm_x: float, utm_y: float,
+                    concejo: Concejo | None = None) -> tuple[int, str] | None:
     """Devuelve (col, letra) del grid SNU para (utm_x, utm_y) o None si fuera."""
-    col = int((utm_x - SNU_X0) // SNU_CELL_W) + 1
-    row = int((SNU_YMAX - utm_y) // SNU_CELL_H)
-    if not (1 <= col <= SNU_COLS):
+    x0, ymax, cw, ch, cols, rows, letters = _grid_params(concejo)
+    col = int((utm_x - x0) // cw) + 1
+    row = int((ymax - utm_y) // ch)
+    if not (1 <= col <= cols):
         return None
-    if not (0 <= row < SNU_ROWS):
+    if not (0 <= row < rows):
         return None
-    return col, SNU_LETTERS[row]
+    return col, letters[row]
 
 
-def infer_snu_sheet(utm_x: float, utm_y: float) -> str | None:
+def infer_snu_sheet(utm_x: float, utm_y: float,
+                     concejo: Concejo | None = None) -> str | None:
     """Devuelve `PLANO_<L>_<N>.pdf` para coords UTM. None si fuera del grid."""
-    res = infer_snu_cell(utm_x, utm_y)
+    res = infer_snu_cell(utm_x, utm_y, concejo)
     if not res:
         return None
     col, letter = res
@@ -95,17 +115,27 @@ def _strip_thumbnail(url: str) -> str:
     return re.sub(r"[?&]documentThumbnail=\d+", "", url)
 
 
-def get_snu_sheet_listing() -> dict[str, str]:
-    """Devuelve {sheet_name: url}. Cacheado en sheets_snu.json."""
-    if SNU_SHEETS_FILE.exists():
-        data = json.loads(SNU_SHEETS_FILE.read_text())
+def _snu_sheets_file_for(concejo: Concejo):
+    if concejo.id_ine == OVIEDO.id_ine:
+        return SNU_SHEETS_FILE
+    return CACHE_DIR / f"sheets_snu_{concejo.slug}.json"
+
+
+def get_snu_sheet_listing(concejo: Concejo | None = None) -> dict[str, str]:
+    """Devuelve {sheet_name: url}. Cacheado por concejo."""
+    c = concejo or OVIEDO
+    if c.snu is None:
+        raise RuntimeError(f"Concejo {c.nombre} sin portlet SNU configurado")
+    cache_file = _snu_sheets_file_for(c)
+    if cache_file.exists():
+        data = json.loads(cache_file.read_text())
         if isinstance(data, dict) and "sheets" in data:
             return data["sheets"]
         return data
     from urllib.parse import urljoin
     sheets: dict[str, str] = {}
-    for cur in range(1, SNU_PORTLET_PAGES + 1):
-        url = f"{SNU_LIST_URL}?{SNU_PORTLET}={cur}"
+    for cur in range(1, c.snu.pages + 1):
+        url = f"{c.snu.url}?{c.snu.instance}={cur}"
         html = http_get(url, headers=_BROWSER_UA, timeout=60).text
         for m in _LINK_RE.finditer(html):
             href = m.group(1)
@@ -113,7 +143,7 @@ def get_snu_sheet_listing() -> dict[str, str]:
             num = int(m.group(3))
             key = f"PLANO_{letter}_{num}.pdf"
             sheets.setdefault(key, urljoin("https://www.oviedo.es", href))
-    SNU_SHEETS_FILE.write_text(json.dumps({"sheets": sheets}, indent=2))
+    cache_file.write_text(json.dumps({"sheets": sheets}, indent=2))
     return sheets
 
 
@@ -126,14 +156,15 @@ def list_local_snu_sheets() -> set[str]:
     return out
 
 
-def fetch_snu_sheet_pdf(sheet_name: str) -> Path:
+def fetch_snu_sheet_pdf(sheet_name: str,
+                         concejo: Concejo | None = None) -> Path:
     """Path local al PDF, descargándolo si hace falta."""
     dest = CACHE_DIR / sheet_name
     if dest.exists() and dest.stat().st_size > 1024:
         with dest.open("rb") as f:
             if f.read(5) == b"%PDF-":
                 return dest
-    sheets = get_snu_sheet_listing()
+    sheets = get_snu_sheet_listing(concejo)
     url = sheets.get(sheet_name)
     if not url:
         raise FileNotFoundError(f"sheet not in SNU listing: {sheet_name}")
@@ -142,14 +173,16 @@ def fetch_snu_sheet_pdf(sheet_name: str) -> Path:
     return dest
 
 
-def cell_bbox_utm(col: int, letter: str) -> tuple[float, float, float, float]:
+def cell_bbox_utm(col: int, letter: str,
+                   concejo: Concejo | None = None) -> tuple[float, float, float, float]:
     """Bbox UTM (xmin, ymin, xmax, ymax) de la celda (col, letter) del grid SNU."""
-    row = SNU_LETTERS.index(letter)
-    x0 = SNU_X0 + (col - 1) * SNU_CELL_W
-    y_top = SNU_YMAX - row * SNU_CELL_H
-    y_bot = y_top - SNU_CELL_H
-    x1 = x0 + SNU_CELL_W
-    return x0, y_bot, x1, y_top
+    x0, ymax, cw, ch, _cols, _rows, letters = _grid_params(concejo)
+    row = letters.index(letter)
+    x0c = x0 + (col - 1) * cw
+    y_top = ymax - row * ch
+    y_bot = y_top - ch
+    x1 = x0c + cw
+    return x0c, y_bot, x1, y_top
 
 
 # Coeficientes del body cartográfico dentro del render del PDF SNU
@@ -161,23 +194,23 @@ SNU_BODY_Y1_FRAC = 0.910   # banda inferior ocupa ~9%
 
 
 def overlay_polygon(sheet_name: str, polygon_utm: list[tuple[float, float]],
-                     dpi: int = 120):
+                     dpi: int = 120, concejo: Concejo | None = None):
     """Renderiza la hoja SNU y superpone polígono UTM. Devuelve np.ndarray BGR.
 
     Calidad: ~regular (bbox del grid asumido uniforme; cajetín fijo). Suficiente
     para localización aproximada; no pixel-precise.
     """
-    import cv2
-    import numpy as np
+    import cv2  # noqa: F401
+    import numpy as np  # noqa: F401
     from . import render as render_mod
     m = re.match(r"PLANO_([A-J])_(\d+)\.pdf$", sheet_name)
     if not m:
         return None
     letter = m.group(1)
     col = int(m.group(2))
-    x0, ymin, x1, y_top = cell_bbox_utm(col, letter)
+    x0, ymin, x1, y_top = cell_bbox_utm(col, letter, concejo)
 
-    pdf_path = fetch_snu_sheet_pdf(sheet_name)
+    pdf_path = fetch_snu_sheet_pdf(sheet_name, concejo)
     img, _, _ = render_mod.render_pdf_page(pdf_path, dpi=dpi)
     H, W = img.shape[:2]
     bx0 = int(W * SNU_BODY_X0_FRAC)
@@ -186,9 +219,7 @@ def overlay_polygon(sheet_name: str, polygon_utm: list[tuple[float, float]],
     by1 = int(H * SNU_BODY_Y1_FRAC)
 
     def utm_to_px(x, y):
-        # x_frac: 0 en x0, 1 en x1
         x_frac = (x - x0) / (x1 - x0)
-        # y_frac: 0 en y_top (norte), 1 en ymin (sur)
         y_frac = (y_top - y) / (y_top - ymin)
         px = bx0 + x_frac * (bx1 - bx0)
         py = by0 + y_frac * (by1 - by0)
@@ -199,13 +230,14 @@ def overlay_polygon(sheet_name: str, polygon_utm: list[tuple[float, float]],
                                     color=(0, 0, 255), thickness=4)
 
 
-def resolve_snu_sheet(utm_x: float, utm_y: float) -> str | None:
+def resolve_snu_sheet(utm_x: float, utm_y: float,
+                       concejo: Concejo | None = None) -> str | None:
     """Devuelve hoja SNU **existente** más probable para (utm_x, utm_y).
 
     1) Intenta la celda directa.
     2) Si no existe, busca vecinas (radio 1, luego 2) por distancia Chebyshev.
     """
-    res = infer_snu_cell(utm_x, utm_y)
+    res = infer_snu_cell(utm_x, utm_y, concejo)
     if not res:
         return None
     col, letter = res
@@ -214,11 +246,9 @@ def resolve_snu_sheet(utm_x: float, utm_y: float) -> str | None:
         for f in list_local_snu_sheets()
         if (m := re.match(r"PLANO_([A-J])_(\d+)\.pdf$", f))
     }
-    # Si no hay locales, asume catálogo completo (61 hojas) — el caller
-    # puede fetch on-demand.
     if not available:
         try:
-            listing = get_snu_sheet_listing()
+            listing = get_snu_sheet_listing(concejo)
             available = {
                 (int(m.group(2)), m.group(1))
                 for k in listing
@@ -228,11 +258,11 @@ def resolve_snu_sheet(utm_x: float, utm_y: float) -> str | None:
             return None
     if (col, letter) in available:
         return f"PLANO_{letter}_{col}.pdf"
-    # Busca vecino más cercano por Chebyshev (luego euclídea como tie-break)
-    li = SNU_LETTERS.index(letter)
+    _x0, _y, _cw, _ch, _cols, _rows, letters = _grid_params(concejo)
+    li = letters.index(letter)
     best = None
     for (c, L) in available:
-        ri = SNU_LETTERS.index(L)
+        ri = letters.index(L)
         d = max(abs(c - col), abs(ri - li))
         e = (c - col) ** 2 + (ri - li) ** 2
         key = (d, e)
