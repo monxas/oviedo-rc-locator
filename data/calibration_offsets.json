@@ -1,83 +1,83 @@
 {
   "version": 7,
-  "calibrated_at": "2026-05-12 07:54",
-  "n_labels": 139,
+  "calibrated_at": "2026-05-12 18:40",
+  "n_labels": 579,
   "global_bias_px": [
-    43.5,
-    -31.5
+    22.0,
+    -2.5
   ],
   "cell_offsets_px": {
     "13-M": [
-      88,
-      -127
+      97.0,
+      -116.0
     ],
     "15-K": [
-      -2.8,
-      -32.2
+      -3.0,
+      -26.5
     ],
     "13-K": [
-      115,
-      0
+      104.0,
+      -13.5
     ],
     "13-L": [
-      43.0,
-      -81.0
+      83.0,
+      -76.5
     ],
     "15-M": [
-      -3.5,
-      -161.0
+      18.0,
+      -110.0
     ],
     "15-J": [
-      7.5,
-      42.8
+      -2.5,
+      41.5
     ],
     "14-I": [
-      21.8,
-      39.5
+      46.0,
+      83.5
     ],
     "15-L": [
-      16.8,
-      -68.5
+      15.5,
+      -67.5
     ],
     "14-L": [
-      58,
-      -87
+      53.2,
+      -80.2
     ],
     "12-M": [
-      123.5,
-      -104.5
+      124,
+      -104
     ],
     "13-J": [
-      94,
-      33.5
+      90.0,
+      34.0
     ],
     "14-J": [
-      86,
-      39
+      40.2,
+      34.0
     ],
     "14-N": [
-      66,
-      -266
+      27.0,
+      -162.0
     ],
     "14-K": [
-      63.0,
-      -34.5
+      69.0,
+      -21.0
     ],
     "15-I": [
-      25.5,
-      130.5
+      35.0,
+      87.0
     ],
     "12-K": [
-      102.8,
-      -46.2
+      125.5,
+      -4.5
     ],
     "12-L": [
-      166.0,
-      -130.5
+      143.5,
+      -99.0
     ],
     "9-K": [
-      144.8,
-      -43.8
+      253.5,
+      -30.0
     ],
     "13-I": [
       50,
@@ -88,8 +88,8 @@
       -175.0
     ],
     "11-K": [
-      142,
-      -66
+      217.5,
+      -35.5
     ],
     "14-M": [
       112,
@@ -100,166 +100,218 @@
       -123
     ],
     "16-I": [
-      -70,
-      24
+      -51,
+      111
     ],
     "16-J": [
-      -68,
-      -2
+      -40.0,
+      31.0
     ],
     "16-K": [
-      -76,
-      30
+      -36.0,
+      -16.5
     ],
     "17-H": [
-      0,
-      0
+      -101.0,
+      153.0
     ],
     "17-J": [
-      -82.5,
-      38.0
+      -115.0,
+      39.8
     ],
     "20-P": [
-      0,
-      0
+      -226,
+      -306
+    ],
+    "19-I": [
+      -156,
+      99.5
+    ],
+    "9-L": [
+      270.0,
+      -58.0
+    ],
+    "16-H": [
+      -42.8,
+      166.0
+    ],
+    "16-L": [
+      -34,
+      -62
+    ],
+    "17-F": [
+      -98.5,
+      261.0
+    ],
+    "17-I": [
+      -59,
+      82.0
+    ],
+    "10-L": [
+      239.5,
+      -62.0
+    ],
+    "17-G": [
+      -20.5,
+      200.5
+    ],
+    "18-I": [
+      -162,
+      91.0
+    ],
+    "16-U": [
+      -59,
+      -574
+    ],
+    "18-G": [
+      -117.0,
+      185.0
+    ],
+    "18-H": [
+      -88,
+      140
+    ],
+    "19-Q": [
+      -206,
+      -328
     ]
   },
   "csub_offsets_px": {
     "13-M-IV": [
-      88,
-      -127
+      88.0,
+      -127.0
     ],
     "15-K-IV": [
-      0.0,
-      -33.0
+      0,
+      -33
     ],
     "13-K-II": [
-      63,
-      -4
+      63.0,
+      -4.0
     ],
     "13-L-I": [
-      43.0,
-      -70.5
+      115.0,
+      -59.0
     ],
     "15-M-II": [
-      -3.5,
-      -161.0
+      -12.0,
+      -110.0
     ],
     "15-J-IV": [
-      7.0,
-      23.5
+      -8.0,
+      16.0
     ],
     "15-J-II": [
-      -7,
-      51
+      -7.0,
+      51.0
     ],
     "14-I-IV": [
-      43.5,
+      44.0,
       79.0
     ],
     "15-K-III": [
-      -2.0,
-      -34.0
+      -2,
+      -34
     ],
     "15-L-I": [
-      42,
-      -59
+      26,
+      -48
     ],
     "15-L-II": [
-      -6,
-      -69
+      7,
+      -51
     ],
     "14-L-II": [
-      39,
-      -61
+      39.0,
+      -61.0
     ],
     "15-J-I": [
-      35.0,
-      47.5
+      35,
+      52
     ],
     "12-M-II": [
-      123.5,
-      -104.5
+      124,
+      -104
     ],
     "13-J-IV": [
-      94,
-      25
+      94.0,
+      25.0
     ],
     "14-J-IV": [
-      86,
-      39
+      36.5,
+      29.5
     ],
     "13-J-III": [
-      171,
-      40
+      81.0,
+      34.0
     ],
     "14-J-III": [
-      94.5,
-      33.5
+      94.0,
+      34.0
     ],
     "15-J-III": [
-      2,
-      32
+      2.0,
+      32.0
     ],
     "14-N-II": [
-      66,
-      -266
+      27.0,
+      -162.0
     ],
     "14-J-II": [
-      2.0,
-      52.5
+      17,
+      52
     ],
     "15-K-II": [
-      -78.5,
-      22.0
+      -14.0,
+      0.5
     ],
     "13-K-III": [
-      130.0,
-      -23.5
+      118.0,
+      -25.0
     ],
     "14-K-II": [
-      53.5,
-      -34.0
+      58.0,
+      -13.0
     ],
     "13-K-I": [
-      115,
-      0
+      115.0,
+      0.0
     ],
     "13-L-II": [
       76,
       -78
     ],
     "14-K-I": [
-      48,
-      -37
+      74,
+      -25
     ],
     "15-I-III": [
-      25.5,
-      130.5
+      36,
+      86
     ],
     "12-K-II": [
-      138,
-      -23
+      135.0,
+      17.0
     ],
     "12-L-IV": [
       167,
       -146
     ],
     "14-L-III": [
-      65.5,
+      66.0,
       -107.0
     ],
     "15-L-IV": [
-      -11.0,
-      -99.0
+      -11,
+      -99
     ],
     "14-K-III": [
-      64.0,
-      -35.0
+      82.0,
+      -17.0
     ],
     "12-L-II": [
-      165,
-      -115
+      120.0,
+      -52.0
     ],
     "9-K-II": [
       253,
@@ -274,16 +326,16 @@
       116
     ],
     "15-L-III": [
-      23.5,
-      -84.0
+      24,
+      -84
     ],
     "15-N-II": [
       18,
       -140
     ],
     "11-K-IV": [
-      142,
-      -66
+      199.0,
+      -23.0
     ],
     "15-N-I": [
       87,
@@ -294,274 +346,870 @@
       -105
     ],
     "13-J-II": [
-      86.5,
-      33.5
+      86.0,
+      34.0
     ],
     "15-K-I": [
-      -9.5,
-      -37.5
+      -4,
+      -20
     ],
     "14-K-IV": [
-      64,
-      -41
+      64.0,
+      -41.0
     ],
     "14-L-IV": [
       51.0,
       -93.0
     ],
     "12-K-IV": [
-      67.5,
-      -69.5
+      116.0,
+      -26.0
     ],
     "9-K-IV": [
-      36.5,
-      -57.5
+      254,
+      -30
     ],
     "16-M-I": [
       3,
       -123
     ],
     "14-I-III": [
-      0,
-      0
+      48,
+      88
     ],
     "16-I-III": [
-      -56,
-      68
+      -56.0,
+      94.0
     ],
     "16-J-IV": [
-      -68,
-      -2
+      -86,
+      7
     ],
     "16-K-II": [
-      -76,
-      30
+      -41,
+      -1
     ],
     "17-H-I": [
-      0,
-      0
+      -87.0,
+      153.0
     ],
     "17-J-I": [
-      -92,
-      48
+      -86.0,
+      50.0
     ],
     "17-J-III": [
-      -79.0,
-      22.0
+      -59,
+      26
     ],
     "20-P-IV": [
-      0,
-      0
+      -226,
+      -306
     ],
     "16-K-I": [
-      11.0,
-      -21.0
+      -20,
+      -12
     ],
     "16-J-I": [
+      -30.0,
+      65.0
+    ],
+    "16-I-I": [
+      -51,
+      111
+    ],
+    "16-K-III": [
+      -44,
+      -21
+    ],
+    "16-K-IV": [
+      -31,
+      -63
+    ],
+    "19-I-I": [
+      -168.0,
+      99.5
+    ],
+    "9-L-II": [
+      270.0,
+      -58.0
+    ],
+    "16-H-IV": [
+      -26.5,
+      137.0
+    ],
+    "16-J-II": [
+      -46,
+      34
+    ],
+    "16-L-I": [
+      -34,
+      -62
+    ],
+    "17-F-IV": [
+      -98.5,
+      261.0
+    ],
+    "17-I-II": [
+      41,
+      -26
+    ],
+    "17-I-III": [
+      -116.0,
+      82.0
+    ],
+    "13-K-IV": [
+      93.0,
+      -23.0
+    ],
+    "16-J-III": [
+      -34.0,
+      28.0
+    ],
+    "16-I-II": [
+      -32,
+      120
+    ],
+    "17-J-II": [
+      -386.0,
+      279.0
+    ],
+    "10-L-I": [
+      239.5,
+      -62.0
+    ],
+    "13-J-I": [
+      94,
+      34
+    ],
+    "17-G-I": [
+      -96.5,
+      191.0
+    ],
+    "17-G-III": [
+      -89,
+      210
+    ],
+    "17-H-II": [
+      -101.0,
+      173.0
+    ],
+    "19-I-II": [
+      -103,
+      112
+    ],
+    "14-L-I": [
+      55.5,
+      -67.5
+    ],
+    "17-I-IV": [
+      -59,
+      100
+    ],
+    "14-J-I": [
+      44,
+      34
+    ],
+    "17-J-IV": [
+      -144.0,
+      29.5
+    ],
+    "13-L-III": [
+      90.0,
+      -75.0
+    ],
+    "16-H-II": [
+      -59,
+      195
+    ],
+    "18-I-II": [
+      -164,
+      60
+    ],
+    "15-I-II": [
+      40,
+      76
+    ],
+    "15-I-IV": [
+      -18,
+      88
+    ],
+    "15-M-IV": [
+      20,
+      -135
+    ],
+    "14-M-II": [
+      112,
+      -105
+    ],
+    "16-U-IV": [
+      -59,
+      -574
+    ],
+    "18-I-I": [
+      -162,
+      97
+    ],
+    "15-I-I": [
       34,
-      44
+      112
+    ],
+    "18-G-III": [
+      -117.0,
+      185.0
+    ],
+    "18-H-III": [
+      -88,
+      140
+    ],
+    "18-I-III": [
+      -112.0,
+      91.0
+    ],
+    "11-K-III": [
+      236,
+      -48
+    ],
+    "19-Q-II": [
+      -206,
+      -328
+    ],
+    "13-M-I": [
+      106,
+      -105
+    ],
+    "14-M-III": [
+      106,
+      -144
+    ],
+    "15-M-III": [
+      18.0,
+      -88.0
+    ],
+    "17-G-II": [
+      48,
+      212
+    ],
+    "17-G-IV": [
+      284,
+      -150
+    ],
+    "17-H-IV": [
+      -118,
+      140
+    ],
+    "19-I-III": [
+      -156,
+      88
     ]
   },
   "csub_stats": {
-    "13-M-IV": {
+    "10-L-I": {
+      "n": 2,
+      "std_x": 19.09,
+      "std_y": 5.66,
+      "expected_residual_px": 19.91
+    },
+    "11-K-III": {
       "n": 1,
       "std_x": 0.0,
       "std_y": 0.0,
       "expected_residual_px": 0.0
     },
-    "15-K-IV": {
-      "n": 7,
+    "11-K-IV": {
+      "n": 4,
+      "std_x": 1.91,
+      "std_y": 14.64,
+      "expected_residual_px": 14.76
+    },
+    "12-K-II": {
+      "n": 4,
+      "std_x": 14.7,
+      "std_y": 5.74,
+      "expected_residual_px": 15.78
+    },
+    "12-K-IV": {
+      "n": 14,
+      "std_x": 15.04,
+      "std_y": 17.73,
+      "expected_residual_px": 23.25
+    },
+    "12-L-II": {
+      "n": 4,
+      "std_x": 4.76,
+      "std_y": 8.49,
+      "expected_residual_px": 9.73
+    },
+    "12-M-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "13-J-I": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "13-J-II": {
+      "n": 4,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "13-J-III": {
+      "n": 4,
+      "std_x": 27.78,
+      "std_y": 5.42,
+      "expected_residual_px": 28.31
+    },
+    "13-J-IV": {
+      "n": 8,
+      "std_x": 4.24,
+      "std_y": 0.0,
+      "expected_residual_px": 4.24
+    },
+    "13-K-I": {
+      "n": 4,
       "std_x": 0.0,
       "std_y": 0.0,
       "expected_residual_px": 0.0
     },
     "13-K-II": {
-      "n": 7,
-      "std_x": 34.6,
-      "std_y": 17.3,
-      "expected_residual_px": 38.7
-    },
-    "13-L-I": {
-      "n": 4,
-      "std_x": 47.1,
-      "std_y": 38.4,
-      "expected_residual_px": 60.8
-    },
-    "15-M-II": {
-      "n": 2,
-      "std_x": 7.5,
-      "std_y": 51.0,
-      "expected_residual_px": 51.5
-    },
-    "15-J-IV": {
-      "n": 4,
-      "std_x": 17.0,
-      "std_y": 3.6,
-      "expected_residual_px": 17.4
-    },
-    "15-J-II": {
-      "n": 3,
-      "std_x": 8.3,
-      "std_y": 21.9,
-      "expected_residual_px": 23.4
-    },
-    "14-I-IV": {
-      "n": 2,
-      "std_x": 0.5,
-      "std_y": 5.0,
-      "expected_residual_px": 5.0
-    },
-    "15-K-III": {
-      "n": 6,
-      "std_x": 0.6,
-      "std_y": 2.0,
-      "expected_residual_px": 2.1
-    },
-    "15-L-I": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "15-L-II": {
-      "n": 6,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-L-II": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "15-J-I": {
-      "n": 2,
-      "std_x": 1.0,
-      "std_y": 2.5,
-      "expected_residual_px": 2.7
-    },
-    "12-M-II": {
-      "n": 2,
-      "std_x": 5.5,
-      "std_y": 1.5,
-      "expected_residual_px": 5.7
-    },
-    "13-J-IV": {
-      "n": 5,
-      "std_x": 44.6,
-      "std_y": 6.3,
-      "expected_residual_px": 45.1
-    },
-    "14-J-IV": {
-      "n": 3,
-      "std_x": 16.0,
-      "std_y": 3.7,
-      "expected_residual_px": 16.4
-    },
-    "13-J-III": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-J-III": {
-      "n": 2,
-      "std_x": 1.5,
-      "std_y": 3.5,
-      "expected_residual_px": 3.8
-    },
-    "15-J-III": {
-      "n": 4,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-N-II": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-J-II": {
-      "n": 3,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "15-K-II": {
-      "n": 6,
-      "std_x": 14.14,
-      "std_y": 7.07,
-      "expected_residual_px": 15.81
+      "n": 10,
+      "std_x": 10.07,
+      "std_y": 4.57,
+      "expected_residual_px": 11.05
     },
     "13-K-III": {
-      "n": 2,
-      "std_x": 28.0,
-      "std_y": 2.5,
-      "expected_residual_px": 28.1
+      "n": 4,
+      "std_x": 21.76,
+      "std_y": 8.08,
+      "expected_residual_px": 23.22
     },
-    "14-K-II": {
-      "n": 2,
-      "std_x": 7.5,
-      "std_y": 4.0,
-      "expected_residual_px": 8.5
+    "13-K-IV": {
+      "n": 4,
+      "std_x": 20.89,
+      "std_y": 8.72,
+      "expected_residual_px": 22.63
     },
-    "13-K-I": {
-      "n": 3,
-      "std_x": 39.9,
-      "std_y": 9.0,
-      "expected_residual_px": 40.9
+    "13-L-I": {
+      "n": 12,
+      "std_x": 17.17,
+      "std_y": 19.22,
+      "expected_residual_px": 25.77
     },
     "13-L-II": {
+      "n": 5,
+      "std_x": 2.68,
+      "std_y": 8.94,
+      "expected_residual_px": 9.34
+    },
+    "13-L-III": {
+      "n": 4,
+      "std_x": 25.59,
+      "std_y": 22.09,
+      "expected_residual_px": 33.8
+    },
+    "13-M-I": {
       "n": 1,
       "std_x": 0.0,
       "std_y": 0.0,
       "expected_residual_px": 0.0
     },
-    "14-K-I": {
-      "n": 5,
-      "std_x": 13.7,
-      "std_y": 2.6,
-      "expected_residual_px": 13.9
-    },
-    "15-I-III": {
+    "13-M-IV": {
       "n": 2,
-      "std_x": 4.5,
-      "std_y": 1.5,
-      "expected_residual_px": 4.7
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
     },
-    "12-K-II": {
+    "14-I-III": {
+      "n": 5,
+      "std_x": 14.88,
+      "std_y": 13.94,
+      "expected_residual_px": 20.39
+    },
+    "14-I-IV": {
+      "n": 4,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "14-J-I": {
       "n": 3,
-      "std_x": 41.0,
-      "std_y": 12.8,
-      "expected_residual_px": 43.0
+      "std_x": 7.57,
+      "std_y": 17.01,
+      "expected_residual_px": 18.62
     },
-    "12-L-IV": {
-      "n": 1,
+    "14-J-II": {
+      "n": 27,
+      "std_x": 21.09,
+      "std_y": 13.71,
+      "expected_residual_px": 25.16
+    },
+    "14-J-III": {
+      "n": 18,
+      "std_x": 21.81,
+      "std_y": 15.79,
+      "expected_residual_px": 26.93
+    },
+    "14-J-IV": {
+      "n": 10,
+      "std_x": 23.66,
+      "std_y": 17.52,
+      "expected_residual_px": 29.44
+    },
+    "14-K-I": {
+      "n": 21,
+      "std_x": 13.08,
+      "std_y": 15.9,
+      "expected_residual_px": 20.59
+    },
+    "14-K-II": {
+      "n": 8,
+      "std_x": 2.71,
+      "std_y": 11.22,
+      "expected_residual_px": 11.55
+    },
+    "14-K-III": {
+      "n": 12,
+      "std_x": 21.35,
+      "std_y": 8.19,
+      "expected_residual_px": 22.87
+    },
+    "14-K-IV": {
+      "n": 8,
+      "std_x": 0.71,
+      "std_y": 0.0,
+      "expected_residual_px": 0.71
+    },
+    "14-L-I": {
+      "n": 2,
+      "std_x": 6.36,
+      "std_y": 36.06,
+      "expected_residual_px": 36.62
+    },
+    "14-L-II": {
+      "n": 6,
       "std_x": 0.0,
       "std_y": 0.0,
       "expected_residual_px": 0.0
     },
     "14-L-III": {
       "n": 4,
-      "std_x": 3.0,
-      "std_y": 37.1,
-      "expected_residual_px": 37.2
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
     },
-    "15-L-IV": {
-      "n": 3,
-      "std_x": 20.5,
-      "std_y": 7.5,
-      "expected_residual_px": 21.8
+    "14-L-IV": {
+      "n": 6,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
     },
-    "14-K-III": {
+    "14-M-I": {
+      "n": 5,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "14-M-II": {
       "n": 1,
       "std_x": 0.0,
       "std_y": 0.0,
       "expected_residual_px": 0.0
     },
-    "12-L-II": {
+    "14-M-III": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "14-N-II": {
+      "n": 4,
+      "std_x": 7.48,
+      "std_y": 14.05,
+      "expected_residual_px": 15.92
+    },
+    "15-I-I": {
+      "n": 3,
+      "std_x": 80.13,
+      "std_y": 50.33,
+      "expected_residual_px": 94.63
+    },
+    "15-I-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "15-I-III": {
+      "n": 5,
+      "std_x": 17.09,
+      "std_y": 19.46,
+      "expected_residual_px": 25.9
+    },
+    "15-I-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "15-J-I": {
+      "n": 5,
+      "std_x": 20.96,
+      "std_y": 13.89,
+      "expected_residual_px": 25.14
+    },
+    "15-J-II": {
+      "n": 20,
+      "std_x": 5.37,
+      "std_y": 0.45,
+      "expected_residual_px": 5.39
+    },
+    "15-J-III": {
+      "n": 10,
+      "std_x": 1.9,
+      "std_y": 1.9,
+      "expected_residual_px": 2.68
+    },
+    "15-J-IV": {
+      "n": 10,
+      "std_x": 7.75,
+      "std_y": 6.53,
+      "expected_residual_px": 10.13
+    },
+    "15-K-I": {
+      "n": 13,
+      "std_x": 14.71,
+      "std_y": 9.74,
+      "expected_residual_px": 17.64
+    },
+    "15-K-II": {
+      "n": 12,
+      "std_x": 29.99,
+      "std_y": 12.46,
+      "expected_residual_px": 32.47
+    },
+    "15-K-III": {
+      "n": 9,
+      "std_x": 1.33,
+      "std_y": 2.67,
+      "expected_residual_px": 2.98
+    },
+    "15-K-IV": {
+      "n": 23,
+      "std_x": 6.19,
+      "std_y": 2.2,
+      "expected_residual_px": 6.57
+    },
+    "15-L-I": {
+      "n": 13,
+      "std_x": 11.14,
+      "std_y": 6.31,
+      "expected_residual_px": 12.8
+    },
+    "15-L-II": {
+      "n": 9,
+      "std_x": 27.62,
+      "std_y": 21.86,
+      "expected_residual_px": 35.23
+    },
+    "15-L-III": {
+      "n": 3,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "15-L-IV": {
+      "n": 9,
+      "std_x": 18.0,
+      "std_y": 18.0,
+      "expected_residual_px": 25.46
+    },
+    "15-M-II": {
+      "n": 8,
+      "std_x": 81.18,
+      "std_y": 30.65,
+      "expected_residual_px": 86.77
+    },
+    "15-M-III": {
+      "n": 2,
+      "std_x": 41.01,
+      "std_y": 33.94,
+      "expected_residual_px": 53.24
+    },
+    "15-M-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "15-N-I": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "16-H-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "16-H-IV": {
+      "n": 2,
+      "std_x": 12.02,
+      "std_y": 7.07,
+      "expected_residual_px": 13.95
+    },
+    "16-I-I": {
+      "n": 5,
+      "std_x": 35.31,
+      "std_y": 42.56,
+      "expected_residual_px": 55.3
+    },
+    "16-I-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "16-I-III": {
+      "n": 10,
+      "std_x": 6.56,
+      "std_y": 16.63,
+      "expected_residual_px": 17.88
+    },
+    "16-J-I": {
+      "n": 12,
+      "std_x": 17.72,
+      "std_y": 12.39,
+      "expected_residual_px": 21.62
+    },
+    "16-J-II": {
+      "n": 3,
+      "std_x": 15.31,
+      "std_y": 12.06,
+      "expected_residual_px": 19.49
+    },
+    "16-J-III": {
+      "n": 4,
+      "std_x": 7.0,
+      "std_y": 10.5,
+      "expected_residual_px": 12.62
+    },
+    "16-J-IV": {
+      "n": 13,
+      "std_x": 17.39,
+      "std_y": 12.12,
+      "expected_residual_px": 21.2
+    },
+    "16-K-I": {
+      "n": 11,
+      "std_x": 20.4,
+      "std_y": 7.54,
+      "expected_residual_px": 21.75
+    },
+    "16-K-II": {
+      "n": 13,
+      "std_x": 30.72,
+      "std_y": 40.65,
+      "expected_residual_px": 50.96
+    },
+    "16-K-III": {
+      "n": 9,
+      "std_x": 18.92,
+      "std_y": 32.25,
+      "expected_residual_px": 37.39
+    },
+    "16-K-IV": {
+      "n": 5,
+      "std_x": 33.19,
+      "std_y": 27.09,
+      "expected_residual_px": 42.84
+    },
+    "16-L-I": {
+      "n": 9,
+      "std_x": 27.68,
+      "std_y": 22.75,
+      "expected_residual_px": 35.83
+    },
+    "16-M-I": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "16-U-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-F-IV": {
+      "n": 2,
+      "std_x": 61.52,
+      "std_y": 83.44,
+      "expected_residual_px": 103.67
+    },
+    "17-G-I": {
+      "n": 2,
+      "std_x": 37.48,
+      "std_y": 12.73,
+      "expected_residual_px": 39.58
+    },
+    "17-G-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-G-III": {
+      "n": 5,
+      "std_x": 42.76,
+      "std_y": 6.72,
+      "expected_residual_px": 43.28
+    },
+    "17-G-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-H-I": {
+      "n": 6,
+      "std_x": 42.31,
+      "std_y": 29.13,
+      "expected_residual_px": 51.37
+    },
+    "17-H-II": {
+      "n": 4,
+      "std_x": 523.94,
+      "std_y": 453.04,
+      "expected_residual_px": 692.65
+    },
+    "17-H-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-I-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-I-III": {
+      "n": 4,
+      "std_x": 105.52,
+      "std_y": 29.55,
+      "expected_residual_px": 109.57
+    },
+    "17-I-IV": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "17-J-I": {
+      "n": 4,
+      "std_x": 260.16,
+      "std_y": 89.66,
+      "expected_residual_px": 275.18
+    },
+    "17-J-II": {
+      "n": 2,
+      "std_x": 390.32,
+      "std_y": 321.03,
+      "expected_residual_px": 505.38
+    },
+    "17-J-III": {
+      "n": 7,
+      "std_x": 12.33,
+      "std_y": 8.32,
+      "expected_residual_px": 14.88
+    },
+    "17-J-IV": {
+      "n": 4,
+      "std_x": 152.09,
+      "std_y": 63.44,
+      "expected_residual_px": 164.79
+    },
+    "18-G-III": {
+      "n": 2,
+      "std_x": 9.9,
+      "std_y": 1.41,
+      "expected_residual_px": 10.0
+    },
+    "18-H-III": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "18-I-I": {
+      "n": 3,
+      "std_x": 24.66,
+      "std_y": 8.5,
+      "expected_residual_px": 26.09
+    },
+    "18-I-II": {
+      "n": 3,
+      "std_x": 120.16,
+      "std_y": 59.23,
+      "expected_residual_px": 133.96
+    },
+    "18-I-III": {
+      "n": 2,
+      "std_x": 14.14,
+      "std_y": 26.87,
+      "expected_residual_px": 30.36
+    },
+    "19-I-I": {
+      "n": 4,
+      "std_x": 22.72,
+      "std_y": 56.38,
+      "expected_residual_px": 60.78
+    },
+    "19-I-II": {
+      "n": 5,
+      "std_x": 165.07,
+      "std_y": 44.62,
+      "expected_residual_px": 171.0
+    },
+    "19-I-III": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "19-Q-II": {
+      "n": 1,
+      "std_x": 0.0,
+      "std_y": 0.0,
+      "expected_residual_px": 0.0
+    },
+    "20-P-IV": {
+      "n": 3,
+      "std_x": 161.19,
+      "std_y": 158.77,
+      "expected_residual_px": 226.26
+    },
+    "9-K-IV": {
+      "n": 9,
+      "std_x": 13.86,
+      "std_y": 12.52,
+      "expected_residual_px": 18.68
+    },
+    "9-L-II": {
+      "n": 4,
+      "std_x": 19.21,
+      "std_y": 9.63,
+      "expected_residual_px": 21.49
+    },
+    "12-L-IV": {
       "n": 1,
       "std_x": 0.0,
       "std_y": 0.0,
@@ -585,121 +1233,7 @@
       "std_y": 15.8,
       "expected_residual_px": 23.9
     },
-    "15-L-III": {
-      "n": 2,
-      "std_x": 9.5,
-      "std_y": 11.0,
-      "expected_residual_px": 14.5
-    },
     "15-N-II": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "11-K-IV": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "15-N-I": {
-      "n": 2,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-M-I": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "13-J-II": {
-      "n": 2,
-      "std_x": 90.5,
-      "std_y": 6.5,
-      "expected_residual_px": 90.7
-    },
-    "15-K-I": {
-      "n": 2,
-      "std_x": 31.5,
-      "std_y": 25.5,
-      "expected_residual_px": 40.5
-    },
-    "14-K-IV": {
-      "n": 3,
-      "std_x": 19.3,
-      "std_y": 10.2,
-      "expected_residual_px": 21.8
-    },
-    "14-L-IV": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "12-K-IV": {
-      "n": 5,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "9-K-IV": {
-      "n": 2,
-      "std_x": 15.5,
-      "std_y": 2.5,
-      "expected_residual_px": 15.7
-    },
-    "16-M-I": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "14-I-III": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "16-I-III": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "16-J-IV": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "16-K-II": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "17-H-I": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "17-J-I": {
-      "n": 1,
-      "std_x": 0.0,
-      "std_y": 0.0,
-      "expected_residual_px": 0.0
-    },
-    "17-J-III": {
-      "n": 2,
-      "std_x": 18.38,
-      "std_y": 8.49,
-      "expected_residual_px": 20.25
-    },
-    "20-P-IV": {
       "n": 1,
       "std_x": 0.0,
       "std_y": 0.0,
@@ -707,6 +1241,7 @@
     }
   },
   "cells_with_direct_data": [
+    "10-L",
     "11-K",
     "12-K",
     "12-L",
@@ -728,17 +1263,31 @@
     "15-L",
     "15-M",
     "15-N",
+    "16-H",
     "16-I",
     "16-J",
     "16-K",
+    "16-L",
     "16-M",
+    "16-U",
+    "17-F",
+    "17-G",
     "17-H",
+    "17-I",
     "17-J",
+    "18-G",
+    "18-H",
+    "18-I",
+    "19-I",
+    "19-Q",
     "20-P",
-    "9-K"
+    "9-K",
+    "9-L"
   ],
   "cells_interpolated": [],
   "csub_buckets_with_data": [
+    "10-L-I",
+    "11-K-III",
     "11-K-IV",
     "12-K-II",
     "12-K-IV",
@@ -746,18 +1295,23 @@
     "12-L-IV",
     "12-M-II",
     "13-I-II",
+    "13-J-I",
     "13-J-II",
     "13-J-III",
     "13-J-IV",
     "13-K-I",
     "13-K-II",
     "13-K-III",
+    "13-K-IV",
     "13-L-I",
     "13-L-II",
+    "13-L-III",
     "13-L-IV",
+    "13-M-I",
     "13-M-IV",
     "14-I-III",
     "14-I-IV",
+    "14-J-I",
     "14-J-II",
     "14-J-III",
     "14-J-IV",
@@ -765,12 +1319,18 @@
     "14-K-II",
     "14-K-III",
     "14-K-IV",
+    "14-L-I",
     "14-L-II",
     "14-L-III",
     "14-L-IV",
     "14-M-I",
+    "14-M-II",
+    "14-M-III",
     "14-N-II",
+    "15-I-I",
+    "15-I-II",
     "15-I-III",
+    "15-I-IV",
     "15-J-I",
     "15-J-II",
     "15-J-III",
@@ -784,23 +1344,54 @@
     "15-L-III",
     "15-L-IV",
     "15-M-II",
+    "15-M-III",
+    "15-M-IV",
     "15-N-I",
     "15-N-II",
+    "16-H-II",
+    "16-H-IV",
+    "16-I-I",
+    "16-I-II",
     "16-I-III",
+    "16-J-I",
+    "16-J-II",
+    "16-J-III",
     "16-J-IV",
+    "16-K-I",
     "16-K-II",
+    "16-K-III",
+    "16-K-IV",
+    "16-L-I",
     "16-M-I",
+    "16-U-IV",
+    "17-F-IV",
+    "17-G-I",
+    "17-G-II",
+    "17-G-III",
+    "17-G-IV",
     "17-H-I",
+    "17-H-II",
+    "17-H-IV",
+    "17-I-II",
+    "17-I-III",
+    "17-I-IV",
     "17-J-I",
+    "17-J-II",
     "17-J-III",
+    "17-J-IV",
+    "18-G-III",
+    "18-H-III",
+    "18-I-I",
+    "18-I-II",
+    "18-I-III",
+    "19-I-I",
+    "19-I-II",
+    "19-I-III",
+    "19-Q-II",
     "20-P-IV",
     "9-K-II",
-    "9-K-IV"
+    "9-K-IV",
+    "9-L-II"
   ],
-  "lg_merge": {
-    "applied_used": 457,
-    "buckets_updated": 16,
-    "buckets_added": 2,
-    "filter": "inlier_ratio>=0.65 samples>=5"
-  }
+  "_method": "absolute (cal_dxdy + drag_native, median per bucket)"
 }
