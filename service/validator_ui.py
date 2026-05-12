@@ -725,25 +725,74 @@ function attachPolygonDrag() {
   green.addEventListener('pointercancel', endDrag);
 }
 
-// ----- Pinch-to-zoom (dos dedos en cualquier parte) -----
+// ----- Pinch-to-zoom (dos dedos), ancla midpoint -----
+// Pan con 1 dedo: scroll nativo del .canvas-wrap (touch-action: pan-x pan-y).
+// Polígono verde captura su propio pointerdown (touch-action: none) y bloquea
+// el scroll cuando se arrastra encima — así no se rompe el drag de corrección.
 const activePointers = new Map();
 let pinchStartDist = 0, pinchStartZoom = 0;
+let pinchAnchors = null; // [{wrap, inner, ratioX, ratioY, viewX, viewY}, ...]
+
 function pinchPoints() { return [...activePointers.values()]; }
 function pinchDist() {
   const p = pinchPoints();
   if (p.length < 2) return 0;
   return Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
 }
+function pinchMidpoint() {
+  const p = pinchPoints();
+  if (p.length < 2) return null;
+  return { x: (p[0].x + p[1].x) / 2, y: (p[0].y + p[1].y) / 2 };
+}
+
+function snapshotPinchAnchors() {
+  const mid = pinchMidpoint();
+  if (!mid) { pinchAnchors = null; return; }
+  pinchAnchors = [];
+  document.querySelectorAll('.canvas-wrap').forEach(wrap => {
+    const inner = wrap.querySelector('.canvas-inner');
+    if (!inner) return;
+    const wRect = wrap.getBoundingClientRect();
+    const iRect = inner.getBoundingClientRect();
+    // ratio del midpoint en coords del inner [0..1]; si está fuera del wrap,
+    // usamos centro como anchor (zoom estable).
+    const insidePane = (mid.x >= wRect.left && mid.x <= wRect.right
+                        && mid.y >= wRect.top && mid.y <= wRect.bottom);
+    const cx = insidePane ? mid.x : (wRect.left + wRect.width / 2);
+    const cy = insidePane ? mid.y : (wRect.top + wRect.height / 2);
+    const ratioX = iRect.width > 0 ? (cx - iRect.left) / iRect.width : 0.5;
+    const ratioY = iRect.height > 0 ? (cy - iRect.top) / iRect.height : 0.5;
+    const viewX = cx - wRect.left;
+    const viewY = cy - wRect.top;
+    pinchAnchors.push({ wrap, inner, ratioX, ratioY, viewX, viewY });
+  });
+}
+
+function applyPinchAnchors() {
+  if (!pinchAnchors) return;
+  // applyZoom() ya cambió el width/height de cada inner. Ajustamos scrollLeft/Top
+  // del wrap para que el punto del contenido (ratioX, ratioY) quede de nuevo
+  // bajo el midpoint del pinch.
+  for (const a of pinchAnchors) {
+    const w = a.inner.offsetWidth;
+    const h = a.inner.offsetHeight;
+    a.wrap.scrollLeft = Math.max(0, a.ratioX * w - a.viewX);
+    a.wrap.scrollTop = Math.max(0, a.ratioY * h - a.viewY);
+  }
+}
+
 document.addEventListener('pointerdown', e => {
   if (e.pointerType !== 'touch') return;
   activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
   if (activePointers.size === 2) {
     pinchStartDist = pinchDist();
     pinchStartZoom = viewMpx;
-    // cancela drag si estaba activo (segundo dedo aborta drag)
+    snapshotPinchAnchors();
+    // cancela drag del polígono si estaba activo (segundo dedo aborta drag)
     if (dragging) { dragging = false; pointerId = null; }
   }
 }, { passive: true });
+
 document.addEventListener('pointermove', e => {
   if (e.pointerType !== 'touch') return;
   if (!activePointers.has(e.pointerId)) return;
@@ -755,17 +804,35 @@ document.addEventListener('pointermove', e => {
       const ratio = pinchStartDist / d;
       const newZoom = Math.max(0.05, Math.min(1.0, pinchStartZoom * ratio));
       setZoom(newZoom);
+      applyPinchAnchors();
     }
     e.preventDefault();
   }
 }, { passive: false });
+
 function pinchUp(e) {
   if (e.pointerType !== 'touch') return;
   activePointers.delete(e.pointerId);
-  if (activePointers.size < 2) pinchStartDist = 0;
+  if (activePointers.size < 2) {
+    pinchStartDist = 0;
+    pinchAnchors = null;
+  }
 }
 document.addEventListener('pointerup', pinchUp, { passive: true });
 document.addEventListener('pointercancel', pinchUp, { passive: true });
+
+// Doble-tap rápido → fit (zoom 0.5 m/px). Atajo útil tras explorar.
+let lastTap = 0;
+document.addEventListener('pointerdown', e => {
+  if (e.pointerType !== 'touch') return;
+  if (activePointers.size > 1) return;
+  // ignora si está sobre el polígono verde
+  const tgt = e.target;
+  if (tgt && tgt.id === 'poly-green') return;
+  const now = Date.now();
+  if (now - lastTap < 300) { setZoom(0.5); }
+  lastTap = now;
+}, { passive: true });
 
 function pxScale() {
   // px de pantalla por px nativo del crop
