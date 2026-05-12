@@ -1,0 +1,1332 @@
+{
+  "0152067TP7005S": {
+    "body_relative": {
+      "rx": 0.2006,
+      "ry": 0.9621
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270012.86,
+      4805037.449
+    ]
+  },
+  "0161001TP7006S": {
+    "body_relative": {
+      "rx": 0.3252,
+      "ry": 0.1979
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270080.528,
+      4806015.292
+    ]
+  },
+  "0162001TP7006S": {
+    "body_relative": {
+      "rx": 0.3389,
+      "ry": 0.962
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270087.974,
+      4806080.583
+    ]
+  },
+  "0162002TP7006S": {
+    "body_relative": {
+      "rx": 0.2361,
+      "ry": 0.16
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270032.146,
+      4806029.298
+    ]
+  },
+  "0163002TP7006N": {
+    "body_relative": {
+      "rx": 0.5687,
+      "ry": 0.3099
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270212.803,
+      4806321.586
+    ]
+  },
+  "0247042TP7004N0001AA": {
+    "body_relative": {
+      "rx": 0.5668,
+      "ry": 0.7843
+    },
+    "cell": "16-L",
+    "sheet_name": "PLANO_16_L_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270211.753,
+      4804407.777
+    ]
+  },
+  "0250001TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.379,
+      "ry": 0.279
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270109.723,
+      4804942.225
+    ]
+  },
+  "0355001TP7005N": {
+    "body_relative": {
+      "rx": 0.3785,
+      "ry": 0.1889
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270109.476,
+      4805323.211
+    ]
+  },
+  "0358002TP7005N0001AA": {
+    "body_relative": {
+      "rx": 0.3141,
+      "ry": 0.1644
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270074.526,
+      4805679.963
+    ]
+  },
+  "0367207TP7006N0001AA": {
+    "body_relative": {
+      "rx": 0.555,
+      "ry": 0.7113
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270205.357,
+      4806520.942
+    ]
+  },
+  "0451706TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.6523,
+      "ry": 0.38
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270258.158,
+      4804904.908
+    ]
+  },
+  "0451707TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.6475,
+      "ry": 0.3964
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270255.576,
+      4804898.831
+    ]
+  },
+  "0462817TP7006S0001AA": {
+    "body_relative": {
+      "rx": 0.6806,
+      "ry": 0.0439
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270273.551,
+      4806072.214
+    ]
+  },
+  "0465007TP7006N0001AA": {
+    "body_relative": {
+      "rx": 0.7629,
+      "ry": 0.2906
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270318.262,
+      4806328.705
+    ]
+  },
+  "0469102TP7006N0001AA": {
+    "body_relative": {
+      "rx": 0.9257,
+      "ry": 0.1412
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      270406.652,
+      4806731.617
+    ]
+  },
+  "0651205TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.1062,
+      "ry": 0.333
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      270479.658,
+      4804922.276
+    ]
+  },
+  "0664008TP7006S0001AA": {
+    "body_relative": {
+      "rx": 0.795,
+      "ry": 0.4625
+    },
+    "cell": "16-I",
+    "sheet_name": "PLANO_16_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      270335.661,
+      4806265.187
+    ]
+  },
+  "0755046TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.3984,
+      "ry": 0.4214
+    },
+    "cell": "16-K",
+    "sheet_name": "PLANO_16_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      270638.34,
+      4805237.28
+    ]
+  },
+  "0756613TP7005N0001AA": {
+    "body_relative": {
+      "rx": 0.2631,
+      "ry": 0.9507
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      270564.852,
+      4805389.373
+    ]
+  },
+  "0859015TP7005N0001AA": {
+    "body_relative": {
+      "rx": 0.7068,
+      "ry": 0.855
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      270805.88,
+      4805772.428
+    ]
+  },
+  "0970032TP7006N0001AA": {
+    "body_relative": {
+      "rx": 0.5008,
+      "ry": 0.9153
+    },
+    "cell": "16-H",
+    "sheet_name": "PLANO_16_H_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      270693.999,
+      4806793.234
+    ]
+  },
+  "1056001TP7015N0001AA": {
+    "body_relative": {
+      "rx": 0.1259,
+      "ry": 0.7364
+    },
+    "cell": "17-J",
+    "sheet_name": "PLANO_17_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      271008.419,
+      4805468.555
+    ]
+  },
+  "1058006TP7015N0001AA": {
+    "body_relative": {
+      "rx": 0.9089,
+      "ry": 0.4843
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      270915.623,
+      4805561.745
+    ]
+  },
+  "1059605TP7005N0001AA": {
+    "body_relative": {
+      "rx": 0.8232,
+      "ry": 0.255
+    },
+    "cell": "16-J",
+    "sheet_name": "PLANO_16_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      270869.097,
+      4805646.471
+    ]
+  },
+  "1258503TP7015N0001AA": {
+    "body_relative": {
+      "rx": 0.3246,
+      "ry": 0.5016
+    },
+    "cell": "17-J",
+    "sheet_name": "PLANO_17_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      271116.335,
+      4805555.353
+    ]
+  },
+  "1258510TP7015N0001AA": {
+    "body_relative": {
+      "rx": 0.1545,
+      "ry": 0.5728
+    },
+    "cell": "17-J",
+    "sheet_name": "PLANO_17_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      271023.946,
+      4805529.022
+    ]
+  },
+  "1461116TP7016S0001AA": {
+    "body_relative": {
+      "rx": 0.7573,
+      "ry": 0.3487
+    },
+    "cell": "17-J",
+    "sheet_name": "PLANO_17_J_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      271351.356,
+      4805959.548
+    ]
+  },
+  "1473203TP7017S0001AA": {
+    "body_relative": {
+      "rx": 0.8377,
+      "ry": 0.8922
+    },
+    "cell": "17-H",
+    "sheet_name": "PLANO_17_H_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      271395.012,
+      4807149.445
+    ]
+  },
+  "1564507TP7016S0001AA": {
+    "body_relative": {
+      "rx": 0.7772,
+      "ry": 0.7277
+    },
+    "cell": "17-I",
+    "sheet_name": "PLANO_17_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      271362.183,
+      4806167.162
+    ]
+  },
+  "1564518TP7016S0001AA": {
+    "body_relative": {
+      "rx": 0.8766,
+      "ry": 0.7453
+    },
+    "cell": "17-I",
+    "sheet_name": "PLANO_17_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      271416.134,
+      4806160.658
+    ]
+  },
+  "1668806TP7016N0001AA": {
+    "body_relative": {
+      "rx": 0.1442,
+      "ry": 0.7062
+    },
+    "cell": "17-I",
+    "sheet_name": "PLANO_17_I_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      271536.45,
+      4806522.798
+    ]
+  },
+  "1783102TP7018S0001AA": {
+    "body_relative": {
+      "rx": 0.3978,
+      "ry": 0.5516
+    },
+    "cell": "17-F",
+    "sheet_name": "PLANO_17_F_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      271674.172,
+      4808318.426
+    ]
+  },
+  "3268412TP7036N0001AA": {
+    "body_relative": {
+      "rx": 0.2174,
+      "ry": 0.6927
+    },
+    "cell": "19-I",
+    "sheet_name": "PLANO_19_I_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      273130.407,
+      4806527.796
+    ]
+  },
+  "3348210TP6034N0001AA": {
+    "body_relative": {
+      "rx": 0.1252,
+      "ry": 0.1543
+    },
+    "cell": "9-L",
+    "sheet_name": "PLANO_9_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      263236.939,
+      4804640.629
+    ]
+  },
+  "3546005TP6034N0001AA": {
+    "body_relative": {
+      "rx": 0.4857,
+      "ry": 0.597
+    },
+    "cell": "9-L",
+    "sheet_name": "PLANO_9_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      263432.739,
+      4804477.017
+    ]
+  },
+  "3668017TP7036N0001AA": {
+    "body_relative": {
+      "rx": 0.892,
+      "ry": 0.5648
+    },
+    "cell": "19-I",
+    "sheet_name": "PLANO_19_I_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      273496.839,
+      4806575.081
+    ]
+  },
+  "3748008TP6034N0001AA": {
+    "body_relative": {
+      "rx": 0.7265,
+      "ry": 0.8363
+    },
+    "cell": "9-K",
+    "sheet_name": "PLANO_9_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      263563.476,
+      4804736.246
+    ]
+  },
+  "3750004TP6035S0001AA": {
+    "body_relative": {
+      "rx": 0.8956,
+      "ry": 0.4642
+    },
+    "cell": "9-K",
+    "sheet_name": "PLANO_9_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      263655.328,
+      4804873.775
+    ]
+  },
+  "4916002TP7041N0001AA": {
+    "body_relative": {
+      "rx": 0.1576,
+      "ry": 0.6787
+    },
+    "cell": "20-P",
+    "sheet_name": "PLANO_20_P_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      274652.17,
+      4801317.584
+    ]
+  },
+  "5450006TP6054N0001AA": {
+    "body_relative": {
+      "rx": 0.6291,
+      "ry": 0.6586
+    },
+    "cell": "11-K",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      265582.911,
+      4804801.919
+    ]
+  },
+  "5451013TP6055S0001AA": {
+    "body_relative": {
+      "rx": 0.1834,
+      "ry": 0.6026
+    },
+    "cell": "11-K",
+    "sheet_name": "PLANO_11_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      265340.845,
+      4804822.65
+    ]
+  },
+  "6849064TP6064N0001AA": {
+    "body_relative": {
+      "rx": 0.6624,
+      "ry": 0.7964
+    },
+    "cell": "12-K",
+    "sheet_name": "PLANO_12_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      266637.158,
+      4804750.994
+    ]
+  },
+  "6854035TP6065S0001AA": {
+    "body_relative": {
+      "rx": 0.8331,
+      "ry": 0.5445
+    },
+    "cell": "12-K",
+    "sheet_name": "PLANO_12_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      266729.836,
+      4805191.794
+    ]
+  },
+  "7051025TP6064N0001AA": {
+    "body_relative": {
+      "rx": 0.1152,
+      "ry": 0.7282
+    },
+    "cell": "13-K",
+    "sheet_name": "PLANO_13_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      266858.008,
+      4804776.233
+    ]
+  },
+  "7447014TP6074N0001AA": {
+    "body_relative": {
+      "rx": 0.7731,
+      "ry": 0.5697
+    },
+    "cell": "13-L",
+    "sheet_name": "PLANO_13_L_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      267215.361,
+      4804487.093
+    ]
+  },
+  "7548008TP6074N0001AA": {
+    "body_relative": {
+      "rx": 0.14,
+      "ry": 0.2894
+    },
+    "cell": "13-L",
+    "sheet_name": "PLANO_13_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      267389.546,
+      4804590.695
+    ]
+  },
+  "7648410TP6074N0001AA": {
+    "body_relative": {
+      "rx": 0.1653,
+      "ry": 0.4209
+    },
+    "cell": "13-L",
+    "sheet_name": "PLANO_13_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      267403.296,
+      4804542.085
+    ]
+  },
+  "7852017TP6075S0001AA": {
+    "body_relative": {
+      "rx": 0.6702,
+      "ry": 0.0671
+    },
+    "cell": "13-K",
+    "sheet_name": "PLANO_13_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      267677.544,
+      4805020.558
+    ]
+  },
+  "7855805TP6075N0001AA": {
+    "body_relative": {
+      "rx": 0.6703,
+      "ry": 0.9301
+    },
+    "cell": "13-J",
+    "sheet_name": "PLANO_13_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      267677.565,
+      4805396.97
+    ]
+  },
+  "7951062TP6075S": {
+    "body_relative": {
+      "rx": 0.1056,
+      "ry": 0.0992
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      267888.951,
+      4805008.668
+    ]
+  },
+  "7951063TP6085S": {
+    "body_relative": {
+      "rx": 0.143,
+      "ry": 0.1125
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      267909.299,
+      4805003.778
+    ]
+  },
+  "7960008TP6075N0001AA": {
+    "body_relative": {
+      "rx": 0.8623,
+      "ry": 0.9427
+    },
+    "cell": "13-J",
+    "sheet_name": "PLANO_13_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      267781.862,
+      4805740.005
+    ]
+  },
+  "8059010TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.3647,
+      "ry": 0.3268
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268029.672,
+      4805619.959
+    ]
+  },
+  "8064021TP6086S0001AA": {
+    "body_relative": {
+      "rx": 0.4194,
+      "ry": 0.4843
+    },
+    "cell": "14-I",
+    "sheet_name": "PLANO_14_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268059.395,
+      4806257.134
+    ]
+  },
+  "8154019TP6085S0001AA": {
+    "body_relative": {
+      "rx": 0.199,
+      "ry": 0.5412
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      267939.676,
+      4805193.033
+    ]
+  },
+  "8157008TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.3696,
+      "ry": 0.6573
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268032.324,
+      4805497.81
+    ]
+  },
+  "8238506TP6083N0001AA": {
+    "body_relative": {
+      "rx": 0.6475,
+      "ry": 0.8346
+    },
+    "cell": "14-M",
+    "sheet_name": "PLANO_14_M_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      268183.253,
+      4803693.828
+    ]
+  },
+  "8356033TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.5587,
+      "ry": 0.7012
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268135.022,
+      4805481.592
+    ]
+  },
+  "8360022TP6086S": {
+    "body_relative": {
+      "rx": 0.0427,
+      "ry": 0.4723
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268372.854,
+      4805913.872
+    ]
+  },
+  "8360023TP6086S": {
+    "body_relative": {
+      "rx": 0.0652,
+      "ry": 0.4224
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268385.096,
+      4805932.298
+    ]
+  },
+  "8445009TP6084S0001AA": {
+    "body_relative": {
+      "rx": 0.706,
+      "ry": 0.2037
+    },
+    "cell": "14-L",
+    "sheet_name": "PLANO_14_L_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268215.059,
+      4804274.678
+    ]
+  },
+  "8653019TP6085S0002QW": {
+    "body_relative": {
+      "rx": 0.2388,
+      "ry": 0.9636
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268479.365,
+      4805036.897
+    ]
+  },
+  "8656006TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.2584,
+      "ry": 0.0823
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268490.01,
+      4805362.621
+    ]
+  },
+  "8751010TP6085S0001AA": {
+    "body_relative": {
+      "rx": 0.563,
+      "ry": 0.3089
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      268655.482,
+      4804931.179
+    ]
+  },
+  "8760001TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.3949,
+      "ry": 0.7874
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268564.145,
+      4805797.415
+    ]
+  },
+  "8760105TP6086S0001AA": {
+    "body_relative": {
+      "rx": 0.5607,
+      "ry": 0.6965
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268654.226,
+      4805831.018
+    ]
+  },
+  "8763020TP6086S0001AA": {
+    "body_relative": {
+      "rx": 0.2972,
+      "ry": 0.202
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268511.07,
+      4806013.771
+    ]
+  },
+  "8953305TP6085S0002TW": {
+    "body_relative": {
+      "rx": 0.9162,
+      "ry": 0.7255
+    },
+    "cell": "14-K",
+    "sheet_name": "PLANO_14_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268847.295,
+      4805124.911
+    ]
+  },
+  "8961014TP6086S0001AA": {
+    "body_relative": {
+      "rx": 0.9082,
+      "ry": 0.6523
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      268842.939,
+      4805847.355
+    ]
+  },
+  "9135404TP6093S0001AA": {
+    "body_relative": {
+      "rx": 0.2359,
+      "ry": 0.1412
+    },
+    "cell": "15-N",
+    "sheet_name": "PLANO_15_N_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      268995.882,
+      4803254.71
+    ]
+  },
+  "9157005TP6095N0001AA": {
+    "body_relative": {
+      "rx": 0.1644,
+      "ry": 0.6635
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268957.071,
+      4805495.511
+    ]
+  },
+  "9157015TP6095N0001AA": {
+    "body_relative": {
+      "rx": 0.2286,
+      "ry": 0.546
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268991.928,
+      4805538.928
+    ]
+  },
+  "9164008TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.23,
+      "ry": 0.6177
+    },
+    "cell": "15-I",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      268992.649,
+      4806207.833
+    ]
+  },
+  "9247033TP6094N0001AA": {
+    "body_relative": {
+      "rx": 0.4367,
+      "ry": 0.4273
+    },
+    "cell": "15-L",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      269104.931,
+      4804539.738
+    ]
+  },
+  "9253007TP6095S0001AA": {
+    "body_relative": {
+      "rx": 0.4118,
+      "ry": 0.5933
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      269091.42,
+      4805173.764
+    ]
+  },
+  "9254317TP6095S0001ZT": {
+    "body_relative": {
+      "rx": 0.4706,
+      "ry": 0.5365
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      269123.333,
+      4805194.751
+    ]
+  },
+  "9348016TP6094N0001AA": {
+    "body_relative": {
+      "rx": 0.6827,
+      "ry": 0.1927
+    },
+    "cell": "15-L",
+    "sheet_name": "PLANO_15_L_I.pdf",
+    "sub_compass": "NW",
+    "sub_quadrant": "I",
+    "utm": [
+      269238.516,
+      4804626.444
+    ]
+  },
+  "9361006TP6085N0001AA": {
+    "body_relative": {
+      "rx": 0.9767,
+      "ry": 0.3153
+    },
+    "cell": "14-J",
+    "sheet_name": "PLANO_14_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      268880.139,
+      4805624.181
+    ]
+  },
+  "9364007TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.5062,
+      "ry": 0.6314
+    },
+    "cell": "15-I",
+    "sheet_name": "PLANO_15_I_III.pdf",
+    "sub_compass": "SW",
+    "sub_quadrant": "III",
+    "utm": [
+      269142.704,
+      4806202.771
+    ]
+  },
+  "9546021TP6094N0001AA": {
+    "body_relative": {
+      "rx": 0.2737,
+      "ry": 0.7871
+    },
+    "cell": "15-L",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269534.484,
+      4804406.752
+    ]
+  },
+  "9562620TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.2087,
+      "ry": 0.6685
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269499.199,
+      4805841.375
+    ]
+  },
+  "9650026TP6094N0001AA": {
+    "body_relative": {
+      "rx": 0.2796,
+      "ry": 0.7795
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      269537.688,
+      4804757.24
+    ]
+  },
+  "9651017TP6095S0001IT": {
+    "body_relative": {
+      "rx": 0.1286,
+      "ry": 0.3442
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      269455.698,
+      4804918.13
+    ]
+  },
+  "9746002TP6094N0001AA": {
+    "body_relative": {
+      "rx": 0.3658,
+      "ry": 0.7094
+    },
+    "cell": "15-L",
+    "sheet_name": "PLANO_15_L_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269584.53,
+      4804435.456
+    ]
+  },
+  "9750307TP6095S0001AA": {
+    "body_relative": {
+      "rx": 0.4396,
+      "ry": 0.5196
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      269624.569,
+      4804853.297
+    ]
+  },
+  "9762005TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.3141,
+      "ry": 0.1374
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269556.438,
+      4806037.623
+    ]
+  },
+  "9854028TP6095S0001AA": {
+    "body_relative": {
+      "rx": 0.5105,
+      "ry": 0.6505
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269663.112,
+      4805152.639
+    ]
+  },
+  "9857602TP6095N0001AA": {
+    "body_relative": {
+      "rx": 0.7299,
+      "ry": 0.4837
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_IV.pdf",
+    "sub_compass": "SE",
+    "sub_quadrant": "IV",
+    "utm": [
+      269782.225,
+      4805561.968
+    ]
+  },
+  "9862007TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.6003,
+      "ry": 0.2669
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269711.84,
+      4805989.792
+    ]
+  },
+  "9940303TP6094S0001AA": {
+    "body_relative": {
+      "rx": 0.7993,
+      "ry": 0.506
+    },
+    "cell": "15-M",
+    "sheet_name": "PLANO_15_M_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269819.964,
+      4803815.246
+    ]
+  },
+  "9952034TP7005S0001AA": {
+    "body_relative": {
+      "rx": 0.9733,
+      "ry": 0.8096
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269914.449,
+      4805093.839
+    ]
+  },
+  "9954005TP6095S0001AA": {
+    "body_relative": {
+      "rx": 0.9047,
+      "ry": 0.3347
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269877.164,
+      4805269.33
+    ]
+  },
+  "9954038TP6095S0001AA": {
+    "body_relative": {
+      "rx": 0.7601,
+      "ry": 0.7137
+    },
+    "cell": "15-K",
+    "sheet_name": "PLANO_15_K_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269798.626,
+      4805129.259
+    ]
+  },
+  "9962602TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.6775,
+      "ry": 0.4055
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269753.815,
+      4805938.553
+    ]
+  },
+  "9962611TP6096S0001AA": {
+    "body_relative": {
+      "rx": 0.7171,
+      "ry": 0.4543
+    },
+    "cell": "15-J",
+    "sheet_name": "PLANO_15_J_II.pdf",
+    "sub_compass": "NE",
+    "sub_quadrant": "II",
+    "utm": [
+      269775.319,
+      4805920.527
+    ]
+  }
+}
