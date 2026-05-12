@@ -480,10 +480,11 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 .zoom-bar button { padding: 6px 12px; background: #333; border: none; color: #fff; border-radius: 4px; cursor: pointer; font-size: 12px; }
 .pane { background: #181818; display: flex; flex-direction: column; overflow: hidden; }
 .pane h2 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; padding: 6px 10px; background: #1f1f1f; flex-shrink: 0; }
-.canvas-wrap { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: auto; background: #0c0c0c;
-               touch-action: pan-x pan-y; /* permite pan con un dedo, pinch lo capturamos nosotros */
+.canvas-wrap { flex: 1; position: relative; overflow: hidden; background: #0c0c0c;
+               touch-action: none; overscroll-behavior: none;
                -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.canvas-inner { position: relative; flex-shrink: 0; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.canvas-inner { position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform;
+                -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .canvas-inner img { display: block; image-rendering: crisp-edges; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; pointer-events: none; }
 #overlay { position: absolute; top: 0; left: 0; pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 #overlay polygon.draggable { pointer-events: auto; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
@@ -557,9 +558,9 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 
 <div class="zoom-bar">
   <label>Zoom (m/px)</label>
-  <input type="range" id="zoom" min="0.05" max="2.0" step="0.01" value="0.75">
+  <input type="range" id="zoom" min="0.1" max="2.0" step="0.01" value="0.75">
   <span class="scale-label" id="zoom-label">0.50 m/px</span>
-  <button type="button" onclick="setZoom(0.5); centerOnPolygon();" style="padding:4px 10px;background:#333;border:none;color:#fff;border-radius:4px;cursor:pointer">fit</button>
+  <button type="button" onclick="doubleTapFit()" style="padding:4px 10px;background:#333;border:none;color:#fff;border-radius:4px;cursor:pointer">fit</button>
 </div>
 
 <main>
@@ -638,8 +639,23 @@ function saveToken() {
 function getToken() { return localStorage.getItem('iarq_validator_token') || ''; }
 
 let current = null;
-let drag = { dx: 0, dy: 0 };
 let viewMpx = 0.75;
+// dragVec in CROP-NATIVE pixels (polygon user-correction).
+let dragVec = { dx: 0, dy: 0 };
+// Per-pane viewport state. scale = mPerPxNative / viewMpx.
+const VP = {
+  crop: { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
+  wms:  { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
+};
+
+function initVP() {
+  VP.crop.wrap  = document.querySelector('.crop-pane .canvas-wrap');
+  VP.crop.inner = document.getElementById('crop-inner');
+  VP.crop.img   = document.getElementById('crop');
+  VP.wms.wrap   = document.querySelector('.wms-pane .canvas-wrap');
+  VP.wms.inner  = document.getElementById('wms-inner');
+  VP.wms.img    = document.getElementById('wms');
+}
 
 function api(path, opts={}) {
   opts.headers = opts.headers || {};
@@ -653,302 +669,335 @@ function imgUrl(url) {
   return url + (t ? (url.includes('?') ? '&' : '?') + 'token=' + encodeURIComponent(t) : '');
 }
 
-function applyZoom() {
-  if (!current) return;
-  // tamaños display tal que m/px en pantalla = viewMpx para ambos
-  const wmsW = current.wms_size_px * current.wms_m_per_px / viewMpx;
-  const cropW = current.crop_size_px * current.crop_m_per_px / viewMpx;
-  const wms = document.getElementById('wms');
-  const crop = document.getElementById('crop');
-  wms.style.width = wmsW + 'px';
-  wms.style.height = wmsW + 'px';
-  crop.style.width = cropW + 'px';
-  crop.style.height = cropW + 'px';
-  document.getElementById('zoom-label').textContent = viewMpx.toFixed(2) + ' m/px';
-  renderOverlay();
+// ----- Transform-based viewport -----
+let rafPending = false;
+function scheduleTransform() {
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    applyTransform();
+  });
 }
-
-// Sync scroll entre crop y wms: ambos comparten m/px (mismo viewMpx), así que
-// el delta en pixels display de uno se traslada directamente al otro.
-let _syncing = false;
-function attachScrollSync() {
-  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
-  const wmsWrap = document.querySelector('.wms-pane .canvas-wrap');
-  if (!cropWrap || !wmsWrap) return;
-  let lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
-  let lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
-  cropWrap.addEventListener('scroll', () => {
-    if (_syncing) return;
-    const dl = cropWrap.scrollLeft - lastCrop.l;
-    const dt = cropWrap.scrollTop - lastCrop.t;
-    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
-    _syncing = true;
-    wmsWrap.scrollLeft = wmsWrap.scrollLeft + dl;
-    wmsWrap.scrollTop = wmsWrap.scrollTop + dt;
-    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
-    _syncing = false;
-  }, { passive: true });
-  wmsWrap.addEventListener('scroll', () => {
-    if (_syncing) return;
-    const dl = wmsWrap.scrollLeft - lastWms.l;
-    const dt = wmsWrap.scrollTop - lastWms.t;
-    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
-    _syncing = true;
-    cropWrap.scrollLeft = cropWrap.scrollLeft + dl;
-    cropWrap.scrollTop = cropWrap.scrollTop + dt;
-    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
-    _syncing = false;
-  }, { passive: true });
-  // exporta para re-baseline cuando centerOnPolygon recoloca scrolls programáticamente
-  window.__resetScrollBaseline = () => {
-    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
-    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
-  };
-}
-
-// Si el polígono no es visible en el viewport del crop, ajusta el zoom hasta
-// que entre completo + un margen del 20%.
-function ensurePolygonVisible() {
-  if (!current) return;
-  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
-  if (!cropWrap) return;
-  const pts = current.poly_snap;
-  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
-  for (const [x, y] of pts) {
-    const X = x + drag.dx, Y = y + drag.dy;
-    if (X<minX) minX=X; if (X>maxX) maxX=X;
-    if (Y<minY) minY=Y; if (Y>maxY) maxY=Y;
+function applyTransform() {
+  for (const pane of [VP.crop, VP.wms]) {
+    if (!pane.inner || !pane.mPerPxNative) continue;
+    pane.scale = pane.mPerPxNative / viewMpx;
+    pane.inner.style.transform = `translate(${pane.panX}px, ${pane.panY}px) scale(${pane.scale})`;
   }
-  // span en metros: span_px_crop * crop_m_per_px
-  const spanXm = (maxX - minX) * current.crop_m_per_px;
-  const spanYm = (maxY - minY) * current.crop_m_per_px;
-  const wPx = cropWrap.clientWidth, hPx = cropWrap.clientHeight;
-  // viewMpx necesario para que el span quepa con 20% margen
-  const needX = (spanXm * 1.2) / wPx;
-  const needY = (spanYm * 1.2) / hPx;
-  const need = Math.max(needX, needY, 0.05);
-  if (viewMpx < need) {
-    // zoom out hasta que entre
-    setZoom(Math.min(1.0, need));
+  const green = document.getElementById('poly-green');
+  if (green) green.setAttribute('transform', `translate(${dragVec.dx} ${dragVec.dy})`);
+  const zl = document.getElementById('zoom-label');
+  if (zl) zl.textContent = viewMpx.toFixed(2) + ' m/px';
+  const dEl = document.getElementById('drag_dxdy');
+  if (dEl) {
+    dEl.textContent = dragVec.dx + ', ' + dragVec.dy;
+    dEl.className = (dragVec.dx || dragVec.dy) ? 'dragged-indicator' : '';
   }
 }
 
-// Centra cada pane en el polígono verde (con drag aplicado).
-// Para WMS usa su centro (el WMS se renderiza alrededor del RC).
-function centerOnPolygon() {
-  if (!current) return;
+function paneScale(pane) {
+  return pane.mPerPxNative ? (pane.mPerPxNative / viewMpx) : 1;
+}
+
+function centerPaneOnPoint(pane, ptNativeX, ptNativeY) {
+  if (!pane.wrap) return;
+  const wRect = pane.wrap.getBoundingClientRect();
+  const s = paneScale(pane);
+  pane.panX = wRect.width / 2 - ptNativeX * s;
+  pane.panY = wRect.height / 2 - ptNativeY * s;
+}
+
+function polyCentroidNative() {
+  if (!current) return { x: 0, y: 0 };
   const pts = current.poly_snap;
   let cx = 0, cy = 0;
   for (const [x, y] of pts) { cx += x; cy += y; }
-  cx = cx / pts.length + drag.dx;
-  cy = cy / pts.length + drag.dy;
-  const W = current.crop_size_px;
-  // Crop pane
-  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
-  const cropInner = cropWrap && cropWrap.querySelector('.canvas-inner');
-  if (cropWrap && cropInner) {
-    const w = cropInner.offsetWidth;
-    const h = cropInner.offsetHeight;
-    const targetX = (cx / W) * w;
-    const targetY = (cy / W) * h;
-    cropWrap.scrollLeft = Math.max(0, targetX - cropWrap.clientWidth / 2);
-    cropWrap.scrollTop = Math.max(0, targetY - cropWrap.clientHeight / 2);
-  }
-  // WMS pane: el WMS ya está centrado en el RC, así que centro del inner.
-  const wmsWrap = document.querySelector('.wms-pane .canvas-wrap');
-  const wmsInner = wmsWrap && wmsWrap.querySelector('.canvas-inner');
-  if (wmsWrap && wmsInner) {
-    wmsWrap.scrollLeft = Math.max(0, wmsInner.offsetWidth / 2 - wmsWrap.clientWidth / 2);
-    wmsWrap.scrollTop = Math.max(0, wmsInner.offsetHeight / 2 - wmsWrap.clientHeight / 2);
-  }
-  if (window.__resetScrollBaseline) window.__resetScrollBaseline();
+  return { x: cx / pts.length, y: cy / pts.length };
 }
 
-function setZoom(v) {
-  // Aplica zoom sin tocar scroll. Quien lo necesite centrar lo llama después.
-  viewMpx = v;
-  document.getElementById('zoom').value = v;
-  applyZoom();
+function polyBBoxNative() {
+  if (!current) return null;
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  for (const [x, y] of current.poly_snap) {
+    if (x<minX) minX=x; if (x>maxX) maxX=x;
+    if (y<minY) minY=y; if (y>maxY) maxY=y;
+  }
+  return { minX, maxX, minY, maxY };
 }
-
-document.getElementById('zoom').addEventListener('input', e => {
-  viewMpx = parseFloat(e.target.value);
-  applyZoom();
-  centerOnPolygon();  // slider del usuario → re-centra en polígono
-});
 
 function renderOverlay() {
   if (!current) return;
   const svg = document.getElementById('overlay');
-  const cropImg = document.getElementById('crop');
   const W = current.crop_size_px;
+  // SVG overlay sits inside crop-inner; size = native crop. It scales with crop-inner's transform.
   svg.setAttribute('viewBox', '0 0 ' + W + ' ' + W);
-  svg.style.width = cropImg.style.width;
-  svg.style.height = cropImg.style.height;
+  svg.style.width = W + 'px';
+  svg.style.height = W + 'px';
 
   const poly = current.poly_snap.map(p => p.join(',')).join(' ');
+  // Build once; we won't rebuild per-frame (drag updates transform attribute only).
+  // stroke-width stays in native px so on-screen thickness scales with zoom; that's
+  // acceptable (line gets thinner when zoomed in) and avoids extra work per frame.
   svg.innerHTML = `
     <polygon points="${poly}" fill="rgba(220,40,40,0.18)" stroke="#dc2828" stroke-width="3" />
     <polygon class="draggable" id="poly-green" points="${poly}" fill="rgba(40,200,80,0.22)" stroke="#22c55e" stroke-width="3"
-             transform="translate(${drag.dx} ${drag.dy})" />
+             transform="translate(${dragVec.dx} ${dragVec.dy})" />
   `;
-  attachPolygonDrag();
 }
 
-window.addEventListener('resize', applyZoom);
+// ----- Initial zoom & centering on RC load -----
+function computeInitialZoom() {
+  if (!current) return 0.75;
+  const bb = polyBBoxNative();
+  if (!bb) return 0.75;
+  const spanXm = (bb.maxX - bb.minX) * current.crop_m_per_px;
+  const spanYm = (bb.maxY - bb.minY) * current.crop_m_per_px;
+  const wRect = VP.crop.wrap.getBoundingClientRect();
+  const wPx = wRect.width || 1, hPx = wRect.height || 1;
+  // viewMpx so polygon fits with ~30% margin (1.3 multiplier).
+  const needX = (spanXm * 1.3) / wPx;
+  const needY = (spanYm * 1.3) / hPx;
+  const need = Math.max(needX, needY, 0.1);
+  return Math.max(need, 0.5);  // never zoom in too much initially
+}
 
-// ----- Drag del polígono verde (un dedo / mouse sobre el verde) -----
-let dragging = false; let dragStart = null; let pointerId = null;
-function attachPolygonDrag() {
-  const green = document.getElementById('poly-green');
-  if (!green) return;
-  green.addEventListener('pointerdown', e => {
-    if (activePointers.size >= 2) return; // no drag mientras hay pinch
-    dragging = true; pointerId = e.pointerId;
-    try { green.setPointerCapture(e.pointerId); } catch {}
-    const s = pxScale();
-    dragStart = { x: e.clientX - drag.dx * s, y: e.clientY - drag.dy * s };
-    e.preventDefault();
-  });
-  green.addEventListener('pointermove', e => {
-    if (!dragging || e.pointerId !== pointerId) return;
-    if (activePointers.size >= 2) { dragging = false; pointerId = null; return; }
-    const s = pxScale();
-    drag.dx = Math.round((e.clientX - dragStart.x) / s);
-    drag.dy = Math.round((e.clientY - dragStart.y) / s);
-    const el = document.getElementById('drag_dxdy');
-    if (el) {
-      el.textContent = drag.dx + ', ' + drag.dy;
-      el.className = (drag.dx || drag.dy) ? 'dragged-indicator' : '';
+function recenterAfterLoad() {
+  if (!current) return;
+  viewMpx = computeInitialZoom();
+  const zr = document.getElementById('zoom');
+  if (zr) zr.value = viewMpx;
+  const c = polyCentroidNative();
+  centerPaneOnPoint(VP.crop, c.x + dragVec.dx, c.y + dragVec.dy);
+  if (VP.wms.nativeSize) {
+    centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
+  }
+  scheduleTransform();
+}
+
+function setZoom(v) {
+  viewMpx = v;
+  const zr = document.getElementById('zoom');
+  if (zr) zr.value = v;
+  scheduleTransform();
+}
+
+document.getElementById('zoom').addEventListener('input', e => {
+  viewMpx = parseFloat(e.target.value);
+  const c = polyCentroidNative();
+  centerPaneOnPoint(VP.crop, c.x + dragVec.dx, c.y + dragVec.dy);
+  if (VP.wms.nativeSize) {
+    centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
+  }
+  scheduleTransform();
+});
+
+window.addEventListener('resize', () => {
+  // keep polygon centred when viewport size changes
+  if (!current) return;
+  const c = polyCentroidNative();
+  centerPaneOnPoint(VP.crop, c.x + dragVec.dx, c.y + dragVec.dy);
+  if (VP.wms.nativeSize) {
+    centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
+  }
+  scheduleTransform();
+});
+
+// ----- Unified pointer state machine -----
+// kind ∈ {'drag-poly', 'pan-pane'}
+const pointers = new Map();
+let pinch = null;   // { startDist, startZoom, midPane, worldX, worldY, midX, midY }
+let lastTap = { t: 0, x: 0, y: 0 };
+
+function paneFromPoint(clientX, clientY) {
+  for (const key of ['crop', 'wms']) {
+    const pane = VP[key];
+    if (!pane.wrap) continue;
+    const r = pane.wrap.getBoundingClientRect();
+    if (clientX >= r.left && clientX <= r.right && clientY >= r.top && clientY <= r.bottom) {
+      return pane;
     }
-    renderOverlay();
-    e.preventDefault();
-  });
-  const endDrag = e => {
-    if (e.pointerId !== pointerId) return;
-    dragging = false; pointerId = null;
-    try { green.releasePointerCapture(e.pointerId); } catch {}
+  }
+  return null;
+}
+
+function startPinch() {
+  const pts = [...pointers.values()];
+  if (pts.length < 2) return;
+  const midX = (pts[0].x + pts[1].x) / 2;
+  const midY = (pts[0].y + pts[1].y) / 2;
+  const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+  const pane = paneFromPoint(midX, midY) || VP.crop;
+  const r = pane.wrap.getBoundingClientRect();
+  const s = paneScale(pane);
+  // world coords (native px) of the midpoint in that pane
+  const worldX = (midX - r.left - pane.panX) / s;
+  const worldY = (midY - r.top  - pane.panY) / s;
+  pinch = { startDist: dist || 1, startZoom: viewMpx, midPane: pane, worldX, worldY, midX, midY };
+  // Cancel any in-flight single-pointer kinds; they'd compete.
+  for (const p of pointers.values()) {
+    if (p.kind === 'drag-poly' || p.kind === 'pan-pane') p.kind = 'pinch';
+  }
+}
+
+function updatePinch() {
+  const pts = [...pointers.values()];
+  if (pts.length < 2 || !pinch) return;
+  const dx = pts[0].x - pts[1].x, dy = pts[0].y - pts[1].y;
+  const dist = Math.hypot(dx, dy) || 1;
+  const midX = (pts[0].x + pts[1].x) / 2;
+  const midY = (pts[0].y + pts[1].y) / 2;
+  const ratio = dist / pinch.startDist;
+  // bigger dist → zoom IN → lower viewMpx
+  viewMpx = Math.max(0.05, Math.min(2.0, pinch.startZoom / ratio));
+  const zr = document.getElementById('zoom');
+  if (zr) zr.value = viewMpx;
+  // For each pane: pan so that the world point stays under the (current) midpoint.
+  for (const key of ['crop', 'wms']) {
+    const pane = VP[key];
+    if (!pane.wrap || !pane.mPerPxNative) continue;
+    const r = pane.wrap.getBoundingClientRect();
+    const s = pane.mPerPxNative / viewMpx;
+    // Use pinch.midPane's world point for the pane the pinch started on; for
+    // the OTHER pane, anchor on its own centre (its scale changes too but we
+    // keep its current "centre point" stable, which feels right).
+    if (pane === pinch.midPane) {
+      pane.panX = (midX - r.left) - pinch.worldX * s;
+      pane.panY = (midY - r.top)  - pinch.worldY * s;
+    } else {
+      // Anchor on current centre of viewport (in world coords pre-zoom).
+      const prevS = pane.scale || s;
+      const cxWorld = (r.width / 2 - pane.panX) / prevS;
+      const cyWorld = (r.height / 2 - pane.panY) / prevS;
+      pane.panX = r.width / 2 - cxWorld * s;
+      pane.panY = r.height / 2 - cyWorld * s;
+    }
+  }
+  scheduleTransform();
+}
+
+function panBoth(dx, dy) {
+  VP.crop.panX += dx; VP.crop.panY += dy;
+  VP.wms.panX  += dx; VP.wms.panY  += dy;
+}
+
+function isOnGreen(target) {
+  return target && (target.id === 'poly-green' || (target.closest && target.closest('#poly-green')));
+}
+
+function onPointerDown(e) {
+  // Only handle inside a canvas-wrap; ignore buttons/inputs.
+  if (e.target.closest && e.target.closest('button, input, #token-modal, #mobile-actions, .zoom-bar')) return;
+  const wrap = e.target.closest && e.target.closest('.canvas-wrap');
+  if (!wrap) return;
+  try { wrap.setPointerCapture(e.pointerId); } catch {}
+  const onGreen = isOnGreen(e.target);
+  const entry = {
+    id: e.pointerId,
+    x: e.clientX, y: e.clientY,
+    startX: e.clientX, startY: e.clientY,
+    startPan: null,
+    kind: 'pan-pane',
+    wrap,
   };
-  green.addEventListener('pointerup', endDrag);
-  green.addEventListener('pointercancel', endDrag);
-}
-
-// ----- Pinch-to-zoom (dos dedos), ancla midpoint -----
-// Pan con 1 dedo: scroll nativo del .canvas-wrap (touch-action: pan-x pan-y).
-// Polígono verde captura su propio pointerdown (touch-action: none) y bloquea
-// el scroll cuando se arrastra encima — así no se rompe el drag de corrección.
-const activePointers = new Map();
-let pinchStartDist = 0, pinchStartZoom = 0;
-let pinchAnchors = null; // [{wrap, inner, ratioX, ratioY, viewX, viewY}, ...]
-
-function pinchPoints() { return [...activePointers.values()]; }
-function pinchDist() {
-  const p = pinchPoints();
-  if (p.length < 2) return 0;
-  return Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
-}
-function pinchMidpoint() {
-  const p = pinchPoints();
-  if (p.length < 2) return null;
-  return { x: (p[0].x + p[1].x) / 2, y: (p[0].y + p[1].y) / 2 };
-}
-
-function snapshotPinchAnchors() {
-  const mid = pinchMidpoint();
-  if (!mid) { pinchAnchors = null; return; }
-  pinchAnchors = [];
-  document.querySelectorAll('.canvas-wrap').forEach(wrap => {
-    const inner = wrap.querySelector('.canvas-inner');
-    if (!inner) return;
-    const wRect = wrap.getBoundingClientRect();
-    const iRect = inner.getBoundingClientRect();
-    // ratio del midpoint en coords del inner [0..1]; si está fuera del wrap,
-    // usamos centro como anchor (zoom estable).
-    const insidePane = (mid.x >= wRect.left && mid.x <= wRect.right
-                        && mid.y >= wRect.top && mid.y <= wRect.bottom);
-    const cx = insidePane ? mid.x : (wRect.left + wRect.width / 2);
-    const cy = insidePane ? mid.y : (wRect.top + wRect.height / 2);
-    const ratioX = iRect.width > 0 ? (cx - iRect.left) / iRect.width : 0.5;
-    const ratioY = iRect.height > 0 ? (cy - iRect.top) / iRect.height : 0.5;
-    const viewX = cx - wRect.left;
-    const viewY = cy - wRect.top;
-    pinchAnchors.push({ wrap, inner, ratioX, ratioY, viewX, viewY });
-  });
-}
-
-function applyPinchAnchors() {
-  if (!pinchAnchors) return;
-  // applyZoom() ya cambió el width/height de cada inner. Ajustamos scrollLeft/Top
-  // del wrap para que el punto del contenido (ratioX, ratioY) quede de nuevo
-  // bajo el midpoint del pinch.
-  for (const a of pinchAnchors) {
-    const w = a.inner.offsetWidth;
-    const h = a.inner.offsetHeight;
-    a.wrap.scrollLeft = Math.max(0, a.ratioX * w - a.viewX);
-    a.wrap.scrollTop = Math.max(0, a.ratioY * h - a.viewY);
+  if (onGreen && pointers.size === 0) {
+    entry.kind = 'drag-poly';
+    entry.startDragVec = { dx: dragVec.dx, dy: dragVec.dy };
+  } else {
+    entry.kind = 'pan-pane';
+    entry.startPanCrop = { x: VP.crop.panX, y: VP.crop.panY };
+    entry.startPanWms  = { x: VP.wms.panX,  y: VP.wms.panY  };
   }
-}
+  pointers.set(e.pointerId, entry);
 
-document.addEventListener('pointerdown', e => {
-  if (e.pointerType !== 'touch') return;
-  activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-  if (activePointers.size === 2) {
-    pinchStartDist = pinchDist();
-    pinchStartZoom = viewMpx;
-    snapshotPinchAnchors();
-    // cancela drag del polígono si estaba activo (segundo dedo aborta drag)
-    if (dragging) { dragging = false; pointerId = null; }
-  }
-}, { passive: true });
-
-document.addEventListener('pointermove', e => {
-  if (e.pointerType !== 'touch') return;
-  if (!activePointers.has(e.pointerId)) return;
-  activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-  if (activePointers.size >= 2 && pinchStartDist > 0) {
-    const d = pinchDist();
-    if (d > 0) {
-      // separar dedos → d aumenta → ratio<1 → zoom in (menor m/px)
-      const ratio = pinchStartDist / d;
-      const newZoom = Math.max(0.05, Math.min(1.0, pinchStartZoom * ratio));
-      setZoom(newZoom);
-      applyPinchAnchors();
+  if (pointers.size === 2) {
+    startPinch();
+  } else if (pointers.size === 1 && entry.kind === 'pan-pane') {
+    // double-tap detection (only for single pointers, not on polygon)
+    const now = Date.now();
+    const dt = now - lastTap.t;
+    const dx = e.clientX - lastTap.x;
+    const dy = e.clientY - lastTap.y;
+    if (dt < 300 && Math.hypot(dx, dy) < 40) {
+      // double-tap → fit polygon
+      doubleTapFit();
+      lastTap = { t: 0, x: 0, y: 0 };
+    } else {
+      lastTap = { t: now, x: e.clientX, y: e.clientY };
     }
+  }
+  e.preventDefault();
+}
+
+function onPointerMove(e) {
+  const entry = pointers.get(e.pointerId);
+  if (!entry) return;
+  entry.x = e.clientX;
+  entry.y = e.clientY;
+
+  if (pointers.size >= 2 && pinch) {
+    updatePinch();
+    e.preventDefault();
+    return;
+  }
+
+  if (entry.kind === 'drag-poly') {
+    // delta in CROP-NATIVE px
+    const s = paneScale(VP.crop) || 1;
+    dragVec.dx = Math.round((e.clientX - entry.startX) / s + entry.startDragVec.dx);
+    dragVec.dy = Math.round((e.clientY - entry.startY) / s + entry.startDragVec.dy);
+    scheduleTransform();
+    e.preventDefault();
+  } else if (entry.kind === 'pan-pane') {
+    const dx = e.clientX - entry.startX;
+    const dy = e.clientY - entry.startY;
+    VP.crop.panX = entry.startPanCrop.x + dx;
+    VP.crop.panY = entry.startPanCrop.y + dy;
+    VP.wms.panX  = entry.startPanWms.x  + dx;
+    VP.wms.panY  = entry.startPanWms.y  + dy;
+    scheduleTransform();
     e.preventDefault();
   }
-}, { passive: false });
+}
 
-function pinchUp(e) {
-  if (e.pointerType !== 'touch') return;
-  activePointers.delete(e.pointerId);
-  if (activePointers.size < 2) {
-    pinchStartDist = 0;
-    pinchAnchors = null;
+function onPointerEnd(e) {
+  pointers.delete(e.pointerId);
+  if (pointers.size < 2) pinch = null;
+  if (pointers.size === 1) {
+    // Refresh the surviving pointer's baselines so subsequent move math is correct.
+    const [only] = [...pointers.values()];
+    only.startX = only.x;
+    only.startY = only.y;
+    if (only.kind === 'pinch') {
+      // demote: choose pan-pane (safer than drag-poly mid-gesture)
+      only.kind = 'pan-pane';
+    }
+    only.startPanCrop = { x: VP.crop.panX, y: VP.crop.panY };
+    only.startPanWms  = { x: VP.wms.panX,  y: VP.wms.panY  };
+    only.startDragVec = { dx: dragVec.dx, dy: dragVec.dy };
   }
 }
-document.addEventListener('pointerup', pinchUp, { passive: true });
-document.addEventListener('pointercancel', pinchUp, { passive: true });
 
-// Doble-tap rápido → fit (zoom 0.5 m/px). Atajo útil tras explorar.
-let lastTap = 0;
-document.addEventListener('pointerdown', e => {
-  if (e.pointerType !== 'touch') return;
-  if (activePointers.size > 1) return;
-  // ignora si está sobre el polígono verde
-  const tgt = e.target;
-  if (tgt && tgt.id === 'poly-green') return;
-  const now = Date.now();
-  if (now - lastTap < 300) { setZoom(0.5); centerOnPolygon(); }
-  lastTap = now;
-}, { passive: true });
+function doubleTapFit() {
+  if (!current) return;
+  recenterAfterLoad();
+}
 
-function pxScale() {
-  // px de pantalla por px nativo del crop
-  return current ? (current.crop_m_per_px / viewMpx) : 1;
+function attachPointerHandlers() {
+  // Attach to both wraps so events are scoped to canvas areas; capture ensures
+  // we still get events if the finger drifts out.
+  for (const key of ['crop', 'wms']) {
+    const wrap = VP[key].wrap;
+    if (!wrap) continue;
+    wrap.addEventListener('pointerdown', onPointerDown);
+    wrap.addEventListener('pointermove', onPointerMove);
+    wrap.addEventListener('pointerup', onPointerEnd);
+    wrap.addEventListener('pointercancel', onPointerEnd);
+  }
 }
 
 async function loadRC(rc) {
-  drag.dx = 0; drag.dy = 0;
+  dragVec.dx = 0; dragVec.dy = 0;
   const dragEl = document.getElementById('drag_dxdy');
   if (dragEl) { dragEl.textContent = '0, 0'; dragEl.className = ''; }
   document.getElementById('rc').textContent = 'cargando…';
@@ -961,6 +1010,11 @@ async function loadRC(rc) {
   if (!r.ok) { alert('error ' + r.status); return; }
   const data = await r.json();
   current = data;
+  // pane native sizes & m/px for transform math
+  VP.crop.mPerPxNative = data.crop_m_per_px;
+  VP.crop.nativeSize   = data.crop_size_px;
+  VP.wms.mPerPxNative  = data.wms_m_per_px;
+  VP.wms.nativeSize    = data.wms_size_px;
   // actualizar URL con ?rc= (sin recargar)
   const url = new URL(location.href);
   url.searchParams.set('rc', data.rc);
@@ -985,21 +1039,21 @@ async function loadRC(rc) {
   } else {
     banner.className = 'banner warn'; banner.textContent = '⚠ INCIERTO ' + data.snap_score.toFixed(2);
   }
-  // Cargar ambas imágenes y, sólo cuando AMBAS están listas, aplicar zoom +
-  // garantizar polígono visible + centrar. Así no compiten los dos onload y el
-  // resultado final es estable.
+  // Reset transform: imgs keep their native size; we only translate/scale via CSS.
   const cropImg = document.getElementById('crop');
   const wmsImg = document.getElementById('wms');
+  // ensure imgs are not constrained by old style.width/height
+  cropImg.style.width = ''; cropImg.style.height = '';
+  wmsImg.style.width  = ''; wmsImg.style.height  = '';
+  renderOverlay();
+
   let loaded = 0;
   const done = () => {
     loaded += 1;
     if (loaded < 2) return;
-    // dos rAF para que el layout (offsetWidth tras style.width) esté aplicado
+    // double rAF: ensure wrap has dimensions before we compute centering.
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      applyZoom();
-      ensurePolygonVisible();   // si el polígono no cabe, sube viewMpx
-      applyZoom();              // re-aplica con el viewMpx ajustado
-      centerOnPolygon();        // ahora sí, scroll a polígono
+      recenterAfterLoad();
     }));
   };
   cropImg.onload = done;
@@ -1105,7 +1159,8 @@ window.addEventListener('keydown', e => {
   else if (e.key === 's' || e.key === 'S') submit('skip');
 });
 
-attachScrollSync();
+initVP();
+attachPointerHandlers();
 if (getToken()) loadInitial();
 </script>
 </body>
