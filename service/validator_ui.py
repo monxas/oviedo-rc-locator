@@ -548,7 +548,7 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 
 <div class="zoom-bar">
   <label>Zoom (m/px)</label>
-  <input type="range" id="zoom" min="0.05" max="1.0" step="0.01" value="0.5">
+  <input type="range" id="zoom" min="0.05" max="2.0" step="0.01" value="0.75">
   <span class="scale-label" id="zoom-label">0.50 m/px</span>
   <button type="button" onclick="setZoom(0.5); centerOnPolygon();" style="padding:4px 10px;background:#333;border:none;color:#fff;border-radius:4px;cursor:pointer">fit</button>
 </div>
@@ -630,7 +630,7 @@ function getToken() { return localStorage.getItem('iarq_validator_token') || '';
 
 let current = null;
 let drag = { dx: 0, dy: 0 };
-let viewMpx = 0.5;
+let viewMpx = 0.75;
 
 function api(path, opts={}) {
   opts.headers = opts.headers || {};
@@ -976,10 +976,27 @@ async function loadRC(rc) {
   } else {
     banner.className = 'banner warn'; banner.textContent = '⚠ INCIERTO ' + data.snap_score.toFixed(2);
   }
-  document.getElementById('crop').src = imgUrl(data.crop_url);
-  document.getElementById('wms').src = imgUrl(data.wms_url);
-  document.getElementById('crop').onload = () => { applyZoom(); ensurePolygonVisible(); centerOnPolygon(); };
-  document.getElementById('wms').onload = () => { applyZoom(); centerOnPolygon(); };
+  // Cargar ambas imágenes y, sólo cuando AMBAS están listas, aplicar zoom +
+  // garantizar polígono visible + centrar. Así no compiten los dos onload y el
+  // resultado final es estable.
+  const cropImg = document.getElementById('crop');
+  const wmsImg = document.getElementById('wms');
+  let loaded = 0;
+  const done = () => {
+    loaded += 1;
+    if (loaded < 2) return;
+    // dos rAF para que el layout (offsetWidth tras style.width) esté aplicado
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      applyZoom();
+      ensurePolygonVisible();   // si el polígono no cabe, sube viewMpx
+      applyZoom();              // re-aplica con el viewMpx ajustado
+      centerOnPolygon();        // ahora sí, scroll a polígono
+    }));
+  };
+  cropImg.onload = done;
+  wmsImg.onload = done;
+  cropImg.src = imgUrl(data.crop_url);
+  wmsImg.src = imgUrl(data.wms_url);
   loadStats();
   prefetchNext();
 }
