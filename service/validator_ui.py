@@ -279,11 +279,55 @@ def _generate_for_rc(rc: str) -> dict:
     except Exception:
         wms_png = b""
 
+    # Polígono catastral proyectado en pixels del WMS (600x600 cubre 300m
+    # centrado en (X,Y), bbox=(X-150,Y-150,X+150,Y+150), 0.5 m/px).
+    # Ayuda visual: marca el edificio buscado también en la referencia, no
+    # sólo en el plano PGOU central, para distinguir entre parcelas parecidas.
+    wms_bbox_xmin = X - 150
+    wms_bbox_ymax = Y + 150
+    poly_wms = [
+        [int((ux - wms_bbox_xmin) * 2), int((wms_bbox_ymax - uy) * 2)]
+        for ux, uy in poly["polygon_utm"]
+    ]
+
+
     # m/px del PGOU nativo
     body_w_px = body_rect[2] - body_rect[0]
     pgou_native_m_per_px = float(BODY_W_M) / float(body_w_px) if body_w_px else 0.088
     # m/px del crop transferido (downscale 2×)
     crop_m_per_px = pgou_native_m_per_px / scale  # ≈ 0.17
+
+    # ---- Plano de ficha de ámbito (cuarto panel cuando aplica) ----
+    ficha_png = b""
+    ficha_size_px = 0
+    poly_ficha = []
+    ficha_etiqueta = None
+    try:
+        from oviedo_rc import ficha_plano as fp_mod
+        from oviedo_rc import planeamiento as plan_mod_local
+        plan_info = plan_mod_local.lookup(X, Y)
+        matches = plan_info.get("fichas_match") or []
+        if matches:
+            top_filename = matches[0].get("filename", "")
+            ficha_render = fp_mod.render_with_overlay(top_filename, poly["polygon_utm"])
+            if ficha_render:
+                ficha_png = ficha_render["png_bytes"]
+                ficha_size_px = ficha_render["width"]   # plano cuadrado-ish; usamos width
+                ficha_etiqueta = ficha_render["ambito_etiqueta"]
+                # Recalcular poly_ficha (sin el overlay aplicado, sólo coords):
+                cx, cy = ficha_render["centroid_utm"]
+                body_f = ficha_render["body_rect"]
+                bcx = (body_f[0] + body_f[2]) / 2
+                bcy = (body_f[1] + body_f[3]) / 2
+                px_m = 1.0 / ficha_render["m_per_px"]
+                off_dx, off_dy = ficha_render["cal_offset"]
+                poly_ficha = [
+                    [int(round(bcx + (ux - cx) * px_m + off_dx)),
+                     int(round(bcy - (uy - cy) * px_m + off_dy))]
+                    for ux, uy in poly["polygon_utm"]
+                ]
+    except Exception:
+        pass
 
     cal = calibration.quality_for(eff_cell, eff_sub)
     return {
@@ -302,8 +346,14 @@ def _generate_for_rc(rc: str) -> dict:
         "crop_m_per_px": crop_m_per_px,
         "wms_size_px": 600,
         "wms_m_per_px": 0.5,  # 300m / 600px
+        "poly_wms": poly_wms,
         "crop_png": crop_png,
         "wms_png": wms_png,
+        "ficha_png": ficha_png,
+        "ficha_size_px": ficha_size_px,
+        "poly_ficha": poly_ficha,
+        "ficha_etiqueta": ficha_etiqueta,
+        "ficha_m_per_px": 0.127,  # 25.4/200 a escala 1:1000
     }
 
 
@@ -353,6 +403,7 @@ def next_rc(rc: Optional[str] = None, _=Depends(auth)):
         "cell": data["cell"],
         "sub_quadrant": data["sub_quadrant"],
         "poly_snap": data["poly_snap"],
+        "poly_wms": data.get("poly_wms", []),
         "snap_score": data["snap_score"],
         "snap_dxdy": data["snap_dxdy"],
         "cal_dxdy": data["cal_dxdy"],
@@ -364,6 +415,11 @@ def next_rc(rc: Optional[str] = None, _=Depends(auth)):
         "wms_m_per_px": data["wms_m_per_px"],
         "crop_url": f"/api/img/{data['rc']}/crop",
         "wms_url": f"/api/img/{data['rc']}/wms",
+        "ficha_url": (f"/api/img/{data['rc']}/ficha" if data.get("ficha_png") else None),
+        "ficha_size_px": data.get("ficha_size_px", 0),
+        "ficha_m_per_px": data.get("ficha_m_per_px", 0.127),
+        "poly_ficha": data.get("poly_ficha", []),
+        "ficha_etiqueta": data.get("ficha_etiqueta"),
     }
 
 
@@ -375,6 +431,11 @@ def img(rc: str, kind: str, _=Depends(auth)):
         return Response(data["crop_png"], media_type="image/png")
     if kind == "wms":
         return Response(data["wms_png"], media_type="image/png")
+    if kind == "ficha":
+        png = data.get("ficha_png") or b""
+        if not png:
+            raise HTTPException(404, "no ficha plano for this RC")
+        return Response(png, media_type="image/png")
     raise HTTPException(404)
 
 
@@ -485,6 +546,11 @@ header h1 { font-size: 13px; font-weight: 600; }
 .banner.ok { background: #1f5d2b; }
 .banner.warn { background: #8a2929; }
 main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh - 88px); gap: 1px; background: #222; }
+main.has-ficha { grid-template-columns: 1fr 1fr 1fr 280px; }
+.pane.ficha-pane { display: none; }
+main.has-ficha .pane.ficha-pane { display: flex; }
+.pane.ficha-pane .canvas-wrap img { width: 100%; height: 100%; object-fit: contain; image-rendering: crisp-edges; }
+.pane.ficha-pane .meta { font-size: 10px; color: #888; padding: 4px 8px; background: #161616; }
 .zoom-bar { display: flex; align-items: center; gap: 10px; padding: 6px 12px; background: #1d1d1d; border-bottom: 1px solid #333; }
 .zoom-bar label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 .zoom-bar input[type=range] { flex: 1; accent-color: #1f7a36; height: 24px; }
@@ -532,7 +598,9 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
          height: calc(100vh - 72px - 84px - 36px); /* header + actions + zoom-bar */ }
   .pane.crop-pane { order: 1; min-height: 0; }
   .pane.wms-pane { order: 2; min-height: 0; }
-  .pane.wms-pane h2, .pane.crop-pane h2 { padding: 4px 8px; font-size: 9px; }
+  .pane.ficha-pane { order: 3; min-height: 0; }
+  main.has-ficha { grid-template-rows: 1fr 1fr 1fr; }
+  .pane.wms-pane h2, .pane.crop-pane h2, .pane.ficha-pane h2 { padding: 4px 8px; font-size: 9px; }
   .pane .canvas-wrap { padding: 2px; }
   .pane.side { display: none; }   /* panel info oculto en móvil */
   .zoom-bar { padding: 4px 10px; }
@@ -590,6 +658,8 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
     <div class="canvas-wrap">
       <div class="canvas-inner" id="wms-inner">
         <img id="wms" alt="wms">
+        <svg id="overlay-wms" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+             style="position:absolute;top:0;left:0;pointer-events:none"></svg>
       </div>
     </div>
   </div>
@@ -601,6 +671,13 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
         <svg id="overlay" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg>
       </div>
     </div>
+  </div>
+  <div class="pane ficha-pane">
+    <h2>Ficha de ámbito · <span id="ficha-etiqueta">—</span></h2>
+    <div class="canvas-wrap" id="ficha-wrap">
+      <img id="ficha" alt="ficha-plano">
+    </div>
+    <div class="meta">Sin calibración por ficha (posición aproximada, error esperado ~20m). Phase 2c añadirá drag.</div>
   </div>
   <div class="pane side">
     <div class="kv"><label>snap score</label><span id="snap_score">—</span></div>
@@ -765,6 +842,20 @@ function renderOverlay() {
     <polygon class="draggable" id="poly-green" points="${poly}" fill="rgba(40,200,80,0.22)" stroke="#22c55e" stroke-width="3"
              transform="translate(${dragVec.dx} ${dragVec.dy})" />
   `;
+
+  // WMS overlay: dibuja el polígono catastral sobre la referencia para
+  // identificar el edificio buscado entre parcelas similares.
+  const svgWms = document.getElementById('overlay-wms');
+  if (svgWms && current.poly_wms && current.poly_wms.length) {
+    const Ww = current.wms_size_px;
+    svgWms.setAttribute('viewBox', '0 0 ' + Ww + ' ' + Ww);
+    svgWms.style.width = Ww + 'px';
+    svgWms.style.height = Ww + 'px';
+    const polyWmsStr = current.poly_wms.map(p => p.join(',')).join(' ');
+    svgWms.innerHTML = `<polygon points="${polyWmsStr}" fill="rgba(220,40,40,0.22)" stroke="#dc2828" stroke-width="2.5" />`;
+  } else if (svgWms) {
+    svgWms.innerHTML = '';
+  }
 }
 
 // ----- Initial zoom & centering on RC load -----
@@ -1059,6 +1150,7 @@ async function loadRC(rc) {
   setText('n_labels', q.n_labels || '—');
   setText('err_m', q.expected_residual_m ? q.expected_residual_m.toFixed(2) + ' m' : '—');
 
+
   const banner = document.getElementById('snap-banner');
   if (data.snap_confident) {
     banner.className = 'banner ok'; banner.textContent = 'snap ' + data.snap_score.toFixed(2);
@@ -1087,6 +1179,20 @@ async function loadRC(rc) {
   wmsImg.onload = done;
   cropImg.src = imgUrl(data.crop_url);
   wmsImg.src = imgUrl(data.wms_url);
+
+  // Ficha plano (4º panel) — opcional
+  const mainEl = document.querySelector('main');
+  const fichaImg = document.getElementById('ficha');
+  const fichaEt = document.getElementById('ficha-etiqueta');
+  if (data.ficha_url) {
+    if (mainEl) mainEl.classList.add('has-ficha');
+    if (fichaEt) fichaEt.textContent = data.ficha_etiqueta || '—';
+    if (fichaImg) fichaImg.src = imgUrl(data.ficha_url);
+  } else {
+    if (mainEl) mainEl.classList.remove('has-ficha');
+    if (fichaImg) fichaImg.removeAttribute('src');
+    if (fichaEt) fichaEt.textContent = '—';
+  }
   loadStats();
   prefetchNext();
 }
