@@ -10,8 +10,9 @@ from __future__ import annotations
 
 import json
 import re
+import threading
+import time
 import urllib.request
-from functools import lru_cache
 from pathlib import Path
 
 CACHE = Path.home() / ".cache" / "oviedo_rc" / "gijon"
@@ -23,12 +24,30 @@ FICHA_BASE = "https://documentos.gijon.es/PGO/ficha.php?id="
 ID_MUNICIPIO_GIJON = 33024
 BBOX_UTM = (270921.0, 4813038.0, 292773.0, 4829451.0)  # min_x, min_y, max_x, max_y
 
+# TTL para entradas de ficha_meta sin contenido útil (clase/categoria vacíos):
+# tras este tiempo se refresca por si el Ayto. arregló el HTML.
+FICHA_META_STALE_SEC = 86400  # 24h
 
-@lru_cache(maxsize=1)
+_AMBITOS_CACHE: list[dict] | None = None
+_AMBITOS_MTIME: float = 0.0
+_AMBITOS_LOCK = threading.Lock()
+
+
 def _load() -> list[dict]:
+    """Carga ambitos.json con cache mtime-aware (recarga si el JSON cambia en disco)."""
+    global _AMBITOS_CACHE, _AMBITOS_MTIME
     if not AMBITOS_FILE.exists():
         return []
-    return json.loads(AMBITOS_FILE.read_text(encoding="utf-8"))
+    mtime = AMBITOS_FILE.stat().st_mtime
+    with _AMBITOS_LOCK:
+        if _AMBITOS_CACHE is None or mtime > _AMBITOS_MTIME:
+            try:
+                _AMBITOS_CACHE = json.loads(AMBITOS_FILE.read_text(encoding="utf-8"))
+                _AMBITOS_MTIME = mtime
+            except (OSError, json.JSONDecodeError):
+                if _AMBITOS_CACHE is None:
+                    _AMBITOS_CACHE = []
+        return _AMBITOS_CACHE
 
 
 def _bbox_of(poly: list[tuple[float, float]]) -> tuple[float, float, float, float]:
@@ -143,7 +162,13 @@ def fetch_ficha_meta(ambito_id: str) -> dict:
     cache = FICHAS_META_DIR / f"{safe_id}.json"
     if cache.exists():
         try:
-            return json.loads(cache.read_text(encoding="utf-8"))
+            data = json.loads(cache.read_text(encoding="utf-8"))
+            # TTL implícito: si la cache no tiene `clase` (parsed roto o error
+            # antiguo) y han pasado >24h, forzamos refetch — el Ayto. puede
+            # haber arreglado el HTML.
+            age = time.time() - cache.stat().st_mtime
+            if data.get("clase") or age <= FICHA_META_STALE_SEC:
+                return data
         except Exception:
             pass
 
@@ -156,8 +181,8 @@ def fetch_ficha_meta(ambito_id: str) -> dict:
         with urllib.request.urlopen(req, timeout=15) as r:
             html = r.read().decode("utf-8", errors="ignore")
     except Exception as e:
+        # No persistir errores: que el próximo intento reintente.
         out["error"] = f"fetch fail: {type(e).__name__}"
-        cache.write_text(json.dumps(out, ensure_ascii=False))
         return out
 
     m = _FICHA_HEAD_RE.search(html)
@@ -176,7 +201,11 @@ def fetch_ficha_meta(ambito_id: str) -> dict:
     if pm:
         out["plano_pdf_url"] = pm.group(1)
 
-    cache.write_text(json.dumps(out, ensure_ascii=False, indent=2))
+    # Sólo cachear si el parseo produjo contenido útil. Si Ayto. cambió el
+    # HTML y no logramos `clase` ni `categoria`, no persistimos (next call
+    # reintenta).
+    if out.get("clase") or out.get("categoria"):
+        cache.write_text(json.dumps(out, ensure_ascii=False, indent=2))
     return out
 
 
