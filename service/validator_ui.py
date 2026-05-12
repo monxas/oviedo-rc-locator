@@ -17,14 +17,18 @@ Acciones → JSON en data/validator_labels.json:
   reject:             {action:reject_unfixable}      <- flagged para análisis
   skip:               {action:skip}                  <- decisión diferida
 """
+import hmac
 import io
 import json
 import os
 import random
 import sys
+import threading
 import time
 from pathlib import Path
 from typing import Optional
+
+_LABELS_LOCK = threading.Lock()
 
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
@@ -107,7 +111,7 @@ async def auth(request: Request, token: Optional[str] = Query(None)):
         candidate = token
     elif request.cookies.get("iarq_validator"):
         candidate = request.cookies["iarq_validator"]
-    if candidate != TOKEN:
+    if not hmac.compare_digest(candidate or "", TOKEN):
         raise HTTPException(401, "unauthorized")
     return True
 
@@ -405,42 +409,47 @@ def _trigger_recalibration():
 
 @app.post("/api/label")
 async def label(req: LabelReq, _=Depends(auth)):
-    labels = load_labels()
-    labels = [l for l in labels if l.get("rc") != req.rc]
-    labels.append({
-        "rc": req.rc,
-        "action": req.action,
-        "dxdy": req.dxdy,
-        "snap_score": req.snap_score,
-        "snap_dxdy": req.snap_dxdy,
-        "cal_dxdy": req.cal_dxdy,
-        "comment": req.comment,
-        "ts": time.time(),
-    })
-    save_labels(labels)
-    # incrementar contador sólo en accept (skip y reject no aportan)
-    recalibrated = False
-    if req.action == "accept":
-        n = _bump_accept_counter()
-        if n >= RECAL_THRESHOLD:
-            _reset_accept_counter()
-            _trigger_recalibration()
-            recalibrated = True
-    return {"ok": True, "total": len(labels),
-            "accept_counter": _accept_counter(),
+    with _LABELS_LOCK:
+        labels = load_labels()
+        labels = [l for l in labels if l.get("rc") != req.rc]
+        labels.append({
+            "rc": req.rc,
+            "action": req.action,
+            "dxdy": req.dxdy,
+            "snap_score": req.snap_score,
+            "snap_dxdy": req.snap_dxdy,
+            "cal_dxdy": req.cal_dxdy,
+            "comment": req.comment,
+            "ts": time.time(),
+        })
+        save_labels(labels)
+        # incrementar contador sólo en accept (skip y reject no aportan)
+        recalibrated = False
+        if req.action == "accept":
+            n = _bump_accept_counter()
+            if n >= RECAL_THRESHOLD:
+                _reset_accept_counter()
+                _trigger_recalibration()
+                recalibrated = True
+        counter = _accept_counter()
+        total = len(labels)
+    return {"ok": True, "total": total,
+            "accept_counter": counter,
             "recal_threshold": RECAL_THRESHOLD,
             "recalibrated": recalibrated}
 
 
 @app.get("/api/stats")
 async def stats(_=Depends(auth)):
-    labels = load_labels()
+    with _LABELS_LOCK:
+        labels = load_labels()
+        counter = _accept_counter()
     by_action = {}
     for l in labels:
         by_action[l["action"]] = by_action.get(l["action"], 0) + 1
     return {"total": len(labels), "by_action": by_action,
             "rcs_in_cache": len(COORDS), "pending": len(COORDS) - len(labels),
-            "accept_counter": _accept_counter(),
+            "accept_counter": counter,
             "recal_threshold": RECAL_THRESHOLD}
 
 

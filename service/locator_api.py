@@ -8,12 +8,16 @@ Endpoints (Bearer auth):
   GET  /docs               markdown
 """
 import hashlib
+import hmac
 import json
+import logging
 import os
 import re
 import time
 from pathlib import Path
 from typing import Optional
+
+log = logging.getLogger("locator")
 
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
@@ -81,7 +85,7 @@ async def auth(request: Request, token: Optional[str] = Query(None)):
         candidate = token
     elif request.cookies.get("iarq_locator"):
         candidate = request.cookies["iarq_locator"]
-    if candidate != TOKEN:
+    if not hmac.compare_digest(candidate or "", TOKEN):
         raise HTTPException(401, "unauthorized — use Authorization: Bearer <token>, ?token=<token>, or cookie iarq_locator=<token>")
     return True
 
@@ -154,8 +158,9 @@ async def locate(rc: str, _=Depends(auth)):
         bundle = process_rc(rc)
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
-    except Exception as e:
-        raise HTTPException(500, f"pipeline error: {type(e).__name__}: {e}")
+    except Exception:
+        log.exception("locate pipeline failed for rc=%s", rc)
+        raise HTTPException(503, detail={"error": "internal", "service": "pipeline"})
 
     meta = json.loads(Path(bundle.metadata_json).read_text(encoding="utf-8"))
     # cachear PNGs y dar URL pública
@@ -241,8 +246,9 @@ async def info(rc: str, _=Depends(auth)):
         X, Y, addr = catastro.rc_to_utm(rc14)
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
-    except Exception as e:
-        raise HTTPException(500, f"catastro: {type(e).__name__}: {e}")
+    except Exception:
+        log.exception("catastro rc_to_utm failed for rc=%s", rc)
+        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
     # Address rural: si vacía, intenta componer desde DNPRC (paraje + pol/parc)
     if not addr:
@@ -275,6 +281,7 @@ async def info(rc: str, _=Depends(auth)):
     locate_dict = None
     snu_sheet = None
     snu_url = None
+    snu_polygon_url = None
     bundle = None
     bundle_err: Optional[Exception] = None
 
@@ -336,7 +343,6 @@ async def info(rc: str, _=Depends(auth)):
             notes.append(f"snu fail: {type(e2).__name__}")
 
         # Polígono catastral sobre WMS (rural pipeline mínimo)
-        snu_polygon_url = None
         try:
             poly = catastro.get_parcel_polygon(rc14)
             if poly and poly.get("polygon_utm"):
@@ -405,7 +411,7 @@ async def info(rc: str, _=Depends(auth)):
         fichas_match=plan.get("fichas_match", []),
         patrimonio=plan.get("patrimonio", []),
         snu_sheet=snu_sheet, snu_url=snu_url,
-        snu_polygon_url=locals().get("snu_polygon_url"),
+        snu_polygon_url=snu_polygon_url,
         notes=notes,
         took_ms=int((time.time() - t0) * 1000),
     )
@@ -438,8 +444,9 @@ async def snu_endpoint(rc: str, _=Depends(auth)):
         X, Y, addr = catastro.rc_to_utm(rc14)
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
-    except Exception as e:
-        raise HTTPException(500, f"catastro error: {type(e).__name__}: {e}")
+    except Exception:
+        log.exception("snu catastro rc_to_utm failed for rc=%s", rc)
+        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
     sheet_name = snu_mod.resolve_snu_sheet(X, Y)
     if not sheet_name:
@@ -497,8 +504,9 @@ async def planeamiento_rc(rc: str, _=Depends(auth)):
         X, Y, addr = catastro.rc_to_utm(rc14)
     except RCError as e:
         raise HTTPException(404, f"RC no resoluble: {e}")
-    except Exception as e:
-        raise HTTPException(500, f"catastro error: {type(e).__name__}: {e}")
+    except Exception:
+        log.exception("planeamiento catastro rc_to_utm failed for rc=%s", rc)
+        raise HTTPException(503, detail={"error": "upstream_unavailable", "service": "catastro"})
 
     info = plan_mod.lookup(X, Y)
     return PlanResp(
