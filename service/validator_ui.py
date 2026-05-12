@@ -815,6 +815,25 @@ async function loadRC(rc) {
   document.getElementById('crop').onload = applyZoom;
   document.getElementById('wms').onload = applyZoom;
   loadStats();
+  prefetchNext();
+}
+
+// Prefetch del próximo RC de la cola: trigger del backend + warm-up imágenes.
+// Sin await — corre en background para no bloquear la UI actual.
+function prefetchNext() {
+  if (!__queue.length) return;
+  const next = __queue[0];  // peek sin shift
+  if (window.__prefetched === next) return;
+  window.__prefetched = next;
+  api('/api/next?rc=' + encodeURIComponent(next))
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      if (!d) return;
+      // El navegador cachea las imágenes con esta carga "fantasma"
+      const i1 = new Image(); i1.src = imgUrl(d.crop_url);
+      const i2 = new Image(); i2.src = imgUrl(d.wms_url);
+    })
+    .catch(() => { window.__prefetched = null; });
 }
 
 function loadInitial() {
