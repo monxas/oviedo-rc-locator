@@ -326,6 +326,8 @@ async def home():
 @app.get("/api/next")
 async def next_rc(rc: Optional[str] = None, _=Depends(auth)):
     """Devuelve datos del siguiente RC (random o el indicado)."""
+    if rc:
+        rc = rc.strip().upper()
     if not rc:
         rc = _random_rc()
     data = _generate_for_rc(rc)
@@ -598,8 +600,12 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 // La URL queda sólo con ?rc=... para compartir.
 function readQuery() {
   const q = new URLSearchParams(location.search);
-  return { token: q.get('token'), rc: q.get('rc') };
+  const qstr = q.get('queue') || '';
+  const queue = qstr.split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
+  return { token: q.get('token'), rc: (q.get('rc') || '').toUpperCase() || null, queue };
 }
+let __queue = [];
+let __queue_total = 0;
 (() => {
   const { token, rc } = readQuery();
   if (token) {
@@ -812,8 +818,20 @@ async function loadRC(rc) {
 }
 
 function loadInitial() {
-  const { rc } = readQuery();
+  const { rc, queue } = readQuery();
+  if (queue && queue.length) {
+    __queue = queue.slice();
+    __queue_total = __queue.length;
+    const first = __queue.shift();
+    loadRC(first);
+    return;
+  }
   loadRC(rc);
+}
+function queueIndicator() {
+  if (!__queue_total) return '';
+  const done = __queue_total - __queue.length;
+  return ` · cola ${done}/${__queue_total}`;
 }
 
 async function loadStats() {
@@ -822,7 +840,7 @@ async function loadStats() {
   const d = await r.json();
   const next = d.recal_threshold - (d.accept_counter || 0);
   document.getElementById('stats').textContent =
-    d.total + ' · ' + d.pending + ' pend. · recal en ' + next;
+    d.total + ' · ' + d.pending + ' pend. · recal en ' + next + queueIndicator();
   const f = document.getElementById('footer-stats');
   if (f) f.textContent = JSON.stringify(d.by_action || {});
 }
@@ -848,9 +866,20 @@ async function submit(action) {
     // El servicio se reinicia ~5-15s. Mostrar mensaje y esperar.
     document.getElementById('rc').textContent = '♻ recalibrando…';
     document.getElementById('addr').textContent = 'reiniciando servicio, ~10s';
-    setTimeout(() => loadRC(null), 12000);
+    setTimeout(() => loadRC(__queue.length ? __queue.shift() : null), 12000);
   } else {
-    loadRC(null); // pasa al siguiente random
+    // Si hay cola, siguiente de la cola; si no, random.
+    if (__queue.length) {
+      loadRC(__queue.shift());
+    } else {
+      if (__queue_total > 0) {
+        // Acabada la cola — mostrar aviso y volver a random
+        const el = document.getElementById('rc');
+        if (el) el.textContent = '✓ cola completada (' + __queue_total + ')';
+        __queue_total = 0;
+      }
+      loadRC(null);
+    }
   }
 }
 
