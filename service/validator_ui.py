@@ -538,6 +538,15 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 </style>
 </head>
 <body>
+<div id="busy-overlay" style="display:none; position:fixed; inset:0; z-index:9999;
+     background:rgba(12,12,12,0.55); backdrop-filter:blur(2px);
+     align-items:center; justify-content:center; flex-direction:column; gap:14px;
+     color:#fff; font-size:14px; pointer-events:all;">
+  <div style="width:44px; height:44px; border:4px solid #444; border-top-color:#22c55e;
+       border-radius:50%; animation:spin 0.9s linear infinite"></div>
+  <div>Guardando…</div>
+</div>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 <header>
   <h1>RC Validator</h1>
   <div class="rc-info">
@@ -1051,9 +1060,10 @@ async function loadRC(rc) {
   const done = () => {
     loaded += 1;
     if (loaded < 2) return;
-    // double rAF: ensure wrap has dimensions before we compute centering.
     requestAnimationFrame(() => requestAnimationFrame(() => {
       recenterAfterLoad();
+      if (typeof setBusy === 'function') setBusy(false);
+      if (typeof prefetchNext === 'function') prefetchNext();
     }));
   };
   cropImg.onload = done;
@@ -1110,41 +1120,59 @@ async function loadStats() {
   if (f) f.textContent = JSON.stringify(d.by_action || {});
 }
 
+let _submitting = false;
+function setBusy(on) {
+  _submitting = on;
+  const overlay = document.getElementById('busy-overlay');
+  if (overlay) overlay.style.display = on ? 'flex' : 'none';
+  ['btn-accept-d','btn-accept-m','btn-reject-d','btn-reject-m','btn-skip-d','btn-skip-m'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.disabled = on;
+  });
+}
+
 async function submit(action) {
+  if (_submitting) return;             // evita doble-click
   if (!current) return;
+  setBusy(true);
   const payload = {
     rc: current.rc,
     action: action,
-    dxdy: action === 'accept' ? [drag.dx, drag.dy] : [0, 0],
+    dxdy: action === 'accept' ? [dragVec.dx, dragVec.dy] : [0, 0],
     snap_score: current.snap_score,
     snap_dxdy: current.snap_dxdy,
     cal_dxdy: current.cal_dxdy,
   };
-  const r = await api('/api/label', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!r.ok) { alert('error guardando'); return; }
+  let r;
+  try {
+    r = await api('/api/label', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    setBusy(false);
+    alert('error de red: ' + e.message);
+    return;
+  }
+  if (!r.ok) { setBusy(false); alert('error guardando (' + r.status + ')'); return; }
   const resp = await r.json();
   if (resp.recalibrated) {
-    // El servicio se reinicia ~5-15s. Mostrar mensaje y esperar.
     document.getElementById('rc').textContent = '♻ recalibrando…';
     document.getElementById('addr').textContent = 'reiniciando servicio, ~10s';
-    setTimeout(() => loadRC(__queue.length ? __queue.shift() : null), 12000);
+    setTimeout(() => { setBusy(false); loadRC(__queue.length ? __queue.shift() : null); }, 12000);
+    return;
+  }
+  // siguiente RC. setBusy(false) lo gestiona loadRC al terminar.
+  if (__queue.length) {
+    loadRC(__queue.shift());
   } else {
-    // Si hay cola, siguiente de la cola; si no, random.
-    if (__queue.length) {
-      loadRC(__queue.shift());
-    } else {
-      if (__queue_total > 0) {
-        // Acabada la cola — mostrar aviso y volver a random
-        const el = document.getElementById('rc');
-        if (el) el.textContent = '✓ cola completada (' + __queue_total + ')';
-        __queue_total = 0;
-      }
-      loadRC(null);
+    if (__queue_total > 0) {
+      const el = document.getElementById('rc');
+      if (el) el.textContent = '✓ cola completada (' + __queue_total + ')';
+      __queue_total = 0;
     }
+    loadRC(null);
   }
 }
 
