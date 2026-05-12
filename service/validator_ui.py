@@ -472,11 +472,12 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 .pane { background: #181818; display: flex; flex-direction: column; overflow: hidden; }
 .pane h2 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; padding: 6px 10px; background: #1f1f1f; flex-shrink: 0; }
 .canvas-wrap { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: auto; background: #0c0c0c;
-               touch-action: pan-x pan-y; /* permite pan con un dedo, pinch lo capturamos nosotros */ }
-.canvas-inner { position: relative; flex-shrink: 0; }
-.canvas-inner img { display: block; image-rendering: crisp-edges; user-select: none; -webkit-user-drag: none; pointer-events: none; }
-#overlay { position: absolute; top: 0; left: 0; pointer-events: none; }
-#overlay polygon.draggable { pointer-events: auto; cursor: grab; touch-action: none; }
+               touch-action: pan-x pan-y; /* permite pan con un dedo, pinch lo capturamos nosotros */
+               -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.canvas-inner { position: relative; flex-shrink: 0; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.canvas-inner img { display: block; image-rendering: crisp-edges; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; pointer-events: none; }
+#overlay { position: absolute; top: 0; left: 0; pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+#overlay polygon.draggable { pointer-events: auto; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .side { padding: 12px; gap: 8px; display: flex; flex-direction: column; }
 .kv { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px solid #2a2a2a; }
 .kv label { color: #888; }
@@ -658,6 +659,71 @@ function applyZoom() {
   renderOverlay();
 }
 
+// Sync scroll entre crop y wms: ambos comparten m/px (mismo viewMpx), así que
+// el delta en pixels display de uno se traslada directamente al otro.
+let _syncing = false;
+function attachScrollSync() {
+  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
+  const wmsWrap = document.querySelector('.wms-pane .canvas-wrap');
+  if (!cropWrap || !wmsWrap) return;
+  let lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
+  let lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
+  cropWrap.addEventListener('scroll', () => {
+    if (_syncing) return;
+    const dl = cropWrap.scrollLeft - lastCrop.l;
+    const dt = cropWrap.scrollTop - lastCrop.t;
+    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
+    _syncing = true;
+    wmsWrap.scrollLeft = wmsWrap.scrollLeft + dl;
+    wmsWrap.scrollTop = wmsWrap.scrollTop + dt;
+    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
+    _syncing = false;
+  }, { passive: true });
+  wmsWrap.addEventListener('scroll', () => {
+    if (_syncing) return;
+    const dl = wmsWrap.scrollLeft - lastWms.l;
+    const dt = wmsWrap.scrollTop - lastWms.t;
+    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
+    _syncing = true;
+    cropWrap.scrollLeft = cropWrap.scrollLeft + dl;
+    cropWrap.scrollTop = cropWrap.scrollTop + dt;
+    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
+    _syncing = false;
+  }, { passive: true });
+  // exporta para re-baseline cuando centerOnPolygon recoloca scrolls programáticamente
+  window.__resetScrollBaseline = () => {
+    lastCrop = { l: cropWrap.scrollLeft, t: cropWrap.scrollTop };
+    lastWms = { l: wmsWrap.scrollLeft, t: wmsWrap.scrollTop };
+  };
+}
+
+// Si el polígono no es visible en el viewport del crop, ajusta el zoom hasta
+// que entre completo + un margen del 20%.
+function ensurePolygonVisible() {
+  if (!current) return;
+  const cropWrap = document.querySelector('.crop-pane .canvas-wrap');
+  if (!cropWrap) return;
+  const pts = current.poly_snap;
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  for (const [x, y] of pts) {
+    const X = x + drag.dx, Y = y + drag.dy;
+    if (X<minX) minX=X; if (X>maxX) maxX=X;
+    if (Y<minY) minY=Y; if (Y>maxY) maxY=Y;
+  }
+  // span en metros: span_px_crop * crop_m_per_px
+  const spanXm = (maxX - minX) * current.crop_m_per_px;
+  const spanYm = (maxY - minY) * current.crop_m_per_px;
+  const wPx = cropWrap.clientWidth, hPx = cropWrap.clientHeight;
+  // viewMpx necesario para que el span quepa con 20% margen
+  const needX = (spanXm * 1.2) / wPx;
+  const needY = (spanYm * 1.2) / hPx;
+  const need = Math.max(needX, needY, 0.05);
+  if (viewMpx < need) {
+    // zoom out hasta que entre
+    setZoom(Math.min(1.0, need));
+  }
+}
+
 // Centra cada pane en el polígono verde (con drag aplicado).
 // Para WMS usa su centro (el WMS se renderiza alrededor del RC).
 function centerOnPolygon() {
@@ -686,6 +752,7 @@ function centerOnPolygon() {
     wmsWrap.scrollLeft = Math.max(0, wmsInner.offsetWidth / 2 - wmsWrap.clientWidth / 2);
     wmsWrap.scrollTop = Math.max(0, wmsInner.offsetHeight / 2 - wmsWrap.clientHeight / 2);
   }
+  if (window.__resetScrollBaseline) window.__resetScrollBaseline();
 }
 
 function setZoom(v) {
@@ -911,7 +978,7 @@ async function loadRC(rc) {
   }
   document.getElementById('crop').src = imgUrl(data.crop_url);
   document.getElementById('wms').src = imgUrl(data.wms_url);
-  document.getElementById('crop').onload = () => { applyZoom(); centerOnPolygon(); };
+  document.getElementById('crop').onload = () => { applyZoom(); ensurePolygonVisible(); centerOnPolygon(); };
   document.getElementById('wms').onload = () => { applyZoom(); centerOnPolygon(); };
   loadStats();
   prefetchNext();
@@ -1012,6 +1079,7 @@ window.addEventListener('keydown', e => {
   else if (e.key === 's' || e.key === 'S') submit('skip');
 });
 
+attachScrollSync();
 if (getToken()) loadInitial();
 </script>
 </body>
