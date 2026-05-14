@@ -22,3 +22,4 @@ data/.recal_pending
 
 # LG batch outputs (regenerable)
 data/lg_batch/
+*.log.[0-9]*

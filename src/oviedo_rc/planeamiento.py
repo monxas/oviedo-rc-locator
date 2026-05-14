@@ -116,11 +116,30 @@ def _find_matching_ficha(ambito_name: str, etiqueta: str | None = None,
         return []
     word_tokens = [t for t in raw_tokens if len(t) > 2]
     num_tokens = [t for t in raw_tokens if t.isdigit()]
+    # Fallback para etiquetas cortas tipo "PP-8", "UG-RC4", "PE-3":
+    # busca "<prefix> <suffix>" como substring (separado por espacios al
+    # normalizar guiones/underscores). Sin esto, palabras de ≤2 chars
+    # (PP, UG, PE) se descartaban y no había match.
+    short_codes: list[str] = []
     if not word_tokens:
-        return []
+        for i in range(len(raw_tokens) - 1):
+            a, b = raw_tokens[i], raw_tokens[i + 1]
+            if 1 <= len(a) <= 4 and (b.isdigit() or len(b) <= 4):
+                short_codes.append(f" {a} {b} ")
+        if not short_codes:
+            return []
     hits = []
     for fname in listing:
         norm = " " + _normalize(fname.rsplit(".pdf", 1)[0]) + " "
+        if short_codes:
+            # Para etiquetas cortas: match si alguno de los códigos cortos aparece
+            n_match = sum(1 for code in short_codes if code in norm)
+            if n_match == 0:
+                continue
+            score = 10 * n_match  # match exacto de código corto = alta confianza
+            hits.append({"filename": fname, "score": score,
+                         "tokens_matched": n_match, "num_matched": 0})
+            continue
         n_word = sum(1 for t in word_tokens if t in norm)
         if n_word < max(1, len(word_tokens) // 2):
             continue

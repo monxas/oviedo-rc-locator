@@ -31,8 +31,47 @@ RENDER_CACHE_DIR.mkdir(parents=True, exist_ok=True)
 CAL_FILE = Path.home() / "oviedo-rc-locator" / "data" / "calibration_fichas.json"
 
 DPI = 200
-PX_PER_M = DPI / 25.4 * 1000 / 1000  # = DPI/25.4 ≈ 7.874 px/m a escala 1:1000
-# (1m_real = 1mm_papel = 1/25.4 inch = DPI/25.4 px)
+DEFAULT_SCALE = 1000  # 1:1000 si no se detecta nada
+# 1m_real a escala 1:S → 1000/S mm_papel → (1000/S)/25.4 inch → (1000/S)*DPI/25.4 px
+# A 200dpi:  1:1000 → 7.874 px/m   |   1:2000 → 3.937 px/m   |   1:500 → 15.748 px/m
+
+_SCALE_RE = re.compile(r"[Ee][Ss][Cc][Aa][Ll][Aa]\s*[:=]?\s*1\s*[:/]\s*(\d{3,5})")
+# Cache: filename → (scale, mtime). Invalidamos si el PDF cambió en disco.
+_SCALE_CACHE: dict[str, tuple[int, float]] = {}
+
+
+def _detect_scale(pdf_path: Path) -> int:
+    """Detecta escala (denominador) buscando 'ESCALA: 1/NNNN' en página 1.
+
+    Cacheado por (filename, mtime). Si el PDF se reemplaza, invalida cache.
+    """
+    key = pdf_path.name
+    try:
+        mtime = pdf_path.stat().st_mtime
+    except OSError:
+        mtime = 0.0
+    cached = _SCALE_CACHE.get(key)
+    if cached and cached[1] == mtime:
+        return cached[0]
+    scale = DEFAULT_SCALE
+    try:
+        import fitz as _fitz
+        doc = _fitz.open(str(pdf_path))
+        text = doc[0].get_text() or ""
+        doc.close()
+        m = _SCALE_RE.search(text)
+        if m:
+            v = int(m.group(1))
+            if 200 <= v <= 50000:
+                scale = v
+    except Exception:
+        pass
+    _SCALE_CACHE[key] = (scale, mtime)
+    return scale
+
+
+def _px_per_m(scale: int) -> float:
+    return DPI / 25.4 * 1000 / scale
 
 _AMBITOS_CACHE = None
 _AMBITOS_LOCK = threading.Lock()
@@ -98,21 +137,53 @@ def _match_ambito_for_filename(filename: str) -> dict | None:
 
 
 def _detect_body_rect(img):
-    """Detecta el recuadro cartográfico del plano (heurística: contorno mayor)."""
+    """Detecta el recuadro cartográfico del plano de la ficha.
+
+    Estrategia mejorada vs v0:
+    - Buscar el contorno rectangular grande que NO toque los bordes de la
+      página (los que tocan suelen ser el marco/chrome del documento, no el
+      body cartográfico).
+    - Filtrar por aspect ratio (descartar contornos page-tall o page-wide).
+    - Preferir contornos en el cuadrante inferior-derecho (típico body en
+      fichas PGOU con título arriba-izquierda).
+    - Si ninguno cumple, fallback a heurística previa (contorno mayor) y,
+      último recurso, márgenes fijos.
+    """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, th = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
     contours, _ = cv2.findContours(th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     H, W = gray.shape
-    best = None
+    edge_tol = max(4, int(0.005 * max(W, H)))
+
+    candidates = []
+    fallback_best = None
     for c in contours:
         x, y, w, h = cv2.boundingRect(c)
-        if w * h < 0.3 * W * H:
+        area = w * h
+        if area < 0.15 * W * H:
             continue
-        if best is None or w * h > best[2] * best[3]:
-            best = (x, y, w, h)
-    if best is None:
-        return (int(W * 0.04), int(H * 0.10), int(W * 0.96), int(H * 0.88))
-    return (best[0], best[1], best[0] + best[2], best[1] + best[3])
+        if fallback_best is None or area > fallback_best[2] * fallback_best[3]:
+            fallback_best = (x, y, w, h)
+        # Descartar si toca los bordes de la página
+        touches_edge = (x <= edge_tol or y <= edge_tol or
+                        x + w >= W - edge_tol or y + h >= H - edge_tol)
+        if touches_edge:
+            continue
+        # Aspect ratio razonable (entre 0.4 y 2.5 → no fajas)
+        ar = w / max(h, 1)
+        if ar < 0.4 or ar > 2.5:
+            continue
+        candidates.append((x, y, w, h, area))
+
+    if candidates:
+        # Preferir mayor área entre los válidos
+        x, y, w, h, _ = max(candidates, key=lambda c: c[4])
+        return (x, y, x + w, y + h)
+    if fallback_best is not None:
+        x, y, w, h = fallback_best
+        return (x, y, x + w, y + h)
+    # Último recurso
+    return (int(W * 0.04), int(H * 0.10), int(W * 0.96), int(H * 0.88))
 
 
 def _load_cal() -> dict:
@@ -125,16 +196,20 @@ def _load_cal() -> dict:
         return {}
 
 
-def render_with_overlay(filename: str, polygon_utm: list[tuple[float, float]]) -> dict | None:
+def render_with_overlay(filename: str, polygon_utm: list[tuple[float, float]],
+                        draw_polygon: bool = True) -> dict | None:
     """Renderiza la página 1 de la ficha con el polígono catastral dibujado.
 
     Args:
         filename: nombre del PDF de ficha (ej 'RODRIGUEZ_CABEZAS_4_UG_RC4_...pdf')
         polygon_utm: lista de (x_utm, y_utm) del polígono del RC
+        draw_polygon: si True, dibuja el polígono sobre el PNG. Si False, devuelve
+            el PNG limpio + coords del polígono en píxeles (para que el cliente
+            pinte SVG drag-able encima). Usado por el validator.
 
     Returns:
-        dict con {png_bytes, ambito_etiqueta, body_rect, cal_offset, width, height}
-        o None si no se puede emparejar/renderizar.
+        dict con {png_bytes, ambito_etiqueta, body_rect, cal_offset, width, height,
+                  poly_px}; o None si no se puede emparejar/renderizar.
     """
     ambito = _match_ambito_for_filename(filename)
     if not ambito:
@@ -144,6 +219,8 @@ def render_with_overlay(filename: str, polygon_utm: list[tuple[float, float]]) -
         return None
 
     cx_utm, cy_utm = ambito["centroid_utm"]
+    scale = _detect_scale(pdf_path)
+    px_per_m = _px_per_m(scale)
 
     # Render página 1
     doc = fitz.open(str(pdf_path))
@@ -168,18 +245,20 @@ def render_with_overlay(filename: str, polygon_utm: list[tuple[float, float]]) -
     def utm_to_px(ux, uy):
         dx_m = ux - cx_utm
         dy_m = uy - cy_utm   # Y crece al norte
-        px = body_cx + dx_m * PX_PER_M + offset_dx
-        py = body_cy - dy_m * PX_PER_M + offset_dy
+        px = body_cx + dx_m * px_per_m + offset_dx
+        py = body_cy - dy_m * px_per_m + offset_dy
         return int(round(px)), int(round(py))
 
     pts_px = [utm_to_px(x, y) for x, y in polygon_utm]
     poly_np = np.array(pts_px, dtype=np.int32)
 
-    # Dibujar: outline + relleno translúcido
-    overlay = img.copy()
-    cv2.fillPoly(overlay, [poly_np], color=(0, 0, 255))
-    img_out = cv2.addWeighted(overlay, 0.30, img, 0.70, 0)
-    cv2.polylines(img_out, [poly_np], isClosed=True, color=(0, 0, 255), thickness=5)
+    if draw_polygon:
+        overlay = img.copy()
+        cv2.fillPoly(overlay, [poly_np], color=(0, 0, 255))
+        img_out = cv2.addWeighted(overlay, 0.30, img, 0.70, 0)
+        cv2.polylines(img_out, [poly_np], isClosed=True, color=(0, 0, 255), thickness=5)
+    else:
+        img_out = img
 
     ok, buf = cv2.imencode(".png", img_out)
     if not ok:
@@ -193,7 +272,9 @@ def render_with_overlay(filename: str, polygon_utm: list[tuple[float, float]]) -
         "centroid_utm": [cx_utm, cy_utm],
         "width": W,
         "height": H,
-        "m_per_px": 1.0 / PX_PER_M,
+        "m_per_px": 1.0 / px_per_m,
+        "scale": scale,
+        "poly_px": pts_px,
     }
 
 

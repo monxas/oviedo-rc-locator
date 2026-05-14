@@ -61,6 +61,7 @@ def _anchor_utm(col, row_idx, compass):
 ENV_FILE = ROOT / ".validator.env"
 LABELS_PATH = ROOT / "data" / "validator_labels.json"
 LABELS_PATH.parent.mkdir(exist_ok=True, parents=True)
+FICHA_LABELS_PATH = ROOT / "data" / "validator_labels_fichas.json"
 NATIVE_CROP = 3600   # crop nativo en px PGOU (cubre ~317 m a 0.088 m/px)
 DISPLAY_CROP = 1800  # tras downscale 2× → tamaño PNG transferido
 
@@ -136,6 +137,18 @@ def labeled_rcs() -> set:
     return {l["rc"] for l in load_labels()}
 
 
+def load_ficha_labels() -> list:
+    if not FICHA_LABELS_PATH.exists(): return []
+    try: return json.loads(FICHA_LABELS_PATH.read_text(encoding="utf-8"))
+    except Exception: return []
+
+
+def save_ficha_labels(labels):
+    tmp = FICHA_LABELS_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(labels, indent=2, ensure_ascii=False))
+    tmp.replace(FICHA_LABELS_PATH)
+
+
 # ---------- helpers de render ----------
 def _coords_local():
     """Lee coords_local.json del caché de oviedo_rc."""
@@ -182,17 +195,62 @@ def _rc_cellsub(rc_x, rc_y):
     return f"{col}-{letter}", sub
 
 
+_AMBITO_RCS: Optional[set] = None
+_AMBITO_RCS_MTIME: float = 0.0
+
+
+def _rcs_in_ambito() -> set:
+    """RC14 dentro de polígono real de un ámbito con ficha PDF asociada.
+
+    Lee la lista precomputada desde
+    `~/.cache/oviedo_rc/priority_rcs_fichas.json`, generada por
+    `scripts/build_priority_rcs.py` (point-in-polygon contra polígonos WFS).
+
+    Reload mtime-aware: si re-ejecutas build_priority_rcs.py, el siguiente
+    `_rcs_in_ambito()` detecta el mtime nuevo y recarga (sin reiniciar el
+    servicio).
+    """
+    global _AMBITO_RCS, _AMBITO_RCS_MTIME
+    cache_file = Path.home() / ".cache" / "oviedo_rc" / "priority_rcs_fichas.json"
+    if not cache_file.exists():
+        _AMBITO_RCS = set()
+        _AMBITO_RCS_MTIME = 0.0
+        return _AMBITO_RCS
+    try:
+        mtime = cache_file.stat().st_mtime
+    except OSError:
+        return _AMBITO_RCS or set()
+    if _AMBITO_RCS is not None and mtime == _AMBITO_RCS_MTIME:
+        return _AMBITO_RCS
+    try:
+        _AMBITO_RCS = set(json.loads(cache_file.read_text(encoding="utf-8")))
+        _AMBITO_RCS_MTIME = mtime
+    except Exception:
+        if _AMBITO_RCS is None:
+            _AMBITO_RCS = set()
+    return _AMBITO_RCS
+
+
 def _random_rc() -> str:
-    """RC aleatorio del cache, urbano válido + cell-sub con hoja PGOU."""
+    """RC aleatorio del cache, urbano válido + cell-sub con hoja PGOU.
+
+    Prioriza RCs dentro de algún ámbito PGOU (Phase 2c: cal por ficha),
+    cae a RCs fuera de ámbito cuando los priorizados están agotados.
+    """
     global _COVERED_CSUB
     if _COVERED_CSUB is None:
         _COVERED_CSUB = _covered_csub()
 
     from oviedo_rc.geom import validate_rc
     from oviedo_rc.errors import RCError
-    keys = list(COORDS.keys())
+    ambito_set = _rcs_in_ambito()
+    all_keys = list(COORDS.keys())
+    priority = [k for k in all_keys if k in ambito_set]
+    rest     = [k for k in all_keys if k not in ambito_set]
+    random.shuffle(priority)
+    random.shuffle(rest)
+    keys = priority + rest
     done = labeled_rcs()
-    random.shuffle(keys)
     for k in keys:
         rc = k + "0001AA"
         if rc in done: continue
@@ -300,8 +358,12 @@ def _generate_for_rc(rc: str) -> dict:
     # ---- Plano de ficha de ámbito (cuarto panel cuando aplica) ----
     ficha_png = b""
     ficha_size_px = 0
+    ficha_size_px_h = 0
     poly_ficha = []
     ficha_etiqueta = None
+    ficha_filename = None
+    ficha_m_per_px = 0.127
+    ficha_scale = 1000
     try:
         from oviedo_rc import ficha_plano as fp_mod
         from oviedo_rc import planeamiento as plan_mod_local
@@ -309,23 +371,20 @@ def _generate_for_rc(rc: str) -> dict:
         matches = plan_info.get("fichas_match") or []
         if matches:
             top_filename = matches[0].get("filename", "")
-            ficha_render = fp_mod.render_with_overlay(top_filename, poly["polygon_utm"])
+            # PNG limpio (sin polígono dibujado) — el cliente pinta SVG drag-able encima.
+            ficha_render = fp_mod.render_with_overlay(
+                top_filename, poly["polygon_utm"], draw_polygon=False
+            )
             if ficha_render:
                 ficha_png = ficha_render["png_bytes"]
-                ficha_size_px = ficha_render["width"]   # plano cuadrado-ish; usamos width
+                ficha_size_px_w = ficha_render["width"]
+                ficha_size_px_h = ficha_render["height"]
+                ficha_size_px = ficha_size_px_w   # ancho como referencia del viewport
                 ficha_etiqueta = ficha_render["ambito_etiqueta"]
-                # Recalcular poly_ficha (sin el overlay aplicado, sólo coords):
-                cx, cy = ficha_render["centroid_utm"]
-                body_f = ficha_render["body_rect"]
-                bcx = (body_f[0] + body_f[2]) / 2
-                bcy = (body_f[1] + body_f[3]) / 2
-                px_m = 1.0 / ficha_render["m_per_px"]
-                off_dx, off_dy = ficha_render["cal_offset"]
-                poly_ficha = [
-                    [int(round(bcx + (ux - cx) * px_m + off_dx)),
-                     int(round(bcy - (uy - cy) * px_m + off_dy))]
-                    for ux, uy in poly["polygon_utm"]
-                ]
+                ficha_filename = top_filename
+                ficha_m_per_px = ficha_render.get("m_per_px", 0.127)
+                ficha_scale = ficha_render.get("scale", 1000)
+                poly_ficha = [[int(p[0]), int(p[1])] for p in ficha_render["poly_px"]]
     except Exception:
         pass
 
@@ -351,9 +410,12 @@ def _generate_for_rc(rc: str) -> dict:
         "wms_png": wms_png,
         "ficha_png": ficha_png,
         "ficha_size_px": ficha_size_px,
+        "ficha_size_px_h": ficha_size_px_h,
         "poly_ficha": poly_ficha,
         "ficha_etiqueta": ficha_etiqueta,
-        "ficha_m_per_px": 0.127,  # 25.4/200 a escala 1:1000
+        "ficha_filename": ficha_filename,
+        "ficha_m_per_px": ficha_m_per_px,
+        "ficha_scale": ficha_scale,
     }
 
 
@@ -417,9 +479,12 @@ def next_rc(rc: Optional[str] = None, _=Depends(auth)):
         "wms_url": f"/api/img/{data['rc']}/wms",
         "ficha_url": (f"/api/img/{data['rc']}/ficha" if data.get("ficha_png") else None),
         "ficha_size_px": data.get("ficha_size_px", 0),
+        "ficha_size_px_h": data.get("ficha_size_px_h", 0),
         "ficha_m_per_px": data.get("ficha_m_per_px", 0.127),
+        "ficha_scale": data.get("ficha_scale", 1000),
         "poly_ficha": data.get("poly_ficha", []),
         "ficha_etiqueta": data.get("ficha_etiqueta"),
+        "ficha_filename": data.get("ficha_filename"),
     }
 
 
@@ -447,6 +512,12 @@ class LabelReq(BaseModel):
     snap_dxdy: list[int] = Field(default_factory=lambda: [0, 0])
     cal_dxdy: list[int] = Field(default_factory=lambda: [0, 0])
     comment: str = ""
+    # Drag específico del panel "Ficha de ámbito" (Phase 2c).
+    # Sólo se guarda si nonzero o si se confirma alineación (drag=0 con accept).
+    ficha_dxdy: list[int] = Field(default_factory=lambda: [0, 0])
+    ficha_etiqueta: Optional[str] = None
+    ficha_filename: Optional[str] = None
+    ficha_cal_dxdy: list[int] = Field(default_factory=lambda: [0, 0])
 
 
 def _accept_counter() -> int:
@@ -506,7 +577,28 @@ def label(req: LabelReq, _=Depends(auth)):
                 recalibrated = True
         counter = _accept_counter()
         total = len(labels)
-    return {"ok": True, "total": total,
+
+    # Ficha-plano label (cal por ámbito). Sólo guardamos en accept y si
+    # hay metadata de ficha. Drag puede ser 0 (confirmación de alineación
+    # ya correcta — sigue siendo señal útil).
+    ficha_total = 0
+    if req.action == "accept" and req.ficha_etiqueta and req.ficha_filename:
+        with _LABELS_LOCK:
+            f_labels = load_ficha_labels()
+            f_labels = [l for l in f_labels if not (
+                l.get("rc") == req.rc and l.get("etiqueta") == req.ficha_etiqueta
+            )]
+            f_labels.append({
+                "rc": req.rc,
+                "etiqueta": req.ficha_etiqueta,
+                "filename": req.ficha_filename,
+                "dxdy": req.ficha_dxdy,
+                "cal_dxdy": req.ficha_cal_dxdy,
+                "ts": time.time(),
+            })
+            save_ficha_labels(f_labels)
+            ficha_total = len(f_labels)
+    return {"ok": True, "total": total, "ficha_total": ficha_total,
             "accept_counter": counter,
             "recal_threshold": RECAL_THRESHOLD,
             "recalibrated": recalibrated}
@@ -549,7 +641,6 @@ main { display: grid; grid-template-columns: 1fr 1fr 280px; height: calc(100vh -
 main.has-ficha { grid-template-columns: 1fr 1fr 1fr 280px; }
 .pane.ficha-pane { display: none; }
 main.has-ficha .pane.ficha-pane { display: flex; }
-.pane.ficha-pane .canvas-wrap img { width: 100%; height: 100%; object-fit: contain; image-rendering: crisp-edges; }
 .pane.ficha-pane .meta { font-size: 10px; color: #888; padding: 4px 8px; background: #161616; }
 .zoom-bar { display: flex; align-items: center; gap: 10px; padding: 6px 12px; background: #1d1d1d; border-bottom: 1px solid #333; }
 .zoom-bar label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
@@ -564,8 +655,8 @@ main.has-ficha .pane.ficha-pane { display: flex; }
 .canvas-inner { position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform;
                 -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .canvas-inner img { display: block; image-rendering: crisp-edges; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; pointer-events: none; }
-#overlay { position: absolute; top: 0; left: 0; pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-#overlay polygon.draggable { pointer-events: auto; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+#overlay, #overlay-wms, #overlay-ficha { position: absolute; top: 0; left: 0; pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+#overlay polygon.draggable, #overlay-ficha polygon.draggable { pointer-events: auto; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .side { padding: 12px; gap: 8px; display: flex; flex-direction: column; }
 .kv { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px solid #2a2a2a; }
 .kv label { color: #888; }
@@ -673,11 +764,19 @@ main.has-ficha .pane.ficha-pane { display: flex; }
     </div>
   </div>
   <div class="pane ficha-pane">
-    <h2>Ficha de ámbito · <span id="ficha-etiqueta">—</span></h2>
-    <div class="canvas-wrap" id="ficha-wrap">
-      <img id="ficha" alt="ficha-plano">
+    <h2>Ficha de ámbito · <span id="ficha-etiqueta">—</span> (verde = arrastrable)</h2>
+    <div class="canvas-wrap">
+      <div class="canvas-inner" id="ficha-inner">
+        <img id="ficha" alt="ficha-plano">
+        <svg id="overlay-ficha" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+             style="position:absolute;top:0;left:0;pointer-events:none"></svg>
+      </div>
     </div>
-    <div class="meta">Sin calibración por ficha (posición aproximada, error esperado ~20m). Phase 2c añadirá drag.</div>
+    <div class="meta">
+      Drag = corregir desalineación de este ámbito.
+      Aceptar SIN drag = confirmar que el polígono ya está alineado (señal útil).
+      Si NO estás seguro de si está bien, mejor <b>Skip</b> (no contamina la mediana).
+    </div>
   </div>
   <div class="pane side">
     <div class="kv"><label>snap score</label><span id="snap_score">—</span></div>
@@ -740,10 +839,13 @@ let current = null;
 let viewMpx = 0.75;
 // dragVec in CROP-NATIVE pixels (polygon user-correction).
 let dragVec = { dx: 0, dy: 0 };
+// dragVec separado para el panel ficha (en ficha-native px).
+let dragVecFicha = { dx: 0, dy: 0 };
 // Per-pane viewport state. scale = mPerPxNative / viewMpx.
 const VP = {
-  crop: { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
-  wms:  { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
+  crop:  { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
+  wms:   { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0 },
+  ficha: { panX: 0, panY: 0, scale: 1, inner: null, wrap: null, img: null, mPerPxNative: 0, nativeSize: 0, nativeSizeH: 0 },
 };
 
 function initVP() {
@@ -753,6 +855,9 @@ function initVP() {
   VP.wms.wrap   = document.querySelector('.wms-pane .canvas-wrap');
   VP.wms.inner  = document.getElementById('wms-inner');
   VP.wms.img    = document.getElementById('wms');
+  VP.ficha.wrap  = document.querySelector('.ficha-pane .canvas-wrap');
+  VP.ficha.inner = document.getElementById('ficha-inner');
+  VP.ficha.img   = document.getElementById('ficha');
 }
 
 function api(path, opts={}) {
@@ -778,13 +883,15 @@ function scheduleTransform() {
   });
 }
 function applyTransform() {
-  for (const pane of [VP.crop, VP.wms]) {
+  for (const pane of [VP.crop, VP.wms, VP.ficha]) {
     if (!pane.inner || !pane.mPerPxNative) continue;
     pane.scale = pane.mPerPxNative / viewMpx;
     pane.inner.style.transform = `translate(${pane.panX}px, ${pane.panY}px) scale(${pane.scale})`;
   }
   const green = document.getElementById('poly-green');
   if (green) green.setAttribute('transform', `translate(${dragVec.dx} ${dragVec.dy})`);
+  const greenF = document.getElementById('poly-green-ficha');
+  if (greenF) greenF.setAttribute('transform', `translate(${dragVecFicha.dx} ${dragVecFicha.dy})`);
   const zl = document.getElementById('zoom-label');
   if (zl) zl.textContent = viewMpx.toFixed(2) + ' m/px';
   const dEl = document.getElementById('drag_dxdy');
@@ -856,6 +963,24 @@ function renderOverlay() {
   } else if (svgWms) {
     svgWms.innerHTML = '';
   }
+
+  // Ficha overlay (Phase 2c): rojo estático + verde drag-able sobre el plano de la ficha.
+  const svgF = document.getElementById('overlay-ficha');
+  if (svgF && current.poly_ficha && current.poly_ficha.length) {
+    const Wf = current.ficha_size_px;
+    const Hf = current.ficha_size_px_h || Wf;
+    svgF.setAttribute('viewBox', '0 0 ' + Wf + ' ' + Hf);
+    svgF.style.width = Wf + 'px';
+    svgF.style.height = Hf + 'px';
+    const polyFStr = current.poly_ficha.map(p => p.join(',')).join(' ');
+    svgF.innerHTML = `
+      <polygon points="${polyFStr}" fill="rgba(220,40,40,0.18)" stroke="#dc2828" stroke-width="3" />
+      <polygon class="draggable" id="poly-green-ficha" points="${polyFStr}" fill="rgba(40,200,80,0.22)" stroke="#22c55e" stroke-width="3"
+               transform="translate(${dragVecFicha.dx} ${dragVecFicha.dy})" />
+    `;
+  } else if (svgF) {
+    svgF.innerHTML = '';
+  }
 }
 
 // ----- Initial zoom & centering on RC load -----
@@ -874,6 +999,20 @@ function computeInitialZoom() {
   return Math.max(need, 0.5);  // never zoom in too much initially
 }
 
+function polyCentroidFichaNative() {
+  if (!current || !current.poly_ficha || !current.poly_ficha.length) return null;
+  let cx = 0, cy = 0;
+  for (const [x, y] of current.poly_ficha) { cx += x; cy += y; }
+  return { x: cx / current.poly_ficha.length, y: cy / current.poly_ficha.length };
+}
+
+function recenterFicha() {
+  if (!VP.ficha.nativeSize || !VP.ficha.wrap) return;
+  const fc = polyCentroidFichaNative();
+  if (!fc) return;
+  centerPaneOnPoint(VP.ficha, fc.x + dragVecFicha.dx, fc.y + dragVecFicha.dy);
+}
+
 function recenterAfterLoad() {
   if (!current) return;
   viewMpx = computeInitialZoom();
@@ -884,6 +1023,7 @@ function recenterAfterLoad() {
   if (VP.wms.nativeSize) {
     centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
   }
+  recenterFicha();
   scheduleTransform();
 }
 
@@ -901,6 +1041,7 @@ document.getElementById('zoom').addEventListener('input', e => {
   if (VP.wms.nativeSize) {
     centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
   }
+  recenterFicha();
   scheduleTransform();
 });
 
@@ -912,6 +1053,7 @@ window.addEventListener('resize', () => {
   if (VP.wms.nativeSize) {
     centerPaneOnPoint(VP.wms, VP.wms.nativeSize / 2, VP.wms.nativeSize / 2);
   }
+  recenterFicha();
   scheduleTransform();
 });
 
@@ -922,7 +1064,7 @@ let pinch = null;   // { startDist, startZoom, midPane, worldX, worldY, midX, mi
 let lastTap = { t: 0, x: 0, y: 0 };
 
 function paneFromPoint(clientX, clientY) {
-  for (const key of ['crop', 'wms']) {
+  for (const key of ['crop', 'wms', 'ficha']) {
     const pane = VP[key];
     if (!pane.wrap) continue;
     const r = pane.wrap.getBoundingClientRect();
@@ -999,7 +1141,17 @@ function panBoth(dx, dy) {
 }
 
 function isOnGreen(target) {
-  return target && (target.id === 'poly-green' || (target.closest && target.closest('#poly-green')));
+  if (!target) return null;
+  if (target.id === 'poly-green' || (target.closest && target.closest('#poly-green'))) return 'crop';
+  if (target.id === 'poly-green-ficha' || (target.closest && target.closest('#poly-green-ficha'))) return 'ficha';
+  return null;
+}
+
+function paneKeyFromWrap(wrap) {
+  if (!wrap) return null;
+  if (wrap === VP.crop.wrap || wrap === VP.wms.wrap) return 'sync';   // crop+wms solidarios
+  if (wrap === VP.ficha.wrap) return 'ficha';
+  return null;
 }
 
 function onPointerDown(e) {
@@ -1009,6 +1161,7 @@ function onPointerDown(e) {
   if (!wrap) return;
   try { wrap.setPointerCapture(e.pointerId); } catch {}
   const onGreen = isOnGreen(e.target);
+  const paneKey = paneKeyFromWrap(wrap);
   const entry = {
     id: e.pointerId,
     x: e.clientX, y: e.clientY,
@@ -1016,14 +1169,19 @@ function onPointerDown(e) {
     startPan: null,
     kind: 'pan-pane',
     wrap,
+    paneKey,
   };
   if (onGreen && pointers.size === 0) {
     entry.kind = 'drag-poly';
-    entry.startDragVec = { dx: dragVec.dx, dy: dragVec.dy };
+    entry.dragTarget = onGreen;   // 'crop' o 'ficha'
+    entry.startDragVec = (onGreen === 'ficha')
+      ? { dx: dragVecFicha.dx, dy: dragVecFicha.dy }
+      : { dx: dragVec.dx,      dy: dragVec.dy };
   } else {
     entry.kind = 'pan-pane';
-    entry.startPanCrop = { x: VP.crop.panX, y: VP.crop.panY };
-    entry.startPanWms  = { x: VP.wms.panX,  y: VP.wms.panY  };
+    entry.startPanCrop  = { x: VP.crop.panX,  y: VP.crop.panY  };
+    entry.startPanWms   = { x: VP.wms.panX,   y: VP.wms.panY   };
+    entry.startPanFicha = { x: VP.ficha.panX, y: VP.ficha.panY };
   }
   pointers.set(e.pointerId, entry);
 
@@ -1059,19 +1217,26 @@ function onPointerMove(e) {
   }
 
   if (entry.kind === 'drag-poly') {
-    // delta in CROP-NATIVE px
-    const s = paneScale(VP.crop) || 1;
-    dragVec.dx = Math.round((e.clientX - entry.startX) / s + entry.startDragVec.dx);
-    dragVec.dy = Math.round((e.clientY - entry.startY) / s + entry.startDragVec.dy);
+    const target = entry.dragTarget === 'ficha' ? VP.ficha : VP.crop;
+    const s = paneScale(target) || 1;
+    const nx = Math.round((e.clientX - entry.startX) / s + entry.startDragVec.dx);
+    const ny = Math.round((e.clientY - entry.startY) / s + entry.startDragVec.dy);
+    if (entry.dragTarget === 'ficha') { dragVecFicha.dx = nx; dragVecFicha.dy = ny; }
+    else                              { dragVec.dx      = nx; dragVec.dy      = ny; }
     scheduleTransform();
     e.preventDefault();
   } else if (entry.kind === 'pan-pane') {
     const dx = e.clientX - entry.startX;
     const dy = e.clientY - entry.startY;
-    VP.crop.panX = entry.startPanCrop.x + dx;
-    VP.crop.panY = entry.startPanCrop.y + dy;
-    VP.wms.panX  = entry.startPanWms.x  + dx;
-    VP.wms.panY  = entry.startPanWms.y  + dy;
+    if (entry.paneKey === 'ficha') {
+      VP.ficha.panX = entry.startPanFicha.x + dx;
+      VP.ficha.panY = entry.startPanFicha.y + dy;
+    } else {
+      VP.crop.panX = entry.startPanCrop.x + dx;
+      VP.crop.panY = entry.startPanCrop.y + dy;
+      VP.wms.panX  = entry.startPanWms.x  + dx;
+      VP.wms.panY  = entry.startPanWms.y  + dy;
+    }
     scheduleTransform();
     e.preventDefault();
   }
@@ -1089,9 +1254,12 @@ function onPointerEnd(e) {
       // demote: choose pan-pane (safer than drag-poly mid-gesture)
       only.kind = 'pan-pane';
     }
-    only.startPanCrop = { x: VP.crop.panX, y: VP.crop.panY };
-    only.startPanWms  = { x: VP.wms.panX,  y: VP.wms.panY  };
-    only.startDragVec = { dx: dragVec.dx, dy: dragVec.dy };
+    only.startPanCrop  = { x: VP.crop.panX,  y: VP.crop.panY  };
+    only.startPanWms   = { x: VP.wms.panX,   y: VP.wms.panY   };
+    only.startPanFicha = { x: VP.ficha.panX, y: VP.ficha.panY };
+    only.startDragVec  = (only.dragTarget === 'ficha')
+      ? { dx: dragVecFicha.dx, dy: dragVecFicha.dy }
+      : { dx: dragVec.dx, dy: dragVec.dy };
   }
 }
 
@@ -1103,7 +1271,7 @@ function doubleTapFit() {
 function attachPointerHandlers() {
   // Attach to both wraps so events are scoped to canvas areas; capture ensures
   // we still get events if the finger drifts out.
-  for (const key of ['crop', 'wms']) {
+  for (const key of ['crop', 'wms', 'ficha']) {
     const wrap = VP[key].wrap;
     if (!wrap) continue;
     wrap.addEventListener('pointerdown', onPointerDown);
@@ -1115,6 +1283,7 @@ function attachPointerHandlers() {
 
 async function loadRC(rc) {
   dragVec.dx = 0; dragVec.dy = 0;
+  dragVecFicha.dx = 0; dragVecFicha.dy = 0;
   const dragEl = document.getElementById('drag_dxdy');
   if (dragEl) { dragEl.textContent = '0, 0'; dragEl.className = ''; }
   document.getElementById('rc').textContent = 'cargando…';
@@ -1187,11 +1356,28 @@ async function loadRC(rc) {
   if (data.ficha_url) {
     if (mainEl) mainEl.classList.add('has-ficha');
     if (fichaEt) fichaEt.textContent = data.ficha_etiqueta || '—';
-    if (fichaImg) fichaImg.src = imgUrl(data.ficha_url);
+    VP.ficha.mPerPxNative = data.ficha_m_per_px || 0.127;
+    VP.ficha.nativeSize   = data.ficha_size_px || 0;
+    VP.ficha.nativeSizeH  = data.ficha_size_px_h || data.ficha_size_px || 0;
+    if (fichaImg) {
+      fichaImg.style.width = ''; fichaImg.style.height = '';
+      fichaImg.onload = () => {
+        // centrar el polígono catastral en el viewport del panel ficha
+        if (current && current.poly_ficha && current.poly_ficha.length) {
+          let cx = 0, cy = 0;
+          for (const [x, y] of current.poly_ficha) { cx += x; cy += y; }
+          cx /= current.poly_ficha.length; cy /= current.poly_ficha.length;
+          centerPaneOnPoint(VP.ficha, cx, cy);
+          scheduleTransform();
+        }
+      };
+      fichaImg.src = imgUrl(data.ficha_url);
+    }
   } else {
     if (mainEl) mainEl.classList.remove('has-ficha');
     if (fichaImg) fichaImg.removeAttribute('src');
     if (fichaEt) fichaEt.textContent = '—';
+    VP.ficha.nativeSize = 0;
   }
   loadStats();
   prefetchNext();
@@ -1265,6 +1451,10 @@ async function submit(action) {
     snap_score: current.snap_score,
     snap_dxdy: current.snap_dxdy,
     cal_dxdy: current.cal_dxdy,
+    ficha_dxdy: action === 'accept' ? [dragVecFicha.dx, dragVecFicha.dy] : [0, 0],
+    ficha_etiqueta: current.ficha_etiqueta || null,
+    ficha_filename: current.ficha_filename || null,
+    ficha_cal_dxdy: [0, 0],   // por ahora siempre 0; cuando ficha_plano aplique offset, leerlo aquí
   };
   let r;
   try {
