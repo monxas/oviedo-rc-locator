@@ -1,0 +1,4258 @@
+[
+  {
+    "rc": "9358010TP6095N0001PM",
+    "etiqueta": "UG-RODRIGUEZ CABEZAS 4",
+    "filename": "RODRIGUEZ_CABEZAS_4_UG_RC4_Ficha_n_0120_PGOU.pdf",
+    "dxdy": [
+      13,
+      285
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778611133.9278564
+  },
+  {
+    "rc": "8963636TP6086S0001AA",
+    "etiqueta": "UG-FERREROS 1",
+    "filename": "FERREROS_1_UG_FE1_Ficha_n_0082_PGOU.pdf",
+    "dxdy": [
+      -117,
+      -84
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778611922.1698182
+  },
+  {
+    "rc": "3266905TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-REGIONAL",
+    "filename": "COLLOTO_REGIONAL_PE_COL_Ficha_n_0446_PGOU.pdf",
+    "dxdy": [
+      59,
+      154
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612206.78138
+  },
+  {
+    "rc": "3669220TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      225,
+      -46
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612224.22959
+  },
+  {
+    "rc": "8137519TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612258.6326756
+  },
+  {
+    "rc": "1277902TP7017N0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      -45,
+      -6
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612282.5466352
+  },
+  {
+    "rc": "6854033TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612308.5707548
+  },
+  {
+    "rc": "8539304TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      149
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612336.1711907
+  },
+  {
+    "rc": "1981110TP7018S0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612360.2609432
+  },
+  {
+    "rc": "3068817TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-LA QUINTANA",
+    "filename": "COLLOTO_LA_QUINTANA_PE_COQ_Ficha_n_0445_PGOU.pdf",
+    "dxdy": [
+      181,
+      35
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612388.3243265
+  },
+  {
+    "rc": "7961409TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 2",
+    "filename": "LOMA_DEL_CANTO_2_UG_LC2_Ficha_n_0114_PGOU.pdf",
+    "dxdy": [
+      81,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612418.5525758
+  },
+  {
+    "rc": "8440404TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      74,
+      139
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612443.5069184
+  },
+  {
+    "rc": "8539303TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      153
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612462.4927342
+  },
+  {
+    "rc": "6959403TP6065N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -161,
+      37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612538.076737
+  },
+  {
+    "rc": "7940215TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      87,
+      149
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612642.733216
+  },
+  {
+    "rc": "8462055TP6086S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 2",
+    "filename": "LOMA_DEL_CANTO_2_UG_LC2_Ficha_n_0114_PGOU.pdf",
+    "dxdy": [
+      72,
+      1
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778612666.678729
+  },
+  {
+    "rc": "7640902TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613030.6525445
+  },
+  {
+    "rc": "8143101TP6084S0001AA",
+    "etiqueta": "UG-UG MONTE CERRAO 4",
+    "filename": "UG_MONTE_CERRAO_4_UG_MC4_Ficha_n_0109_PGOU.pdf",
+    "dxdy": [
+      -74,
+      140
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613044.7993739
+  },
+  {
+    "rc": "8462057TP6086S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 2",
+    "filename": "LOMA_DEL_CANTO_2_UG_LC2_Ficha_n_0114_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613064.4293988
+  },
+  {
+    "rc": "9849024TP6094N0001AA",
+    "etiqueta": "UG-POSTIGO ALTO",
+    "filename": "POSTIGO_ALTO_UG1_8_Ficha_n_0006_PGOU.pdf",
+    "dxdy": [
+      -124,
+      27
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613091.8899639
+  },
+  {
+    "rc": "1679041TP7017N0001AA",
+    "etiqueta": "UG-CUATRO EJES",
+    "filename": "CUATRO_EJES_UG2_20_Ficha_n_0032_PGOU.pdf",
+    "dxdy": [
+      -126,
+      68
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613109.8609273
+  },
+  {
+    "rc": "9854047TP6095S0001AA",
+    "etiqueta": "UG-INDALECIO PRIETO",
+    "filename": "INDALECIO_PRIETO_UG_INP_Ficha_n_0121_PGOU.pdf",
+    "dxdy": [
+      -7,
+      -267
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613125.3737667
+  },
+  {
+    "rc": "7260903TP6076S0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      2,
+      -1
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613136.2039657
+  },
+  {
+    "rc": "6650018TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613147.5023184
+  },
+  {
+    "rc": "7053006TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613161.913187
+  },
+  {
+    "rc": "0450077TP7004N0001AA",
+    "etiqueta": "UG-LA CHAVIA",
+    "filename": "LA_CHAVIA_UG_CHA_Ficha_n_00115_PGOU.pdf",
+    "dxdy": [
+      -31,
+      -64
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613374.395587
+  },
+  {
+    "rc": "8857007TP6085N0001AA",
+    "etiqueta": "UG-ALMACENES INDUSTRIALES",
+    "filename": "ALMACENES_INDUSTRIALES_UG_AIN_Ficha_n_0086_PGO.pdf",
+    "dxdy": [
+      -136,
+      8
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613431.1135285
+  },
+  {
+    "rc": "0548009TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      151,
+      -6
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613488.170812
+  },
+  {
+    "rc": "9161002TP6096S0001AA",
+    "etiqueta": "UG-ALMACENES INDUSTRIALES",
+    "filename": "ALMACENES_INDUSTRIALES_UG_AIN_Ficha_n_0086_PGO.pdf",
+    "dxdy": [
+      -126,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613521.6057441
+  },
+  {
+    "rc": "7053004TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613552.343789
+  },
+  {
+    "rc": "8438305TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      1,
+      -2
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613622.8003497
+  },
+  {
+    "rc": "9936501TP6093N0001AA",
+    "etiqueta": "PE-MONTICU",
+    "filename": "MONTICU_PE_MON_Ficha_n_0422_PGOU.pdf",
+    "dxdy": [
+      16,
+      -83
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613644.3784611
+  },
+  {
+    "rc": "7357109TP6075N0001AA",
+    "etiqueta": "UG-LOS REYES",
+    "filename": "LOS_REYES_UG2_45_Ficha_n_0047_PGOU.pdf",
+    "dxdy": [
+      136,
+      135
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613656.179208
+  },
+  {
+    "rc": "9163018TP6096S0001AA",
+    "etiqueta": "UG-FERREROS 1",
+    "filename": "FERREROS_1_UG_FE1_Ficha_n_0082_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613681.3419092
+  },
+  {
+    "rc": "0953406TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      2,
+      -69
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613706.1505313
+  },
+  {
+    "rc": "0970029TP7006N0001AA",
+    "etiqueta": "UG-LA GRANJA",
+    "filename": "LA_GRANJA_UG2_23B_Ficha_n_0036_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613713.7158527
+  },
+  {
+    "rc": "6649001TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613723.1257339
+  },
+  {
+    "rc": "7837902TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613729.2083488
+  },
+  {
+    "rc": "0249014TP7004N0001AA",
+    "etiqueta": "PE-HUERTA OTERO",
+    "filename": "HUERTA_OTERO_UG1_24_Ficha_n_0010_PGOU.pdf",
+    "dxdy": [
+      -187,
+      -31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613744.1847107
+  },
+  {
+    "rc": "3869308TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      101,
+      128
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613789.0329485
+  },
+  {
+    "rc": "8036902TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613794.4559305
+  },
+  {
+    "rc": "8340303TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613804.4483879
+  },
+  {
+    "rc": "8242905TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613808.9308646
+  },
+  {
+    "rc": "7440502TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613821.3099544
+  },
+  {
+    "rc": "7358102TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613829.2801597
+  },
+  {
+    "rc": "1579002TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      -180,
+      17
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613840.1502626
+  },
+  {
+    "rc": "3068815TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-LA QUINTANA",
+    "filename": "COLLOTO_LA_QUINTANA_PE_COQ_Ficha_n_0445_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613846.546345
+  },
+  {
+    "rc": "7837906TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778613852.8357813
+  },
+  {
+    "rc": "0953806TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      -2,
+      -74
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614129.9616458
+  },
+  {
+    "rc": "3266902TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-REGIONAL",
+    "filename": "COLLOTO_REGIONAL_PE_COL_Ficha_n_0446_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614141.327344
+  },
+  {
+    "rc": "8237501TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      144
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614158.8599155
+  },
+  {
+    "rc": "2076503TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      -81,
+      121
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614177.8507857
+  },
+  {
+    "rc": "9655315TP6095S0001AA",
+    "etiqueta": "PE-PICASSO - FONCALADA",
+    "filename": "PICASSO_FONCALADA_PE_PIF_Ficha_n_0421_PGOU.pdf",
+    "dxdy": [
+      -64,
+      75
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614214.9167445
+  },
+  {
+    "rc": "9741005TP6094S0001AA",
+    "etiqueta": "UG-ARMANDO COLLAR 1",
+    "filename": "ARMANDO_COLLAR_1_UG_AC1_Ficha_n_0103_PGOU.pdf",
+    "dxdy": [
+      9,
+      205
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614268.9472003
+  },
+  {
+    "rc": "7944024TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      148
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614310.1474345
+  },
+  {
+    "rc": "7348019TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614325.142782
+  },
+  {
+    "rc": "1873804TP7017S0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      -81,
+      122
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614355.2692943
+  },
+  {
+    "rc": "8039714TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      74,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614382.5513277
+  },
+  {
+    "rc": "7249012TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614391.4605834
+  },
+  {
+    "rc": "6552011TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614396.151173
+  },
+  {
+    "rc": "2176501TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      -79,
+      122
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614419.664291
+  },
+  {
+    "rc": "2275810TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      -82,
+      120
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614446.102368
+  },
+  {
+    "rc": "0157506TP7005N0001AA",
+    "etiqueta": "UG-MURILLO",
+    "filename": "MURILLO_UG1_40_Ficha_n_0016_PGOU.pdf",
+    "dxdy": [
+      -132,
+      8
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614468.0136955
+  },
+  {
+    "rc": "1679026TP7017N0001AA",
+    "etiqueta": "UG-SAN JUAN",
+    "filename": "SAN_JUAN_UG2_18_Ficha_n_0030_PGOU.pdf",
+    "dxdy": [
+      36,
+      135
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778614595.1553795
+  },
+  {
+    "rc": "7861911TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -76,
+      83
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778616515.0882409
+  },
+  {
+    "rc": "7157807TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      44,
+      7
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778616727.1863253
+  },
+  {
+    "rc": "6957701TP6065N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -156,
+      35
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778617954.0632455
+  },
+  {
+    "rc": "7348033TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618105.3332188
+  },
+  {
+    "rc": "7741307TP6074S0001AA",
+    "etiqueta": "UG-UG MONTE CERRAO 3",
+    "filename": "UG_MONTE_CERRAO_3_UG_MC3_Ficha_n_0108_PGOU.pdf",
+    "dxdy": [
+      104,
+      -261
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618201.4961076
+  },
+  {
+    "rc": "3869325TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618271.8108592
+  },
+  {
+    "rc": "7642701TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618353.8542728
+  },
+  {
+    "rc": "9167208TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -11,
+      -37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618394.1353798
+  },
+  {
+    "rc": "0970042TP7007S0001AA",
+    "etiqueta": "UG-LA ESTRECHA",
+    "filename": "LA_ESTRECHA_UG2_57_Ficha_n_0052_PGOU.pdf",
+    "dxdy": [
+      57,
+      39
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618490.074687
+  },
+  {
+    "rc": "7838402TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618910.4983504
+  },
+  {
+    "rc": "7450032TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778618949.2738953
+  },
+  {
+    "rc": "1056007TP7005N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -16,
+      -432
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619141.180354
+  },
+  {
+    "rc": "3068806TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-LA QUINTANA",
+    "filename": "COLLOTO_LA_QUINTANA_PE_COQ_Ficha_n_0445_PGOU.pdf",
+    "dxdy": [
+      2,
+      7
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619183.8588388
+  },
+  {
+    "rc": "7859026TP6075N0001AA",
+    "etiqueta": "PE-CAMINO DEL CASTILLON",
+    "filename": "CAMINO_DEL_CASTILLON_UG1_49_Ficha_n_0020_PGOU.pdf",
+    "dxdy": [
+      -178,
+      -67
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619240.0338614
+  },
+  {
+    "rc": "9849031TP6094N0001AA",
+    "etiqueta": "UG-POSTIGO ALTO",
+    "filename": "POSTIGO_ALTO_UG1_8_Ficha_n_0006_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619284.1418927
+  },
+  {
+    "rc": "0364407TP7006S0001AA",
+    "etiqueta": "UG-AVENIDA DEL MAR - 2",
+    "filename": "AVENIDA_DEL_MAR_2_UG_AM2_Ficha_n_0076_PGOU.pdf",
+    "dxdy": [
+      50,
+      -55
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619370.9441714
+  },
+  {
+    "rc": "7749011TP6074N0001AA",
+    "etiqueta": "UG-RECTOR LEOPOLDO ALAS",
+    "filename": "RECTOR_LEOPOLDO_ALAS_UG_RLA_Ficha_n_0098_PGOU.pdf",
+    "dxdy": [
+      76,
+      233
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619424.0618196
+  },
+  {
+    "rc": "0664046TP7006S0001AA",
+    "etiqueta": "UG-PRADOS DEL FALBICU",
+    "filename": "PRADOS_DEL_FALBICU_UG2_3_Ficha_n_0023_PGOU.pdf",
+    "dxdy": [
+      -113,
+      -65
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619461.700356
+  },
+  {
+    "rc": "9849044TP6094N0001AA",
+    "etiqueta": "UG-POSTIGO ALTO",
+    "filename": "POSTIGO_ALTO_UG1_8_Ficha_n_0006_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619497.9438326
+  },
+  {
+    "rc": "3669217TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619547.9664805
+  },
+  {
+    "rc": "7260904TP6076S0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      3,
+      6
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619638.1892328
+  },
+  {
+    "rc": "1981111TP7018S0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      3,
+      -4
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619682.8809042
+  },
+  {
+    "rc": "0649018TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      -6,
+      -2
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619713.3380373
+  },
+  {
+    "rc": "7540407TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      82,
+      143
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619781.5598466
+  },
+  {
+    "rc": "9060102TP6096S0001AA",
+    "etiqueta": "UG-ALMACENES INDUSTRIALES",
+    "filename": "ALMACENES_INDUSTRIALES_UG_AIN_Ficha_n_0086_PGO.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619824.6066604
+  },
+  {
+    "rc": "1575601TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619888.9542737
+  },
+  {
+    "rc": "2572319TP7027S0001AA",
+    "etiqueta": "PE-ESPIRITU SANTO",
+    "filename": "ESPIRITU_SANTO_PE_ESA_Ficha_n_0407_PGOU.pdf",
+    "dxdy": [
+      -118,
+      79
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778619945.3282545
+  },
+  {
+    "rc": "9950058TP6095S0001AA",
+    "etiqueta": "UG-POSTIGO BAJO 1",
+    "filename": "POSTIGO_BAJO_1_UG_PB1_Ficha_n_0067_PGOU.pdf",
+    "dxdy": [
+      -43,
+      108
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620031.6838899
+  },
+  {
+    "rc": "9760801TP6096S0001AA",
+    "etiqueta": "UG-AVENIDA DE PANDO",
+    "filename": "AVENIDA_DE_PANDO_UG1_43_Ficha_n_0018_PGOU.pdf",
+    "dxdy": [
+      -6,
+      132
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620070.0485911
+  },
+  {
+    "rc": "9167222TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -24,
+      -31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620137.942873
+  },
+  {
+    "rc": "8242901TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620185.0937512
+  },
+  {
+    "rc": "6854041TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620221.438688
+  },
+  {
+    "rc": "7053011TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620277.5473225
+  },
+  {
+    "rc": "8462050TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 2",
+    "filename": "LOMA_DEL_CANTO_2_UG_LC2_Ficha_n_0114_PGOU.pdf",
+    "dxdy": [
+      -1,
+      1
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620381.3576272
+  },
+  {
+    "rc": "8339619TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      84,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620477.804612
+  },
+  {
+    "rc": "9163017TP6096S0001AA",
+    "etiqueta": "UG-FERREROS 1",
+    "filename": "FERREROS_1_UG_FE1_Ficha_n_0082_PGOU.pdf",
+    "dxdy": [
+      -60,
+      -76
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620545.8906856
+  },
+  {
+    "rc": "0970031TP7006N0001AA",
+    "etiqueta": "UG-LA GRANJA",
+    "filename": "LA_GRANJA_UG2_23B_Ficha_n_0036_PGOU.pdf",
+    "dxdy": [
+      -50,
+      -79
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620617.2412436
+  },
+  {
+    "rc": "7838412TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620691.160274
+  },
+  {
+    "rc": "0883008TN7908S0001AA",
+    "etiqueta": "PE-OLLONIEGO-PUENTE VIEJO",
+    "filename": "OLLONIEGO_PUENTE_VIEJO_PE_ONP_Ficha_n_0480_PGOU.pdf",
+    "dxdy": [
+      57,
+      235
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620748.8667846
+  },
+  {
+    "rc": "6957507TP6065N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -156,
+      37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620868.9849033
+  },
+  {
+    "rc": "2474505TP7027S0001AA",
+    "etiqueta": "PE-ESPIRITU SANTO",
+    "filename": "ESPIRITU_SANTO_PE_ESA_Ficha_n_0407_PGOU.pdf",
+    "dxdy": [
+      -119,
+      83
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778620929.5379155
+  },
+  {
+    "rc": "1878503TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      -2,
+      -2
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778621152.8028839
+  },
+  {
+    "rc": "7641036TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      143
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778621442.7319858
+  },
+  {
+    "rc": "7862904TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -67,
+      72
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668563.1802127
+  },
+  {
+    "rc": "9740202TP6094S0001AA",
+    "etiqueta": "UG-SALVADOR DE MADARIAGA - 1",
+    "filename": "SALVADOR_DE_MADARIAGA_1_UG2_32_Ficha_n_0042_PGOU.pdf",
+    "dxdy": [
+      -59,
+      -9
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668605.0410535
+  },
+  {
+    "rc": "0163031TP6096S0001AA",
+    "etiqueta": "UG-AVENIDA DE PANDO",
+    "filename": "AVENIDA_DE_PANDO_UG1_43_Ficha_n_0018_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668614.0078518
+  },
+  {
+    "rc": "6750001TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668644.8900452
+  },
+  {
+    "rc": "0047905TP7004N0001AA",
+    "etiqueta": "UG-SANTO DOMINGO",
+    "filename": "SANTO_DOMINGO_UG_SDO_Ficha_n_0066_PGOU.pdf",
+    "dxdy": [
+      304,
+      -51
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668684.9533997
+  },
+  {
+    "rc": "8462048TP6086S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 2",
+    "filename": "LOMA_DEL_CANTO_2_UG_LC2_Ficha_n_0114_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668693.202664
+  },
+  {
+    "rc": "7348007TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668776.1390476
+  },
+  {
+    "rc": "9950008TP7005S0001AA",
+    "etiqueta": "PE-JUAN ESCALANTE DE MENDOZA",
+    "filename": "JUAN_ESCALANTE_DE_MENDOZA_UG1_5_Ficha_n_0005_PGOU.pdf",
+    "dxdy": [
+      325,
+      31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668827.1016204
+  },
+  {
+    "rc": "6750013TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668833.3787584
+  },
+  {
+    "rc": "1581101TP7018S0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      -6,
+      -7
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668852.937729
+  },
+  {
+    "rc": "1477707TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      9,
+      -6
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778668990.9495687
+  },
+  {
+    "rc": "1477716TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      3,
+      -6
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669017.2872343
+  },
+  {
+    "rc": "7957008TP6075N0001AA",
+    "etiqueta": "UG-VALLOBIN",
+    "filename": "VALLOBIN_UG_VAB_Ficha_n_0091_PGOU.pdf",
+    "dxdy": [
+      22,
+      43
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669063.4040182
+  },
+  {
+    "rc": "2176505TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669076.5540116
+  },
+  {
+    "rc": "6651018TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669084.5601037
+  },
+  {
+    "rc": "0770018TP7007S0001AA",
+    "etiqueta": "UG-VAQUEROS UNIFAMILIAR COLECTIVA",
+    "filename": "VAQUEROS_UNIFAMILIAR_COLECTIVA_UG_VQU_Ficha_n_0095_PGOU.pdf",
+    "dxdy": [
+      -174,
+      -36
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669108.0770137
+  },
+  {
+    "rc": "9556625TP6095N0001AA",
+    "etiqueta": "PE-HELECHOS",
+    "filename": "HELECHOS_UG_HEL_Ficha_n_0111_PGOU.pdf",
+    "dxdy": [
+      -173,
+      -106
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669130.0458767
+  },
+  {
+    "rc": "5451031TP6055S0001AA",
+    "etiqueta": "UG-CHORIN",
+    "filename": "CHORIN_UG_CHO_Ficha_n_0119_PGOU.pdf",
+    "dxdy": [
+      -16,
+      59
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669145.9475298
+  },
+  {
+    "rc": "6651006TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669154.2047563
+  },
+  {
+    "rc": "8339612TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      86,
+      139
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669176.714423
+  },
+  {
+    "rc": "0770044TP7007S0001AA",
+    "etiqueta": "UG-VAQUEROS UNIFAMILIAR COLECTIVA",
+    "filename": "VAQUEROS_UNIFAMILIAR_COLECTIVA_UG_VQU_Ficha_n_0095_PGOU.pdf",
+    "dxdy": [
+      -169,
+      -37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669204.5857406
+  },
+  {
+    "rc": "7944025TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669223.8063688
+  },
+  {
+    "rc": "0247048TP7004N0001AA",
+    "etiqueta": "PP-3",
+    "filename": "OTERO_NORTE_PP_3_Ficha_n_0503_PGOU.pdf",
+    "dxdy": [
+      -178,
+      112
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669243.773231
+  },
+  {
+    "rc": "8237517TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      144
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669255.409887
+  },
+  {
+    "rc": "7961407TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -72,
+      59
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669289.4299054
+  },
+  {
+    "rc": "0770043TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 2",
+    "filename": "SAN_RAFAEL_2_UG2_24B_Ficha_n_0038_PGOU.pdf",
+    "dxdy": [
+      119,
+      16
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669307.529496
+  },
+  {
+    "rc": "7749008TP6074N0001AA",
+    "etiqueta": "UG-RECTOR LEOPOLDO ALAS",
+    "filename": "RECTOR_LEOPOLDO_ALAS_UG_RLA_Ficha_n_0098_PGOU.pdf",
+    "dxdy": [
+      77,
+      240
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669323.5199862
+  },
+  {
+    "rc": "7053019TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669330.9720747
+  },
+  {
+    "rc": "1375032TP7017N0001AA",
+    "etiqueta": "UG-EL CORTIJO - 2",
+    "filename": "EL_CORTIJO_2_UG1_29B_Ficha_n_0013_PGOU.pdf",
+    "dxdy": [
+      -128,
+      139
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669349.3230217
+  },
+  {
+    "rc": "6847022TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669355.3484628
+  },
+  {
+    "rc": "0244042TP7004S0001AA",
+    "etiqueta": "PP-7",
+    "filename": "OTERO_SUR_PP_7_Ficha_n_0504_PGOU.pdf",
+    "dxdy": [
+      -77,
+      -236
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669370.1265054
+  },
+  {
+    "rc": "1281201TP7018S0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669387.0187163
+  },
+  {
+    "rc": "6848022TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669392.8363905
+  },
+  {
+    "rc": "9167209TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -12,
+      -37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669408.4449124
+  },
+  {
+    "rc": "7348028TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669416.8467822
+  },
+  {
+    "rc": "0855310TP7005S0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -23,
+      -434
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669460.7039864
+  },
+  {
+    "rc": "8360029TP6085N0001AA",
+    "etiqueta": "UG-PADRE ALLER",
+    "filename": "PADRE_ALLER_UG_PDA_Ficha_n_0081_PGOU.pdf",
+    "dxdy": [
+      -55,
+      30
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669490.1393278
+  },
+  {
+    "rc": "7348004TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669495.5850801
+  },
+  {
+    "rc": "7837907TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      83,
+      141
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669529.555145
+  },
+  {
+    "rc": "3068808TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-LA QUINTANA",
+    "filename": "COLLOTO_LA_QUINTANA_PE_COQ_Ficha_n_0445_PGOU.pdf",
+    "dxdy": [
+      25,
+      58
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669548.0849168
+  },
+  {
+    "rc": "7458605TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -158,
+      36
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669573.3720686
+  },
+  {
+    "rc": "7838409TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      82,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669604.0493307
+  },
+  {
+    "rc": "2275808TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669610.995212
+  },
+  {
+    "rc": "0244043TP7004S0001AA",
+    "etiqueta": "PP-7",
+    "filename": "OTERO_SUR_PP_7_Ficha_n_0504_PGOU.pdf",
+    "dxdy": [
+      -65,
+      -252
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669645.886914
+  },
+  {
+    "rc": "8565301TP6086N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -22,
+      -29
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669657.4198687
+  },
+  {
+    "rc": "0649017TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      -21,
+      17
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669668.9563758
+  },
+  {
+    "rc": "6852006TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669674.066775
+  },
+  {
+    "rc": "7053023TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669678.4457638
+  },
+  {
+    "rc": "7053005TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669681.6993823
+  },
+  {
+    "rc": "7249016TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669686.2500758
+  },
+  {
+    "rc": "0770051TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 2",
+    "filename": "SAN_RAFAEL_2_UG2_24B_Ficha_n_0038_PGOU.pdf",
+    "dxdy": [
+      130,
+      23
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669704.4586515
+  },
+  {
+    "rc": "7655906TP6075N0001AA",
+    "etiqueta": "PE-BERNARDO CASIELLES",
+    "filename": "BERNARDO_CASIELLES_UG1_26_Ficha_n_0011_PGOU.pdf",
+    "dxdy": [
+      0,
+      -339
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669725.4797475
+  },
+  {
+    "rc": "6854003TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669730.4165812
+  },
+  {
+    "rc": "0548012TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      -14,
+      13
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669761.478496
+  },
+  {
+    "rc": "1579044TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      16,
+      4
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669796.3015213
+  },
+  {
+    "rc": "7249011TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669843.8078141
+  },
+  {
+    "rc": "1357020TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -20,
+      -433
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778669960.6659884
+  },
+  {
+    "rc": "3669215TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670043.8121347
+  },
+  {
+    "rc": "7348014TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670049.1245852
+  },
+  {
+    "rc": "7936606TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      78,
+      137
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670084.5166435
+  },
+  {
+    "rc": "3669222TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670236.5795941
+  },
+  {
+    "rc": "0970018TP7006N0001AA",
+    "etiqueta": "UG-PONTON DE VAQUEROS",
+    "filename": "PONTON_DE_VAQUEROS_UG2_23A_Ficha_n_0035_PGOU.pdf",
+    "dxdy": [
+      39,
+      134
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670313.5762212
+  },
+  {
+    "rc": "8137520TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      140
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670332.936285
+  },
+  {
+    "rc": "8539312TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670351.9881544
+  },
+  {
+    "rc": "1875506TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670359.6655114
+  },
+  {
+    "rc": "0649027TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670374.868964
+  },
+  {
+    "rc": "0249009TP7004N0001AA",
+    "etiqueta": "PE-HUERTA OTERO",
+    "filename": "HUERTA_OTERO_UG1_24_Ficha_n_0010_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670385.032206
+  },
+  {
+    "rc": "0450079TP7004N0001AA",
+    "etiqueta": "UG-LA CHAVIA",
+    "filename": "LA_CHAVIA_UG_CHA_Ficha_n_00115_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670392.0090752
+  },
+  {
+    "rc": "1679016TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      0,
+      -16
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670408.017321
+  },
+  {
+    "rc": "0970020TP7006N0001AA",
+    "etiqueta": "UG-PONTON DE VAQUEROS",
+    "filename": "PONTON_DE_VAQUEROS_UG2_23A_Ficha_n_0035_PGOU.pdf",
+    "dxdy": [
+      47,
+      134
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670417.6427078
+  },
+  {
+    "rc": "7741305TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670440.463165
+  },
+  {
+    "rc": "0754519TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670455.1464138
+  },
+  {
+    "rc": "1178803TP7017N0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670460.7062192
+  },
+  {
+    "rc": "8440403TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      82,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670484.1450193
+  },
+  {
+    "rc": "0163042TP6096S0001AA",
+    "etiqueta": "PE-TEATINOS",
+    "filename": "TEATINOS_UG1_22C_Ficha_n_0009_PGOU.pdf",
+    "dxdy": [
+      165,
+      303
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670497.1853251
+  },
+  {
+    "rc": "0163036TP7006N0001AA",
+    "etiqueta": "PE-PUERTO RICO",
+    "filename": "PUERTO_RICO_UG2_21_Ficha_n_0033_PGOU.pdf",
+    "dxdy": [
+      12,
+      -91
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670826.5558517
+  },
+  {
+    "rc": "7450041TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670836.27145
+  },
+  {
+    "rc": "1679018TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670847.596819
+  },
+  {
+    "rc": "6939525TP6063N0001AA",
+    "etiqueta": "PE-EL CAMPON",
+    "filename": "EL_CAMPON_PE_ECA_Ficha_n_0408_PGOU.pdf",
+    "dxdy": [
+      120,
+      -115
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670880.43813
+  },
+  {
+    "rc": "6852015TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670889.3452747
+  },
+  {
+    "rc": "1579012TP7017N0001AA",
+    "etiqueta": "UG-REGIONAL AS - 8-1",
+    "filename": "REGIONAL_AS_8_1_UG2_17A_Ficha_n_0028_PGOU.pdf",
+    "dxdy": [
+      4,
+      -91
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670921.9370081
+  },
+  {
+    "rc": "0249010TP7004N0001AA",
+    "etiqueta": "PE-HUERTA OTERO",
+    "filename": "HUERTA_OTERO_UG1_24_Ficha_n_0010_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670929.9985762
+  },
+  {
+    "rc": "9167234TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -18,
+      -31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670942.103928
+  },
+  {
+    "rc": "0954203TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670950.7835863
+  },
+  {
+    "rc": "3669224TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670959.3030453
+  },
+  {
+    "rc": "9336201TP6093N0001AA",
+    "etiqueta": "UG-CAMPIELLO",
+    "filename": "CAMPIELLO_UG_CAM_Ficha_n_0112_PGOU.pdf",
+    "dxdy": [
+      87,
+      134
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778670976.3312082
+  },
+  {
+    "rc": "1257003TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -23,
+      -434
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671015.2266867
+  },
+  {
+    "rc": "0956203TP7005N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -23,
+      -434
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671066.3999064
+  },
+  {
+    "rc": "9849015TP6094N0001AA",
+    "etiqueta": "UG-POSTIGO ALTO",
+    "filename": "POSTIGO_ALTO_UG1_8_Ficha_n_0006_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671076.661748
+  },
+  {
+    "rc": "1477713TP7017N0001AA",
+    "etiqueta": "UG-LA IGLESIA",
+    "filename": "LA_IGLESIA_UG2_19_Ficha_n_0031_PGOU.pdf",
+    "dxdy": [
+      7,
+      -8
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671098.7027884
+  },
+  {
+    "rc": "7051017TP6075S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671111.331264
+  },
+  {
+    "rc": "1679037TP7017N0001AA",
+    "etiqueta": "PE-REGIONAL AS - 8-2",
+    "filename": "REGIONAL_AS_8_2_UG2_17B_Ficha_n_0029_PGOU.pdf",
+    "dxdy": [
+      21,
+      181
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671125.6791544
+  },
+  {
+    "rc": "8541201TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      144
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671140.3509188
+  },
+  {
+    "rc": "1479603TP7017N0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      -3,
+      -4
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671150.7486336
+  },
+  {
+    "rc": "0247052TP7004N0001AA",
+    "etiqueta": "PP-3",
+    "filename": "OTERO_NORTE_PP_3_Ficha_n_0503_PGOU.pdf",
+    "dxdy": [
+      -177,
+      112
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671163.7933888
+  },
+  {
+    "rc": "3869322TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671171.6553557
+  },
+  {
+    "rc": "7540410TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671190.5990453
+  },
+  {
+    "rc": "6939521TP6063N0001AA",
+    "etiqueta": "PE-EL CAMPON",
+    "filename": "EL_CAMPON_PE_ECA_Ficha_n_0408_PGOU.pdf",
+    "dxdy": [
+      125,
+      -111
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671210.9648087
+  },
+  {
+    "rc": "7561101TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -63,
+      66
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671263.825219
+  },
+  {
+    "rc": "7861907TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -68,
+      72
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671282.9283273
+  },
+  {
+    "rc": "1676401TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671289.125903
+  },
+  {
+    "rc": "1178806TP7017N0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671293.4711869
+  },
+  {
+    "rc": "7862902TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -68,
+      66
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671315.1697187
+  },
+  {
+    "rc": "7053017TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671324.0491858
+  },
+  {
+    "rc": "0754503TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671330.845334
+  },
+  {
+    "rc": "6847018TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671338.6827576
+  },
+  {
+    "rc": "3669237TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671347.8882363
+  },
+  {
+    "rc": "7459904TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -153,
+      36
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671378.8427196
+  },
+  {
+    "rc": "1056027TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -30,
+      -430
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671459.0410762
+  },
+  {
+    "rc": "7348042TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671463.4046738
+  },
+  {
+    "rc": "7957014TP6075N0001AA",
+    "etiqueta": "UG-VALLOBIN",
+    "filename": "VALLOBIN_UG_VAB_Ficha_n_0091_PGOU.pdf",
+    "dxdy": [
+      29,
+      42
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671479.1031358
+  },
+  {
+    "rc": "1875503TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671485.8941858
+  },
+  {
+    "rc": "3869301TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671493.3492444
+  },
+  {
+    "rc": "0754516TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671499.2688766
+  },
+  {
+    "rc": "7737513TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671552.50229
+  },
+  {
+    "rc": "0855306TP7005N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -21,
+      -433
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671590.7919765
+  },
+  {
+    "rc": "9950007TP7005S0001AA",
+    "etiqueta": "PE-JUAN ESCALANTE DE MENDOZA",
+    "filename": "JUAN_ESCALANTE_DE_MENDOZA_UG1_5_Ficha_n_0005_PGOU.pdf",
+    "dxdy": [
+      324,
+      18
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671636.4670908
+  },
+  {
+    "rc": "7561107TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -71,
+      63
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671649.9077914
+  },
+  {
+    "rc": "0755004TP7005S0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -19,
+      -432
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671785.626985
+  },
+  {
+    "rc": "7348027TP6074N0001AA",
+    "etiqueta": "PE-BARRIO LA CRUZ 2",
+    "filename": "BARRIO_LA_CRUZ_2_UG2_64_Ficha_n_0056_PGOU.pdf",
+    "dxdy": [
+      -94,
+      31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671805.6856034
+  },
+  {
+    "rc": "0859017TP7005N0001AA",
+    "etiqueta": "UG-RIO CARES",
+    "filename": "RIO_CARES_UG2_8_Ficha_n_0025_PGOU.pdf",
+    "dxdy": [
+      177,
+      -156
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671816.5018322
+  },
+  {
+    "rc": "7936612TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      82,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671829.6271195
+  },
+  {
+    "rc": "0363015TP7006S0001AA",
+    "etiqueta": "UG-AVENIDA DEL MAR - 2",
+    "filename": "AVENIDA_DEL_MAR_2_UG_AM2_Ficha_n_0076_PGOU.pdf",
+    "dxdy": [
+      39,
+      -67
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671844.1130939
+  },
+  {
+    "rc": "6848002TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671848.122187
+  },
+  {
+    "rc": "0548008TP7004N0001AA",
+    "etiqueta": "PP-9",
+    "filename": "FOZANELDI_PP_9_Ficha_n_0506_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671854.1373343
+  },
+  {
+    "rc": "8539309TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      79,
+      148
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671872.6870375
+  },
+  {
+    "rc": "2278303TP7027N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671880.137149
+  },
+  {
+    "rc": "1579013TP7017N0001AA",
+    "etiqueta": "UG-REGIONAL AS - 8-1",
+    "filename": "REGIONAL_AS_8_1_UG2_17A_Ficha_n_0028_PGOU.pdf",
+    "dxdy": [
+      -1,
+      -82
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671902.6485054
+  },
+  {
+    "rc": "8440415TP6084S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      91,
+      144
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671917.5468042
+  },
+  {
+    "rc": "3068812TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-LA QUINTANA",
+    "filename": "COLLOTO_LA_QUINTANA_PE_COQ_Ficha_n_0445_PGOU.pdf",
+    "dxdy": [
+      106,
+      8
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671929.3216698
+  },
+  {
+    "rc": "6939523TP6063N0001AA",
+    "etiqueta": "PE-EL CAMPON",
+    "filename": "EL_CAMPON_PE_ECA_Ficha_n_0408_PGOU.pdf",
+    "dxdy": [
+      116,
+      -119
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671951.5527864
+  },
+  {
+    "rc": "6854038TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671955.7993293
+  },
+  {
+    "rc": "1780108TP7018S0001AA",
+    "etiqueta": "UG-CORREDORIA NORTE",
+    "filename": "CORREDORIA_NORTE_UG_CON_Ficha_n_0117_PGOU.pdf",
+    "dxdy": [
+      142,
+      -94
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671973.340965
+  },
+  {
+    "rc": "6854009TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671977.2332644
+  },
+  {
+    "rc": "3549001TP6034N0001AA",
+    "etiqueta": "PE-CIMADEVILLA",
+    "filename": "CIMADEVILLA_UG_CIM_Ficha_n_0252_PGOU.pdf",
+    "dxdy": [
+      79,
+      142
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671987.3523812
+  },
+  {
+    "rc": "7450050TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778671991.2076235
+  },
+  {
+    "rc": "7940221TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      84,
+      150
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672009.324485
+  },
+  {
+    "rc": "8238508TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      85,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672023.3716025
+  },
+  {
+    "rc": "1357010TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -21,
+      -433
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672051.201673
+  },
+  {
+    "rc": "3869305TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672056.6658192
+  },
+  {
+    "rc": "3869303TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672060.1126225
+  },
+  {
+    "rc": "7051034TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672063.5907638
+  },
+  {
+    "rc": "0755044TP7005N0001AA",
+    "etiqueta": "UG-TORRELAVEGA-RAYO",
+    "filename": "TORRELAVEGA_RAYO_UG_TOR_Ficha_n_0087_PGOU.pdf",
+    "dxdy": [
+      -28,
+      -94
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672073.0829523
+  },
+  {
+    "rc": "1178807TP7017N0001AA",
+    "etiqueta": "PP-8",
+    "filename": "LA_CORREDORIA_OESTE_PP_8_Ficha_n_0505_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672077.8861995
+  },
+  {
+    "rc": "9167219TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -20,
+      -27
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672093.7401798
+  },
+  {
+    "rc": "3869307TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 4",
+    "filename": "COLLOTO_4_PE_CO4_Ficha_n_0443_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672097.2203915
+  },
+  {
+    "rc": "2572315TP7027S0001AA",
+    "etiqueta": "PE-ESPIRITU SANTO",
+    "filename": "ESPIRITU_SANTO_PE_ESA_Ficha_n_0407_PGOU.pdf",
+    "dxdy": [
+      -116,
+      83
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672119.0572042
+  },
+  {
+    "rc": "0653004TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672130.0617394
+  },
+  {
+    "rc": "3650007TP6034N0001AA",
+    "etiqueta": "UG-SAN CLAUDIO - 1",
+    "filename": "SAN_CLAUDIO_1_UG2_26_Ficha_n_0250_PGOU.pdf",
+    "dxdy": [
+      28,
+      -236
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672142.8727283
+  },
+  {
+    "rc": "1577502TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672153.994238
+  },
+  {
+    "rc": "8539311TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672179.099181
+  },
+  {
+    "rc": "8963638TP6096S0001AA",
+    "etiqueta": "UG-FERREROS 1",
+    "filename": "FERREROS_1_UG_FE1_Ficha_n_0082_PGOU.pdf",
+    "dxdy": [
+      -51,
+      -75
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672195.1034274
+  },
+  {
+    "rc": "0855315TP7005N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -15,
+      -435
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672230.5200543
+  },
+  {
+    "rc": "9356050TP6095N0001AA",
+    "etiqueta": "UG-LA LILA",
+    "filename": "LA_LILA_UG_LIL_Ficha_n_0092_PGOU.pdf",
+    "dxdy": [
+      -24,
+      -39
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672239.7931454
+  },
+  {
+    "rc": "3669225TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672246.4063368
+  },
+  {
+    "rc": "7158807TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -155,
+      37
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672271.373156
+  },
+  {
+    "rc": "9740602TP6094S0001AA",
+    "etiqueta": "UG-SALVADOR DE MADARIAGA - 1",
+    "filename": "SALVADOR_DE_MADARIAGA_1_UG2_32_Ficha_n_0042_PGOU.pdf",
+    "dxdy": [
+      -51,
+      -8
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672281.5160348
+  },
+  {
+    "rc": "0953413TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672289.5272799
+  },
+  {
+    "rc": "0855301TP7005N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -22,
+      -433
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672314.0861065
+  },
+  {
+    "rc": "0450080TP7004N0001AA",
+    "etiqueta": "UG-LA CHAVIA",
+    "filename": "LA_CHAVIA_UG_CHA_Ficha_n_00115_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672320.8762434
+  },
+  {
+    "rc": "6848006TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672325.740102
+  },
+  {
+    "rc": "6957503TP6065N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      189,
+      -13
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672339.3965209
+  },
+  {
+    "rc": "6958506TP6065N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -156,
+      35
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672352.942939
+  },
+  {
+    "rc": "8339618TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      85,
+      146
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672373.7728932
+  },
+  {
+    "rc": "0770055TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 2",
+    "filename": "SAN_RAFAEL_2_UG2_24B_Ficha_n_0038_PGOU.pdf",
+    "dxdy": [
+      139,
+      28
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672389.8448243
+  },
+  {
+    "rc": "1056029TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -20,
+      -434
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672428.997636
+  },
+  {
+    "rc": "7450067TP6074N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672434.0192566
+  },
+  {
+    "rc": "3866301TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO-CERRO",
+    "filename": "COLLOTO_CERRO_PE_COC_Ficha_n_0444_PGOU.pdf",
+    "dxdy": [
+      -12,
+      35
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672454.223922
+  },
+  {
+    "rc": "0664701TP7006S0001AA",
+    "etiqueta": "PE-EL RUBIN",
+    "filename": "EL_RUBIN_PE_5_Ficha_n_0402_PGOU.pdf",
+    "dxdy": [
+      -6,
+      -15
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672464.034053
+  },
+  {
+    "rc": "0954004TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672470.5160458
+  },
+  {
+    "rc": "1357021TP7015N0001AA",
+    "etiqueta": "PE-LA TENDERINA",
+    "filename": "LA_TENDERINA_PE_TEN_Ficha_n_0412_PGOU.pdf",
+    "dxdy": [
+      -23,
+      -434
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672518.2731383
+  },
+  {
+    "rc": "1676406TP7017N0001AA",
+    "etiqueta": "PE-CORREDORIA ESTE",
+    "filename": "CORREDORIA_ESTE_PE_COE_Ficha_n_0409_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672529.7930293
+  },
+  {
+    "rc": "0962101TP7006S0001AA",
+    "etiqueta": "PE-EL RUBIN",
+    "filename": "EL_RUBIN_PE_5_Ficha_n_0402_PGOU.pdf",
+    "dxdy": [
+      -5,
+      -15
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672540.5077808
+  },
+  {
+    "rc": "7863105TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -71,
+      63
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672551.5385215
+  },
+  {
+    "rc": "1679036TP7017N0001AA",
+    "etiqueta": "PE-REGIONAL AS - 8-2",
+    "filename": "REGIONAL_AS_8_2_UG2_17B_Ficha_n_0029_PGOU.pdf",
+    "dxdy": [
+      43,
+      189
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672570.6711712
+  },
+  {
+    "rc": "0770032TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 2",
+    "filename": "SAN_RAFAEL_2_UG2_24B_Ficha_n_0038_PGOU.pdf",
+    "dxdy": [
+      126,
+      28
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672580.991739
+  },
+  {
+    "rc": "9849025TP6094N0001AA",
+    "etiqueta": "UG-POSTIGO ALTO",
+    "filename": "POSTIGO_ALTO_UG1_8_Ficha_n_0006_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672614.3390138
+  },
+  {
+    "rc": "6849011TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672619.0463204
+  },
+  {
+    "rc": "6849005TP6064N0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672623.9065163
+  },
+  {
+    "rc": "8339602TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672641.7701657
+  },
+  {
+    "rc": "8360033TP6085N0001AA",
+    "etiqueta": "UG-PADRE ALLER",
+    "filename": "PADRE_ALLER_UG_PDA_Ficha_n_0081_PGOU.pdf",
+    "dxdy": [
+      -4,
+      33
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672650.4691432
+  },
+  {
+    "rc": "7863102TP6076S0001AA",
+    "etiqueta": "UG-LOMA DEL CANTO 1",
+    "filename": "LOMA_DEL_CANTO_1_UG_LC1_Ficha_n_0113_PGOU.pdf",
+    "dxdy": [
+      -68,
+      75
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672673.2647176
+  },
+  {
+    "rc": "6854001TP6065S0001AA",
+    "etiqueta": "PE-OLIVARES",
+    "filename": "OLIVARES_PE_OLI_Ficha_n_0404_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672676.889711
+  },
+  {
+    "rc": "1679029TP7017N0001AA",
+    "etiqueta": "UG-SAN JUAN",
+    "filename": "SAN_JUAN_UG2_18_Ficha_n_0030_PGOU.pdf",
+    "dxdy": [
+      -37,
+      28
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672711.4299994
+  },
+  {
+    "rc": "0953801TP7005S0001AA",
+    "etiqueta": "PE-RAY",
+    "filename": "RAYO_MERCADIN_BAJO_PE_RAY_Ficha_n_0413_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672717.754734
+  },
+  {
+    "rc": "7951078TP6085S0001AA",
+    "etiqueta": "UG-LA ERIA - 2B",
+    "filename": "LA_ERIA_2_UG2_67_Ficha_n_0059_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672724.1101727
+  },
+  {
+    "rc": "8237511TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      83,
+      147
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672741.704384
+  },
+  {
+    "rc": "9167248TP6096N0001AA",
+    "etiqueta": "PE-PRADOS DE LA FUENTE",
+    "filename": "PRADOS_DE_LA_FUENTE_PE_6_Ficha_n_0403_PGOU.pdf",
+    "dxdy": [
+      -19,
+      -31
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672752.6995606
+  },
+  {
+    "rc": "3669202TP7036N0001AA",
+    "etiqueta": "PE-COLLOTO 3",
+    "filename": "COLLOTO_3_PE_CO3_Ficha_n_0442_PGOU.pdf",
+    "dxdy": [
+      0,
+      0
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672760.9468057
+  },
+  {
+    "rc": "9837601TP6093N0001AA",
+    "etiqueta": "PE-MONTICU",
+    "filename": "MONTICU_PE_MON_Ficha_n_0422_PGOU.pdf",
+    "dxdy": [
+      10,
+      -28
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672789.5524354
+  },
+  {
+    "rc": "2572304TP7027S0001AA",
+    "etiqueta": "PE-ESPIRITU SANTO",
+    "filename": "ESPIRITU_SANTO_PE_ESA_Ficha_n_0407_PGOU.pdf",
+    "dxdy": [
+      -117,
+      86
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672808.323846
+  },
+  {
+    "rc": "7056702TP6075N0001AA",
+    "etiqueta": "PP-1",
+    "filename": "LA_FLORIDA_PP_1_Ficha_n_0501_PGOU.pdf",
+    "dxdy": [
+      -156,
+      36
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672825.2409656
+  },
+  {
+    "rc": "0770057TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 2",
+    "filename": "SAN_RAFAEL_2_UG2_24B_Ficha_n_0038_PGOU.pdf",
+    "dxdy": [
+      110,
+      24
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672840.7164602
+  },
+  {
+    "rc": "0770058TP7007S0001AA",
+    "etiqueta": "UG-SAN RAFAEL 1",
+    "filename": "SAN_RAFAEL_1_UG2_24A_Ficha_n_00037_PGOU.pdf",
+    "dxdy": [
+      -31,
+      173
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672850.7263546
+  },
+  {
+    "rc": "7641029TP6074S0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672879.513176
+  },
+  {
+    "rc": "8039706TP6083N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      81,
+      145
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672890.180531
+  },
+  {
+    "rc": "7838407TP6073N0001AA",
+    "etiqueta": "PP-2",
+    "filename": "MONTE_CERRAO_PP_2_Ficha_n_0502_PGOU.pdf",
+    "dxdy": [
+      80,
+      143
+    ],
+    "cal_dxdy": [
+      0,
+      0
+    ],
+    "ts": 1778672900.3701186
+  }
+]

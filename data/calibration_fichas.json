@@ -1,0 +1,147 @@
+{
+  "UG-RODRIGUEZ CABEZAS 4": {
+    "dx": 13,
+    "dy": 285,
+    "n_labels": 1
+  },
+  "UG-FERREROS 1": {
+    "dx": -58,
+    "dy": -42,
+    "n_labels": 2
+  },
+  "PE-COLLOTO-REGIONAL": {
+    "dx": 30,
+    "dy": 77,
+    "n_labels": 2
+  },
+  "PE-COLLOTO 3": {
+    "dx": 225,
+    "dy": -46,
+    "n_labels": 1
+  },
+  "PP-2": {
+    "dx": 0,
+    "dy": 0,
+    "n_labels": 16
+  },
+  "PP-8": {
+    "dx": -45,
+    "dy": -6,
+    "n_labels": 1
+  },
+  "PE-OLIVARES": {
+    "dx": 0,
+    "dy": 0,
+    "n_labels": 8
+  },
+  "PE-CORREDORIA ESTE": {
+    "dx": -81,
+    "dy": 121,
+    "n_labels": 5
+  },
+  "PE-COLLOTO-LA QUINTANA": {
+    "dx": 90,
+    "dy": 18,
+    "n_labels": 2
+  },
+  "UG-LOMA DEL CANTO 2": {
+    "dx": 72,
+    "dy": 0,
+    "n_labels": 3
+  },
+  "PP-1": {
+    "dx": 0,
+    "dy": 0,
+    "n_labels": 3
+  },
+  "UG-UG MONTE CERRAO 4": {
+    "dx": -74,
+    "dy": 140,
+    "n_labels": 1
+  },
+  "UG-POSTIGO ALTO": {
+    "dx": -124,
+    "dy": 27,
+    "n_labels": 1
+  },
+  "UG-CUATRO EJES": {
+    "dx": -126,
+    "dy": 68,
+    "n_labels": 1
+  },
+  "UG-INDALECIO PRIETO": {
+    "dx": -7,
+    "dy": -267,
+    "n_labels": 1
+  },
+  "UG-LA CHAVIA": {
+    "dx": -31,
+    "dy": -64,
+    "n_labels": 1
+  },
+  "UG-ALMACENES INDUSTRIALES": {
+    "dx": -131,
+    "dy": 4,
+    "n_labels": 2
+  },
+  "PP-9": {
+    "dx": 151,
+    "dy": -6,
+    "n_labels": 1
+  },
+  "PE-MONTICU": {
+    "dx": 16,
+    "dy": -83,
+    "n_labels": 1
+  },
+  "UG-LOS REYES": {
+    "dx": 136,
+    "dy": 135,
+    "n_labels": 1
+  },
+  "PE-RAY": {
+    "dx": 0,
+    "dy": -72,
+    "n_labels": 2
+  },
+  "UG-LA GRANJA": {
+    "dx": 0,
+    "dy": 0,
+    "n_labels": 1
+  },
+  "PE-HUERTA OTERO": {
+    "dx": -187,
+    "dy": -31,
+    "n_labels": 1
+  },
+  "PE-COLLOTO 4": {
+    "dx": 101,
+    "dy": 128,
+    "n_labels": 1
+  },
+  "UG-LA IGLESIA": {
+    "dx": -180,
+    "dy": 17,
+    "n_labels": 1
+  },
+  "PE-PICASSO - FONCALADA": {
+    "dx": -64,
+    "dy": 75,
+    "n_labels": 1
+  },
+  "UG-ARMANDO COLLAR 1": {
+    "dx": 9,
+    "dy": 205,
+    "n_labels": 1
+  },
+  "UG-MURILLO": {
+    "dx": -132,
+    "dy": 8,
+    "n_labels": 1
+  },
+  "UG-SAN JUAN": {
+    "dx": 36,
+    "dy": 135,
+    "n_labels": 1
+  }
+}
