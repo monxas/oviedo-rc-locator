@@ -23,14 +23,11 @@ import json
 import os
 import random
 import sys
-import threading
 import time
 from collections import OrderedDict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
-
-_LABELS_LOCK = threading.Lock()
 
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
@@ -39,7 +36,18 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 ROOT = Path.home() / "oviedo-rc-locator"
+sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(ROOT / "src"))
+from validator.labels import (  # noqa: E402
+    LABELS_PATH,
+    FICHA_LABELS_PATH,
+    _LABELS_LOCK,
+    load_labels,
+    save_labels,
+    labeled_rcs,
+    load_ficha_labels,
+    save_ficha_labels,
+)
 import cv2  # noqa: E402
 import numpy as np  # noqa: E402
 
@@ -60,9 +68,6 @@ def _anchor_utm(col, row_idx, compass):
     return body_x_min, body_y_max
 
 ENV_FILE = ROOT / ".validator.env"
-LABELS_PATH = ROOT / "data" / "validator_labels.json"
-LABELS_PATH.parent.mkdir(exist_ok=True, parents=True)
-FICHA_LABELS_PATH = ROOT / "data" / "validator_labels_fichas.json"
 NATIVE_CROP = 3600   # crop nativo en px PGOU (cubre ~317 m a 0.088 m/px)
 DISPLAY_CROP = 1800  # tras downscale 2× → tamaño PNG transferido
 
@@ -128,32 +133,6 @@ async def auth(request: Request, token: Optional[str] = Query(None)):
     if not hmac.compare_digest(candidate or "", TOKEN):
         raise HTTPException(401, "unauthorized")
     return True
-
-
-# ---------- labels storage ----------
-def load_labels() -> list:
-    if not LABELS_PATH.exists(): return []
-    return json.loads(LABELS_PATH.read_text(encoding="utf-8"))
-
-
-def save_labels(labels):
-    LABELS_PATH.write_text(json.dumps(labels, indent=2, ensure_ascii=False))
-
-
-def labeled_rcs() -> set:
-    return {l["rc"] for l in load_labels()}
-
-
-def load_ficha_labels() -> list:
-    if not FICHA_LABELS_PATH.exists(): return []
-    try: return json.loads(FICHA_LABELS_PATH.read_text(encoding="utf-8"))
-    except Exception: return []
-
-
-def save_ficha_labels(labels):
-    tmp = FICHA_LABELS_PATH.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(labels, indent=2, ensure_ascii=False))
-    tmp.replace(FICHA_LABELS_PATH)
 
 
 # ---------- helpers de render ----------
