@@ -1,0 +1,10 @@
+# Outputs regenerables — ver README.md
+scan_fallback.json
+annot_selection.json
+template_refs.json
+analyze_via_labels.json
+bench_annotator.md
+bench_annotator.json
+body_rect_gt.json
+body_rect_gt.tmp
+.annot_imgs/
