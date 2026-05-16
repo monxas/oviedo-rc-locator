@@ -25,7 +25,6 @@ import random
 import sys
 import time
 from collections import OrderedDict
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -47,6 +46,13 @@ from validator.labels import (  # noqa: E402
     labeled_rcs,
     load_ficha_labels,
     save_ficha_labels,
+)
+from validator.recal import (  # noqa: E402
+    RECAL_THRESHOLD,
+    _accept_counter,
+    _bump_accept_counter,
+    _reset_accept_counter,
+    _trigger_recalibration,
 )
 import cv2  # noqa: E402
 import numpy as np  # noqa: E402
@@ -71,10 +77,6 @@ ENV_FILE = ROOT / ".validator.env"
 NATIVE_CROP = 3600   # crop nativo en px PGOU (cubre ~317 m a 0.088 m/px)
 DISPLAY_CROP = 1800  # tras downscale 2× → tamaño PNG transferido
 
-# auto-recalibración cada N aceptaciones (drag != 0 o exact)
-RECAL_THRESHOLD = 30
-_RECAL_COUNTER_FILE = ROOT / "data" / ".recal_counter"
-_RECAL_PENDING_FILE = ROOT / "data" / ".recal_pending"
 # Cap for the in-memory _CACHE of generated RC bundles. Each entry holds a few MB
 # of PNG bytes (crop + WMS), so without a cap the process keeps growing forever.
 _CACHE_MAX = 200
@@ -504,37 +506,6 @@ class LabelReq(BaseModel):
     ficha_etiqueta: Optional[str] = None
     ficha_filename: Optional[str] = None
     ficha_cal_dxdy: list[int] = Field(default_factory=lambda: [0, 0])
-
-
-def _accept_counter() -> int:
-    if _RECAL_COUNTER_FILE.exists():
-        try: return int(_RECAL_COUNTER_FILE.read_text())
-        except Exception: return 0
-    return 0
-
-
-def _bump_accept_counter() -> int:
-    n = _accept_counter() + 1
-    _RECAL_COUNTER_FILE.write_text(str(n))
-    return n
-
-
-def _reset_accept_counter():
-    _RECAL_COUNTER_FILE.write_text("0")
-
-
-def _trigger_recalibration():
-    """Deferred recalibration: write a sentinel file that an out-of-band watcher
-    picks up. Does NOT spawn `systemctl restart` on ourselves — that killed the
-    process and RST'd in-flight requests. The watcher runs `recalibrate.py`,
-    rewrites `data/calibration_offsets.json`, and removes the sentinel; the
-    locator/validator pick up the new file on next request via mtime-based
-    lazy reload (`oviedo_rc.calibration._load`).
-    """
-    try:
-        _RECAL_PENDING_FILE.write_text(datetime.now(timezone.utc).isoformat())
-    except OSError:
-        pass
 
 
 @app.post("/api/label")
