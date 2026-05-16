@@ -159,7 +159,7 @@ Tipos: UG (68), UG1 (16), UG2 (43), AU (28), AUS (18), AA (13), PE (33), PP (6),
 - Término municipal de Oviedo (id_municipio INE 33044).
 - 151 hojas PGOU 1:1000 + 61 hojas SNU 1:5000 + Mapa Guía + 234 Fichas de Ámbitos.
 - 53.804 RCs con coords (catastral local).
-- Calibración SU por (cell, sub) con labels manuales + LightGlue batch en curso.
+- Calibración v7 desplegada (2026-05-12): 1261 labels totales = 139 manuales + 1122 LightGlue auto (filtro `inlier_ratio≥0.65`, `samples≥5`). Mejora −18 % en mediana de error vs cal v6 sobre 23 labels de validación.
 
 ## Limpieza
 
